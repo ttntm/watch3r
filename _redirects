@@ -1,0 +1,5 @@
+https://recept0r.netlify.app/* https://recept0r.com/:splat 301!
+https://master--recept0r.netlify.app/* https://recept0r.com/:splat 301!
+
+# SPA
+/*  /index.html 200

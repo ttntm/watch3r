@@ -1,0 +1,117 @@
+@tailwind base;
+
+@tailwind components;
+
+  * {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  *:hover {
+    transition: all .35s ease;
+  }
+
+  *:focus {
+    @apply outline-none;
+    @apply shadow-outline;
+  }
+
+  body, html {
+    @apply text-gray-800;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-wide;
+    @apply font-bold;
+    @apply mt-0;
+    @apply mb-4;
+  }
+
+  h1 {
+    font-size: calc(1.375rem + 1.5vw);
+  }
+
+  @media (min-width: 1200px) {
+    h1 {
+      @apply text-4xl;
+    }
+  }
+
+  h2 {
+    font-size: calc(1.325rem + 0.9vw);
+  }
+
+  @media (min-width: 1200px) {
+    h2 {
+      @apply text-3xl;
+    }
+  }
+
+  h3 {
+    font-size: calc(1.3rem + 0.6vw);
+  }
+
+  @media (min-width: 1200px) {
+    h3 {
+      @apply text-2xl;
+    }
+    h4 {
+      @apply text-xl;
+    }
+  }
+
+  p {
+    @apply mt-0;
+    @apply mb-4;
+  }
+
+  ol, ul {
+    @apply pl-8;
+  }
+
+  ul {
+    list-style-type: square;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ol, ul, dl {
+    @apply mt-0;
+    @apply mb-4;
+  }
+
+  ol ol, ul ul, ol ul, ul ol {
+    @apply mb-0;
+  }
+
+  b, strong {
+    @apply font-bold;
+  }
+
+  i, em {
+    @apply italic;
+  }
+
+  small {
+    @apply text-sm;
+  }
+
+  /* OTHER */
+
+  hr {
+    @apply border-gray-500;
+    @apply my-8;
+  }
+
+@tailwind utilities;

@@ -1,0 +1,36 @@
+{
+  "name": "watch3r",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "faunadb": "^3.0.1",
+    "gotrue-js": "^0.9.27",
+    "secure-ls": "^1.2.6",
+    "tailwindcss": "^1.8.10",
+    "vue": "^3.0.0-0",
+    "vue-router": "^4.0.0-beta.11",
+    "vuex": "^4.0.0-beta.4",
+    "vuex-multi-tab-state": "^1.0.15",
+    "vuex-persistedstate": "^3.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0-0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^7.0.0-0"
+  }
+}
