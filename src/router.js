@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import store from './store';
 
-const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
+const Home = () => import(/* webpackChunkName: "Home" */ '@/components/HelloWorld.vue');
 const Details = () => import(/* webpackChunkName: "Details" */ '@/views/TitleDetails.vue');
 const Watchlist = () => import(/* webpackChunkName: "Watchlist" */ '@/views/Watchlist.vue');
 const Tracklist = () => import(/* webpackChunkName: "Tracklist" */ '@/views/Tracklist.vue');
