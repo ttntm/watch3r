@@ -1,10 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import store from './store';
 
-const Home = () => import(/* webpackChunkName: "Home" */ '@/components/HelloWorld.vue');
+const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
 const Details = () => import(/* webpackChunkName: "Details" */ '@/views/TitleDetails.vue');
 const Watchlist = () => import(/* webpackChunkName: "Watchlist" */ '@/views/Watchlist.vue');
 const Tracklist = () => import(/* webpackChunkName: "Tracklist" */ '@/views/Tracklist.vue');
+const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -13,6 +14,11 @@ export default createRouter({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     },
     {
       path: '/title/:id',

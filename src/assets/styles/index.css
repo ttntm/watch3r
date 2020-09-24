@@ -22,11 +22,17 @@
 
   *:focus {
     @apply outline-none;
-    @apply shadow-outline;
   }
 
   body, html {
-    @apply text-gray-800;
+    @apply text-gray-400;
+  }
+
+  body {
+    @apply max-h-screen;
+    background: rgb(26,32,44);
+    background: linear-gradient(145deg, rgba(26,32,44,1) 0%, rgba(42,67,101,1) 50%);
+    @apply overflow-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -112,6 +118,11 @@
   hr {
     @apply border-gray-500;
     @apply my-8;
+  }
+
+  button:focus {
+    @apply outline-none;
+    @apply shadow-none;
   }
 
 @tailwind utilities;

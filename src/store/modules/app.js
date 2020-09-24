@@ -5,7 +5,7 @@ export default {
   state() {
     return {
       isDevEnvironment: false,
-      siteURL: '',
+      siteURL: 'watch3r.ttntm.me',
       menuOpen: false,
       toastMessage: null,
       functions: {
