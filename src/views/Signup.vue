@@ -53,7 +53,7 @@ export default {
       if(validate()) {
         console.log(`you entered: ${pwd}`);
         status.value = `Processing...`;
-        store.commit['user/processInvite', token.value, pwd];
+        store.dispatch['user/processInvite', token.value, pwd];
       } else {
         console.error(msg.value.text);
       }
