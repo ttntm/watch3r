@@ -3,7 +3,7 @@ import router from './router'
 import store from './store'
 import App from './App.vue'
 
-import attemptToAuthorizeTokens from './helpers/authorize-tokens';
+import detectTokens from './helpers/authorize-tokens.js';
 
 import(/* webpackPreload: true */ '@/assets/styles/index.css');
 
@@ -14,4 +14,4 @@ createApp(App)
 
 store.dispatch("user/initAuth");
 
-attemptToAuthorizeTokens();
+detectTokens();

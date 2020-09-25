@@ -18,15 +18,14 @@
 </template>
 
 <script>
+import store from "@/store";
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { useStore } from 'vuex';
 
 export default {
   name: 'Signup',
   setup() {
     const route = useRoute();
-    const store = useStore();
 
     const msg = ref({ text: '', type: ''});
     const pwd = ref('');
