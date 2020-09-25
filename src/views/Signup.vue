@@ -18,14 +18,15 @@
 </template>
 
 <script>
-import store from "@/store";
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 
 export default {
   name: 'Signup',
   setup() {
     const route = useRoute();
+    const store = useStore();
 
     const msg = ref({ text: '', type: ''});
     const pwd = ref('');
@@ -52,7 +53,7 @@ export default {
       if(validate()) {
         console.log(`you entered: ${pwd}`);
         status.value = `Processing...`;
-        store.dispatch['user/processInvite', { token: token.value, pwd: pwd }];
+        store.dispatch('user/processInvite', { token: token.value, pwd: pwd });
       } else {
         console.error(msg.value.text);
       }
