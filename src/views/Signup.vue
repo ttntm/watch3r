@@ -53,7 +53,7 @@ export default {
       if(validate()) {
         console.log(`you entered: ${pwd}`);
         status.value = `Processing...`;
-        store.dispatch['user/processInvite', token.value, pwd];
+        store.dispatch['user/processInvite', { token: token.value, pwd: pwd }];
       } else {
         console.error(msg.value.text);
       }

@@ -127,10 +127,10 @@ export default {
      * @param {*} store - vuex store object
      * @param {string} token - token from invite email eg. "BFX7olHxIwThlfjLGGfaCA"
      */
-    processInvite({ state }, token, pwd) {
-      console.log("Attempting to verify invite", token);
+    processInvite({ state }, data) {
+      console.log("Attempting to verify invite", data.token);
       return new Promise((resolve, reject) => {
-        state.GoTrueAuth.acceptInvite(token, pwd)
+        state.GoTrueAuth.acceptInvite(data.token, data.pwd)
           .then(response => {
             console.log("Invite was successful, user created");
             resolve(response);
