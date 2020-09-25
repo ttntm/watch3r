@@ -26,6 +26,7 @@ export default {
   name: 'Signup',
   setup() {
     const route = useRoute();
+    const store = useStore();
 
     const msg = ref({ text: '', type: ''});
     const pwd = ref('');
