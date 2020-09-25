@@ -34,6 +34,26 @@ export default {
   },
   actions: {
     /**
+     * This accepts an invite and creates a new user by parsing the token which has been extracted from the Netlify
+     * invite email.
+     * @param {*} store - vuex store object
+     * @param {string} token - token from invite email eg. "BFX7olHxIwThlfjLGGfaCA"
+     */
+    acceptInvite({ state }, token) {
+      console.log("Attempting to verify invite", token);
+      return new Promise((resolve, reject) => {
+        state.GoTrueAuth.acceptInvite(token, '123456')
+          .then(response => {
+            console.log("Invite was accepted, user created");
+            resolve(response);
+          })
+          .catch(error => {
+            console.log("An error occurred trying to process the invite", error);
+            reject(error);
+          });
+      });
+    },
+    /**
      * Authorise and login users via email
      * @param {*} store - vuex store object
      * @param {object} credentials - object containing email and password
@@ -83,7 +103,7 @@ export default {
      * This confirms a new user from an email signup by parsing the token which has been extracted from the Netlify
      * confirmation email.
      * @param {*} store - vuex store object
-     * @param {string} token - token from confimration email eg. "BFX7olHxIwThlfjLGGfaCA"
+     * @param {string} token - token from confirmation email eg. "BFX7olHxIwThlfjLGGfaCA"
      */
     attemptConfirmation({ state }, token) {
       //console.log("Attempting to verify token", token);

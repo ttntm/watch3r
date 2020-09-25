@@ -37,10 +37,9 @@ export default {
 
 <style lang="postcss">
   #app {
-    @apply font-sans text-center fixed w-full;
+    @apply font-sans text-center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-y: auto;
   }
   .menu-blur {
     filter: blur(1rem);
