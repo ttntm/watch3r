@@ -6,6 +6,7 @@ const Details = () => import(/* webpackChunkName: "Details" */ '@/views/TitleDet
 const Watchlist = () => import(/* webpackChunkName: "Watchlist" */ '@/views/Watchlist.vue');
 const Tracklist = () => import(/* webpackChunkName: "Tracklist" */ '@/views/Tracklist.vue');
 const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
+const Signup = () => import(/* webpackChunkName: "Signup" */ '@/views/Signup.vue');
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -25,7 +26,7 @@ export default createRouter({
       name: 'details',
       component: Details,
       // beforeEnter: (to, from, next) => {
-      //    if(!store.state.user.currentUser) { //get stored user state from vuex store
+      //    if(!store.getters['user/currentUser']) { //get stored user state from vuex store
       //     router.push({ name: 'home' });
       //   } else {
       //     return next();
@@ -37,7 +38,7 @@ export default createRouter({
       name: 'tracker',
       component: Tracklist,
       // beforeEnter: (to, from, next) => {
-      //    if(!store.state.user.currentUser) { //get stored user state from vuex store
+      //    if(!store.getters['user/currentUser']) { //get stored user state from vuex store
       //     router.push({ name: 'home' });
       //   } else {
       //     return next();
@@ -49,12 +50,25 @@ export default createRouter({
       name: 'watchlist',
       component: Watchlist,
       // beforeEnter: (to, from, next) => {
-      //    if(!store.state.user.currentUser) { //get stored user state from vuex store
+      //    if(!store.getters['user/currentUser']) { //get stored user state from vuex store
       //     router.push({ name: 'home' });
       //   } else {
       //     return next();
       //   }
       // }
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup,
+      beforeEnter: (to, from, next) => {
+        if(store.getters['user/loggedIn']) {
+          // only users that aren't logged in can go to signup
+          router.push({ name: 'home' });
+        } else {
+          return next();
+        }
+      },
     },
     {
       path: '/*',

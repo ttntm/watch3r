@@ -1,5 +1,5 @@
 <template>
-  <div id="app-inner" class="flex flex-col h-full min-h-screen">
+  <div id="app-inner" class="flex flex-col min-h-screen">
     <GlobalNav />
     <GlobalMenu />
     <div class="container flex flex-col flex-grow flex-shrink-0 px-4 mx-auto">
@@ -29,7 +29,7 @@ export default {
     const store = useStore();
 
     return {
-      menuOpen: computed(() => store.getters.menuOpen),
+      menuOpen: computed(() => store.getters['app/menuOpen']),
     }
   }
 }
@@ -37,7 +37,7 @@ export default {
 
 <style lang="postcss">
   #app {
-    @apply font-sans text-center;
+    @apply font-sans;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -46,7 +46,7 @@ export default {
   }
 
   .btn {
-    @apply block font-bold rounded-none shadow-md px-6 py-2;
+    @apply inline-block font-bold rounded-none shadow-md px-6 py-2;
   }
 
   .btn:hover {

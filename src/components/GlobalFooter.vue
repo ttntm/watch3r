@@ -4,10 +4,10 @@
       <router-link :to="{name: 'about'}">
         About
       </router-link>
-      <router-link :to="{name: 'watchlist'}">
+      <router-link :to="{name: 'watchlist'}" v-if="loggedIn">
         Watchlist
       </router-link>
-      <router-link :to="{name: 'tracker'}">
+      <router-link :to="{name: 'tracker'}" v-if="loggedIn">
         Tracker
       </router-link>
     </div>
@@ -16,8 +16,18 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
 export default {
-  name: 'GlobalFooter'
+  name: 'GlobalFooter',
+  setup() {
+    const store = useStore();
+
+    return {
+      loggedIn: computed(() => store.getters['user/loggedIn']),
+    }
+  },
 }
 </script>
 

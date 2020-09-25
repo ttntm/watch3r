@@ -34,26 +34,6 @@ export default {
   },
   actions: {
     /**
-     * This accepts an invite and creates a new user by parsing the token which has been extracted from the Netlify
-     * invite email.
-     * @param {*} store - vuex store object
-     * @param {string} token - token from invite email eg. "BFX7olHxIwThlfjLGGfaCA"
-     */
-    acceptInvite({ state }, token) {
-      console.log("Attempting to verify invite", token);
-      return new Promise((resolve, reject) => {
-        state.GoTrueAuth.acceptInvite(token, '123456')
-          .then(response => {
-            console.log("Invite was accepted, user created");
-            resolve(response);
-          })
-          .catch(error => {
-            console.log("An error occurred trying to process the invite", error);
-            reject(error);
-          });
-      });
-    },
-    /**
      * Authorise and login users via email
      * @param {*} store - vuex store object
      * @param {object} credentials - object containing email and password
@@ -137,6 +117,26 @@ export default {
           .catch(error => {
             console.error("Could not log user out", error);
             commit("SET_CURRENT_USER", null);
+            reject(error);
+          });
+      });
+    },
+    /**
+     * This accepts an invite and creates a new user by parsing the token which has been extracted from the Netlify
+     * invite email.
+     * @param {*} store - vuex store object
+     * @param {string} token - token from invite email eg. "BFX7olHxIwThlfjLGGfaCA"
+     */
+    processInvite({ state }, pwd, token) {
+      console.log("Attempting to verify invite", token);
+      return new Promise((resolve, reject) => {
+        state.GoTrueAuth.acceptInvite(token, pwd)
+          .then(response => {
+            console.log("Invite was successful, user created");
+            resolve(response);
+          })
+          .catch(error => {
+            console.log("An error occurred trying to process the invite", error);
             reject(error);
           });
       });

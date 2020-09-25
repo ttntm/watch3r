@@ -1,19 +1,29 @@
 <template>
   <div class="flex flex-grow items-center justify-items-center w-full h-full">
-    <div class="self-center max-w-full md:max-w-sm mx-auto">
+    <div class="text-center self-center max-w-full md:max-w-sm mx-auto">
       <div class="mb-16">
         <h1 class="text-3xl text-yellow-600">watch3r</h1>
         <h2 class="text-xl">A watchlist and tracking app for your movies and series</h2>
       </div>
-      <div v-if="loggedIn">You're already logged in...</div>
+      <div v-if="loggedIn" class="flex flex-col items-center">
+        <router-link :to="{name: 'watchlist'}" class="btn btn-black mb-4">
+          Watchlist
+        </router-link>
+        <router-link :to="{name: 'tracker'}" class="btn btn-black mb-4">
+          Tracker
+        </router-link>
+        <router-link :to="{name: 'about'}" class="btn btn-black mb-4">
+          About
+        </router-link>
+      </div>
       <div v-else class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10">
         <div class="login-input-group">
           <label for="login-email">Email Address</label>
-          <input v-model="crendentials.email" id="login-email" type="email" placeholder="jane@doe.com">
+          <input v-model="crendentials.email" id="login-email" type="email" placeholder="jane@doe.com" required>
         </div>
         <div class="login-input-group">
           <label for="login-pwd">Password</label>
-          <input v-model="crendentials.password" @keyup.enter="login()" id="login-pwd" type="password" placeholder="************">
+          <input v-model="crendentials.password" @keyup.enter="login()" id="login-pwd" type="password" placeholder="************" required>
         </div>
         <button @click="login()" class="btn btn-black">Login</button>
         <p v-if="cValidateMsg !== ''" v-html="cValidateMsg" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !cValidate }" />
@@ -33,7 +43,7 @@ export default {
     const store = useStore();
 
     return {
-      loggedIn: computed(() => store.getters.loggedIn),
+      loggedIn: computed(() => store.getters['user/loggedIn']),
     }
   },
   data() {
@@ -52,19 +62,11 @@ export default {
       let c = this.crendentials;
       let rx = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
       let valid = rx.test(c.email);
-      if(this.mode === 'login') {
-        if(!c.password || !c.email) {
-          return false;
-        } else if(c.password && c.email && valid) {
-          return true;
-        } else { return false; }
-      } else {
-        if(!c.password || !c.email || !c.name) {
-          return false;
-        } else if(c.password && c.email && c.name && valid) {
-          return true;
-        } else { return false; }
-      }
+      if(!c.password || !c.email) {
+        return false;
+      } else if(c.password && c.email && valid) {
+        return true;
+      } else { return false; }
     }
   },
   methods: {

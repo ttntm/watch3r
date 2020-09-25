@@ -1,8 +1,8 @@
 /*
 Extract and validate tokens in the URL if they are present.
 */
-import store from "@/store";
-// import router from "../router";
+import store from '@/store';
+import router from '@/router';
 
 /**
  * Reads the URL hash attempts and tries to detect if there is confirmation tokens from an email signup or
@@ -101,20 +101,10 @@ function confirmEmailToken(token) {
 
 function confirmInviteToken(token) {
   let msg = { text: '', type: '' };
-  store
-    .dispatch("user/acceptInvite", token)
-    .then(resp => {
-      // msg.text = `${resp.email} has been confirmed, please fill the form to complete your signup`;
-      // msg.type = 'success';
-      // store.dispatch('app/sendToastMessage', msg);
-      console.log(resp);
-    })
-    .catch(error => {
-      // msg.text = `Can't confirm your invite right now. Please try again`;
-      // msg.type = 'error';
-      // store.dispatch('app/sendToastMessage', msg);
-      console.error(error, "Something's gone wrong confirming user");
-    });
+  router.push(`/signup?t=${token}`);
+  // msg.text = `Invite token found, please fill the form to complete your signup`;
+  // msg.type = 'info';
+  // store.dispatch('app/sendToastMessage', msg);
 }
 
 function confirmRecoveryToken(recoveryToken) {
