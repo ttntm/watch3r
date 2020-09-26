@@ -132,7 +132,7 @@ export default {
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.acceptInvite(data.token, data.pwd)
           .then(response => {
-            console.log("Invite was successful, user created");
+            // console.log("Invite was successful, user created");
             resolve(response);
           })
           .catch(error => {
@@ -242,7 +242,7 @@ export default {
             resolve(response);
           })
           .catch(error => {
-            console.error("Failed to verify recover token: %o", error);
+            // console.error("Failed to verify recover token: %o", error);
             reject();
           });
       });

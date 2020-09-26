@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import store from './store';
+import store from '@/store';
 
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
 const Details = () => import(/* webpackChunkName: "Details" */ '@/views/TitleDetails.vue');
@@ -8,7 +8,7 @@ const Tracklist = () => import(/* webpackChunkName: "Tracklist" */ '@/views/Trac
 const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
 const Signup = () => import(/* webpackChunkName: "Signup" */ '@/views/Signup.vue');
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
@@ -25,37 +25,19 @@ export default createRouter({
       path: '/title/:id',
       name: 'details',
       component: Details,
-      // beforeEnter: (to, from, next) => {
-      //    if(!store.getters['user/currentUser']) { //get stored user state from vuex store
-      //     router.push({ name: 'home' });
-      //   } else {
-      //     return next();
-      //   }
-      // }
+      meta: { authRequired: true }
     },
     {
       path: '/track',
       name: 'tracker',
       component: Tracklist,
-      // beforeEnter: (to, from, next) => {
-      //    if(!store.getters['user/currentUser']) { //get stored user state from vuex store
-      //     router.push({ name: 'home' });
-      //   } else {
-      //     return next();
-      //   }
-      // }
+      meta: { authRequired: true }
     },
     {
       path: '/watch',
       name: 'watchlist',
       component: Watchlist,
-      // beforeEnter: (to, from, next) => {
-      //    if(!store.getters['user/currentUser']) { //get stored user state from vuex store
-      //     router.push({ name: 'home' });
-      //   } else {
-      //     return next();
-      //   }
-      // }
+      meta: { authRequired: true },
     },
     {
       path: '/signup',
@@ -79,4 +61,23 @@ export default createRouter({
       }
     }
   ],
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  },
 });
+
+router.beforeEach((to, from, next) => {
+  if(store.getters['app/menuOpen']) {
+    store.dispatch('app/toggleMenu', false);
+  }
+  // If the route doesnt have a `meta.authRequired` property go on ahead!
+  if(!to.meta.authRequired) {
+    return next();
+  }
+  // If we go this far then it must have the `meta.authRequired`. But is there is a user logged in? If so, then go right on ahead!
+  if(to.meta.authRequired && store.getters["user/loggedIn"]) {
+    return next();
+  }
+});
+
+export default router;

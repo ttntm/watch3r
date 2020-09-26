@@ -102,9 +102,9 @@ function confirmEmailToken(token) {
 function confirmInviteToken(token) {
   let msg = { text: '', type: '' };
   router.push(`/signup?t=${token}`);
-  // msg.text = `Invite token found, please fill the form to complete your signup`;
-  // msg.type = 'info';
-  // store.dispatch('app/sendToastMessage', msg);
+  msg.text = `Invite token found, please fill the form to complete your signup`;
+  msg.type = 'info';
+  store.dispatch('app/sendToastMessage', msg);
 }
 
 function confirmRecoveryToken(recoveryToken) {

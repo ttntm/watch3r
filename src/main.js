@@ -10,7 +10,7 @@ import(/* webpackPreload: true */ '@/assets/styles/index.css');
 createApp(App)
   .use(router)
   .use(store)
-  .mount('#app')
+  .mount('#app');
 
 store.dispatch("user/initAuth");
 

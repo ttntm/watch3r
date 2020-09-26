@@ -19,14 +19,14 @@
       <div v-else class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10">
         <div class="login-input-group">
           <label for="login-email">Email Address</label>
-          <input v-model="crendentials.email" id="login-email" type="email" placeholder="jane@doe.com" required>
+          <input v-model="credentials.email" id="login-email" type="email" placeholder="jane@doe.com" required>
         </div>
         <div class="login-input-group">
           <label for="login-pwd">Password</label>
-          <input v-model="crendentials.password" @keyup.enter="login()" id="login-pwd" type="password" placeholder="************" required>
+          <input v-model="credentials.password" @keyup.enter="handleLogin()" id="login-pwd" type="password" placeholder="************" required>
         </div>
-        <button @click="login()" class="btn btn-black">Login</button>
-        <p v-if="cValidateMsg !== ''" v-html="cValidateMsg" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !cValidate }" />
+        <button @click="handleLogin()" class="btn btn-black">Login</button>
+        <p v-if="cValidateMsg !== ''" v-html="cValidateMsg" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" />
       </div>
       <p v-if="!loggedIn" class="text-sm mt-8">No account? <a href="mailto:x@z.y" class="text-yellow-600 hover:text-gray-900">Contact us</a> and ask for an invite (no guarantees or promises).</p>
     </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -42,24 +42,15 @@ export default {
   setup() {
     const store = useStore();
 
-    return {
-      loggedIn: computed(() => store.getters['user/loggedIn']),
-    }
-  },
-  data() {
-    return {
-      crendentials: {
-        name: "",
-        password: "",
-        email: ""
-      },
-      cValidateMsg: '',
-      mode: 'login',
-    }
-  },
-  computed: {
-    cValidate() {
-      let c = this.crendentials;
+    const credentials = ref({
+      email: '',
+      password: ''
+    });
+    const cValidateMsg = ref('');
+    const loggedIn = computed(() => store.getters['user/loggedIn']);
+
+    const validate = () => {
+      let c = credentials.value;
       let rx = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
       let valid = rx.test(c.email);
       if(!c.password || !c.email) {
@@ -68,30 +59,39 @@ export default {
         return true;
       } else { return false; }
     }
-  },
-  methods: {
-    login() {
-      if(!this.cValidate) {
-        this.cValidateMsg = "Please enter valid information.";
+
+    const handleLogin = () => {
+      if(!validate()) {
+        cValidateMsg.value = 'Please enter valid information.';
       } else {
         let msg = { text: '', type: ''};
         let spinner = require('@/assets/loading.svg');
-        this.cValidateMsg = `<img src="${spinner}" class="mx-auto">`;
-        this.$store.dispatch('user/attemptLogin', this.crendentials)
+        cValidateMsg.value = `<img src="${spinner}" class="mx-auto">`;
+        store.dispatch('user/attemptLogin', credentials.value)
           .then(() => {
-            msg.text = "You're logged in now";
+            msg.text = `You're logged in now`;
             msg.type =  'success';
-            this.$store.dispatch('app/sendToastMessage', msg); //vuex action sendToastMessage(message)
+            store.dispatch('app/sendToastMessage', msg);
+            credentials.value = { email: '', password: '' };
+            cValidateMsg.value = '';
           })
           .catch(error => {
-            this.cValidateMsg = null;
-            console.error(error, "Something's gone wrong logging in");
-            msg.text = "Something's gone wrong logging in, please try again later.";
+            cValidateMsg.value = '';
+            console.error(error, `Something's gone wrong logging in`);
+            msg.text = `Something's gone wrong logging in, please try again later.`;
             msg.type =  'error';
-            this.$store.dispatch('app/sendToastMessage', msg); //vuex action sendToastMessage(message)
+            store.dispatch('app/sendToastMessage', msg);
           });
       }
-    },
+    }
+
+    return {
+      credentials,
+      cValidateMsg,
+      handleLogin,
+      loggedIn,
+      validate
+    }
   }
 }
 </script>

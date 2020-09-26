@@ -1,0 +1,91 @@
+<template>
+  <div class="app-menu" v-closable="closeMenu">
+    <div class="flex flex-row justify-between items-center pt-2">
+      <p class="text-sm text-gray-600 font-bold px-4 mb-0">watch3r</p>
+      <button
+        @click.prevent="closeMenu()"
+        class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer px-4 hover:opacity-100 focus:outline-none"
+        ref="closeBtn"
+      >×</button>
+    </div>
+    <div class="flex flex-col text-gray-800">
+      <span class="menu-item">
+        <router-link :to="{name: 'home'}" ref="menuHome">
+          Home
+        </router-link>
+      </span>
+      <span v-if="loggedIn" class="menu-item">
+        <router-link :to="{name: 'watchlist'}" ref="menuWatch">
+          Watchlist
+        </router-link>
+      </span>
+      <span v-if="loggedIn" class="menu-item">
+        <router-link :to="{name: 'tracker'}" ref="menuTrack">
+          Tracker
+        </router-link>
+      </span>
+      <span class="menu-item">
+        <router-link :to="{name: 'about'}" ref="menuAbout">
+          About
+        </router-link>
+      </span>
+    </div>
+  </div>
+</template>
+
+<script>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+let handleOutsideClick = null;
+
+export default {
+  name: 'GlobalMenu',
+  setup() {
+    const store = useStore();
+
+    const closeMenu = () => {
+      store.dispatch('app/toggleMenu', false);
+    }
+
+    return {
+      closeMenu,
+      loggedIn: computed(() => store.getters['user/loggedIn'])
+    }
+  },
+  directives: {
+    closable: {
+      beforeMount(el, binding, vnode) {
+        handleOutsideClick = (e) => {
+          e.stopPropagation();
+          if(!el.contains(e.target) && !e.target.classList.contains('closable-ignore')) {
+            binding.value();
+          }
+        }
+        document.addEventListener('click', handleOutsideClick);
+        document.addEventListener('touchstart', handleOutsideClick);
+      },
+      beforeUnmount() {
+        document.removeEventListener('click', handleOutsideClick);
+        document.removeEventListener('touchstart', handleOutsideClick);
+      }
+    }
+  }
+}
+</script>
+
+<style lang="postcss" scoped>
+  .app-menu {
+    @apply fixed top-0 left-0 z-10 w-full max-w-xs bg-gray-200 rounded-lg shadow-lg pb-4 ml-8 mt-6;
+    width: 80%;
+  }
+  .menu-item {
+    @apply w-full tracking-wide font-bold text-lg text-center py-3;
+  }
+  .menu-item:hover {
+    @apply bg-gray-400 shadow-inner;
+  }
+  .menu-item:hover a {
+    @apply text-blue-800;
+  }
+</style>

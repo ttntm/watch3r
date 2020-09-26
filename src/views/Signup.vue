@@ -19,12 +19,13 @@
 
 <script>
 import { computed, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
 export default {
   name: 'Signup',
   setup() {
+    const router = useRouter();
     const route = useRoute();
     const store = useStore();
 
@@ -45,19 +46,31 @@ export default {
       } else {
         return true;
       }
-    };
+    }
 
     const handleSignup = (pwd) => {
+      // clear previous msg/status state first
       msg.value = { text: '', type: ''};
       status.value = '';
+
       if(validate()) {
-        console.log(`you entered: ${pwd}`);
         status.value = `Processing...`;
-        store.dispatch('user/processInvite', { token: token.value, pwd: pwd });
+        store.dispatch('user/processInvite', { token: token.value, pwd: pwd })
+          .then(() => {
+            msg.value.text = 'Account created, redirecting to login...';
+            msg.value.type =  'success';
+            store.dispatch('app/sendToastMessage', msg);
+            router.push({ name: 'home' });
+          })
+          .catch(error => {
+            msg.value.text = 'Error processing the invite, please try again later.';
+            msg.value.type =  'error';
+            store.dispatch('app/sendToastMessage', msg);
+          });
       } else {
-        console.error(msg.value.text);
+        store.dispatch('app/sendToastMessage', msg);
       }
-    };
+    }
 
     return {
       handleSignup,

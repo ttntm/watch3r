@@ -1,0 +1,53 @@
+<template>
+  <button
+    class="text-gray-500 cursor-pointer"
+    @click.prevent="handleLogout()"
+    :disabled="!loggedIn"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+      <path d="M7 12h14l-3 -3m0 6l3 -3" />
+    </svg>
+  </button>
+</template>
+
+<script>
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+
+export default {
+  name: 'BtnLogout',
+  setup() {
+    const router = useRouter();
+    const store = useStore();
+
+    const loggedIn = computed(() => store.getters['user/loggedIn']);
+
+    const handleLogout = () => {
+      if(loggedIn.value) {
+        let msg = { text: '', type: ''};
+        store.dispatch('user/attemptLogout')
+          .then(() => {
+            msg.text = 'Logout successful';
+            msg.type =  'success';
+            store.dispatch('app/sendToastMessage', msg);
+            router.push({ name: 'home' });
+          })
+      } else {
+        return
+      }
+    }
+
+    return {
+      handleLogout,
+      loggedIn
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
