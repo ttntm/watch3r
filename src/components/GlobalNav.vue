@@ -2,9 +2,9 @@
   <nav class="w-full flex flex-row justify-items-start items-center px-4 py-2 mb-8">
     <BtnMenu class="block" />
     <div class="flex-grow text-center">
-      <h1 class="text-xl capitalize m-0">
+      <!-- <h1 class="text-xl capitalize m-0">
         {{ currentView }}
-      </h1>
+      </h1> -->
     </div>
     <BtnLogout class="block" />
   </nav>

@@ -1,13 +1,13 @@
 <template>
   <footer class="text-sm p-4 mt-8">
     <div class="footer-nav flex flex-row justify-center items-center">
-      <router-link :to="{name: 'about'}">
+      <router-link :to="{name: 'about'}" v-click-blur>
         About
       </router-link>
-      <router-link :to="{name: 'watchlist'}" v-if="loggedIn">
+      <router-link :to="{name: 'watchlist'}" v-if="loggedIn" v-click-blur>
         Watchlist
       </router-link>
-      <router-link :to="{name: 'tracker'}" v-if="loggedIn">
+      <router-link :to="{name: 'tracker'}" v-if="loggedIn" v-click-blur>
         Tracker
       </router-link>
     </div>

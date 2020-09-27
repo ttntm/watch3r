@@ -61,9 +61,10 @@ const router = createRouter({
       }
     }
   ],
-  scrollBehavior () {
-    return { x: 0, y: 0 }
-  },
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return { top: 0 }
+  }
 });
 
 router.beforeEach((to, from, next) => {

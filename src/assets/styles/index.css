@@ -129,3 +129,39 @@
   }
 
 @tailwind utilities;
+
+  .btn {
+    @apply font-bold;
+    @apply rounded-none;
+    @apply shadow-md;
+    @apply px-6;
+    @apply py-2;
+  }
+
+  .btn:hover {
+    @apply shadow-none;
+  }
+
+  .btn-black {
+    @apply bg-gray-900;
+    @apply text-yellow-600;
+    @apply border;
+    @apply border-transparent;
+  }
+
+  .btn-black:hover,
+  .btn-black:focus {
+    @apply bg-yellow-600;
+    @apply text-gray-900;
+  }
+
+  .list,
+  .tracklist,
+  .watchlist {
+    @apply bg-gray-400;
+    @apply text-gray-800;
+    @apply rounded-lg;
+    @apply border;
+    @apply border-gray-700;
+    @apply shadow-lg;
+  }

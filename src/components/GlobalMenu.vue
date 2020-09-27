@@ -1,11 +1,10 @@
 <template>
-  <div class="app-menu" v-closable="closeMenu">
+  <div class="app-menu" v-click-outside="closeMenu">
     <div class="flex flex-row justify-between items-center pt-2">
       <p class="text-sm text-gray-600 font-bold px-4 mb-0">watch3r</p>
       <button
         @click.prevent="closeMenu()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer px-4 hover:opacity-100 focus:outline-none"
-        ref="closeBtn"
       >×</button>
     </div>
     <div class="flex flex-col text-gray-800">
@@ -37,8 +36,6 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
-let handleOutsideClick = null;
-
 export default {
   name: 'GlobalMenu',
   setup() {
@@ -53,24 +50,6 @@ export default {
       loggedIn: computed(() => store.getters['user/loggedIn'])
     }
   },
-  directives: {
-    closable: {
-      beforeMount(el, binding, vnode) {
-        handleOutsideClick = (e) => {
-          e.stopPropagation();
-          if(!el.contains(e.target) && !e.target.classList.contains('closable-ignore')) {
-            binding.value();
-          }
-        }
-        document.addEventListener('click', handleOutsideClick);
-        document.addEventListener('touchstart', handleOutsideClick);
-      },
-      beforeUnmount() {
-        document.removeEventListener('click', handleOutsideClick);
-        document.removeEventListener('touchstart', handleOutsideClick);
-      }
-    }
-  }
 }
 </script>
 
@@ -86,6 +65,6 @@ export default {
     @apply bg-gray-400 shadow-inner;
   }
   .menu-item:hover a {
-    @apply text-blue-800;
+    @apply w-full inline-block text-blue-800;
   }
 </style>

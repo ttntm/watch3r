@@ -25,7 +25,7 @@
           <label for="login-pwd">Password</label>
           <input v-model="credentials.password" @keyup.enter="handleLogin()" id="login-pwd" type="password" placeholder="************" required>
         </div>
-        <button @click="handleLogin()" class="btn btn-black">Login</button>
+        <button @click="handleLogin()" v-click-blur class="btn btn-black">Login</button>
         <p v-if="cValidateMsg !== ''" v-html="cValidateMsg" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" />
       </div>
       <p v-if="!loggedIn" class="text-sm mt-8">No account? <a href="mailto:x@z.y" class="text-yellow-600 hover:text-gray-900">Contact us</a> and ask for an invite (no guarantees or promises).</p>

@@ -45,23 +45,6 @@ export default {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .btn {
-    @apply inline-block font-bold rounded-none shadow-md px-6 py-2;
-  }
-
-  .btn:hover {
-    @apply shadow-none;
-  }
-
-  .btn-black {
-    @apply bg-gray-900 text-yellow-600 border border-transparent;
-  }
-
-  .btn-black:hover,
-  .btn-black:focus {
-    @apply bg-yellow-600 text-gray-900;
-  }
-
   .slide-fade-enter-active,
   .slide-fade-leave-active {
     transition: all 0.75s;

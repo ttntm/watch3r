@@ -1,6 +1,7 @@
-import { createStore } from 'vuex'
-import app from './modules/app'
-import user from './modules/user'
+import { createStore } from 'vuex';
+import app from './modules/app';
+import list from './modules/list';
+import user from './modules/user';
 
 import createMultiTabState from 'vuex-multi-tab-state';
 
@@ -13,6 +14,7 @@ export default createStore({
   strict: false, //process.env.NODE_ENV !== "production", -> see: https://github.com/chiubaca/vue-netlify-fauna-starter-kit/issues/12
   modules: {
     app,
+    list,
     user
   },
   plugins: [
