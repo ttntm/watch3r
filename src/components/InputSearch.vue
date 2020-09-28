@@ -7,7 +7,7 @@
         <circle cx="10" cy="10" r="7" />
         <line x1="21" y1="21" x2="15" y2="15" />
       </svg>
-      <input v-model.trim="searchInput" type="text" class="w-full search-input" id="search-input" placeholder="Movie title, series">
+      <input v-model.trim="searchInput" @keyup.enter="$emit('do-search', searchInput)" v-focus type="text" class="w-full search-input" id="search-input" placeholder="Movie title, series">
       <div class="input-group-append">
         <button
           v-if="searchInput"
@@ -18,7 +18,10 @@
         >&times;</button>
       </div>
     </div>
-    <button class="btn btn-black shadow-none">Go</button>
+    <button
+      @click.prevent="$emit('do-search', searchInput)"
+      class="btn btn-black shadow-none"
+    >Go</button>
   </div>
 </template>
 
@@ -37,6 +40,13 @@ export default {
     return {
       clearSearch,
       searchInput
+    }
+  },
+  directives: {
+    focus: {
+      mounted(el) {
+        el.focus()
+      }
     }
   }
 }

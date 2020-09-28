@@ -46,7 +46,7 @@ export default {
 
 <style lang="postcss" scoped>
   .nav-link {
-    @apply relative text-gray-600 font-bold text-lg px-2 mx-2;
+    @apply relative text-gray-600 font-bold text-lg px-2 pb-1 mx-2;
   }
   .nav-link:hover {
     @apply text-gray-400;
