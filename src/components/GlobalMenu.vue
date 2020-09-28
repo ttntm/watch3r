@@ -55,8 +55,13 @@ export default {
 
 <style lang="postcss" scoped>
   .app-menu {
-    @apply fixed top-0 left-0 z-10 w-full max-w-xs bg-gray-200 rounded-lg shadow-lg pb-4 ml-8 mt-6;
+    @apply fixed top-0 left-0 z-10 max-w-xs bg-gray-200 rounded-lg shadow-lg pb-4 ml-8 mt-6;
     width: 80%;
+  }
+  @media(max-width: 767px) {
+    .app-menu {
+      @apply right-0 mx-auto;
+    }
   }
   .menu-item {
     @apply w-full tracking-wide font-bold text-lg text-center py-3;

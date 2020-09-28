@@ -128,8 +128,6 @@
     cursor: not-allowed;
   }
 
-@tailwind utilities;
-
   .btn {
     @apply font-bold;
     @apply rounded-none;
@@ -165,3 +163,9 @@
     @apply border-gray-700;
     @apply shadow-lg;
   }
+
+  .icon {
+    @apply pointer-events-none;
+  }
+
+@tailwind utilities;

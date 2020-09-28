@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
-import router from './router'
-import store from './store'
-import App from './App.vue'
+import router from '@/router'
+import store from '@/store'
+import App from '@/App.vue'
 
-import detectTokens from './helpers/authorize-tokens.js';
+import detectTokens from '@/helpers/authorize-tokens.js';
 
 import(/* webpackPreload: true */ '@/assets/styles/index.css');
 
@@ -15,8 +15,8 @@ store.dispatch("user/initAuth");
 
 detectTokens();
 
+let handleClickBlur = null;
 let handleOutsideClick = null;
-let clickBlur = null;
 
 app.directive('click-outside', {
   beforeMount(el, binding, vnode) {
@@ -37,15 +37,17 @@ app.directive('click-outside', {
 
 app.directive('click-blur', {
   beforeMount(el, binding, vnode) {
-    clickBlur = (e) => {
+    handleClickBlur = (e) => {
       if(e.target.nodeName !== 'INPUT') {
         e.target.blur();
       }
     }
-    document.addEventListener('click', clickBlur);
+    document.addEventListener('click', handleClickBlur);
+    document.addEventListener('touchstart', handleClickBlur);
   },
   beforeUnmount() {
-    document.removeEventListener('click', clickBlur);
+    document.removeEventListener('click', handleClickBlur);
+    document.removeEventListener('touchstart', handleClickBlur);
   }
 });
 

@@ -1,26 +1,35 @@
 <template>
   <div v-if="modalOpen" class="list-add-modal" v-click-outside="closeModal">
     <div class="flex flex-row justify-between items-center pt-4">
-      <p class="text-gray-600 font-bold px-8 mb-0">Add Title</p>
+      <h3 class="text-gray-600 text-base px-8 mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
       <button
         @click.prevent="closeModal()"
         class="font-bold text-gray-800 text-2xl opacity-75 cursor-pointer px-6 hover:opacity-100 focus:outline-none"
       >×</button>
     </div>
-    <div class="text-gray-600 px-8 pt-4 pb-8">
-      <p>Displaying modal for {{ mode }}</p>
-      <p>Display a search bar here and get title data from API</p>
-      <p>List search results below with a button to add them to the respective list based on "mode" prop and a vuex action.</p>
+    <div class="text-gray-600 pt-4 pb-8">
+      <InputSearch class="px-8 mb-6" />
+      <div class="flex flex-row items-center hover:bg-gray-300 hover:shadow-inner px-8">
+        <div class="flex-grow py-4">
+          <h4 class="text-gray-800 mb-0">The Blue Bird</h4>
+          <p class="text-sm mb-0">Comedy, 2004</p>
+        </div>
+        <button class="btn btn-black">Add</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import {computed } from 'vue';
+import InputSearch from '@/components/InputSearch.vue';
+import {computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
   name: 'ListAddModal',
+  components: {
+    InputSearch
+  },
   props: {
     mode: String
   },
@@ -57,6 +66,11 @@ export default {
   @media(min-width:1024px) {
     .list-add-modal {
       @apply w-1/2;
+    }
+  }
+  @media(min-width:1440px) {
+    .list-add-modal {
+      @apply max-w-xl;
     }
   }
 </style>

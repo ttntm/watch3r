@@ -109,6 +109,6 @@ export default {
   }
 
   .login-input-group input:focus {
-    @apply bg-gray-300 border-yellow-600 rounded-sm shadow-inner;
+    @apply bg-gray-300 border-yellow-600 shadow-inner;
   }
 </style>

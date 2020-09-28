@@ -71,12 +71,13 @@ router.beforeEach((to, from, next) => {
   if(store.getters['app/menuOpen']) {
     store.dispatch('app/toggleMenu', false);
   }
-  // If the route doesnt have a `meta.authRequired` property go on ahead!
+  if(store.getters['list/addTitleOpen']) {
+    store.dispatch('list/toggleAddTitleModal', false);
+  }
   if(!to.meta.authRequired) {
     return next();
   }
-  // If we go this far then it must have the `meta.authRequired`. But is there is a user logged in? If so, then go right on ahead!
-  if(to.meta.authRequired && store.getters["user/loggedIn"]) {
+  if(to.meta.authRequired && store.getters['user/loggedIn']) {
     return next();
   }
 });
