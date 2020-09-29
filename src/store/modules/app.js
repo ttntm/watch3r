@@ -9,9 +9,8 @@ export default {
       menuOpen: false,
       toastMessage: null,
       functions: {
-        // readAll: process.env.VUE_APP_F_ALL,
-        // readOne: process.env.VUE_APP_F_ONE,
-        // readByUser: process.env.VUE_APP_F_BYUSER,
+        readTracklist: process.env.VUE_APP_F_TRACKLIST_GET,
+        readWatchlist: process.env.VUE_APP_F_WATCHLIST_GET,
         writeTracklist: process.env.VUE_APP_F_TRACKLIST_ADD,
         writeWatchlist: process.env.VUE_APP_F_WATCHLIST_ADD,
         // edit: process.env.VUE_APP_F_EDIT,

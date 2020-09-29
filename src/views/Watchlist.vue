@@ -7,20 +7,16 @@
       </div>
       <div>
         <BtnAddTitle />
-        <ListAddModal mode="watchlist" />
+        <ListAddModal :mode="mode" />
       </div>
     </div>
     <div class="text-center mb-8">
       Search | Filters | Sorting
     </div>
-    <div class="list watchlist">
-      <ListItem mode="watch" />
-      <ListItem mode="watch" />
-      <ListItem mode="watch" />
-      <ListItem mode="watch" />
-      <ListItem mode="watch" />
-      <ListItem mode="watch" />
+    <div v-if="watchlistDisplay.length > 0" class="list watchlist">
+      <ListItem v-for="title in watchlistDisplay" :item="title" :key="title.id" :mode="mode" />
     </div>
+    <p v-else>Nothing here yet...</p>
   </div>
 </template>
 
@@ -28,6 +24,8 @@
 import BtnAddTitle from '@/components/buttons/BtnAddTitle.vue';
 import ListAddModal from '@/components/list/ListAddModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
+import {computed, onMounted, ref } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
   name: 'Watchlist',
@@ -35,6 +33,26 @@ export default {
     BtnAddTitle,
     ListAddModal,
     ListItem
+  },
+  setup() {
+    const store = useStore();
+
+    const mode = ref('watchlist');
+    const watchlist = computed(() => store.getters['list/watchlist']);
+    const watchlistDisplay = computed(() => {
+      let tmp = [...watchlist.value]
+      return tmp.reverse();
+    });
+
+    if (watchlist.value.length === 0) {
+      store.dispatch('list/readList', mode.value);
+    }
+
+    return {
+      mode,
+      watchlist,
+      watchlistDisplay
+    }
   }
 }
 </script>

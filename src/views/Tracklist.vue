@@ -7,17 +7,16 @@
       </div>
       <div>
         <BtnAddTitle />
-        <ListAddModal mode="tracklist" />
+        <ListAddModal :mode="mode" />
       </div>
     </div>
     <div class="text-center mb-8">
       Search | Filters | Sorting
     </div>
-    <div class="list tracklist">
-      <ListItem mode="track" />
-      <ListItem mode="track" />
-      <ListItem mode="track" />
+    <div v-if="tracklistDisplay.length > 0" class="list tracklist">
+      <ListItem v-for="title in tracklistDisplay" :item="title" :key="title.id" :mode="mode" />
     </div>
+    <p v-else>Nothing here yet...</p>
   </div>
 </template>
 
@@ -25,6 +24,8 @@
 import BtnAddTitle from '@/components/buttons/BtnAddTitle.vue';
 import ListAddModal from '@/components/list/ListAddModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
+import {computed, ref } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
   name: 'Tracklist',
@@ -32,6 +33,26 @@ export default {
     BtnAddTitle,
     ListAddModal,
     ListItem
+  },
+  setup() {
+    const store = useStore();
+
+    const mode = ref('tracklist');
+    const tracklist = computed(() => store.getters['list/tracklist']);
+    const tracklistDisplay = computed(() => {
+      let tmp = [...tracklist.value]
+      return tmp.reverse();
+    });
+
+    if (tracklist.value.length === 0) {
+      store.dispatch('list/readList', mode.value);
+    }
+
+    return {
+      mode,
+      tracklist,
+      tracklistDisplay
+    }
   }
 }
 </script>
