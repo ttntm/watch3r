@@ -9,17 +9,7 @@
     </div>
     <div class="text-gray-600">
       <InputSearch @do-search="doSearch($event)" class="px-8 py-6" />
-      <div v-if="searchResult.id" class="flex flex-row items-center hover:bg-gray-300 hover:shadow-inner px-8">
-        <div class="flex-grow py-4">
-          <h4 class="text-gray-800 mb-0">{{ searchResult.title }}</h4>
-          <p class="text-sm mb-0">{{ searchResult.genre }}; {{ searchResult.year }}</p>
-        </div>
-        <button
-          @click.prevent="addTitleToList(searchResult)"
-          class="btn btn-black"
-          :disabled="!addBtnState.enabled"
-        >{{ addBtnState.text }}</button>
-      </div>
+      <ListAddSearchResult :mode="mode" :searchResult="searchResult" class="px-8" />
       <p v-if="searchStatus" v-html="searchStatus" class="px-8 py-4 mb-0" />
     </div>
   </div>
@@ -27,13 +17,15 @@
 
 <script>
 import InputSearch from '@/components/InputSearch.vue';
+import ListAddSearchResult from '@/components/list/ListAddSearchResult.vue';
 import {computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
   name: 'ListAddModal',
   components: {
-    InputSearch
+    InputSearch,
+    ListAddSearchResult
   },
   props: {
     mode: String
@@ -41,10 +33,6 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const addBtnState = ref({
-      enabled: true,
-      text: 'Add'
-    });
     const currentUser = computed(() => store.getters['user/currentUser']);
     const modalOpen = computed(() => store.getters['list/addTitleOpen']);
     const searchResult = ref({});
@@ -61,10 +49,11 @@ export default {
     const doSearch = (val) => {
       const key = process.env.VUE_APP_OMDB;
 
-      addBtnState.value.enabled = true;
-      addBtnState.value.text = 'Add';
+      // addBtnState.value.enabled = true;
+      // addBtnState.value.text = 'Add';
       searchStatus.value = ''; // reset previous search
       searchResult.value = Object.create({}); // reset previous search
+      store.dispatch('list/toggleWriteSuccess', false);
 
       fetch(`https://www.omdbapi.com/?t=${val}&apikey=${key}`, {method: 'POST'})
         .then(response => {
@@ -95,25 +84,12 @@ export default {
         })
     }
 
-    const addTitleToList = (title) => {
-      const listMode = props.mode;
-
-      // console.log(listMode);
-
-      addBtnState.value.enabled = false;
-      addBtnState.value.text = 'Adding...';
-
-      store.dispatch('list/writeList', [title, listMode]);
-    }
-
     return {
-      addBtnState,
-      addTitleToList,
       closeModal,
       doSearch,
       modalOpen,
       searchResult,
-      searchStatus,
+      searchStatus
     }
   }
 }

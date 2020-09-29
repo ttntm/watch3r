@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
 
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
-const Details = () => import(/* webpackChunkName: "Details" */ '@/views/TitleDetails.vue');
 const Watchlist = () => import(/* webpackChunkName: "Watchlist" */ '@/views/Watchlist.vue');
 const Tracklist = () => import(/* webpackChunkName: "Tracklist" */ '@/views/Tracklist.vue');
 const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
@@ -20,12 +19,6 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: About
-    },
-    {
-      path: '/title/:id',
-      name: 'details',
-      component: Details,
-      meta: { authRequired: true }
     },
     {
       path: '/track',
@@ -68,12 +61,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if(store.getters['app/menuOpen']) {
-    store.dispatch('app/toggleMenu', false);
-  }
-  if(store.getters['list/addTitleOpen']) {
-    store.dispatch('list/toggleAddTitleModal', false);
-  }
+  // close open windows if there are any
+  store.dispatch('app/toggleMenu', false);
+  store.dispatch('list/toggleAddTitleModal', false);
+  store.dispatch('list/toggleEditTitleModal', false);
+
   if(!to.meta.authRequired) {
     return next();
   }

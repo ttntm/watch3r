@@ -17,12 +17,14 @@
       <ListItem v-for="title in tracklistDisplay" :item="title" :key="title.id" :mode="mode" />
     </div>
     <p v-else>Nothing here yet...</p>
+    <ListEditModal />
   </div>
 </template>
 
 <script>
 import BtnAddTitle from '@/components/buttons/BtnAddTitle.vue';
 import ListAddModal from '@/components/list/ListAddModal.vue';
+import ListEditModal from '@/components/list/ListEditModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
 import {computed, ref } from 'vue';
 import { useStore } from 'vuex';
@@ -32,6 +34,7 @@ export default {
   components: {
     BtnAddTitle,
     ListAddModal,
+    ListEditModal,
     ListItem
   },
   setup() {

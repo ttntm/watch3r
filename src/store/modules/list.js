@@ -7,24 +7,31 @@ export default {
   state() {
     return {
       addTitleOpen: false,
+      editTitleOpen: false,
       tracklist: [],
       tracklistCache: [],
       watchlist: [],
-      watchlistCache: []
+      watchlistCache: [],
+      writeSuccess: false,
     };
   },
 
   getters: {
     addTitleOpen: state => state.addTitleOpen,
+    editTitleOpen: state => state.editTitleOpen,
     tracklist: state => state.tracklist,
     tracklistCache: state => state.tracklistCache,
     watchlist: state => state.watchlist,
-    watchlistCache: state => state.watchlistCache
+    watchlistCache: state => state.watchlistCache,
+    writeSuccess: state => state.writeSuccess,
   },
 
   mutations: {
     SET_ADD_TITLE_OPEN(state, value) {
       state.addTitleOpen = value;
+    },
+    SET_EDIT_TITLE_OPEN(state, value) {
+      state.editTitleOpen = value;
     },
     SET_WATCHLIST(state, value) {
       state.watchlist = value;
@@ -38,6 +45,9 @@ export default {
     SET_TRACKLIST_CACHE(state, value) {
       state.tracklistCache = value;
     },
+    SET_WRITE_SUCCESS(state, value) {
+      state.writeSuccess = value;
+    },
   },
 
   actions: {
@@ -45,6 +55,14 @@ export default {
 
     toggleAddTitleModal({ commit }, newState) {
       commit('SET_ADD_TITLE_OPEN', newState);
+    },
+
+    toggleEditTitleModal({ commit }, newState) {
+      commit('SET_EDIT_TITLE_OPEN', newState);
+    },
+
+    toggleWriteSuccess({ commit }, newState) {
+      commit('SET_WRITE_SUCCESS', newState);
     },
 
     // CREATE OPERATIONS
@@ -56,17 +74,17 @@ export default {
       const fn = rootGetters['app/functions'];
       let responseData;
 
-      const fnRead = (m) => {
+      const getFn = (m) => {
         if (m === 'tracklist') {
-          return fn.writeTracklist;
+          return fn.writeItemTracklist;
         }
         if (m === 'watchlist') {
-          return fn.writeWatchlist;
+          return fn.writeItemWatchlist;
         }
       }
 
       try {
-        const data = await fetch(`${fnRead(mode)}`, {
+        const data = await fetch(`${getFn(mode)}`, {
           body: JSON.stringify(titleData),
           method: 'POST'
         });
@@ -75,10 +93,11 @@ export default {
         console.log(err);
       }
 
-      if(responseData) {
+      if (responseData) {
         let msg = { text: `"${responseData.data.title}" successfully added.`, type: 'success' };
         dispatch('app/sendToastMessage', msg, { root: true });
-        // update respective list; clear search result in modal somehow...
+        dispatch('toggleWriteSuccess', true);
+        dispatch('readList', mode);
       }
     },
 
@@ -87,7 +106,8 @@ export default {
     readList({ commit, rootGetters }, mode) {
       const fn = rootGetters['app/functions'];
       const user = rootGetters['user/currentUser'];
-      const fnRead = (m) => {
+
+      const getFn = (m) => {
         if (m === 'tracklist') {
           return fn.readTracklist;
         }
@@ -95,7 +115,8 @@ export default {
           return fn.readWatchlist;
         }
       }
-      fetch(`${fnRead(mode)}/${user.email}`, { method: 'POST' })
+
+      fetch(`${getFn(mode)}/${user.email}`, { method: 'POST' })
         .then(response => {
           return response.json();
         })
@@ -115,5 +136,39 @@ export default {
           }
         })
     },
+
+    // UPDATE OPERATIONS
+
+    // DELETE OPERATIONS
+
+    async deleteItem({ dispatch, rootGetters }, args) {
+      const mode = args[0];
+      const id = args[1];
+
+      const fn = rootGetters['app/functions'];
+      let responseData;
+
+      const getFn = (m) => {
+        if (m === 'tracklist') {
+          return fn.deleteItemTracklist;
+        }
+        if (m === 'watchlist') {
+          return fn.deleteItemWatchlist;
+        }
+      }
+
+      try {
+        const data = await fetch(`${getFn(mode)}/${id}`, { method: 'POST' });
+        responseData = await data.json();
+      } catch (err) {
+        console.log(err);
+      }
+
+      if (responseData) {
+        let msg = { text: `Item removed from ${mode}.`, type: 'success' };
+        dispatch('app/sendToastMessage', msg, { root: true });
+        dispatch('readList', mode);
+      }
+    }
   }
 };

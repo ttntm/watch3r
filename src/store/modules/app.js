@@ -9,10 +9,12 @@ export default {
       menuOpen: false,
       toastMessage: null,
       functions: {
+        deleteItemTracklist: process.env.VUE_APP_F_TRACKLIST_DEL,
+        deleteItemWatchlist: process.env.VUE_APP_F_WATCHLIST_DEL,
         readTracklist: process.env.VUE_APP_F_TRACKLIST_GET,
         readWatchlist: process.env.VUE_APP_F_WATCHLIST_GET,
-        writeTracklist: process.env.VUE_APP_F_TRACKLIST_ADD,
-        writeWatchlist: process.env.VUE_APP_F_WATCHLIST_ADD,
+        writeItemTracklist: process.env.VUE_APP_F_TRACKLIST_ADD,
+        writeItemWatchlist: process.env.VUE_APP_F_WATCHLIST_ADD,
         // edit: process.env.VUE_APP_F_EDIT,
         // delete: process.env.VUE_APP_F_DELETE
       }
