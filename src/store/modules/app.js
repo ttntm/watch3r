@@ -13,10 +13,9 @@ export default {
         deleteItemWatchlist: process.env.VUE_APP_F_WATCHLIST_DEL,
         readTracklist: process.env.VUE_APP_F_TRACKLIST_GET,
         readWatchlist: process.env.VUE_APP_F_WATCHLIST_GET,
+        updateTracklist: process.env.VUE_APP_F_TRACKLIST_EDT, // only tracklist has an 'update' function; watchlist can only add/delete
         writeItemTracklist: process.env.VUE_APP_F_TRACKLIST_ADD,
         writeItemWatchlist: process.env.VUE_APP_F_WATCHLIST_ADD,
-        // edit: process.env.VUE_APP_F_EDIT,
-        // delete: process.env.VUE_APP_F_DELETE
       }
     };
   },

@@ -38,7 +38,7 @@ app.directive('click-outside', {
 app.directive('click-blur', {
   beforeMount(el, binding, vnode) {
     handleClickBlur = (e) => {
-      if(e.target.nodeName !== 'INPUT') {
+      if(e.target.nodeName !== 'INPUT' && e.target.nodeName !== 'TEXTAREA') {
         e.target.blur();
       }
     }

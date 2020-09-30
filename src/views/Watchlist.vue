@@ -17,7 +17,7 @@
       <ListItem v-for="title in watchlistDisplay" :item="title" :key="title.id" :mode="mode" />
     </div>
     <p v-else>Nothing here yet...</p>
-    <ListEditModal />
+    <ListEditModal :mode="mode" />
   </div>
 </template>
 

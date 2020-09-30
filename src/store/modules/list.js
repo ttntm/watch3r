@@ -7,6 +7,7 @@ export default {
   state() {
     return {
       addTitleOpen: false,
+      editTitleContent: null,
       editTitleOpen: false,
       tracklist: [],
       tracklistCache: [],
@@ -18,6 +19,7 @@ export default {
 
   getters: {
     addTitleOpen: state => state.addTitleOpen,
+    editTitleContent: state => state.editTitleContent,
     editTitleOpen: state => state.editTitleOpen,
     tracklist: state => state.tracklist,
     tracklistCache: state => state.tracklistCache,
@@ -29,6 +31,9 @@ export default {
   mutations: {
     SET_ADD_TITLE_OPEN(state, value) {
       state.addTitleOpen = value;
+    },
+    SET_EDIT_TITLE_CONTENT(state, value) {
+      state.editTitleContent = value;
     },
     SET_EDIT_TITLE_OPEN(state, value) {
       state.editTitleOpen = value;
@@ -138,6 +143,32 @@ export default {
     },
 
     // UPDATE OPERATIONS
+
+    selectEditTitle({ commit, getters }, args) {
+      // clear old data (if any)
+      commit('SET_EDIT_TITLE_CONTENT', null);
+
+      const mode = args[0];
+      const id = args[1];
+
+      const getInput = (mode) => {
+        // returns the respective list as Object[] from the store
+        if (mode === 'tracklist') {
+          return getters['tracklist'];
+        }
+        if (mode === 'watchlist') {
+          return getters['watchlist'];
+        }
+      }
+
+      const getItem = (id) => {
+        let content = getInput(mode);
+        content = content.filter((item) => item.refId === id);
+        return content[0];
+      }
+
+      commit('SET_EDIT_TITLE_CONTENT', getItem(id));
+    },
 
     // DELETE OPERATIONS
 

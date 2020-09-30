@@ -18,8 +18,12 @@
       <p class="sm:mb-0">IMDb Rating: {{ item.imdbRating }}</p>
     </div>
     <div class="flex flex-row sm:flex-col self-center px-4">
-      <BtnListItemWatched v-if="mode === 'watchlist'" :mode="mode" class="mb-4" />
-      <BtnListItemEdit v-if="mode === 'tracklist'" :mode="mode" class="mb-4" />
+      <BtnListItemEdit v-if="mode === 'watchlist'" :id="item.refId" :mode="mode" class="mb-4">
+        Watched
+      </BtnListItemEdit>
+      <BtnListItemEdit v-if="mode === 'tracklist'" :id="item.refId" :mode="mode" class="mb-4">
+        Edit
+      </BtnListItemEdit>
       <BtnListItemRemove :id="item.refId" :mode="mode" class="ml-4 sm:ml-0 mb-4" />
     </div>
   </div>
@@ -28,21 +32,19 @@
 <script>
 import BtnListItemEdit from '@/components/buttons/BtnListItemEdit.vue';
 import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue';
-import BtnListItemWatched from '@/components/buttons/BtnListItemWatched.vue';
 import { computed } from 'vue';
 
 export default {
   name: 'ListItem',
   components: {
     BtnListItemEdit,
-    BtnListItemRemove,
-    BtnListItemWatched
+    BtnListItemRemove
   },
   props: {
     item: Object,
     mode: String,
   },
-  setup(props) {
+  setup() {
     const imdbIcon = computed(() => {
       return require('@/assets/imdb.png');
     });

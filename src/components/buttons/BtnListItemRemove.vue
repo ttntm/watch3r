@@ -39,12 +39,4 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .btn-muted {
-    @apply text-sm bg-transparent text-gray-600 border border-gray-600 shadow-none;
-  }
-
-  .btn-muted:hover,
-  .btn-muted:focus {
-    @apply bg-gray-600 text-gray-800 border-transparent;
-  }
 </style>

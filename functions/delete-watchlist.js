@@ -11,7 +11,7 @@ const client = new faunadb.Client({
 
 exports.handler = (event, context, callback) => {
   const id = getId(event.path)
-  console.log(`Function 'watchlist-delete' invoked. delete id: ${id}`)
+  console.log(`Function 'delete-watchlist' invoked. delete id: ${id}`)
   return client.query(q.Delete(q.Ref(`collections/watchlist/${id}`)))
   .then((response) => {
     console.log("success", response)

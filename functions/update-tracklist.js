@@ -10,9 +10,10 @@ const client = new faunadb.Client({
 })
 
 exports.handler = (event, context, callback) => {
+  const data = JSON.parse(event.body)
   const id = getId(event.path)
-  console.log(`Function 'delete-tracklist' invoked. delete id: ${id}`)
-  return client.query(q.Delete(q.Ref(`collections/tracklist/${id}`)))
+  console.log(`Function 'update-tracklist' invoked. update id: ${id}`)
+  return client.query(q.Update(q.Ref(`collections/tracklist/${id}`), {data}))
   .then((response) => {
     console.log("success", response)
     return callback(null, {

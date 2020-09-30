@@ -153,6 +153,22 @@
     @apply text-gray-900;
   }
 
+  .btn-muted {
+    @apply text-sm;
+    @apply bg-transparent;
+    @apply text-gray-600;
+    @apply border;
+    @apply border-gray-600;
+    @apply shadow-none;
+  }
+
+  .btn-muted:hover,
+  .btn-muted:focus {
+    @apply bg-gray-600;
+    @apply text-gray-800;
+    @apply border-transparent;
+  }
+
   .list,
   .tracklist,
   .watchlist {

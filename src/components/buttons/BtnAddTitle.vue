@@ -4,7 +4,7 @@
     @click.prevent="toggleListAddModal()"
     v-click-blur
   >
-    <svg xmlns="http://www.w3.org/2000/svg" class="click-outside-ignore icon icon-tabler icon-tabler-circle-plus mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <circle cx="12" cy="12" r="9" />
       <line x1="9" y1="12" x2="15" y2="12" />
@@ -26,6 +26,7 @@ export default {
 
     const toggleListAddModal = () => {
       store.dispatch('app/toggleMenu', false);
+      store.dispatch('list/toggleEditTitleModal', false);
       return addTitleOpen.value ? store.dispatch('list/toggleAddTitleModal', false) : store.dispatch('list/toggleAddTitleModal', true)
     }
 
