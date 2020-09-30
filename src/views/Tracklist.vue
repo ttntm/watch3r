@@ -7,7 +7,7 @@
       </div>
       <div>
         <BtnAddTitle />
-        <ListAddModal :mode="mode" />
+        <ListAddModal v-if="addModalOpen" :mode="mode" />
       </div>
     </div>
     <div class="text-center mb-8">
@@ -17,7 +17,7 @@
       <ListItem v-for="title in tracklistDisplay" :item="title" :key="title.id" :mode="mode" />
     </div>
     <p v-else>Nothing here yet...</p>
-    <ListEditModal :mode="mode" />
+    <ListEditModal v-if="editModalOpen" :mode="mode" />
   </div>
 </template>
 
@@ -40,6 +40,8 @@ export default {
   setup() {
     const store = useStore();
 
+    const addModalOpen = computed(() => store.getters['list/addTitleOpen']);
+    const editModalOpen = computed(() => store.getters['list/editTitleOpen']);
     const mode = ref('tracklist');
     const tracklist = computed(() => store.getters['list/tracklist']);
     const tracklistDisplay = computed(() => {
@@ -52,6 +54,8 @@ export default {
     }
 
     return {
+      addModalOpen,
+      editModalOpen,
       mode,
       tracklist,
       tracklistDisplay

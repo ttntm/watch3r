@@ -22,6 +22,7 @@ export default {
   name: 'BtnAddTitle',
   setup() {
     const store = useStore();
+
     const addTitleOpen = computed(() => store.getters['list/addTitleOpen']);
 
     const toggleListAddModal = () => {

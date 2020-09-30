@@ -1,5 +1,5 @@
 <template>
-  <div v-if="modalOpen" class="list-add-modal" v-click-outside="closeModal">
+  <div class="list-add-modal" v-click-outside="closeModal">
     <div class="flex flex-row justify-between items-center px-8">
       <h3 class="text-gray-600 text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
       <button
@@ -32,7 +32,6 @@ export default {
   },
   setup(props) {
     const store = useStore();
-
     const currentUser = computed(() => store.getters['user/currentUser']);
     const modalOpen = computed(() => store.getters['list/addTitleOpen']);
     const searchResult = ref({});
@@ -40,8 +39,6 @@ export default {
 
     const closeModal = () => {
       if(modalOpen.value) {
-        searchStatus.value = ''; // reset previous search when closing the modal
-        searchResult.value = Object.create({}); // reset previous search when closing the modal
         store.dispatch('list/toggleAddTitleModal', false);
       }
     };
@@ -49,11 +46,8 @@ export default {
     const doSearch = (val) => {
       const key = process.env.VUE_APP_OMDB;
 
-      // addBtnState.value.enabled = true;
-      // addBtnState.value.text = 'Add';
-      searchStatus.value = ''; // reset previous search
-      searchResult.value = Object.create({}); // reset previous search
-      store.dispatch('list/toggleWriteSuccess', false);
+      searchStatus.value = ''; // local state that needs resetting (modal stays open in between succeeding searches)
+      store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) for each search
 
       fetch(`https://www.omdbapi.com/?t=${val}&apikey=${key}`, {method: 'POST'})
         .then(response => {

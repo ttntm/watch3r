@@ -37,8 +37,14 @@ export default {
     const toggleListEditModal = (mode, refId) => {
       store.dispatch('app/toggleMenu', false);
       store.dispatch('list/toggleAddTitleModal', false);
-      store.dispatch('list/selectEditTitle', [mode, refId]);
-      return editTitleOpen.value ? store.dispatch('list/toggleEditTitleModal', false) : store.dispatch('list/toggleEditTitleModal', true)
+
+      if (editTitleOpen.value) {
+        store.dispatch('list/clearEditTitle');
+        store.dispatch('list/toggleEditTitleModal', false);
+      } else {
+        store.dispatch('list/selectEditTitle', [mode, refId]);
+        store.dispatch('list/toggleEditTitleModal', true);
+      }
     }
 
     return {

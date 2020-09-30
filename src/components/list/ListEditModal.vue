@@ -1,5 +1,5 @@
 <template>
-  <div v-if="modalOpen" class="list-edit-modal">
+  <div class="list-edit-modal">
     <div class="flex flex-row justify-between items-center px-8">
       <h3 class="text-gray-600 text-base mb-0">Edit Title: "{{ editItem.title }}"</h3>
       <button
@@ -10,13 +10,13 @@
     <div class="text-gray-800 pt-6 pb-2">
       <div class="px-8 mb-6">
         <h4>Rating</h4>
-        <input v-model="userInput.userRating" class="w-full focus:outline-none mb-6" type="range" min="0" max="10" step="0.1">
-        <p class="text-sm text-gray-600 mb-4">Your Rating: {{ userInput.userRating }}</p>
+        <input v-model="editItem.userRating" class="w-full focus:outline-none mb-6" type="range" min="0" max="10" step="0.1">
+        <p class="text-sm text-gray-600 mb-4">Your Rating: {{ editItem.userRating }}</p>
         <h4>Notes</h4>
-        <textarea v-model="userInput.notes" name="notes" rows="6" placeholder="Notes, comments, etc."></textarea>
+        <textarea v-model="editItem.userNotes" name="notes" rows="6" placeholder="Notes, comments, etc."></textarea>
       </div>
       <div class="flex flex-row px-8">
-        <button class="btn btn-black mr-4">Save</button>
+        <button @click.prevent="handleTitleEdit(editItem, mode)" class="btn btn-black mr-4">Save</button>
         <button @click.prevent="closeModal()" class="btn btn-muted">Cancel</button>
       </div>
     </div>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import {computed, ref } from 'vue';
+import {computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -35,26 +35,57 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const editItem = computed(() => store.getters['list/editTitleContent']);
+    const editData = { userNotes: '', userRating: 5 }
+    const editItem = ref({});
     const modalOpen = computed(() => store.getters['list/editTitleOpen']);
-    const userInput = ref({
-      notes: '',
-      userRating: 5
-    });
+    const srcItem = computed(() => store.getters['list/editTitleContent']);
+    const writeSuccess = computed(() => store.getters['list/writeSuccess']);
 
     const closeModal = () => {
       if(modalOpen.value) {
         // confirm unsaved changes!
-        userInput.value = { notes: '', userRating: 5 };
         store.dispatch('list/toggleEditTitleModal', false);
       }
     };
 
+    const handleTitleEdit = (data, mode) => {
+      store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any)
+
+      switch (mode) {
+        case 'tracklist':
+          store.dispatch('list/editListItem', data); // we'll get a toast message confirmation back
+          break;
+        case 'watchlist':
+          // write the title + user input to the tracklist
+          store.dispatch('list/writeList', [data, 'tracklist']); // we'll get a toast message confirmation back
+          store.dispatch('list/deleteItem', ['watchlist', data.refId]);
+          break;
+        default:
+          return
+      }
+    }
+
+    if (props.mode === 'watchlist') {
+      editItem.value = { ...srcItem.value, ...editData };
+    } else if (props.mode === 'tracklist') {
+      editItem.value = { ...srcItem.value };
+    }
+
+    watch(writeSuccess, () => {
+      if (writeSuccess.value) {
+        console.log('closing menu...');
+        // close modal with user input only if successful
+        store.dispatch('list/toggleEditTitleModal', false);
+      }
+    })
+
     return {
       closeModal,
       editItem,
+      handleTitleEdit,
       modalOpen,
-      userInput
+      srcItem,
+      writeSuccess
     }
   }
 }
