@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:mr-8">
+  <div class="shadow-lg sm:mr-8">
     <InputSearch class="text-gray-700" pch="Title or Genre" />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative text-gray-700 bg-gray-300 sm:ml-8">
+  <div class="relative text-gray-700 bg-gray-300 shadow-lg sm:ml-8">
     <select name="sorting" id="sort-list" v-model="selected" class="capitalize">
       <option disabled value="">Sort {{ mode }}...</option>
       <option value="1">A->Z</option>

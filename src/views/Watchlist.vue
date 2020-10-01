@@ -10,7 +10,7 @@
         <ListAddModal v-if="addModalOpen" :mode="mode" />
       </div>
     </div>
-    <div class="flex flex-col sm:flex-row items-center px-12 mt-8 mb-10">
+    <div v-if="watchlistDisplay.length > 0" class="flex flex-col sm:flex-row items-center px-12 mt-8 mb-10">
       <ListSearch :mode="mode" class="flex-1" />
       <ListSort :mode="mode" class="flex-1" />
       <!-- show some status here -->
@@ -18,7 +18,7 @@
     <div v-if="watchlistDisplay.length > 0" class="list watchlist">
       <ListItem v-for="title in watchlistDisplay" :item="title" :key="title.id" :mode="mode" />
     </div>
-    <p v-else>Nothing here yet...</p>
+    <ListLoading v-else />
     <ListEditModal v-if="editModalOpen" :mode="mode" />
   </div>
 </template>
@@ -28,9 +28,10 @@ import BtnAddTitle from '@/components/buttons/BtnAddTitle.vue';
 import ListAddModal from '@/components/list/ListAddModal.vue';
 import ListEditModal from '@/components/list/ListEditModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
+import ListLoading from '@/components/list/ListLoading.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSort from '@/components/list/ListSort.vue';
-import {computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -40,6 +41,7 @@ export default {
     ListAddModal,
     ListEditModal,
     ListItem,
+    ListLoading,
     ListSearch,
     ListSort
   },

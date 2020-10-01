@@ -1,5 +1,5 @@
 <template>
-  <div v-if="searchResult.id" class="flex flex-row items-center hover:bg-gray-300 hover:shadow-inner">
+  <div class="flex flex-row items-center hover:bg-gray-300 hover:shadow-inner">
     <div class="flex-grow py-4">
       <h4 class="text-gray-800 mb-0">{{ searchResult.title }}</h4>
       <p class="text-sm mb-0">{{ searchResult.genre }}; {{ searchResult.year }}</p>

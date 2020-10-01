@@ -9,7 +9,7 @@
     </div>
     <div class="text-gray-600">
       <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Movie title, series" class="px-8 py-6" />
-      <ListAddSearchResult :mode="mode" :searchResult="searchResult" class="px-8" />
+      <ListAddSearchResult v-if="searchResult.id" :mode="mode" :searchResult="searchResult" class="px-8" />
       <p v-if="searchStatus" v-html="searchStatus" class="px-8 py-4 mb-0" />
     </div>
   </div>

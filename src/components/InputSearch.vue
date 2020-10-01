@@ -7,7 +7,16 @@
         <circle cx="10" cy="10" r="7" />
         <line x1="21" y1="21" x2="15" y2="15" />
       </svg>
-      <input v-model.trim="searchInput" @keyup.enter="$emit('do-search', searchInput)" v-focus="autofocus" type="text" class="w-full search-input" id="search-input" :placeholder="pch">
+      <input
+        v-model.trim="searchInput"
+        @keyup.enter="$emit('do-search', searchInput)"
+        v-focus="autofocus"
+        type="text"
+        class="w-full search-input"
+        id="search-input"
+        :placeholder="pch"
+        ref="input"
+      />
       <div class="input-group-append">
         <button
           v-if="searchInput"
@@ -42,14 +51,17 @@ export default {
     pch: String
   },
   setup(props) {
+    const input = ref();
     const searchInput = ref('');
 
     const clearSearch = () => {
       searchInput.value = '';
+      input.value.focus();
     }
 
     return {
       clearSearch,
+      input,
       searchInput
     }
   },
