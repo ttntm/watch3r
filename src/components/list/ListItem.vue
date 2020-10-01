@@ -1,7 +1,7 @@
 <template>
   <div class="list-item flex-col sm:flex-row">
     <div class="sm:self-center px-4">
-      <img :src="item.image" class="poster self-center mb-4 sm:mb-0" :alt="item.title">
+      <img :src="item.image" class="poster self-center mb-4 sm:mb-0" :alt="item.title" loading="lazy">
     </div>
     <div class="w-full sm:w-3/4 px-4 sm:px-6">
       <h3 class="mb-2">

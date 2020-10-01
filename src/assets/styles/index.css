@@ -180,6 +180,10 @@
     @apply shadow-lg;
   }
 
+  .list .list-item:last-child {
+    @apply border-transparent;
+  }
+
   .icon {
     @apply pointer-events-none;
   }

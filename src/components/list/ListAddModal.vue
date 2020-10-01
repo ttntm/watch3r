@@ -8,7 +8,7 @@
       >×</button>
     </div>
     <div class="text-gray-600">
-      <InputSearch @do-search="doSearch($event)" class="px-8 py-6" />
+      <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Movie title, series" class="px-8 py-6" />
       <ListAddSearchResult :mode="mode" :searchResult="searchResult" class="px-8" />
       <p v-if="searchStatus" v-html="searchStatus" class="px-8 py-4 mb-0" />
     </div>
@@ -32,24 +32,31 @@ export default {
   },
   setup(props) {
     const store = useStore();
+
     const currentUser = computed(() => store.getters['user/currentUser']);
-    const modalOpen = computed(() => store.getters['list/addTitleOpen']);
     const searchResult = ref({});
     const searchStatus = ref('');
+    const spinner = require('@/assets/loading.svg');
 
     const closeModal = () => {
-      if(modalOpen.value) {
-        store.dispatch('list/toggleAddTitleModal', false);
-      }
+      store.dispatch('list/toggleAddTitleModal', false);
+      store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) when closing this modal
     };
 
     const doSearch = (val) => {
       const key = process.env.VUE_APP_OMDB;
 
-      searchStatus.value = ''; // local state that needs resetting (modal stays open in between succeeding searches)
+      searchResult.value = {};
+      searchStatus.value = `<img src="${spinner}" class="mx-auto">`;
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) for each search
 
-      fetch(`https://www.omdbapi.com/?t=${val}&apikey=${key}`, {method: 'POST'})
+      fetch(`https://www.omdbapi.com/?t=${val}&apikey=${key}`, {
+        method: 'POST',
+        // header: {
+        //   'Access-Control-Allow-Origin': '*'
+        // },
+        // mode: 'cors',
+      })
         .then(response => {
           return response.json();
         })
@@ -58,6 +65,7 @@ export default {
             // response -> title not found
             searchStatus.value = res.Error;
           } else {
+            searchStatus.value = '';
             searchResult.value.genre = res.Genre;
             searchResult.value.id = res.imdbID;
             searchResult.value.image = res.Poster;
@@ -81,7 +89,6 @@ export default {
     return {
       closeModal,
       doSearch,
-      modalOpen,
       searchResult,
       searchStatus
     }
@@ -102,7 +109,7 @@ export default {
   @media(min-width:1024px) {
     .list-add-modal {
       @apply w-1/2 mt-0;
-      top: 200px;
+      top: 175px;
     }
   }
   @media(min-width:1440px) {

@@ -17,10 +17,6 @@ export default {
 
     currentUser: state => state.currentUser,
 
-    netlifyUserLoggedIn: state => !!state.GoTrueAuth.currentUser(),
-
-    currentNetlifyUser: state => state.GoTrueAuth.currentUser(),
-
     GoTrueAuth: state => state.GoTrueAuth
   },
   mutations: {
@@ -143,31 +139,6 @@ export default {
     },
 
     /**
-     *not required, delete at some point
-     * @param {*} store - vuex store object
-     */
-    getUserJWTToken({ getters, state }) {
-      console.log(getters.currentNetlifyUser);
-      if (!getters.currentNetlifyUser) {
-        alert("Please sign in again");
-        console.warn("User needs to sign in again");
-        return;
-      }
-      state.GoTrueAuth.currentUser()
-        .jwt()
-        .then(token => {
-          alert("got user token: ", token);
-        });
-    },
-
-    /**
-     * This should be deleted at some point
-     */
-    getCurrentUser({ state }) {
-      console.log("User Object", state.GoTrueAuth.currentUser());
-    },
-
-    /**
      * Initialises a GoTrue instance. This method also checks if user is in a local environment  based on the URL.
      * this updates the `app/SET_DEV_ENV` flag. This facilitates a zero-config setup as a developer can input their
      * netlify URL in the UI (see the the `SetNetlifyURL.vue` component). Inspired from the official Netlify
@@ -194,10 +165,6 @@ export default {
         //console.log("Looks like your in a dev environment", hostName);
         commit("app/SET_DEV_ENV", true, { root: true });
 
-        // console.log(
-        //   "Initialising Go True client with",
-        //   `https://${rootGetters["app/siteURL"]}/.netlify/identity`
-        // );
         commit(
           "SET_GOTRUE",
           initNewGoTrue(

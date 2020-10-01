@@ -1,6 +1,6 @@
 <template>
   <div id="watchlist" class="">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
       <div class="mb-8 sm:mb-0">
         <h2 class="text-yellow-600">Watchlist</h2>
         <p class="mb-0">Add titles to your watchlist so you don't lose track of things.</p>
@@ -10,8 +10,10 @@
         <ListAddModal v-if="addModalOpen" :mode="mode" />
       </div>
     </div>
-    <div class="text-center mb-8">
-      Search | Filters | Sorting
+    <div class="flex flex-col sm:flex-row items-center px-12 mt-8 mb-10">
+      <ListSearch :mode="mode" class="flex-1" />
+      <ListSort :mode="mode" class="flex-1" />
+      <!-- show some status here -->
     </div>
     <div v-if="watchlistDisplay.length > 0" class="list watchlist">
       <ListItem v-for="title in watchlistDisplay" :item="title" :key="title.id" :mode="mode" />
@@ -26,6 +28,8 @@ import BtnAddTitle from '@/components/buttons/BtnAddTitle.vue';
 import ListAddModal from '@/components/list/ListAddModal.vue';
 import ListEditModal from '@/components/list/ListEditModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
+import ListSearch from '@/components/list/ListSearch.vue';
+import ListSort from '@/components/list/ListSort.vue';
 import {computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 
@@ -35,7 +39,9 @@ export default {
     BtnAddTitle,
     ListAddModal,
     ListEditModal,
-    ListItem
+    ListItem,
+    ListSearch,
+    ListSort
   },
   setup() {
     const store = useStore();
@@ -57,7 +63,6 @@ export default {
       addModalOpen,
       editModalOpen,
       mode,
-      watchlist,
       watchlistDisplay
     }
   }
@@ -65,7 +70,4 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .list .list-item:last-child {
-    @apply border-transparent;
-  }
 </style>

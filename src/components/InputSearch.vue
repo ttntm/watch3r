@@ -7,7 +7,7 @@
         <circle cx="10" cy="10" r="7" />
         <line x1="21" y1="21" x2="15" y2="15" />
       </svg>
-      <input v-model.trim="searchInput" @keyup.enter="$emit('do-search', searchInput)" v-focus type="text" class="w-full search-input" id="search-input" placeholder="Movie title, series">
+      <input v-model.trim="searchInput" @keyup.enter="$emit('do-search', searchInput)" v-focus="autofocus" type="text" class="w-full search-input" id="search-input" :placeholder="pch">
       <div class="input-group-append">
         <button
           v-if="searchInput"
@@ -21,7 +21,14 @@
     <button
       @click.prevent="$emit('do-search', searchInput)"
       class="btn btn-black shadow-none"
-    >Go</button>
+      aria-label="Search"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-right" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <polyline points="7 7 12 12 7 17" />
+        <polyline points="13 7 18 12 13 17" />
+      </svg>
+    </button>
   </div>
 </template>
 
@@ -30,6 +37,10 @@ import {computed, ref } from 'vue';
 
 export default {
   name: 'InputSearch',
+  props: {
+    autofocus: Boolean,
+    pch: String
+  },
   setup(props) {
     const searchInput = ref('');
 
@@ -44,8 +55,10 @@ export default {
   },
   directives: {
     focus: {
-      mounted(el) {
-        el.focus()
+      mounted(el, binding) {
+        if (binding.value) {
+          el.focus();
+        }
       }
     }
   }

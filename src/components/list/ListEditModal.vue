@@ -11,12 +11,19 @@
       <div class="px-8 mb-6">
         <h4>Rating</h4>
         <input v-model="editItem.userRating" class="w-full focus:outline-none mb-6" type="range" min="0" max="10" step="0.1">
-        <p class="text-sm text-gray-600 mb-4">Your Rating: {{ editItem.userRating }}</p>
+        <p class="text-sm text-gray-600 mb-6">Your Rating: {{ editItem.userRating }}</p>
         <h4>Notes</h4>
         <textarea v-model="editItem.userNotes" name="notes" rows="6" placeholder="Notes, comments, etc."></textarea>
       </div>
       <div class="flex flex-row px-8">
-        <button @click.prevent="handleTitleEdit(editItem, mode)" class="btn btn-black mr-4">Save</button>
+        <button
+          @click.prevent="handleTitleEdit(editItem, mode)"
+          class="btn btn-black mr-4"
+          :class="{ 'bg-gray-700' : !saveBtnState.enabled }"
+          :disabled="!saveBtnState.enabled"
+        >
+          {{ saveBtnState.text }}
+        </button>
         <button @click.prevent="closeModal()" class="btn btn-muted">Cancel</button>
       </div>
     </div>
@@ -35,30 +42,37 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const editData = { userNotes: '', userRating: 5 }
+    const editData = { userNotes: '', userRating: 5 };
     const editItem = ref({});
     const modalOpen = computed(() => store.getters['list/editTitleOpen']);
+    const saveBtnState = ref({ enabled: true, text: 'Save' });
     const srcItem = computed(() => store.getters['list/editTitleContent']);
     const writeSuccess = computed(() => store.getters['list/writeSuccess']);
 
     const closeModal = () => {
-      if(modalOpen.value) {
-        // confirm unsaved changes!
+      if (hasChanges() && !writeSuccess.value) {
+        if (confirm('Unsaved changes will be discarded.')) {
+          store.dispatch('list/toggleEditTitleModal', false);
+        }
+      } else {
         store.dispatch('list/toggleEditTitleModal', false);
+        store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any); also used to notify the user about unsaved changes when closing the modal
       }
     };
 
     const handleTitleEdit = (data, mode) => {
-      store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any)
+      saveBtnState.value.enabled = false;
+      saveBtnState.value.text = 'Saving...';
 
       switch (mode) {
         case 'tracklist':
+          // update a title that's already in the tracklist
           store.dispatch('list/editListItem', data); // we'll get a toast message confirmation back
           break;
         case 'watchlist':
           // write the title + user input to the tracklist
           store.dispatch('list/writeList', [data, 'tracklist']); // we'll get a toast message confirmation back
-          store.dispatch('list/deleteItem', ['watchlist', data.refId]);
+          store.dispatch('list/deleteItem', ['watchlist', data.refId, true]);
           break;
         default:
           return
@@ -71,9 +85,21 @@ export default {
       editItem.value = { ...srcItem.value };
     }
 
+    const hasChanges = () => {
+      const current = editItem.value;
+      // first check for watchlist items
+      if (current.userNotes !== editData.userNotes || current.userRating !== editData.userRating) {
+        // second check for tracklist items
+        if (current.userNotes !== srcItem.value.userNotes || current.userRating !== srcItem.value.userRating) {
+          return true
+        }
+      } else {
+        return false
+      }
+    }
+
     watch(writeSuccess, () => {
       if (writeSuccess.value) {
-        console.log('closing menu...');
         // close modal with user input only if successful
         store.dispatch('list/toggleEditTitleModal', false);
       }
@@ -83,9 +109,7 @@ export default {
       closeModal,
       editItem,
       handleTitleEdit,
-      modalOpen,
-      srcItem,
-      writeSuccess
+      saveBtnState
     }
   }
 }
@@ -104,7 +128,7 @@ export default {
   @media(min-width:1024px) {
     .list-edit-modal {
       @apply w-1/2 mt-0;
-      top: 200px;
+      top: 175px;
     }
   }
   @media(min-width:1440px) {

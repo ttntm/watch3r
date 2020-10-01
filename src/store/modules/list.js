@@ -56,7 +56,9 @@ export default {
   },
 
   actions: {
-    // COMMON ACTIONS
+    /**
+     *  COMMON LIST ACTIONS
+     */
 
     toggleAddTitleModal({ commit }, newState) {
       commit('SET_ADD_TITLE_OPEN', newState);
@@ -70,13 +72,15 @@ export default {
       commit('SET_WRITE_SUCCESS', newState);
     },
 
-    // CREATE OPERATIONS
+    /**
+     *  CREATE OPERATIONS
+     */
 
     async writeList({ dispatch, rootGetters }, args) {
       const fn = rootGetters['app/functions'];
-      const mode = args[1];
-      let responseData;
-      const titleData = args[0];
+      let msg = {};
+      let response;
+      const [titleData, mode] = args; // [Object, String]
 
       const getFn = (m) => {
         if (m === 'tracklist') {
@@ -92,24 +96,26 @@ export default {
           body: JSON.stringify(titleData),
           method: 'POST'
         });
-        responseData = await data.json();
+        response = await data.json();
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
 
-      if (responseData) {
-        let msg = { text: `"${responseData.data.title}" successfully added to ${mode}.`, type: 'success' };
+      if (response) {
+        msg = { text: `"${response.data.title}" successfully added to ${mode}.`, type: 'success' };
         dispatch('readList', mode);
         dispatch('toggleWriteSuccess', true);
         dispatch('app/sendToastMessage', msg, { root: true });
       } else {
         // error
-        let msg = { text: `An error occurred. Please try again later.`, type: 'error' };
+        msg = { text: `An error occurred. Please try again later.`, type: 'error' };
         dispatch('app/sendToastMessage', msg, { root: true });
       }
     },
 
-    // READ OPERATIONS
+    /**
+     *  READ OPERATIONS
+     */
 
     readList({ commit, rootGetters }, mode) {
       const fn = rootGetters['app/functions'];
@@ -145,7 +151,9 @@ export default {
         })
     },
 
-    // UPDATE OPERATIONS
+    /**
+     *  UPDATE OPERATIONS
+     */
 
     clearEditTitle({ commit }) {
       commit('SET_EDIT_TITLE_CONTENT', null);
@@ -153,34 +161,33 @@ export default {
 
     async editListItem({ dispatch, rootGetters }, updatedTitleData) {
       const fn = rootGetters['app/functions'];
-      const id = updatedTitleData.refId;
-      let responseData;
+      let msg = {};
+      let response;
 
       try {
-        const data = await fetch(`${fn.updateTracklist}/${id}`, {
+        const data = await fetch(`${fn.updateTracklist}/${updatedTitleData.refId}`, {
           body: JSON.stringify(updatedTitleData),
           method: 'POST'
         });
-        responseData = await data.json();
+        response = await data.json();
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
 
-      if (responseData) {
-        let msg = { text: `"${responseData.data.title}" successfully updated.`, type: 'success' };
+      if (response) {
+        msg = { text: `"${response.data.title}" successfully updated.`, type: 'success' };
         dispatch('readList', 'tracklist');
         dispatch('toggleWriteSuccess', true);
         dispatch('app/sendToastMessage', msg, { root: true });
       } else {
         // error
-        let msg = { text: `An error occurred. Please try again later.`, type: 'error' };
+        msg = { text: `An error occurred. Please try again later.`, type: 'error' };
         dispatch('app/sendToastMessage', msg, { root: true });
       }
     },
 
     selectEditTitle({ commit, getters }, args) {
-      const id = args[1];
-      const mode = args[0];
+      const [mode, id] = args; // [String, Number]
 
       const getInput = (mode) => {
         // returns the respective list as Object[] from the store
@@ -201,13 +208,15 @@ export default {
       commit('SET_EDIT_TITLE_CONTENT', getItem(id));
     },
 
-    // DELETE OPERATIONS
+    /**
+     *  DELETE OPERATIONS
+     */
 
     async deleteItem({ dispatch, rootGetters }, args) {
       const fn = rootGetters['app/functions'];
-      const id = args[1];
-      const mode = args[0];
-      let responseData;
+      const [mode, id, silent] = args; // [String, Number, Boolean]
+      let msg = {};
+      let response;
 
       const getFn = (m) => {
         if (m === 'tracklist') {
@@ -220,20 +229,29 @@ export default {
 
       try {
         const data = await fetch(`${getFn(mode)}/${id}`, { method: 'POST' });
-        responseData = await data.json();
+        response = await data.json();
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
 
-      if (responseData) {
-        let msg = { text: `Item removed from ${mode}.`, type: 'success' };
+      if (response) {
+        msg = { text: `Item removed from ${mode}.`, type: 'success' };
         dispatch('readList', mode);
-        dispatch('app/sendToastMessage', msg, { root: true });
       } else {
-        // error
-        let msg = { text: `An error occurred. Please try again later.`, type: 'error' };
-        dispatch('app/sendToastMessage', msg, { root: true });
+        // no 'response' -> error
+        msg = { text: `Couldn't delete item from ${mode}. Please try again later.`, type: 'error' };
       }
-    }
+
+      return silent ? console.log(msg) : dispatch('app/sendToastMessage', msg, { root: true });
+    },
+
+    /**
+     *  SEARCH & SORT OPERATIONS
+     */
+
+    searchList({ commit, dispatch }, args) {},
+
+    sortList({ commit, dispatch }, args) {},
+
   }
 };

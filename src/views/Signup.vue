@@ -74,10 +74,8 @@ export default {
 
     return {
       handleSignup,
-      msg,
       pwd,
-      status,
-      token
+      status
     }
   }
 }

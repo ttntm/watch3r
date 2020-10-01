@@ -7,9 +7,7 @@
     </div>
     <button
       @click.prevent="addTitleToList(searchResult)"
-      :class="{
-        'btn btn-black' : addBtnState.enabled
-      }"
+      :class="{ 'btn btn-black' : addBtnState.enabled }"
       :disabled="!addBtnState.enabled"
       v-click-blur
     >
@@ -32,10 +30,7 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const addBtnState = ref({
-      enabled: true,
-      text: 'Add'
-    });
+    const addBtnState = ref({ enabled: true, text: 'Add' });
     const writeSuccess = computed(() => store.getters['list/writeSuccess']);
 
     const addTitleToList = (title) => {
