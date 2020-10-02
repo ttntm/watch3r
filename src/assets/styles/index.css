@@ -153,6 +153,17 @@
     @apply text-gray-900;
   }
 
+  .btn-gray {
+    @apply bg-transparent;
+    @apply text-gray-700;
+    @apply px-4;
+  }
+
+  .btn-gray:hover,
+  .btn-gray:focus {
+    @apply text-yellow-600;
+  }
+
   .btn-muted {
     @apply text-sm;
     @apply bg-transparent;

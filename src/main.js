@@ -15,6 +15,7 @@ store.dispatch("user/initAuth");
 
 detectTokens();
 
+const clickBlurExclude = ['INPUT','SELECT','TEXTAREA'];
 let handleClickBlur = null;
 let handleOutsideClick = null;
 
@@ -38,7 +39,7 @@ app.directive('click-outside', {
 app.directive('click-blur', {
   beforeMount(el, binding, vnode) {
     handleClickBlur = (e) => {
-      if(e.target.nodeName !== 'INPUT' && e.target.nodeName !== 'TEXTAREA') {
+      if(clickBlurExclude.indexOf(e.target.nodeName) === -1) {
         e.target.blur();
       }
     }

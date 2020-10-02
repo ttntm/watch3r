@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {computed, ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -72,7 +72,7 @@ export default {
         case 'watchlist':
           // write the title + user input to the tracklist
           store.dispatch('list/writeList', [data, 'tracklist']); // we'll get a toast message confirmation back
-          store.dispatch('list/deleteItem', ['watchlist', data.refId, true]);
+          store.dispatch('list/deleteItem', [data.refId, 'watchlist', true]);
           break;
         default:
           return
@@ -100,8 +100,7 @@ export default {
 
     watch(writeSuccess, () => {
       if (writeSuccess.value) {
-        // close modal with user input only if successful
-        store.dispatch('list/toggleEditTitleModal', false);
+        store.dispatch('list/toggleEditTitleModal', false); // close modal with user input only if successful
       }
     })
 

@@ -27,7 +27,7 @@ export default {
 
     const handleRemove = (mode, id) => {
       if (confirm(`Are you sure?`)) {
-        store.dispatch('list/deleteItem', [mode, id]);
+        store.dispatch('list/deleteItem', [id, mode]);
       }
     }
 

@@ -10,7 +10,7 @@
         <ListAddModal v-if="addModalOpen" :mode="mode" />
       </div>
     </div>
-    <div v-if="watchlistDisplay.length > 0" class="flex flex-col sm:flex-row items-center px-12 mt-8 mb-10">
+    <div v-if="watchlistDisplay.length > 0" class="flex flex-col sm:flex-row items-center sm:px-12 mt-8 mb-10">
       <ListSearch :mode="mode" class="flex-1" />
       <ListSort :mode="mode" class="flex-1" />
       <!-- show some status here -->

@@ -1,5 +1,3 @@
-import { watch } from "vue";
-
 export default {
   strict: false,
   namespaced: true,
@@ -187,7 +185,7 @@ export default {
     },
 
     selectEditTitle({ commit, getters }, args) {
-      const [mode, id] = args; // [String, Number]
+      const [id, mode] = args; // [String, Number]
 
       const getInput = (mode) => {
         // returns the respective list as Object[] from the store
@@ -214,7 +212,7 @@ export default {
 
     async deleteItem({ dispatch, rootGetters }, args) {
       const fn = rootGetters['app/functions'];
-      const [mode, id, silent] = args; // [String, Number, Boolean]
+      const [id, mode, silent] = args; // [String, Number, Boolean]
       let msg = {};
       let response;
 
@@ -249,9 +247,60 @@ export default {
      *  SEARCH & SORT OPERATIONS
      */
 
-    searchList({ commit, dispatch }, args) {},
+    searchList({ commit, dispatch, getters }, args) {
+      const [term, mode] = args; // [String, String]
+
+      const getInput = (mode) => {
+        // returns the respective list as Object[] from the store
+        // always search based on cache, otherwise results will be incomplete = wrong
+        if (mode === 'tracklist') {
+          return getters['tracklistCache'];
+        }
+        if (mode === 'watchlist') {
+          return getters['watchlistCache'];
+        }
+      }
+
+      const search = (term) => {
+        let input = getInput(mode);
+        term = term.toLowerCase();
+        return input.filter((item) => {
+          let title = item.title.toLowerCase();
+          let genre = item.genre.toLowerCase()
+
+          if (title.indexOf(term) === -1) {
+            return genre.indexOf(term) === -1 ? false : true
+          } else {
+            return true
+          }
+        })
+      }
+
+      // handle no results -> length 0 arrays...
+
+      if (mode === 'tracklist') {
+        commit('SET_TRACKLIST', search(term));
+      }
+      if (mode === 'watchlist') {
+        commit('SET_WATCHLIST', search(term));
+      }
+    },
 
     sortList({ commit, dispatch }, args) {},
+
+    resetList({ commit, getters }, args) {
+      const [mode] = args;
+      let cache;
+
+      if (mode === 'tracklist') {
+        cache = getters['tracklistCache'];
+        commit('SET_TRACKLIST', cache);
+      }
+      if (mode === 'watchlist') {
+        cache = getters['watchlistCache'];
+        commit('SET_WATCHLIST', cache);
+      }
+    }
 
   }
 };

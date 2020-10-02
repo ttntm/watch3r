@@ -8,7 +8,14 @@
       >×</button>
     </div>
     <div class="text-gray-600">
-      <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Movie title, series" class="px-8 py-6" />
+      <div class="px-8 py-6">
+        <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Title or IMDb ID" />
+        <div class="flex flex-row items-center text-sm mt-4">
+          <span class="font-bold mr-2">Mode:</span>
+          <InputRadio class="mr-4" name="search-mode" :label="'title'" :value="searchMode" @update:radio="updateSearchMode($event)" />
+          <InputRadio class="" name="search-mode" :label="'id'" :value="searchMode" @update:radio="updateSearchMode($event)" />
+        </div>
+      </div>
       <ListAddSearchResult v-if="searchResult.id" :mode="mode" :searchResult="searchResult" class="px-8" />
       <p v-if="searchStatus" v-html="searchStatus" class="px-8 py-4 mb-0" />
     </div>
@@ -16,14 +23,16 @@
 </template>
 
 <script>
-import InputSearch from '@/components/InputSearch.vue';
+import InputRadio from '@/components/input/InputRadio.vue';
+import InputSearch from '@/components/input/InputSearch.vue';
 import ListAddSearchResult from '@/components/list/ListAddSearchResult.vue';
-import {computed, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
   name: 'ListAddModal',
   components: {
+    InputRadio,
     InputSearch,
     ListAddSearchResult
   },
@@ -34,6 +43,7 @@ export default {
     const store = useStore();
 
     const currentUser = computed(() => store.getters['user/currentUser']);
+    const searchMode = ref('title');
     const searchResult = ref({});
     const searchStatus = ref('');
     const spinner = require('@/assets/loading.svg');
@@ -44,26 +54,23 @@ export default {
     };
 
     const doSearch = (val) => {
+      // using exact search here, i.e. only getting 0 or 1 result instead of a full list of results.
       const key = process.env.VUE_APP_OMDB;
+      const prefix = searchMode.value === 'title' ? 't' : 'i'; // see: https://www.omdbapi.com/#parameters
 
       searchResult.value = {};
       searchStatus.value = `<img src="${spinner}" class="mx-auto">`;
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) for each search
 
-      fetch(`https://www.omdbapi.com/?t=${val}&apikey=${key}`, {
+      fetch(`https://www.omdbapi.com/?${prefix}=${val}&apikey=${key}`, {
         method: 'POST',
-        // header: {
-        //   'Access-Control-Allow-Origin': '*'
-        // },
-        // mode: 'cors',
       })
         .then(response => {
           return response.json();
         })
         .then(res => {
           if(res.Error) {
-            // response -> title not found
-            searchStatus.value = res.Error;
+            searchStatus.value = res.Error; // response -> title not found
           } else {
             searchStatus.value = '';
             searchResult.value.genre = res.Genre;
@@ -86,11 +93,15 @@ export default {
         })
     }
 
+    const updateSearchMode = (m) => { searchMode.value = m; }
+
     return {
       closeModal,
       doSearch,
+      searchMode,
       searchResult,
-      searchStatus
+      searchStatus,
+      updateSearchMode
     }
   }
 }

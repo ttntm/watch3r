@@ -24,7 +24,7 @@ export default {
           <br /><br />
           Go ahead and use that "Add Title" button 🤓
         `;
-      }, 2500);
+      }, 3500);
     }
 
     onMounted(() => {
@@ -37,7 +37,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

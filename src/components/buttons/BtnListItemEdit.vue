@@ -1,7 +1,7 @@
 <template>
   <button
     class="btn btn-black flex flex-row items-center justify-center click-outside-ignore"
-    @click.prevent="toggleListEditModal(mode, id)"
+    @click.prevent="toggleListEditModal(id, mode)"
     v-click-blur
   >
     <svg v-if="mode === 'tracklist'" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -34,7 +34,7 @@ export default {
 
     const editTitleOpen = computed(() => store.getters['list/editTitleOpen']);
 
-    const toggleListEditModal = (mode, refId) => {
+    const toggleListEditModal = (refId, mode) => {
       store.dispatch('app/toggleMenu', false);
       store.dispatch('list/toggleAddTitleModal', false);
 
@@ -42,7 +42,7 @@ export default {
         store.dispatch('list/clearEditTitle');
         store.dispatch('list/toggleEditTitleModal', false);
       } else {
-        store.dispatch('list/selectEditTitle', [mode, refId]);
+        store.dispatch('list/selectEditTitle', [refId, mode]);
         store.dispatch('list/toggleEditTitleModal', true);
       }
     }
