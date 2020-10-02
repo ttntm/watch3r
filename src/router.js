@@ -24,7 +24,7 @@ const router = createRouter({
       path: '/track',
       name: 'tracker',
       component: Tracklist,
-      meta: { authRequired: true }
+      meta: { authRequired: true },
     },
     {
       path: '/watch',
@@ -65,6 +65,10 @@ router.beforeEach((to, from, next) => {
   store.dispatch('app/toggleMenu', false);
   store.dispatch('list/toggleAddTitleModal', false);
   store.dispatch('list/toggleEditTitleModal', false);
+
+  if(store.getters['tools/searchActive']) {
+    store.dispatch('tools/resetList');
+  }
 
   if(!to.meta.authRequired) {
     return next();

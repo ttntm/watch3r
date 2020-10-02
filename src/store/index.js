@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 import app from './modules/app';
 import list from './modules/list';
+import tools from './modules/tools';
 import user from './modules/user';
 
 import createMultiTabState from 'vuex-multi-tab-state';
@@ -15,6 +16,7 @@ export default createStore({
   modules: {
     app,
     list,
+    tools,
     user
   },
   plugins: [

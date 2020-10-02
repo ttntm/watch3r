@@ -41,7 +41,8 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
   name: 'InputSearch',
@@ -50,14 +51,23 @@ export default {
     pch: String
   },
   setup(props, { emit }) {
+    const store = useStore();
+
     const input = ref();
     const searchInput = ref('');
+    const searchActive = computed(() => store.getters['tools/searchActive']);
 
     const clearSearch = () => {
       emit('reset-search', true);
       searchInput.value = '';
       input.value.focus();
     }
+
+    watch(searchActive, () => {
+      if (!searchActive.value) {
+        searchInput.value = '';
+      }
+    })
 
     return {
       clearSearch,

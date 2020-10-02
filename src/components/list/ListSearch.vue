@@ -1,6 +1,6 @@
 <template>
   <div class="w-full shadow-lg mb-8 sm:mb-0 sm:mr-8">
-    <InputSearch @do-search="searchList($event, mode)" @reset-search="resetSearch(mode)" class="text-gray-700" pch="Title or Genre" />
+    <InputSearch @do-search="searchList($event, mode)" @reset-search="resetSearch()" class="text-gray-700" pch="Title or Genre" />
   </div>
 </template>
 
@@ -20,13 +20,13 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const resetSearch = (mode) => {
-      store.dispatch('list/resetList', [mode]);
+    const resetSearch = () => {
+      store.dispatch('tools/resetList');
     }
 
     const searchList = (term, mode) => {
       // handle "clearSearch()" somehow, better in here than inside the search input...
-      store.dispatch('list/searchList', [term, mode])
+      store.dispatch('tools/searchList', [term, mode]);
     }
 
     return {

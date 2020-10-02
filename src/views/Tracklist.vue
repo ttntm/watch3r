@@ -10,15 +10,17 @@
         <ListAddModal v-if="addModalOpen" :mode="mode" />
       </div>
     </div>
-    <div v-if="tracklistDisplay.length > 0" class="flex flex-col sm:flex-row items-center px-12 mt-8 mb-10">
-      <ListSearch :mode="mode" class="flex-1" />
-      <ListSort :mode="mode" class="flex-1" />
-      <!-- show some status here -->
+    <ListLoading v-if="tracklistDisplay.length === 0 && !searchActive" />
+    <div v-else class="sm:px-12 mt-8 mb-10">
+      <div class="flex flex-col sm:flex-row items-center">
+        <ListSearch :mode="mode" class="flex-1" />
+        <ListSort :mode="mode" class="flex-1" />
+      </div>
+      <ListSearchStatus v-if="searchActive" :mode="mode" class="mt-8" />
     </div>
     <div v-if="tracklistDisplay.length > 0" class="list tracklist">
       <ListItem v-for="title in tracklistDisplay" :item="title" :key="title.id" :mode="mode" />
     </div>
-    <ListLoading v-else />
     <ListEditModal v-if="editModalOpen" :mode="mode" />
   </div>
 </template>
@@ -30,6 +32,7 @@ import ListEditModal from '@/components/list/ListEditModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
 import ListLoading from '@/components/list/ListLoading.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
+import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
@@ -43,6 +46,7 @@ export default {
     ListItem,
     ListLoading,
     ListSearch,
+    ListSearchStatus,
     ListSort
   },
   setup() {
@@ -51,6 +55,7 @@ export default {
     const addModalOpen = computed(() => store.getters['list/addTitleOpen']);
     const editModalOpen = computed(() => store.getters['list/editTitleOpen']);
     const mode = ref('tracklist');
+    const searchActive = computed(() => store.getters['tools/searchActive']);
     const tracklist = computed(() => store.getters['list/tracklist']);
     const tracklistDisplay = computed(() => {
       let tmp = [...tracklist.value]
@@ -65,6 +70,8 @@ export default {
       addModalOpen,
       editModalOpen,
       mode,
+      searchActive,
+      tracklist,
       tracklistDisplay
     }
   }
