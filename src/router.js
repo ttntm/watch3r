@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
 
-const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
-const Watchlist = () => import(/* webpackChunkName: "Watchlist" */ '@/views/Watchlist.vue');
-const Tracklist = () => import(/* webpackChunkName: "Tracklist" */ '@/views/Tracklist.vue');
 const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
+const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
+const List = () => import(/* webpackChunkName: "List" */ '@/views/List.vue');
 const Signup = () => import(/* webpackChunkName: "Signup" */ '@/views/Signup.vue');
 
 const router = createRouter({
@@ -23,14 +22,22 @@ const router = createRouter({
     {
       path: '/track',
       name: 'tracker',
-      component: Tracklist,
-      meta: { authRequired: true },
+      component: List,
+      meta: {
+        authRequired: true,
+        mode: 'tracklist',
+        subtitle: 'Track watched titles, rate them and write down some notes.'
+      },
     },
     {
       path: '/watch',
       name: 'watchlist',
-      component: Watchlist,
-      meta: { authRequired: true },
+      component: List,
+      meta: {
+        authRequired: true,
+        mode: 'watchlist',
+        subtitle: "Add titles to your watchlist so you don't lose track of things."
+      },
     },
     {
       path: '/signup',
