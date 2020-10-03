@@ -70,7 +70,7 @@ export default {
 
     onBeforeUpdate(() => {
       // necessary when navigating between list modes; vue re-uses component wherever possible...
-      if (list.value.length === 0) {
+      if (list.value.length === 0 && !searchActive) {
         store.dispatch('list/readList', mode.value);
       }
     })
@@ -79,7 +79,6 @@ export default {
       addModalOpen,
       dataDisplay,
       editModalOpen,
-      list,
       mode,
       searchActive,
       subtitle,
