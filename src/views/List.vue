@@ -11,7 +11,7 @@
       </div>
     </div>
     <ListLoading v-if="dataDisplay.length === 0 && !searchActive" />
-    <div v-else class="sm:px-12 mt-8 mb-10">
+    <div v-else class="sm:px-12 my-8">
       <div class="flex flex-col sm:flex-row items-center">
         <ListSearch :mode="mode" class="flex-1" />
         <ListSort :mode="mode" class="flex-1" />
@@ -34,7 +34,7 @@ import ListLoading from '@/components/list/ListLoading.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
-import { computed, ref } from 'vue';
+import { computed, onBeforeUpdate, ref } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
@@ -66,17 +66,23 @@ export default {
       return tmp.reverse();
     });
 
-    if (list.value.length === 0) {
-      store.dispatch('list/readList', mode.value);
-    }
+    store.dispatch('list/readList', mode.value);
+
+    onBeforeUpdate(() => {
+      // necessary when navigating between list modes; vue re-uses component wherever possible...
+      if (list.value.length === 0) {
+        store.dispatch('list/readList', mode.value);
+      }
+    })
 
     return {
       addModalOpen,
+      dataDisplay,
       editModalOpen,
+      list,
       mode,
       searchActive,
       subtitle,
-      dataDisplay
     }
   }
 }
