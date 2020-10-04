@@ -2,17 +2,11 @@
   <nav class="w-full flex flex-row justify-between sm:justify-start items-center px-4 py-2 mb-8">
     <BtnMenu class="block" />
     <div class="hidden sm:flex flex-row items-center justify-center flex-grow">
-      <router-link :to="{name: 'home'}" v-if="loggedIn" v-click-blur class="nav-link" :class="{'active' : currentView === 'home'}">
-        Home
-      </router-link>
       <router-link :to="{name: 'watchlist'}" v-if="loggedIn" v-click-blur class="nav-link" :class="{'active' : currentView === 'watchlist'}">
         Watchlist
       </router-link>
       <router-link :to="{name: 'tracker'}" v-if="loggedIn" v-click-blur class="nav-link" :class="{'active' : currentView === 'tracker'}">
         Tracker
-      </router-link>
-      <router-link :to="{name: 'about'}" v-if="loggedIn" v-click-blur class="nav-link" :class="{'active' : currentView === 'about'}">
-        About
       </router-link>
     </div>
     <BtnLogout v-if="loggedIn" class="block" />

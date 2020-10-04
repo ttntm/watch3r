@@ -9,22 +9,27 @@
     </div>
     <div class="flex flex-col text-gray-800">
       <span class="menu-item">
-        <router-link :to="{name: 'home'}" ref="menuHome">
+        <router-link :to="{name: 'home'}">
           Home
         </router-link>
       </span>
       <span v-if="loggedIn" class="menu-item">
-        <router-link :to="{name: 'watchlist'}" ref="menuWatch">
+        <router-link :to="{name: 'watchlist'}">
           Watchlist
         </router-link>
       </span>
       <span v-if="loggedIn" class="menu-item">
-        <router-link :to="{name: 'tracker'}" ref="menuTrack">
+        <router-link :to="{name: 'tracker'}">
           Tracker
         </router-link>
       </span>
+      <span v-if="loggedIn" class="menu-item">
+        <router-link :to="{name: 'profile'}">
+          Profile
+        </router-link>
+      </span>
       <span class="menu-item">
-        <router-link :to="{name: 'about'}" ref="menuAbout">
+        <router-link :to="{name: 'about'}">
           About
         </router-link>
       </span>

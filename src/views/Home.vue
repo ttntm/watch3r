@@ -12,12 +12,13 @@
         <router-link :to="{name: 'tracker'}" class="btn btn-black mb-4">
           Tracker
         </router-link>
-        <router-link :to="{name: 'about'}" class="btn btn-black mb-4">
-          About
+        <router-link :to="{name: 'profile'}" class="btn btn-black mb-4">
+          Profile
         </router-link>
+        <p class="text-lg my-8">Buy me a coffee :D</p>
       </div>
       <HomeLogin v-else />
-      <p v-if="!loggedIn" class="text-sm mt-8">No account? <a href="mailto:x@z.y" class="text-yellow-600 hover:text-gray-900">Contact us</a> and ask for an invite (no guarantees or promises).</p>
+      <p v-if="!loggedIn" class="text-sm mt-8">No account? <a href="mailto:hello@watch3r.app" class="text-yellow-600 hover:text-gray-900">Contact us</a> and ask for an invite.</p>
     </div>
   </div>
 </template>

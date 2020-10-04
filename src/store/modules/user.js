@@ -9,23 +9,25 @@ export default {
   state() {
     return {
       currentUser: null,
-      GoTrueAuth: null
+      GoTrueAuth: null,
+      sortPreference: null
     };
   },
   getters: {
     loggedIn: state => !!state.currentUser,
-
     currentUser: state => state.currentUser,
-
-    GoTrueAuth: state => state.GoTrueAuth
+    GoTrueAuth: state => state.GoTrueAuth,
+    sortPreference: state => state.sortPreference
   },
   mutations: {
     SET_GOTRUE(state, value) {
       state.GoTrueAuth = value;
     },
-
     SET_CURRENT_USER(state, value) {
       state.currentUser = value;
+    },
+    SET_SORT_PREF(state, value) {
+      state.sortPreference = value;
     }
   },
   actions: {
@@ -214,5 +216,22 @@ export default {
           });
       });
     },
+
+    updateUserAccount({ state }, userData) {
+      //TODO : fix bug in this action - https://github.com/chiubaca/vue-netlify-fauna-starter-kit/issues/12
+      return new Promise((resolve, reject) => {
+        const user = state.GoTrueAuth.currentUser();
+        user
+          .update(userData)
+          .then(response => {
+            console.log("Updated user account details");
+            resolve(response);
+          })
+          .catch(error => {
+            console.error("Failed to update user account: %o", error);
+            reject(error);
+          });
+      });
+    }
   }
 };

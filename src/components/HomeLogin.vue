@@ -7,6 +7,9 @@
     <div class="login-input-group">
       <label for="login-pwd">Password</label>
       <input v-model="credentials.password" @keyup.enter="handleLogin()" id="login-pwd" type="password" placeholder="************" required>
+      <router-link :to="{name: 'recover'}" class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0">
+        Forgot your password?
+      </router-link>
     </div>
     <button @click="handleLogin()" v-click-blur class="btn btn-black">Login</button>
     <p v-if="cValidateMsg !== ''" v-html="cValidateMsg" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" />

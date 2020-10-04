@@ -14,7 +14,10 @@
         About
       </router-link>
     </div>
-    <p class="text-xs text-center mt-2 mb-0">&copy; 2020</p>
+    <p class="text-xs text-center mt-2 mb-0">
+      watch3r.app,
+      &copy; <a href="https://ttntm.me" target="_blank" class="hover:text-yellow-600">ttntm</a> 2020
+    </p>
   </footer>
 </template>
 

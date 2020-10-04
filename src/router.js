@@ -4,6 +4,8 @@ import store from '@/store';
 const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
 const List = () => import(/* webpackChunkName: "List" */ '@/views/List.vue');
+const Profile = () => import(/* webpackChunkName: "Profile" */ '@/views/Profile.vue');
+const Recover = () => import(/* webpackChunkName: "Recover" */ '@/views/Recover.vue');
 const Signup = () => import(/* webpackChunkName: "Signup" */ '@/views/Signup.vue');
 
 const router = createRouter({
@@ -18,6 +20,32 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
+      meta: {
+        authRequired: true,
+      }
+    },
+    {
+      path: '/recover',
+      name: 'recover',
+      component: Recover
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup,
+      beforeEnter: (to, from, next) => {
+        if(store.getters['user/loggedIn']) {
+          // only users that aren't logged in can go to signup
+          router.push({ name: 'home' });
+        } else {
+          return next();
+        }
+      },
     },
     {
       path: '/track',
@@ -37,19 +65,6 @@ const router = createRouter({
         authRequired: true,
         mode: 'watchlist',
         subtitle: "Add titles to your watchlist so you don't lose track of things."
-      },
-    },
-    {
-      path: '/signup',
-      name: 'signup',
-      component: Signup,
-      beforeEnter: (to, from, next) => {
-        if(store.getters['user/loggedIn']) {
-          // only users that aren't logged in can go to signup
-          router.push({ name: 'home' });
-        } else {
-          return next();
-        }
       },
     },
     {
