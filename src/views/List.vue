@@ -3,14 +3,17 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
       <div class="mb-8 sm:mb-0">
         <h2 class="text-yellow-600 capitalize">{{ mode }}</h2>
-        <p class="mb-0">{{ subtitle }}</p>
+        <p class="mb-0">
+          {{ subtitle }}
+          <span v-if="listLength !== 0" class="font-bold">Your {{ mode }} contains {{ listLength }} items.</span>
+        </p>
       </div>
       <div>
         <BtnAddTitle />
         <ListAddModal v-if="addModalOpen" :mode="mode" />
       </div>
     </div>
-    <ListLoading v-if="dataDisplay.length === 0 && !searchActive" />
+    <ListLoading v-if="listLength === 0 && !searchActive" />
     <div v-else class="sm:px-12 my-8">
       <div class="flex flex-col sm:flex-row items-center">
         <ListSearch :mode="mode" class="flex-1" />
@@ -18,8 +21,8 @@
       </div>
       <ListSearchStatus v-if="searchActive" :mode="mode" class="mt-8" />
     </div>
-    <div v-if="dataDisplay.length > 0" class="list">
-      <ListItem v-for="title in dataDisplay" :item="title" :key="title.id" :mode="mode" />
+    <div v-if="listLength > 0" class="list">
+      <ListItem v-for="title in listData" :item="title" :key="title.id" :mode="mode" />
     </div>
     <ListEditModal v-if="editModalOpen" :mode="mode" />
   </div>
@@ -34,7 +37,7 @@ import ListLoading from '@/components/list/ListLoading.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
-import { computed, onBeforeUpdate, ref } from 'vue';
+import { computed, onBeforeUpdate, ref, watch, watchEffect } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
@@ -56,29 +59,47 @@ export default {
 
     const addModalOpen = computed(() => store.getters['list/addTitleOpen']);
     const editModalOpen = computed(() => store.getters['list/editTitleOpen']);
-    const list = computed(() => store.getters[`list/${mode.value}`]);
+    const listData = computed(() => store.getters[`list/${mode.value}`]);
+    const listLength = computed(() => listData.value.length);
     const mode = computed(() => route.meta.mode);
     const searchActive = computed(() => store.getters['tools/searchActive']);
+    const sortCurrent = computed(() => store.getters[`tools/${mode.value}Sorted`]);
+    const sortPreset = computed(() => store.getters['user/sortPreset']);
     const subtitle = computed(() => route.meta.subtitle);
 
-    const dataDisplay = computed(() => {
-      let tmp = [...list.value]
-      return tmp.reverse();
-    });
+    const getListData = () => {
+      if (listData.value.length === 0 && !searchActive.value) {
+        store.dispatch('list/readList', mode.value);
+      }
+    }
 
-    store.dispatch('list/readList', mode.value);
+    const sortListData = () => {
+      if (sortCurrent.value === -1) {
+        store.dispatch('tools/sortList', [sortPreset.value, mode.value]);
+      }
+    }
+
+    // this part bugs out ('mode' or something else becomes undefined), even though it's the right code -- possibly due to some bug like this one: https://github.com/vuejs/vue-next/issues/2291
+    // watch(listLength, () => {
+    //   if (listLength.value > 0) {
+    //     store.dispatch('tools/sortList', [sortPreset.value, mode.value]);
+    //   }
+    // })
 
     onBeforeUpdate(() => {
-      // necessary when navigating between list modes; vue re-uses component wherever possible...
-      if (list.value.length === 0 && !searchActive.value) {
-        store.dispatch('list/readList', mode.value);
+      getListData(); // necessary re-hydration when navigating between list modes; vue re-uses components wherever possible...
+      if (listLength.value > 0) {
+        sortListData();
       }
     })
 
+    getListData(); // initial data load as in what used to be 'created()'
+
     return {
       addModalOpen,
-      dataDisplay,
       editModalOpen,
+      listData,
+      listLength,
       mode,
       searchActive,
       subtitle,

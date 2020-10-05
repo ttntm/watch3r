@@ -11,6 +11,7 @@ export default {
       functions: {
         deleteItemTracklist: process.env.VUE_APP_F_TRACKLIST_DEL,
         deleteItemWatchlist: process.env.VUE_APP_F_WATCHLIST_DEL,
+        omdbGet: process.env.VUE_APP_F_OMDB_GET,
         readTracklist: process.env.VUE_APP_F_TRACKLIST_GET,
         readWatchlist: process.env.VUE_APP_F_WATCHLIST_GET,
         updateTracklist: process.env.VUE_APP_F_TRACKLIST_EDT, // only tracklist has an 'update' function; watchlist can only add/delete

@@ -2,11 +2,11 @@
   <div class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10">
     <div class="login-input-group">
       <label for="login-email">Email</label>
-      <input v-model="credentials.email" id="login-email" type="email" placeholder="jane@doe.com" required>
+      <input v-model="credentials.email" id="login-email" type="email" placeholder="jane@doe.com">
     </div>
     <div class="login-input-group">
       <label for="login-pwd">Password</label>
-      <input v-model="credentials.password" @keyup.enter="handleLogin()" id="login-pwd" type="password" placeholder="************" required>
+      <input v-model="credentials.password" @keyup.enter="handleLogin()" id="login-pwd" type="password" placeholder="************">
       <router-link :to="{name: 'recover'}" class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0">
         Forgot your password?
       </router-link>

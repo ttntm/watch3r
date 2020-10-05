@@ -7,15 +7,17 @@
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
       >×</button>
     </div>
-    <div class="text-gray-800 pt-6 pb-2">
-      <div class="px-8 mb-6">
+    <div class="text-gray-800 pt-4 pb-2 px-8">
+      <div class="mb-6">
+        <h4>Date Watched</h4>
+        <input v-model="editItem.userDateWatched" class="text-sm px-4 py-2 mb-6" type="date">
         <h4>Rating</h4>
-        <input v-model="editItem.userRating" class="w-full focus:outline-none mb-6" type="range" min="0" max="10" step="0.1">
+        <InputRange v-model="editItem.userRating" />
         <p class="text-sm text-gray-600 mb-6">Your Rating: {{ editItem.userRating }}</p>
         <h4>Notes</h4>
-        <textarea v-model="editItem.userNotes" name="notes" rows="6" placeholder="Notes, comments, etc."></textarea>
+        <textarea v-model="editItem.userNotes" class="p-4" name="notes" rows="5" placeholder="Notes, comments, etc."></textarea>
       </div>
-      <div class="flex flex-row px-8">
+      <div class="flex flex-row">
         <button
           @click.prevent="handleTitleEdit(editItem, mode)"
           class="btn btn-black mr-4"
@@ -33,16 +35,20 @@
 <script>
 import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
+import InputRange from '@/components/input/InputRange.vue';
 
 export default {
   name: 'ListEditModal',
+  components: {
+    InputRange
+  },
   props: {
     mode: String
   },
   setup(props) {
     const store = useStore();
 
-    const editData = { userNotes: '', userRating: 5 };
+    const editData = { userDateWatched: '', userNotes: '', userRating: 5 };
     const editItem = ref({});
     const modalOpen = computed(() => store.getters['list/editTitleOpen']);
     const saveBtnState = ref({ enabled: true, text: 'Save' });
@@ -88,9 +94,9 @@ export default {
     const hasChanges = () => {
       const current = editItem.value;
       // first check for watchlist items
-      if (current.userNotes !== editData.userNotes || current.userRating !== editData.userRating) {
+      if (current.userDateWatched !== editData.userDateWatched || current.userNotes !== editData.userNotes || current.userRating !== editData.userRating) {
         // second check for tracklist items
-        if (current.userNotes !== srcItem.value.userNotes || current.userRating !== srcItem.value.userRating) {
+        if (current.userDateWatched !== srcItem.value.userDateWatched || current.userNotes !== srcItem.value.userNotes || current.userRating !== srcItem.value.userRating) {
           return true
         }
       } else {
@@ -127,7 +133,7 @@ export default {
   @media(min-width:1024px) {
     .list-edit-modal {
       @apply w-1/2 mt-0;
-      top: 175px;
+      top: 100px;
     }
   }
   @media(min-width:1440px) {
@@ -136,55 +142,14 @@ export default {
     }
   }
 
+  input[type=date],
   textarea {
-    @apply w-full bg-gray-100 rounded-sm border border-transparent p-4;
+    @apply w-full bg-gray-100 rounded-sm border border-transparent;
     resize: none;
   }
 
+  input[type=date]:focus,
   textarea:focus {
     @apply shadow-inner border-gray-400;
-  }
-
-  input[type=range] {
-    @apply bg-transparent;
-    -webkit-appearance: none;
-  }
-
-  input[type=range]:focus {
-    outline: none;
-  }
-
-  input[type=range]::-webkit-slider-runnable-track {
-    @apply shadow-md rounded bg-gray-600 cursor-pointer;
-    height: 10px;
-    animate: 0.2s;
-  }
-
-  input[type=range]::-webkit-slider-thumb {
-    @apply shadow-md rounded-lg bg-gray-200 cursor-pointer border border-solid border-gray-600;
-    height: 30px;
-    width: 15px;
-    -webkit-appearance: none;
-    margin-top: -10px;
-  }
-
-  input[type=range]:focus::-webkit-slider-runnable-track {
-    @apply bg-blue-700;
-  }
-
-  input[type=range]::-moz-range-track {
-    @apply shadow-md rounded bg-gray-600 cursor-pointer;
-    height: 10px;
-    animate: 0.2s;
-  }
-
-  input[type=range]::-moz-range-thumb {
-    @apply shadow-md rounded-lg bg-gray-200 cursor-pointer border border-solid border-gray-600;
-    height: 30px;
-    width: 15px;
-  }
-
-  input[type=range]:focus::-moz-range-track {
-    @apply bg-blue-700;
   }
 </style>

@@ -55,16 +55,17 @@ export default {
 
     const doSearch = (val) => {
       // using exact search here, i.e. only getting 0 or 1 result instead of a full list of results.
-      const key = process.env.VUE_APP_OMDB;
-      const prefix = searchMode.value === 'title' ? 't' : 'i'; // see: https://www.omdbapi.com/#parameters
+      const fn = store.getters['app/functions'];
+      const searchQuery = {
+        prefix: searchMode.value === 'title' ? 't' : 'i', // see: https://www.omdbapi.com/#parameters
+        query: val
+      };
 
       searchResult.value = {};
       searchStatus.value = `<img src="${spinner}" class="mx-auto">`;
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) for each search
 
-      fetch(`https://www.omdbapi.com/?${prefix}=${val}&apikey=${key}`, {
-        method: 'POST',
-      })
+      fetch(fn.omdbGet, { body: JSON.stringify(searchQuery), method: 'POST' })
         .then(response => {
           return response.json();
         })

@@ -1,11 +1,8 @@
 <template>
   <div class="w-full relative text-gray-700 bg-gray-300 shadow-lg sm:ml-8">
-    <select name="sorting" id="sort-list" v-model="selected" class="capitalize">
+    <select name="sorting" id="sort-list" v-model="selected" @change="sortSelect(selected)">
       <option disabled value="">Sort {{ mode }}...</option>
-      <option value="1">A->Z</option>
-      <option value="2">Z->A</option>
-      <option value="3">New->Old</option>
-      <option value="4">Old->New</option>
+      <option v-for="(mode, index) in allSortModes" :key="index" :value="index" class="">{{ mode.key }} ({{ mode.order }})</option>
     </select>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
       <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -24,13 +21,28 @@ export default {
   props: {
     mode: String
   },
-  setup() {
+  setup(props) {
     const store = useStore();
 
-    const selected = ref('');
+    const allSortModes = store.getters['tools/sortMode'];
+    const selected = ref();
+    const sortCurrent = computed(() => store.getters[`tools/${props.mode}Sorted`]);
+    const sortPreset = computed(() => store.getters[`user/sortPreset`]);
+
+    const sortSelect = (val) => {
+      store.dispatch('tools/sortList', [val, props.mode]);
+    }
+
+    if (sortCurrent.value === -1) {
+      selected.value = sortPreset.value;
+    } else {
+      selected.value = sortCurrent.value;
+    }
 
     return {
-      selected
+      allSortModes,
+      selected,
+      sortSelect
     }
   }
 }
@@ -43,5 +55,9 @@ export default {
 
   #sort-list:focus {
     @apply border-yellow-600 shadow-inner;
+  }
+
+  select, select option {
+    @apply capitalize;
   }
 </style>

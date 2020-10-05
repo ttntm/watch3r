@@ -115,7 +115,7 @@ export default {
      *  READ OPERATIONS
      */
 
-    readList({ commit, rootGetters }, mode) {
+    readList({ commit, dispatch, rootGetters }, mode) {
       const fn = rootGetters['app/functions'];
       const user = rootGetters['user/currentUser'];
 
@@ -187,12 +187,8 @@ export default {
     selectEditTitle({ commit, getters }, args) {
       const [id, mode] = args; // [String, Number]
 
-      const getInput = (mode) => {
-          return getters[`${mode}`];
-      }
-
       const getItem = (id) => {
-        let content = getInput(mode);
+        let content = getters[`${mode}`];
         content = content.filter((item) => item.refId === id);
         return content[0];
       }

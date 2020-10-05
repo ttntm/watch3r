@@ -10,14 +10,15 @@ export default {
     return {
       currentUser: null,
       GoTrueAuth: null,
-      sortPreference: null
+      sortPreset: 1, // array index based on store.getters['tools/sortMode']
+      startPage: 'watch'
     };
   },
   getters: {
     loggedIn: state => !!state.currentUser,
     currentUser: state => state.currentUser,
     GoTrueAuth: state => state.GoTrueAuth,
-    sortPreference: state => state.sortPreference
+    sortPreset: state => state.sortPreset
   },
   mutations: {
     SET_GOTRUE(state, value) {
@@ -26,8 +27,8 @@ export default {
     SET_CURRENT_USER(state, value) {
       state.currentUser = value;
     },
-    SET_SORT_PREF(state, value) {
-      state.sortPreference = value;
+    SET_SORT_PRESET(state, value) {
+      state.sortPreset = value;
     }
   },
   actions: {
@@ -47,7 +48,7 @@ export default {
             commit("SET_CURRENT_USER", response);
           })
           .catch(error => {
-            console.log("An error occurred signing up", error);
+            console.error("An error occurred logging in", error);
             reject(error);
           });
       });
@@ -71,7 +72,7 @@ export default {
             resolve(response);
           })
           .catch(error => {
-            console.log("An error occurred trying to signup", error);
+            console.error("An error occurred trying to sig nup", error);
             reject(error);
           });
       });
@@ -92,7 +93,7 @@ export default {
             resolve(response);
           })
           .catch(error => {
-            console.log("An error occurred trying to confirm the user", error);
+            console.error("An error occurred trying to confirm the user", error);
             reject(error);
           });
       });
@@ -134,7 +135,7 @@ export default {
             resolve(response);
           })
           .catch(error => {
-            console.log("An error occurred trying to process the invite", error);
+            console.error("An error occurred trying to process the invite", error);
             reject(error);
           });
       });

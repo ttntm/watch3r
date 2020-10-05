@@ -97,6 +97,8 @@ router.beforeEach((to, from, next) => {
   }
   if(to.meta.authRequired && store.getters['user/loggedIn']) {
     return next();
+  } else {
+    router.push({ name: 'home' });
   }
 });
 
