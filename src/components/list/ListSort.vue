@@ -1,6 +1,6 @@
 <template>
   <div class="w-full relative text-gray-700 bg-gray-300 shadow-lg sm:ml-8">
-    <select name="sorting" id="sort-list" v-model="selected" @change="sortSelect(selected)">
+    <select name="sorting" id="sort-select" v-model="selected" @change="sortSelect(selected)">
       <option disabled value="">Sort {{ mode }}...</option>
       <option v-for="(mode, index) in allSortModes" :key="index" :value="index" class="">{{ mode.key }} ({{ mode.order }})</option>
     </select>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { computed, onBeforeUpdate, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -25,12 +25,14 @@ export default {
     const store = useStore();
 
     const allSortModes = store.getters['tools/sortMode'];
+    const listMode = computed(() => props.mode);
     const selected = ref();
     const sortCurrent = computed(() => store.getters[`tools/${props.mode}Sorted`]);
     const sortPreset = computed(() => store.getters[`user/sortPreset`]);
 
     const sortSelect = (val) => {
       store.dispatch('tools/sortList', [val, props.mode]);
+      document.getElementById('sort-select').blur();
     }
 
     const updateSelect = () => {
@@ -41,11 +43,12 @@ export default {
       }
     }
 
-    onBeforeUpdate(() => {
+    watch(listMode, () => {
+      // when navigating between list modes; onUpdate and onBeforeUpdate were triggering even when selecting options, causing a deadlock on Android
       updateSelect();
     })
 
-    updateSelect(); // initial value
+    updateSelect(); // get the initial value
 
     return {
       allSortModes,
@@ -57,15 +60,15 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  #sort-list {
+  select, select option {
+    @apply capitalize;
+  }
+
+  #sort-select {
     @apply w-full block appearance-none bg-transparent border border-transparent px-3 py-2;
   }
 
-  #sort-list:focus {
+  #sort-select:focus {
     @apply border-yellow-600 shadow-inner;
-  }
-
-  select, select option {
-    @apply capitalize;
   }
 </style>
