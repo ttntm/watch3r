@@ -16,10 +16,7 @@
           class="font-bold text-lg opacity-75 cursor-pointer absolute top-0 right-0 py-2 px-3 hover:opacity-100 focus:outline-none"
         >×</button>
         <div class="flex items-center">
-          <!-- <img v-if="toastMessage.type === 'error'" src="@/assets/sad.svg" class="smiley block w-6 h-6 mr-4">
-          <img v-if="toastMessage.type === 'success'" src="@/assets/happy.svg" class="smiley block w-6 h-6 mr-4">
-          <img v-if="toastMessage.type === 'info'" src="@/assets/happy.svg" class="smiley block w-6 h-6 mr-4"> -->
-          <span class="block font-bold">
+          <span class="block font-bold text-sm">
             {{ toastMessage.text }}
           </span>
         </div>

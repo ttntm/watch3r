@@ -16,13 +16,24 @@ export default {
   setup(props) {
     const store = useStore();
 
+    const inputLength = computed(() => store.getters[`list/${props.mode}Cache`].length);
+    const resultLength = computed(() => store.getters[`list/${props.mode}`].length);
+
+    const searchStatus = computed(() => {
+      if (resultLength.value > 0) {
+        return `Showing ${resultLength.value} of ${inputLength.value} listed titles.`;
+      } else {
+        return 'No results.';
+      }
+    });
+
     const resetSearch = () => {
       store.dispatch('tools/resetList');
     }
 
     return {
       resetSearch,
-      searchStatus: computed(() => store.getters['tools/searchStatus']),
+      searchStatus
     }
   }
 }

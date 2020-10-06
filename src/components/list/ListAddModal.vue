@@ -51,7 +51,7 @@ export default {
     const closeModal = () => {
       store.dispatch('list/toggleAddTitleModal', false);
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) when closing this modal
-    };
+    }
 
     const doSearch = (val) => {
       // using exact search here, i.e. only getting 0 or 1 result instead of a full list of results.
@@ -59,7 +59,7 @@ export default {
       const searchQuery = {
         prefix: searchMode.value === 'title' ? 't' : 'i', // see: https://www.omdbapi.com/#parameters
         query: val
-      };
+      }
 
       searchResult.value = {};
       searchStatus.value = `<img src="${spinner}" class="mx-auto">`;

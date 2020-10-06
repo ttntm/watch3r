@@ -115,8 +115,10 @@ export default {
      *  READ OPERATIONS
      */
 
-    readList({ commit, dispatch, rootGetters }, mode) {
+    async readList({ commit, rootGetters }, mode) {
       const fn = rootGetters['app/functions'];
+      let response;
+      const searchActive = rootGetters['tools/searchActive'];
       const user = rootGetters['user/currentUser'];
 
       const getFn = (m) => {
@@ -128,26 +130,31 @@ export default {
         }
       }
 
-      fetch(`${getFn(mode)}/${user.email}`, { method: 'POST' })
-        .then(response => {
-          return response.json();
-        })
-        .then(res => {
-          const list = res.map((item) => {
-            let temp = Object.assign({}, item.data); //create new object from DB data
-            temp.refId = item.ref['@ref'].id; // add the database ID for edit/delete operations
-            return temp; //return newly created temp object
-          });
+      try {
+        const data = await fetch(`${getFn(mode)}/${user.email}`, { method: 'POST' });
+        response = await data.json();
+      } catch (err) {
+        console.error(err);
+      }
 
-          if (mode === 'tracklist') {
-            commit('SET_TRACKLIST', list);
-            commit('SET_TRACKLIST_CACHE', list); //cache the current 'tracklist' data, so we can restore it without another DB query
-          }
-          if (mode === 'watchlist') {
-            commit('SET_WATCHLIST', list);
-            commit('SET_WATCHLIST_CACHE', list); //cache the current 'watchlist' data, so we can restore it without another DB query
-          }
-        })
+      if (response) {
+        const list = response.map((item) => {
+          let temp = Object.assign({}, item.data); // create new object from DB data
+          temp.refId = item.ref['@ref'].id; // add the database ID for edit/delete operations
+          return temp; // return newly created temp object
+        });
+
+        commit(`SET_${mode.toUpperCase()}_CACHE`, list); // always cache the new data, so we can restore it without another DB query in case search is active
+
+        if (!searchActive) {
+          // search NOT active, therefore also set the display list data
+          commit(`SET_${mode.toUpperCase()}`, list);
+        }
+      } else {
+        // error
+        msg = { text: `An error occurred loading the ${mode}. Please try again later.`, type: 'error' };
+        dispatch('app/sendToastMessage', msg, { root: true });
+      }
     },
 
     /**
@@ -197,15 +204,39 @@ export default {
       commit('SET_EDIT_TITLE_CONTENT', getItem(id));
     },
 
+    updateSearchResult({ commit, getters }, args){
+      const [data, mode] = args;
+      const searchResults = getters[`${mode}`];
+
+      const listUpdate = searchResults.map((item) => {
+        if (item.refId === data.refId) {
+          item = Object.assign({}, data);
+        }
+        return item;
+      });
+
+      commit(`SET_${mode.toUpperCase()}`, listUpdate);
+    },
+
     /**
      *  DELETE OPERATIONS
      */
+
+    deleteFromSearchResults({ commit, getters }, args) {
+      const [id, mode] = args;
+      const searchResults = getters[`${mode}`];
+
+      const listUpdate = searchResults.filter(item => item.refId !== id);
+
+      commit(`SET_${mode.toUpperCase()}`, listUpdate);
+    },
 
     async deleteItem({ dispatch, rootGetters }, args) {
       const fn = rootGetters['app/functions'];
       const [id, mode, silent] = args; // [String, Number, Boolean]
       let msg = {};
       let response;
+      const searchActive = rootGetters['tools/searchActive'];
 
       const getFn = (m) => {
         if (m === 'tracklist') {
@@ -226,6 +257,9 @@ export default {
       if (response) {
         msg = { text: `Item removed from ${mode}.`, type: 'success' };
         dispatch('readList', mode);
+        if (searchActive) {
+          dispatch('deleteFromSearchResults', [id, mode]);
+        }
       } else {
         // no 'response' -> error
         msg = { text: `Couldn't delete item from ${mode}. Please try again later.`, type: 'error' };

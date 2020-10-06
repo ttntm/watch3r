@@ -51,6 +51,7 @@ export default {
     const editData = { userDateWatched: '', userNotes: '', userRating: '5' };
     const editItem = ref({});
     const saveBtnState = ref({ enabled: true, text: 'Save' });
+    const searchActive = computed(() => store.getters['tools/searchActive']);
     const srcItem = computed(() => store.getters['list/editTitleContent']);
     const writeSuccess = computed(() => store.getters['list/writeSuccess']);
 
@@ -63,7 +64,7 @@ export default {
         store.dispatch('list/toggleEditTitleModal', false);
         store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any); also used to notify the user about unsaved changes when closing the modal
       }
-    };
+    }
 
     const handleTitleEdit = (data, mode) => {
       saveBtnState.value.enabled = false;
@@ -73,6 +74,10 @@ export default {
         case 'tracklist':
           // update a title that's already in the tracklist
           store.dispatch('list/editListItem', data); // we'll get a toast message confirmation back
+          if (searchActive.value) {
+            // update DB data and also update displayed data (so search results do not reset)
+            store.dispatch('list/updateSearchResult', [data, mode]);
+          }
           break;
         case 'watchlist':
           // write the title + user input to the tracklist
@@ -82,12 +87,6 @@ export default {
         default:
           return
       }
-    }
-
-    if (props.mode === 'watchlist') {
-      editItem.value = { ...srcItem.value, ...editData };
-    } else if (props.mode === 'tracklist') {
-      editItem.value = { ...srcItem.value };
     }
 
     const hasChanges = () => {
@@ -108,6 +107,14 @@ export default {
         store.dispatch('list/toggleEditTitleModal', false); // close modal with user input only if successful
       }
     })
+
+    if (props.mode === 'watchlist') {
+      editItem.value = { ...srcItem.value, ...editData };
+    } else if (props.mode === 'tracklist') {
+      editItem.value = { ...srcItem.value };
+    }
+
+    store.dispatch('list/toggleWriteSuccess', false); // initial state reset whenever this modal opens
 
     return {
       closeModal,

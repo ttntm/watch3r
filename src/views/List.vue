@@ -5,7 +5,7 @@
         <h2 class="text-yellow-600 capitalize">{{ mode }}</h2>
         <p class="mb-0">
           {{ subtitle }}
-          <span v-if="listLength !== 0" class="font-bold">Your {{ mode }} contains {{ listLength }} items.</span>
+          <span v-if="listLength !== 0  && !searchActive" class="font-bold">Your {{ mode }} contains {{ listLength }} items.</span>
         </p>
       </div>
       <div>

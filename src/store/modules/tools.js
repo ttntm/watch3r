@@ -6,7 +6,6 @@ export default {
     return {
       listSearchMode: '',
       searchActive: false,
-      searchStatus: '',
       sortMode: [
         { key: 'date', order: 'ascending' },     // 0
         { key: 'date', order: 'descending' },    // 1
@@ -21,7 +20,6 @@ export default {
   getters: {
     searchActive: state => state.searchActive,
     listSearchMode: state => state.listSearchMode,
-    searchStatus: state => state.searchStatus,
     sortMode: state => state.sortMode,
     tracklistSorted: state => state.tracklistSorted,
     watchlistSorted: state => state.watchlistSorted,
@@ -33,9 +31,6 @@ export default {
     },
     SET_LIST_SEARCH_MODE(state, value) {
       state.listSearchMode = value;
-    },
-    SET_SEARCH_STATUS(state, value) {
-      state.searchStatus = value;
     },
     SET_TRACKLIST_SORTED(state, value) {
       state.tracklistSorted = value;
@@ -56,15 +51,9 @@ export default {
 
       commit('SET_SEARCH_ACTIVE', false);
 
-      if (mode === 'tracklist') {
-        cache = rootGetters['list/tracklistCache'];
-        commit('list/SET_TRACKLIST', cache, { root: true });
-      }
-      if (mode === 'watchlist') {
-        cache = rootGetters['list/watchlistCache'];
-        commit('list/SET_WATCHLIST', cache, { root: true });
-      }
+      cache = rootGetters[`list/${mode}Cache`];
 
+      commit(`list/SET_${mode.toUpperCase()}`, cache, { root: true });
       dispatch('updateSort', mode); // reads from cache, needs sorting
     },
 
@@ -108,20 +97,7 @@ export default {
         })
       }
 
-      let results = search(term).length;
-      if (results === 0) {
-        commit('SET_SEARCH_STATUS', 'No results.');
-      } else {
-        commit('SET_SEARCH_STATUS', `Showing ${results} of ${getInput().length} listed titles.`);
-      }
-
-      if (mode === 'tracklist') {
-        commit('list/SET_TRACKLIST', search(term), { root: true });
-      }
-      if (mode === 'watchlist') {
-        commit('list/SET_WATCHLIST', search(term), { root: true });
-      }
-
+      commit(`list/SET_${mode.toUpperCase()}`, search(term), { root: true });
       dispatch('updateSort', mode); // search results come from the cache, thus in need of sorting
     },
 
@@ -182,14 +158,8 @@ export default {
         return sorted;
       }
 
-      if (mode === 'tracklist') {
-        commit('list/SET_TRACKLIST', doSort(), { root: true });
-        commit('SET_TRACKLIST_SORTED', sortID);
-      }
-      if (mode === 'watchlist') {
-        commit('list/SET_WATCHLIST', doSort(), { root: true });
-        commit('SET_WATCHLIST_SORTED', sortID);
-      }
+      commit(`list/SET_${mode.toUpperCase()}`, doSort(), { root: true });
+      commit(`SET_${mode.toUpperCase()}_SORTED`, sortID);
     }
   }
 };
