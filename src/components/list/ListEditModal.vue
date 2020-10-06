@@ -1,13 +1,13 @@
 <template>
-  <div class="list-edit-modal">
-    <div class="flex flex-row justify-between items-center px-8">
-      <h3 class="text-gray-600 text-base mb-0">Edit Title: "{{ editItem.title }}"</h3>
+  <div class="list-modal" role="dialog" aria-labelledby="edit-modal-heading">
+    <div class="flex flex-row justify-between items-center px-6 sm:px-8">
+      <h3 id="edit-modal-heading" class="text-gray-600 text-base mb-0">Edit Title: "{{ editItem.title }}"</h3>
       <button
         @click.prevent="closeModal()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
       >×</button>
     </div>
-    <div class="text-gray-800 pt-4 pb-2 px-8">
+    <div class="text-gray-800 pt-4 pb-2 px-6 sm:px-8">
       <div class="mb-6">
         <h4>Date Watched</h4>
         <input v-model="editItem.userDateWatched" class="text-sm px-4 py-2 mb-6" type="date">
@@ -15,7 +15,7 @@
         <InputRange v-model="editItem.userRating" />
         <p class="text-sm text-gray-600 mb-6">Your Rating: {{ editItem.userRating }}</p>
         <h4>Notes</h4>
-        <textarea v-model="editItem.userNotes" class="p-4" name="notes" rows="5" placeholder="Notes, comments, etc."></textarea>
+        <textarea v-model="editItem.userNotes" class="text-sm px-4 py-2" name="notes" rows="5" placeholder="Notes, comments, etc."></textarea>
       </div>
       <div class="flex flex-row">
         <button
@@ -48,9 +48,8 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const editData = { userDateWatched: '', userNotes: '', userRating: 5 };
+    const editData = { userDateWatched: '', userNotes: '', userRating: '5' };
     const editItem = ref({});
-    const modalOpen = computed(() => store.getters['list/editTitleOpen']);
     const saveBtnState = ref({ enabled: true, text: 'Save' });
     const srcItem = computed(() => store.getters['list/editTitleContent']);
     const writeSuccess = computed(() => store.getters['list/writeSuccess']);
@@ -121,27 +120,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .list-edit-modal {
-    @apply fixed top-0 left-0 right-0 z-20 bg-gray-200 rounded-lg shadow-lg mt-12 mx-auto py-6;
-    width: calc(100% - 2rem);
-  }
-  @media(min-width:768px) {
-    .list-edit-modal {
-      @apply w-2/3;
-    }
-  }
-  @media(min-width:1024px) {
-    .list-edit-modal {
-      @apply w-1/2 mt-0;
-      top: 100px;
-    }
-  }
-  @media(min-width:1440px) {
-    .list-edit-modal {
-      @apply max-w-xl;
-    }
-  }
-
   input[type=date],
   textarea {
     @apply w-full bg-gray-100 rounded-sm border border-transparent;

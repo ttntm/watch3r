@@ -24,6 +24,29 @@
     @apply outline-none;
   }
 
+  @media(min-width: 576px) {
+    body::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      @apply bg-gray-900;
+    }
+
+    body::-webkit-scrollbar {
+      width: 6px;
+      @apply bg-gray-900;
+      @apply mx-1;
+    }
+
+    body::-webkit-scrollbar-thumb {
+      @apply bg-gray-600;
+      @apply rounded-full;
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+      @apply bg-yellow-600;
+    }
+  }
+
   body, html {
     @apply text-gray-400;
   }
@@ -119,6 +142,12 @@
     @apply my-8;
   }
 
+  .icon {
+    @apply pointer-events-none;
+  }
+
+  /* BUTTONS */
+
   button:focus {
     @apply outline-none;
     @apply shadow-none;
@@ -180,6 +209,8 @@
     @apply border-transparent;
   }
 
+  /* LIST */
+
   .list,
   .tracklist,
   .watchlist {
@@ -195,8 +226,42 @@
     @apply border-transparent;
   }
 
-  .icon {
-    @apply pointer-events-none;
-  }
+    /* LIST MODAL */
+
+    .list-modal {
+      @apply fixed;
+      @apply top-0;
+      @apply left-0;
+      @apply right-0;
+      @apply z-20;
+      @apply bg-gray-200;
+      @apply rounded-lg;
+      @apply shadow-lg;
+      @apply mt-8;
+      @apply mx-auto;
+      @apply py-6;
+      @apply overflow-y-auto;
+      width: calc(100% - 2rem);
+      max-height: 50%;
+    }
+
+    @media(min-width:768px) {
+      .list-modal {
+        @apply w-2/3;
+      }
+    }
+
+    @media(min-width:1024px) {
+      .list-modal {
+        @apply w-1/2;
+        max-height: 100%;
+      }
+    }
+
+    @media(min-width:1440px) {
+      .list-modal {
+        @apply max-w-xl;
+      }
+    }
 
 @tailwind utilities;

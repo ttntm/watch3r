@@ -1,7 +1,7 @@
 <template>
-  <div class="list-add-modal" v-click-outside="closeModal">
+  <div class="list-modal" v-click-outside="closeModal" role="dialog" aria-labelledby="add-modal-heading">
     <div class="flex flex-row justify-between items-center px-8">
-      <h3 class="text-gray-600 text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
+      <h3 id="add-modal-heading" class="text-gray-600 text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
       <button
         @click.prevent="closeModal()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
@@ -109,24 +109,5 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .list-add-modal {
-    @apply fixed top-0 left-0 right-0 z-20 bg-gray-200 rounded-lg shadow-lg mt-12 mx-auto py-6;
-    width: calc(100% - 2rem);
-  }
-  @media(min-width:768px) {
-    .list-add-modal {
-      @apply w-2/3;
-    }
-  }
-  @media(min-width:1024px) {
-    .list-add-modal {
-      @apply w-1/2 mt-0;
-      top: 175px;
-    }
-  }
-  @media(min-width:1440px) {
-    .list-add-modal {
-      @apply max-w-xl;
-    }
-  }
+
 </style>

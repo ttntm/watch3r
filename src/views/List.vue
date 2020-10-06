@@ -25,6 +25,7 @@
       <ListItem v-for="title in listData" :item="title" :key="title.id" :mode="mode" />
     </div>
     <ListEditModal v-if="editModalOpen" :mode="mode" />
+    <div v-if="addModalOpen || editModalOpen" class="overlay"></div>
   </div>
 </template>
 
@@ -94,4 +95,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+  .overlay {
+    @apply z-10 fixed bg-black opacity-75 top-0 bottom-0 left-0 right-0 w-full h-full pointer-events-none;
+  }
 </style>

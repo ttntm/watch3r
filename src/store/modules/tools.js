@@ -78,7 +78,7 @@ export default {
     },
 
     /**
-     *  SEARCH & SORT OPERATIONS
+     *  SEARCH OPERATION
      */
 
     searchList({ commit, dispatch, rootGetters }, args) {
@@ -122,8 +122,12 @@ export default {
         commit('list/SET_WATCHLIST', search(term), { root: true });
       }
 
-      dispatch('updateSort', mode);
+      dispatch('updateSort', mode); // search results come from the cache, thus in need of sorting
     },
+
+    /**
+     *  SORT OPERATION
+     */
 
     sortList({ commit, getters, rootGetters }, args) {
       const [sortID, mode] = args; // [Number, String]
