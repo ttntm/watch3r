@@ -23,7 +23,6 @@ app.directive('click-blur', {
   beforeMount(el, binding, vnode) {
     handleClickBlur = (e) => {
       if(clickBlurExclude.indexOf(e.target.nodeName) === -1) {
-        console.log('blur', e.target);
         e.target.blur();
       }
     }
