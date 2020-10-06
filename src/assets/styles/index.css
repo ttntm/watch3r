@@ -241,7 +241,7 @@
       @apply py-6;
       @apply overflow-y-auto;
       width: calc(100% - 2rem);
-      max-height: 100%;
+      max-height: calc(100% - 4rem);
     }
 
     @media(min-width:768px) {
