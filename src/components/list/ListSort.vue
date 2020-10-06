@@ -31,7 +31,6 @@ export default {
 
     const sortSelect = (val) => {
       store.dispatch('tools/sortList', [val, props.mode]);
-      document.getElementById('sort-list').blur();
     }
 
     const updateSelect = () => {
