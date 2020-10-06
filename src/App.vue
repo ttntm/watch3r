@@ -45,6 +45,10 @@ export default {
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .modal-blur {
+    filter: blur(0.5rem);
+  }
+
   .slide-fade-enter-active,
   .slide-fade-leave-active {
     transition: all 0.75s;

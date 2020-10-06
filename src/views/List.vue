@@ -58,13 +58,10 @@ export default {
     const route = useRoute();
     const store = useStore();
 
-    const addModalOpen = computed(() => store.getters['list/addTitleOpen']);
-    const editModalOpen = computed(() => store.getters['list/editTitleOpen']);
     const listData = computed(() => store.getters[`list/${mode.value}`]);
     const listLength = computed(() => listData.value.length);
     const mode = computed(() => route.meta.mode);
     const searchActive = computed(() => store.getters['tools/searchActive']);
-    const subtitle = computed(() => route.meta.subtitle);
 
     const getListData = () => {
       if (listData.value.length === 0 && !searchActive.value) {
@@ -82,13 +79,13 @@ export default {
     getListData(); // initial data load as in what used to be 'created()'
 
     return {
-      addModalOpen,
-      editModalOpen,
+      addModalOpen: computed(() => store.getters['list/addTitleOpen']),
+      editModalOpen: computed(() => store.getters['list/editTitleOpen']),
       listData,
       listLength,
       mode,
       searchActive,
-      subtitle,
+      subtitle: computed(() => route.meta.subtitle)
     }
   }
 }
@@ -96,6 +93,7 @@ export default {
 
 <style lang="postcss" scoped>
   .overlay {
-    @apply z-10 fixed bg-black opacity-75 top-0 bottom-0 left-0 right-0 w-full h-full pointer-events-none;
+    @apply z-10 fixed bg-gray-900 top-0 bottom-0 left-0 right-0 w-full h-full pointer-events-none;
+    opacity: 0.9;
   }
 </style>

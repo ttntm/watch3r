@@ -1,5 +1,5 @@
 <template>
-  <div class="list-modal" role="dialog" aria-labelledby="edit-modal-heading">
+  <div class="list-modal" role="dialog" aria-labelledby="edit-modal-heading" v-scroll-lock>
     <div class="flex flex-row justify-between items-center px-6 sm:px-8">
       <h3 id="edit-modal-heading" class="text-gray-600 text-base mb-0">Edit Title: "{{ editItem.title }}"</h3>
       <button
@@ -10,7 +10,7 @@
     <div class="text-gray-800 pt-4 pb-2 px-6 sm:px-8">
       <div class="mb-6">
         <h4>Date Watched</h4>
-        <input v-model="editItem.userDateWatched" class="text-sm px-4 py-2 mb-6" type="date">
+        <input v-model="editItem.userDateWatched" class="text-sm text-gray-600 px-4 py-2 mb-6" type="date">
         <h4>Rating</h4>
         <InputRange v-model="editItem.userRating" />
         <p class="text-sm text-gray-600 mb-6">Your Rating: {{ editItem.userRating }}</p>

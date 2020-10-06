@@ -24,7 +24,6 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const allSortModes = store.getters['tools/sortMode'];
     const listMode = computed(() => props.mode);
     const selected = ref();
     const sortCurrent = computed(() => store.getters[`tools/${props.mode}Sorted`]);
@@ -51,7 +50,7 @@ export default {
     updateSelect(); // get the initial value
 
     return {
-      allSortModes,
+      allSortModes: store.getters['tools/sortMode'],
       selected,
       sortSelect
     }

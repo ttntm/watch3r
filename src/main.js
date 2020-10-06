@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import router from '@/router'
 import store from '@/store'
 import App from '@/App.vue'
-
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import detectTokens from '@/helpers/authorize-tokens.js';
 
 import(/* webpackPreload: true */ '@/assets/styles/index.css');
@@ -18,6 +18,23 @@ detectTokens();
 const clickBlurExclude = ['INPUT','SELECT','TEXTAREA'];
 let handleClickBlur = null;
 let handleOutsideClick = null;
+
+app.directive('click-blur', {
+  beforeMount(el, binding, vnode) {
+    handleClickBlur = (e) => {
+      if(clickBlurExclude.indexOf(e.target.nodeName) === -1) {
+        console.log('blur', e.target);
+        e.target.blur();
+      }
+    }
+    el.addEventListener('click', handleClickBlur);
+    el.addEventListener('touchstart', handleClickBlur);
+  },
+  beforeUnmount(el) {
+    el.removeEventListener('click', handleClickBlur);
+    el.removeEventListener('touchstart', handleClickBlur);
+  }
+});
 
 app.directive('click-outside', {
   beforeMount(el, binding, vnode) {
@@ -36,19 +53,12 @@ app.directive('click-outside', {
   }
 });
 
-app.directive('click-blur', {
+app.directive('scroll-lock', {
   beforeMount(el, binding, vnode) {
-    handleClickBlur = (e) => {
-      if(clickBlurExclude.indexOf(e.target.nodeName) === -1) {
-        e.target.blur();
-      }
-    }
-    document.addEventListener('click', handleClickBlur);
-    document.addEventListener('touchstart', handleClickBlur);
+    disableBodyScroll(el);
   },
-  beforeUnmount() {
-    document.removeEventListener('click', handleClickBlur);
-    document.removeEventListener('touchstart', handleClickBlur);
+  beforeUnmount(el) {
+    enableBodyScroll(el);
   }
 });
 

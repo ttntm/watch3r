@@ -36,10 +36,8 @@ export default {
   setup() {
     const store = useStore();
 
-    const loggedIn = computed(() => store.getters['user/loggedIn']);
-
     return {
-      loggedIn
+      loggedIn: computed(() => store.getters['user/loggedIn']),
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="list-modal" v-click-outside="closeModal" role="dialog" aria-labelledby="add-modal-heading">
+  <div class="list-modal" v-click-outside="closeModal" role="dialog" aria-labelledby="add-modal-heading" v-scroll-lock>
     <div class="flex flex-row justify-between items-center px-8">
       <h3 id="add-modal-heading" class="text-gray-600 text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
       <button

@@ -42,19 +42,24 @@ export default {
   .nav-link {
     @apply relative text-gray-600 font-bold text-lg px-2 pb-1 mx-2;
   }
-  .nav-link:hover {
+
+  .nav-link:hover,
+  .nav-link:focus {
     @apply text-gray-400;
   }
+
   .nav-link::after {
     content: "";
     @apply absolute left-0 bottom-0 bg-transparent w-full opacity-0;
     height: 2px;
     transform: translateY(7px);
   }
+
   .active,
   .nav-link.active:hover {
     @apply text-gray-400;
   }
+
   .active::after {
     content: "";
     @apply absolute left-0 bottom-0 bg-gray-500 w-full opacity-100;

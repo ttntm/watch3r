@@ -138,6 +138,7 @@ export default {
             temp.refId = item.ref['@ref'].id; // add the database ID for edit/delete operations
             return temp; //return newly created temp object
           });
+
           if (mode === 'tracklist') {
             commit('SET_TRACKLIST', list);
             commit('SET_TRACKLIST_CACHE', list); //cache the current 'tracklist' data, so we can restore it without another DB query

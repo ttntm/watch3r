@@ -24,7 +24,7 @@ export default {
           <br /><br />
           Go ahead and use that "Add Title" button 🤓
         `;
-      }, 3500);
+      }, 5000);
     }
 
     onMounted(() => {

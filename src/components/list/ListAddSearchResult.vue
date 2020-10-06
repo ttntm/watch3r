@@ -31,7 +31,6 @@ export default {
     const store = useStore();
 
     const addBtnState = ref({ enabled: true, text: 'Add' });
-    const writeSuccess = computed(() => store.getters['list/writeSuccess']);
 
     const addTitleToList = (title) => {
       const listMode = props.mode;
@@ -39,13 +38,16 @@ export default {
       addBtnState.value.enabled = false;
       addBtnState.value.text = 'Adding...';
 
+      if (store.getters['tools/searchActive']) {
+        store.dispatch('tools/resetList');
+      }
       store.dispatch('list/writeList', [title, listMode]);
     }
 
     return {
       addBtnState,
       addTitleToList,
-      writeSuccess
+      writeSuccess: computed(() => store.getters['list/writeSuccess']),
     }
   }
 }

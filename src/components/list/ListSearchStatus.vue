@@ -16,15 +16,13 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const searchStatus = computed(() => store.getters['tools/searchStatus']);
-
     const resetSearch = () => {
       store.dispatch('tools/resetList');
     }
 
     return {
       resetSearch,
-      searchStatus
+      searchStatus: computed(() => store.getters['tools/searchStatus']),
     }
   }
 }

@@ -27,6 +27,9 @@ export default {
 
     const handleRemove = (mode, id) => {
       if (confirm(`Are you sure?`)) {
+        if (store.getters['tools/searchActive']) {
+          store.dispatch('tools/resetList');
+        }
         store.dispatch('list/deleteItem', [id, mode]);
       }
     }

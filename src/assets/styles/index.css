@@ -32,14 +32,13 @@
     }
 
     body::-webkit-scrollbar {
-      width: 6px;
+      width: 7px;
       @apply bg-gray-900;
       @apply mx-1;
     }
 
     body::-webkit-scrollbar-thumb {
-      @apply bg-gray-600;
-      @apply rounded-full;
+      @apply bg-gray-700;
     }
 
     body::-webkit-scrollbar-thumb:hover {
@@ -237,12 +236,12 @@
       @apply bg-gray-200;
       @apply rounded-lg;
       @apply shadow-lg;
-      @apply mt-8;
+      @apply my-8;
       @apply mx-auto;
       @apply py-6;
       @apply overflow-y-auto;
       width: calc(100% - 2rem);
-      max-height: 50%;
+      max-height: 100%;
     }
 
     @media(min-width:768px) {
@@ -254,7 +253,6 @@
     @media(min-width:1024px) {
       .list-modal {
         @apply w-1/2;
-        max-height: 100%;
       }
     }
 
