@@ -11,7 +11,7 @@ export default {
       currentUser: null,
       GoTrueAuth: null,
       sortPreset: 1, // array index based on store.getters['tools/sortMode']
-      startPage: 'watch'
+      startPage: 0 // 0 -> watchlist | 1 -> tracklist
     };
   },
   getters: {

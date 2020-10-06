@@ -8,8 +8,8 @@ export default {
       searchActive: false,
       searchStatus: '',
       sortMode: [
-        { key: 'date', order: 'ascending' },    // 0
-        { key: 'date', order: 'descending' },   // 1
+        { key: 'date', order: 'ascending' },     // 0
+        { key: 'date', order: 'descending' },    // 1
         { key: 'title', order: 'ascending' },    // 2
         { key: 'title', order: 'descending' }    // 3
       ],
@@ -50,11 +50,38 @@ export default {
      *  COMMON ACTIONS
      */
 
+    resetList({ commit, dispatch, getters, rootGetters }) {
+      const mode = getters['listSearchMode'];
+      let cache;
+
+      commit('SET_SEARCH_ACTIVE', false);
+
+      if (mode === 'tracklist') {
+        cache = rootGetters['list/tracklistCache'];
+        commit('list/SET_TRACKLIST', cache, { root: true });
+      }
+      if (mode === 'watchlist') {
+        cache = rootGetters['list/watchlistCache'];
+        commit('list/SET_WATCHLIST', cache, { root: true });
+      }
+
+      dispatch('updateSort', mode); // reads from cache, needs sorting
+    },
+
+    updateSort({ dispatch, getters, rootGetters }, mode) {
+      const current = getters[`${mode}Sorted`];
+      const preset = rootGetters['user/sortPreset'];
+
+      const sortId = current === -1 ? preset : current;
+
+      dispatch('sortList', [sortId, mode]);
+    },
+
     /**
      *  SEARCH & SORT OPERATIONS
      */
 
-    searchList({ commit, rootGetters }, args) {
+    searchList({ commit, dispatch, rootGetters }, args) {
       const [term, mode] = args; // [String, String]
 
       commit('SET_SEARCH_ACTIVE', true);
@@ -94,11 +121,12 @@ export default {
       if (mode === 'watchlist') {
         commit('list/SET_WATCHLIST', search(term), { root: true });
       }
+
+      dispatch('updateSort', mode);
     },
 
     sortList({ commit, getters, rootGetters }, args) {
       const [sortID, mode] = args; // [Number, String]
-      const current = getters[`${mode}Sorted`];
       const sortMode = getters['sortMode'];
 
       //generic sorting function for object keys
@@ -120,60 +148,44 @@ export default {
       const doSort = () => {
         const key = sortMode[sortID].key;
         const order = sortMode[sortID].order;
-        const sortCache = rootGetters[`list/${mode}Cache`]; // returns the respective list as Object[] from the store; never sort based on Vuex cache, otherwise results might be wrong (i.e. search active)
         let sorted = [];
+
+        const cache = rootGetters[`list/${mode}Cache`];
+        const list = rootGetters[`list/${mode}`];
+        const sortSearch = getters['searchActive'];
+
+        const input = sortSearch ? list : cache; // should it sort search results?
 
         switch(key) {
           case 'date':
-            // need to use the cached vuex/fauna response here; list items don't have a 'date' property, date relies on DB refID
             if(order === 'ascending') {
-              sorted = [...sortCache]; // list of DB entries is date -> ascending by default
+              sorted = [...input].sort(objSort('refId', false));
             }
             if(order === 'descending') {
-              sorted = [...sortCache].reverse();
+              sorted = [...input].sort(objSort('refId', true));
             }
             break;
 
           case 'title':
             if(order === 'ascending') {
-              sorted = [...sortCache].sort(objSort('title', false, (a) =>  a.toLowerCase()));
+              sorted = [...input].sort(objSort('title', false, (a) =>  a.toLowerCase()));
             }
             if(order === 'descending') {
-              sorted = [...sortCache].sort(objSort('title', true, (a) =>  a.toLowerCase()));
+              sorted = [...input].sort(objSort('title', true, (a) =>  a.toLowerCase()));
             }
             break;
         }
         return sorted;
       }
 
-      // only sort if not sorted already
-      if (sortID !== current) {
-        if (mode === 'tracklist') {
-          commit('list/SET_TRACKLIST', doSort(), { root: true });
-          commit('SET_TRACKLIST_SORTED', sortID);
-        }
-        if (mode === 'watchlist') {
-          commit('list/SET_WATCHLIST', doSort(), { root: true });
-          commit('SET_WATCHLIST_SORTED', sortID);
-        }
-      }
-    },
-
-    resetList({ commit, getters, rootGetters }) {
-      const mode = getters['listSearchMode'];
-      let cache;
-
-      commit('SET_SEARCH_ACTIVE', false);
-
       if (mode === 'tracklist') {
-        cache = rootGetters['list/tracklistCache'];
-        commit('list/SET_TRACKLIST', cache, { root: true });
+        commit('list/SET_TRACKLIST', doSort(), { root: true });
+        commit('SET_TRACKLIST_SORTED', sortID);
       }
       if (mode === 'watchlist') {
-        cache = rootGetters['list/watchlistCache'];
-        commit('list/SET_WATCHLIST', cache, { root: true });
+        commit('list/SET_WATCHLIST', doSort(), { root: true });
+        commit('SET_WATCHLIST_SORTED', sortID);
       }
     }
-
   }
 };

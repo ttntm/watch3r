@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { computed, onBeforeUpdate, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -31,13 +31,22 @@ export default {
 
     const sortSelect = (val) => {
       store.dispatch('tools/sortList', [val, props.mode]);
+      document.getElementById('sort-list').blur();
     }
 
-    if (sortCurrent.value === -1) {
-      selected.value = sortPreset.value;
-    } else {
-      selected.value = sortCurrent.value;
+    const updateSelect = () => {
+      if (sortCurrent.value === -1) {
+        selected.value = sortPreset.value;
+      } else {
+        selected.value = sortCurrent.value;
+      }
     }
+
+    onBeforeUpdate(() => {
+      updateSelect();
+    })
+
+    updateSelect(); // initial value
 
     return {
       allSortModes,

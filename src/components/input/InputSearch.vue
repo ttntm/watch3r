@@ -20,7 +20,7 @@
       <button
         v-if="searchInput"
         @click.prevent="clearSearch()"
-        class="click-outside-ignore font-bold text-lg opacity-75 hover:opacity-100 px-2 py-0"
+        class="click-outside-ignore font-bold text-lg opacity-75 hover:opacity-100 focus:opacity-100 px-2 py-0"
         title="Clear search"
         aria-label="Clear search"
       >&times;</button>

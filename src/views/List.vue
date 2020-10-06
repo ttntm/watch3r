@@ -37,7 +37,7 @@ import ListLoading from '@/components/list/ListLoading.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
-import { computed, onBeforeUpdate, ref, watch, watchEffect } from 'vue';
+import { computed, onBeforeUpdate, ref } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
@@ -63,8 +63,6 @@ export default {
     const listLength = computed(() => listData.value.length);
     const mode = computed(() => route.meta.mode);
     const searchActive = computed(() => store.getters['tools/searchActive']);
-    const sortCurrent = computed(() => store.getters[`tools/${mode.value}Sorted`]);
-    const sortPreset = computed(() => store.getters['user/sortPreset']);
     const subtitle = computed(() => route.meta.subtitle);
 
     const getListData = () => {
@@ -73,23 +71,10 @@ export default {
       }
     }
 
-    const sortListData = () => {
-      if (sortCurrent.value === -1) {
-        store.dispatch('tools/sortList', [sortPreset.value, mode.value]);
-      }
-    }
-
-    // this part bugs out ('mode' or something else becomes undefined), even though it's the right code -- possibly due to some bug like this one: https://github.com/vuejs/vue-next/issues/2291
-    // watch(listLength, () => {
-    //   if (listLength.value > 0) {
-    //     store.dispatch('tools/sortList', [sortPreset.value, mode.value]);
-    //   }
-    // })
-
     onBeforeUpdate(() => {
       getListData(); // necessary re-hydration when navigating between list modes; vue re-uses components wherever possible...
       if (listLength.value > 0) {
-        sortListData();
+        store.dispatch('tools/updateSort', mode.value);
       }
     })
 

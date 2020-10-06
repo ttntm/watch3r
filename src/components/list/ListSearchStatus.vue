@@ -1,6 +1,6 @@
 <template>
   <p class="text-sm text-center text-gray-500 mb-0">
-    {{ searchStatus }} <a href="#clear" @click.prevent="resetSearch()" class="text-yellow-600 hover:underline">Clear search</a>
+    {{ searchStatus }} <a href="#clear" @click.prevent="resetSearch()" class="text-yellow-600 hover:underline focus:underline">Clear search</a>
   </p>
 </template>
 

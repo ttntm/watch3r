@@ -16,7 +16,7 @@ import { ref, onMounted } from 'vue';
 export default {
   name: 'InputRange',
   props: {
-    modelValue: String
+    modelValue: Number
   },
   setup() {
     const range = ref({});

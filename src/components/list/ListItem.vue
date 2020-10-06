@@ -6,7 +6,7 @@
     <div class="w-full sm:w-3/4 px-4 sm:px-6">
       <h3 class="mb-2">
         {{ item.title }}
-        <a :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="inline-block ml-1" title="View on IMDb">
+        <a :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="inline-block focus:shadow-outline ml-1" title="View on IMDb">
           <img :src="imdbIcon" alt="IMDb icon" class="w-5">
         </a>
       </h3>
