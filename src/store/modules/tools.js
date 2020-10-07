@@ -7,10 +7,12 @@ export default {
       listSearchMode: '',
       searchActive: false,
       sortMode: [
-        { key: 'date', order: 'ascending' },     // 0
-        { key: 'date', order: 'descending' },    // 1
-        { key: 'title', order: 'ascending' },    // 2
-        { key: 'title', order: 'descending' }    // 3
+        { key: 'date', name: 'Date Added', order: 'ascending' },
+        { key: 'date', name: 'Date Added', order: 'descending' },
+        { key: 'title', name: 'Title', order: 'ascending' },
+        { key: 'title', name: 'Title', order: 'descending' },
+        { key: 'year', name: 'Release', order: 'ascending' },
+        { key: 'year', name: 'Release', order: 'descending' },
       ],
       tracklistSorted: -1,
       watchlistSorted: -1,
@@ -152,6 +154,15 @@ export default {
             }
             if(order === 'descending') {
               sorted = [...input].sort(objSort('title', true, (a) =>  a.toLowerCase()));
+            }
+            break;
+
+          case 'year':
+            if(order === 'ascending') {
+              sorted = [...input].sort(objSort('year', false));
+            }
+            if(order === 'descending') {
+              sorted = [...input].sort(objSort('year', true));
             }
             break;
         }

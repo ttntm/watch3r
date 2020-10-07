@@ -75,10 +75,10 @@ export default {
      */
 
     async writeList({ dispatch, rootGetters }, args) {
+      const [titleData, mode] = args; // [Object, String]
       const fn = rootGetters['app/functions'];
       let msg = {};
       let response;
-      const [titleData, mode] = args; // [Object, String]
 
       const getFn = (m) => {
         if (m === 'tracklist') {
@@ -232,11 +232,10 @@ export default {
     },
 
     async deleteItem({ dispatch, rootGetters }, args) {
-      const fn = rootGetters['app/functions'];
       const [id, mode, silent] = args; // [String, Number, Boolean]
+      const fn = rootGetters['app/functions'];
       let msg = {};
       let response;
-      const searchActive = rootGetters['tools/searchActive'];
 
       const getFn = (m) => {
         if (m === 'tracklist') {
@@ -257,9 +256,6 @@ export default {
       if (response) {
         msg = { text: `Item removed from ${mode}.`, type: 'success' };
         dispatch('readList', mode);
-        if (searchActive) {
-          dispatch('deleteFromSearchResults', [id, mode]);
-        }
       } else {
         // no 'response' -> error
         msg = { text: `Couldn't delete item from ${mode}. Please try again later.`, type: 'error' };

@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -25,9 +26,16 @@ export default {
   setup(props) {
     const store = useStore();
 
+    const searchActive = computed(() => store.getters['tools/searchActive']);
+
     const handleRemove = (mode, id) => {
       if (confirm(`Are you sure?`)) {
+        // update DB data
         store.dispatch('list/deleteItem', [id, mode]);
+        if (searchActive.value) {
+          // update displayed data (so search results do not reset)
+          store.dispatch('list/deleteFromSearchResults', [id, mode]);
+        }
       }
     }
 

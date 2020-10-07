@@ -112,6 +112,9 @@ export default {
       editItem.value = { ...srcItem.value, ...editData };
     } else if (props.mode === 'tracklist') {
       editItem.value = { ...srcItem.value };
+      if (!editItem.value.userRating) {
+        editItem.value.userRating = editData.userRating;
+      }
     }
 
     store.dispatch('list/toggleWriteSuccess', false); // initial state reset whenever this modal opens
