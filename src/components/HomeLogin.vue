@@ -1,10 +1,10 @@
 <template>
   <div class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10">
-    <div class="login-input-group">
+    <div class="input-group">
       <label for="login-email">Email</label>
       <input v-model="credentials.email" id="login-email" type="email" placeholder="jane@doe.com">
     </div>
-    <div class="login-input-group">
+    <div class="input-group">
       <label for="login-pwd">Password</label>
       <input v-model="credentials.password" @keyup.enter="handleLogin()" id="login-pwd" type="password" placeholder="************">
       <router-link :to="{name: 'recover'}" class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0">
@@ -52,12 +52,11 @@ export default {
             msg.text = `You're logged in now`;
             msg.type =  'success';
             store.dispatch('app/sendToastMessage', msg);
-            credentials.value = { email: '', password: '' };
-            cValidateMsg.value = '';
+            store.dispatch('user/setUserPrefs');
           })
           .catch(error => {
             cValidateMsg.value = '';
-            console.error(error, `Something's gone wrong logging in`);
+            console.error(`Something's gone wrong logging in`, error);
             msg.text = `Something's gone wrong logging in, please try again later.`;
             msg.type =  'error';
             store.dispatch('app/sendToastMessage', msg);
@@ -76,18 +75,4 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .login-input-group {
-    @apply flex flex-col w-full mb-6;
-  }
-  .login-input-group label {
-    @apply text-gray-700 text-sm font-bold mb-2;
-  }
-
-  .login-input-group input {
-    @apply bg-transparent border-b border-gray-500 px-2 py-1;
-  }
-
-  .login-input-group input:focus {
-    @apply bg-gray-300 border-yellow-600 shadow-inner;
-  }
 </style>

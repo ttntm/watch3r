@@ -1,5 +1,5 @@
 <template>
-  <div class="search flex flex-row items-center flex-1" :class="{ 'input-group': searchInput }">
+  <div class="search flex flex-row items-center flex-1" :class="{ 'search-input-group': searchInput }">
     <label for="search-input" class="sr-only">Search</label>
     <svg xmlns="http://www.w3.org/2000/svg" class="flex ml-4" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" />
@@ -16,7 +16,7 @@
       :placeholder="pch"
       ref="input"
     />
-    <div class="input-group-append">
+    <div class="search-input-group-append">
       <button
         v-if="searchInput"
         @click.prevent="clearSearch()"
@@ -102,13 +102,13 @@ export default {
     outline: 0;
     @apply shadow-none;
   }
-  .input-group {
+  .search-input-group {
     @apply relative flex;
   }
-  .input-group-append {
+  .search-input-group-append {
     @apply flex;
   }
-  .input-group-append button {
+  .search-input-group-append button {
     @apply relative shadow-none;
     z-index: 2;
   }

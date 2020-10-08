@@ -7,6 +7,7 @@ export default {
       addTitleOpen: false,
       editTitleContent: null,
       editTitleOpen: false,
+      posterOpen: false,
       tracklist: [],
       tracklistCache: [],
       watchlist: [],
@@ -19,6 +20,7 @@ export default {
     addTitleOpen: state => state.addTitleOpen,
     editTitleContent: state => state.editTitleContent,
     editTitleOpen: state => state.editTitleOpen,
+    posterOpen: state => state.posterOpen,
     tracklist: state => state.tracklist,
     tracklistCache: state => state.tracklistCache,
     watchlist: state => state.watchlist,
@@ -35,6 +37,9 @@ export default {
     },
     SET_EDIT_TITLE_OPEN(state, value) {
       state.editTitleOpen = value;
+    },
+    SET_POSTER_OPEN(state, value) {
+      state.posterOpen = value;
     },
     SET_WATCHLIST(state, value) {
       state.watchlist = value;
@@ -64,6 +69,10 @@ export default {
 
     toggleEditTitleModal({ commit }, newState) {
       commit('SET_EDIT_TITLE_OPEN', newState);
+    },
+
+    togglePosterModal({ commit }, newState) {
+      commit('SET_POSTER_OPEN', newState);
     },
 
     toggleWriteSuccess({ commit }, newState) {

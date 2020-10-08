@@ -16,6 +16,7 @@ store.dispatch("user/initAuth");
 detectTokens();
 
 const clickBlurExclude = ['INPUT','SELECT','TEXTAREA'];
+let escHandler = null;
 let handleClickBlur = null;
 let handleOutsideClick = null;
 
@@ -52,9 +53,24 @@ app.directive('click-outside', {
   }
 });
 
-app.directive('scroll-lock', {
+app.directive('esc', {
   beforeMount(el, binding, vnode) {
-    disableBodyScroll(el);
+    escHandler = (e) => {
+      if ((e.key=='Escape'||e.key=='Esc'||e.keyCode==27)) {
+        binding.value();
+      }
+    }
+    document.addEventListener('keydown', escHandler);
+  },
+  beforeUnmount() {
+    document.removeEventListener('keydown', escHandler);
+  }
+});
+
+app.directive('scroll-lock', {
+  // there could be issues with iOS at some point: https://github.com/willmcpo/body-scroll-lock#allowtouchmove
+  beforeMount(el, binding, vnode) {
+    disableBodyScroll(el); // desirable, but causes body twitch: { reserveScrollBarGap: true }
   },
   beforeUnmount(el) {
     enableBodyScroll(el);

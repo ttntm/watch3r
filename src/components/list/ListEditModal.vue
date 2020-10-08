@@ -1,5 +1,5 @@
 <template>
-  <div class="list-modal" role="dialog" aria-labelledby="edit-modal-heading" v-scroll-lock>
+  <div class="list-modal" role="dialog" aria-labelledby="edit-modal-heading" v-esc="closeModal" v-scroll-lock>
     <div class="flex flex-row justify-between items-center px-6 sm:px-8">
       <h3 id="edit-modal-heading" class="text-gray-600 text-base mb-0">Edit Title: "{{ editItem.title }}"</h3>
       <button

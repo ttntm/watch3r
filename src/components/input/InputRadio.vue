@@ -1,7 +1,7 @@
 <template>
   <div class="inline-flex items-center relative">
     <input type="radio" v-model="radio" :id="label" :name="name" :value="label">
-    <label class="capitalize w-full" :for="label">By {{ label }}</label>
+    <label class="capitalize w-full" :for="label">{{ label }}</label>
   </div>
 </template>
 

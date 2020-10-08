@@ -18,7 +18,8 @@ export default {
     loggedIn: state => !!state.currentUser,
     currentUser: state => state.currentUser,
     GoTrueAuth: state => state.GoTrueAuth,
-    sortPreset: state => state.sortPreset
+    sortPreset: state => state.sortPreset,
+    startPage: state => state.startPage
   },
   mutations: {
     SET_GOTRUE(state, value) {
@@ -29,6 +30,9 @@ export default {
     },
     SET_SORT_PRESET(state, value) {
       state.sortPreset = value;
+    },
+    SET_START_PAGE(state, value) {
+      state.startPage = value;
     }
   },
   actions: {
@@ -61,11 +65,14 @@ export default {
      * @property {string} credentials.email - email of the user eg hello@email.com
      * @property {string} credentials.password - password string
      */
-    attemptSignup({ state }, credentials) {
+    attemptSignup({ getters, state }, credentials) {
       //console.log(`Attempting signup for ${credentials.email}...`, credentials);
+      const userSort = getters['sortPreset'];
+      const userStart = getters['startPage'];
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.signup(credentials.email, credentials.password, {
-          full_name: credentials.name
+          user_sort: userSort,
+          user_start: userStart
         })
           .then(response => {
             //console.log(`Confirmation email sent`, response);
@@ -225,7 +232,7 @@ export default {
         user
           .update(userData)
           .then(response => {
-            console.log("Updated user account details");
+            console.log("Updated user account details", response);
             resolve(response);
           })
           .catch(error => {
@@ -233,6 +240,30 @@ export default {
             reject(error);
           });
       });
-    }
+    },
+
+    setUserPrefs({ commit, getters }) {
+      // set user preferences with login
+      const user = getters['currentUser'];
+      const userMeta = user.user_metadata;
+      const userSort = getters['sortPreset'];
+      const userStart = getters['startPage'];
+
+      if (!Object.keys(userMeta).length > 0) {
+        // user has no preferences -- console.log('setting DEFAULT prefs...');
+        let userUpdate = {
+          email: user.email,
+          data: {
+            user_sort: userSort,
+            user_start: userStart
+          }
+        };
+        dispatch('updateUserAccount', userUpdate);
+      } else {
+        // user preferences are available -- console.log('setting USER prefs...');
+        commit('SET_SORT_PRESET', userMeta.user_sort);
+        commit('SET_START_PAGE', userMeta.user_start);
+      }
+    },
   }
 };

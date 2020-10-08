@@ -181,6 +181,11 @@
     @apply text-gray-900;
   }
 
+  .btn-black:hover span,
+  .btn-black:focus span {
+    @apply text-gray-900;
+  }
+
   .btn-gray {
     @apply bg-transparent;
     @apply text-gray-700;
@@ -206,6 +211,40 @@
     @apply bg-gray-600;
     @apply text-gray-800;
     @apply border-transparent;
+  }
+
+  /* INPUT GROUPING */
+
+  .input-group {
+    @apply flex;
+    @apply flex-col;
+    @apply w-full;
+    @apply mb-6;
+  }
+  .input-group > label {
+    @apply text-gray-700;
+    @apply text-sm;
+    @apply font-bold;
+    @apply mb-2;
+  }
+
+  .input-group input {
+    @apply bg-transparent;
+    @apply border-b;
+    @apply border-gray-500;
+    @apply px-2;
+    @apply py-1;
+  }
+
+  .input-group input:focus,
+  .input-group input:hover {
+    @apply border-yellow-600;
+  }
+
+  .input-group input:focus {
+    @apply bg-gray-300;
+    @apply border-yellow-600;
+    @apply shadow-inner;
   }
 
   /* LIST */

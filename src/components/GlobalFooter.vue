@@ -10,6 +10,9 @@
       <router-link :to="{name: 'tracker'}" v-if="loggedIn" v-click-blur>
         Tracker
       </router-link>
+      <router-link :to="{name: 'profile'}" v-if="loggedIn" v-click-blur>
+        Profile
+      </router-link>
       <router-link :to="{name: 'about'}" v-click-blur>
         About
       </router-link>

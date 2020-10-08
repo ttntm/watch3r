@@ -10,7 +10,9 @@
       </div>
       <div>
         <BtnAddTitle />
-        <ListAddModal v-if="addModalOpen" :mode="mode" />
+        <transition name="modal">
+          <ListAddModal v-if="addModalOpen" :mode="mode" />
+        </transition>
       </div>
     </div>
     <ListLoading v-if="listLength === 0 && !searchActive" />
@@ -22,10 +24,17 @@
       <ListSearchStatus v-if="searchActive" :mode="mode" class="mt-8" />
     </div>
     <div v-if="listLength > 0" class="list">
-      <ListItem v-for="title in listData" :item="title" :key="title.id" :mode="mode" />
+      <ListItem v-for="title in listData" :item="title" :key="title.id" :mode="mode" @open-poster="showPoster($event)" />
     </div>
-    <ListEditModal v-if="editModalOpen" :mode="mode" />
-    <div v-if="addModalOpen || editModalOpen" class="overlay"></div>
+    <transition name="modal">
+      <ListEditModal v-if="editModalOpen" :mode="mode" />
+    </transition>
+    <transition name="poster">
+      <ListPosterModal v-if="posterModalOpen" :poster="posterSrc" :title="posterTitle" />
+    </transition>
+    <transition name="overlay">
+      <div v-if="addModalOpen || editModalOpen || posterModalOpen" class="overlay"></div>
+    </transition>
   </div>
 </template>
 
@@ -35,6 +44,7 @@ import ListAddModal from '@/components/list/ListAddModal.vue';
 import ListEditModal from '@/components/list/ListEditModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
 import ListLoading from '@/components/list/ListLoading.vue';
+import ListPosterModal from '@/components/list/ListPosterModal.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
@@ -50,6 +60,7 @@ export default {
     ListEditModal,
     ListItem,
     ListLoading,
+    ListPosterModal,
     ListSearch,
     ListSearchStatus,
     ListSort
@@ -61,12 +72,22 @@ export default {
     const listData = computed(() => store.getters[`list/${mode.value}`]);
     const listLength = computed(() => listData.value.length);
     const mode = computed(() => route.meta.mode);
+    const posterModalOpen = computed(() => store.getters['list/posterOpen']);
+    const posterSrc = ref('');
+    const posterTitle = ref('');
     const searchActive = computed(() => store.getters['tools/searchActive']);
 
     const getListData = () => {
       if (listData.value.length === 0 && !searchActive.value) {
         store.dispatch('list/readList', mode.value);
       }
+    }
+
+    const showPoster = (args) => {
+      const [src, title] = args;
+      posterSrc.value = src;
+      posterTitle.value = title;
+      store.dispatch('list/togglePosterModal', true);
     }
 
     onBeforeUpdate(() => {
@@ -83,7 +104,11 @@ export default {
       editModalOpen: computed(() => store.getters['list/editTitleOpen']),
       listData,
       listLength,
+      posterModalOpen,
       mode,
+      showPoster,
+      posterSrc,
+      posterTitle,
       searchActive,
       subtitle: computed(() => route.meta.subtitle)
     }
@@ -95,5 +120,30 @@ export default {
   .overlay {
     @apply z-10 fixed bg-gray-900 top-0 bottom-0 left-0 right-0 w-full h-full pointer-events-none;
     opacity: 0.9;
+  }
+
+  .modal-enter-active,
+  .modal-leave-active {
+    transition: all 0.75s;
+  }
+
+  .overlay-enter-active,
+  .overlay-leave-active,
+  .poster-enter-active,
+  .poster-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .modal-enter-from,
+  .modal-leave-to {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  .overlay-enter-from,
+  .overlay-leave-to,
+  .poster-enter-from,
+  .poster-leave-to {
+    opacity: 0;
   }
 </style>

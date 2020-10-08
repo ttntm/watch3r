@@ -6,7 +6,7 @@
         <p>Please choose a password for your account.</p>
       </div>
       <div class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10">
-        <div class="signup-input-group">
+        <div class="input-group">
           <label for="signup-pwd">Password</label>
           <input v-model="pwd" @keyup.enter="handleSignup(pwd)" id="signup-pwd" type="password" placeholder="************" required>
         </div>
@@ -82,18 +82,4 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .signup-input-group {
-    @apply flex flex-col w-full mb-6;
-  }
-  .signup-input-group label {
-    @apply text-gray-700 text-sm font-bold mb-2;
-  }
-
-  .signup-input-group input {
-    @apply bg-transparent border-b border-gray-500 px-2 py-1;
-  }
-
-  .signup-input-group input:focus {
-    @apply bg-gray-300 border-yellow-600 shadow-inner;
-  }
 </style>

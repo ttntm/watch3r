@@ -9,6 +9,8 @@ export default {
       sortMode: [
         { key: 'date', name: 'Date Added', order: 'ascending' },
         { key: 'date', name: 'Date Added', order: 'descending' },
+        { key: 'rating', name: 'Rating', order: 'ascending' },
+        { key: 'rating', name: 'Rating', order: 'descending' },
         { key: 'title', name: 'Title', order: 'ascending' },
         { key: 'title', name: 'Title', order: 'descending' },
         { key: 'year', name: 'Release', order: 'ascending' },
@@ -62,7 +64,6 @@ export default {
     updateSort({ dispatch, getters, rootGetters }, mode) {
       const current = getters[`${mode}Sorted`];
       const preset = rootGetters['user/sortPreset'];
-
       const sortId = current === -1 ? preset : current;
 
       dispatch('sortList', [sortId, mode]);
@@ -142,27 +143,33 @@ export default {
           case 'date':
             if(order === 'ascending') {
               sorted = [...input].sort(objSort('refId', false));
-            }
-            if(order === 'descending') {
+            } else if(order === 'descending') {
               sorted = [...input].sort(objSort('refId', true));
             }
             break;
 
           case 'title':
             if(order === 'ascending') {
-              sorted = [...input].sort(objSort('title', false, (a) =>  a.toLowerCase()));
+              sorted = [...input].sort(objSort(key, false, (a) =>  a.toLowerCase()));
+            } else if(order === 'descending') {
+              sorted = [...input].sort(objSort(key, true, (a) =>  a.toLowerCase()));
             }
-            if(order === 'descending') {
-              sorted = [...input].sort(objSort('title', true, (a) =>  a.toLowerCase()));
+            break;
+
+          case 'rating':
+            const modeRating = mode === 'tracklist' ? 'userRating' : 'imdbRating';
+            if(order === 'ascending') {
+              sorted = [...input].sort(objSort(`${modeRating}`, false));
+            } else if(order === 'descending') {
+              sorted = [...input].sort(objSort(`${modeRating}`, true));
             }
             break;
 
           case 'year':
             if(order === 'ascending') {
-              sorted = [...input].sort(objSort('year', false));
-            }
-            if(order === 'descending') {
-              sorted = [...input].sort(objSort('year', true));
+              sorted = [...input].sort(objSort(key, false));
+            } else if(order === 'descending') {
+              sorted = [...input].sort(objSort(key, true));
             }
             break;
         }

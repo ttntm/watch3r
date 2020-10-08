@@ -2,7 +2,6 @@
   <button
     @click.prevent="handleLogout()"
     v-click-blur
-    :disabled="!loggedIn"
     class="text-gray-600 hover:text-gray-200 focus:text-gray-200 cursor-pointer"
     aria-label="Logout"
     title="Logout"
@@ -26,26 +25,19 @@ export default {
     const router = useRouter();
     const store = useStore();
 
-    const loggedIn = computed(() => store.getters['user/loggedIn']);
-
     const handleLogout = () => {
-      if (loggedIn.value) {
-        let msg = { text: '', type: ''};
-        store.dispatch('user/attemptLogout')
-          .then(() => {
-            msg.text = 'Logout successful';
-            msg.type =  'success';
-            store.dispatch('app/sendToastMessage', msg);
-            router.push({ name: 'home' });
-          })
-      } else {
-        return
-      }
+      let msg = { text: '', type: ''};
+      store.dispatch('user/attemptLogout')
+        .then(() => {
+          router.push({ name: 'home' });
+          msg.text = 'Logout successful';
+          msg.type =  'success';
+          store.dispatch('app/sendToastMessage', msg);
+        })
     }
 
     return {
-      handleLogout,
-      loggedIn
+      handleLogout
     }
   }
 }

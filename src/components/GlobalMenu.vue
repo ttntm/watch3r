@@ -1,5 +1,5 @@
 <template>
-  <div class="app-menu" v-click-outside="closeMenu">
+  <div class="app-menu" v-click-outside="closeMenu" v-esc="closeMenu">
     <div class="flex flex-row justify-between items-center pt-2">
       <p class="text-sm text-gray-600 font-bold px-4 mb-0">watch3r</p>
       <button
@@ -8,31 +8,21 @@
       >×</button>
     </div>
     <div class="flex flex-col text-gray-800">
-      <span class="menu-item">
-        <router-link :to="{name: 'home'}">
-          Home
-        </router-link>
-      </span>
-      <span v-if="loggedIn" class="menu-item">
-        <router-link :to="{name: 'watchlist'}">
-          Watchlist
-        </router-link>
-      </span>
-      <span v-if="loggedIn" class="menu-item">
-        <router-link :to="{name: 'tracker'}">
-          Tracker
-        </router-link>
-      </span>
-      <span v-if="loggedIn" class="menu-item">
-        <router-link :to="{name: 'profile'}">
-          Profile
-        </router-link>
-      </span>
-      <span class="menu-item">
-        <router-link :to="{name: 'about'}">
-          About
-        </router-link>
-      </span>
+      <router-link :to="{name: 'home'}" class="menu-item">
+        Home
+      </router-link>
+      <router-link :to="{name: 'watchlist'}" v-if="loggedIn" class="menu-item">
+        Watchlist
+      </router-link>
+      <router-link :to="{name: 'tracker'}" v-if="loggedIn" class="menu-item">
+        Tracker
+      </router-link>
+      <router-link :to="{name: 'profile'}" v-if="loggedIn" class="menu-item">
+        Profile
+      </router-link>
+      <router-link :to="{name: 'about'}" class="menu-item">
+        About
+      </router-link>
     </div>
   </div>
 </template>
@@ -63,18 +53,18 @@ export default {
     @apply fixed top-0 left-0 z-10 max-w-xs bg-gray-200 rounded-lg shadow-lg pb-4 ml-8 mt-6;
     width: 80%;
   }
+
   @media(max-width: 767px) {
     .app-menu {
       @apply right-0 mx-auto;
     }
   }
+
   .menu-item {
-    @apply w-full tracking-wide font-bold text-lg text-center py-3;
+    @apply w-full block tracking-wide font-bold text-lg text-center py-3;
   }
+
   .menu-item:hover {
-    @apply bg-gray-400 shadow-inner;
-  }
-  .menu-item:hover a {
-    @apply w-full inline-block text-blue-800;
+    @apply bg-gray-400 text-blue-800 shadow-inner;
   }
 </style>
