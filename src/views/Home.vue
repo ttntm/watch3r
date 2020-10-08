@@ -15,7 +15,7 @@
         <router-link :to="{name: 'profile'}" class="btn btn-black mb-16">
           Profile
         </router-link>
-        <a href="https://www.buymeacoffee.com/ttntm" target="_blank" class="inline-block">
+        <a href="https://www.buymeacoffee.com/ttntm" target="_blank" class="inline-block" title="Thank you!">
           <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" class="mx-auto" style="height: 45px; width: auto" alt="Buy me a coffee">
         </a>
       </div>
@@ -40,18 +40,17 @@ export default {
     const router = useRouter();
     const store = useStore();
 
-    const loggedIn = computed(() => store.getters['user/loggedIn']);
-    const redirectStart = computed(() => { return !startPage.value ? 'watchlist' : 'tracker' });
-    const startPage = computed(() => store.getters['user/startPage']);
+    const currentUser = computed(() => store.getters['user/currentUser']);
 
-    watch(loggedIn, () => {
-      if (loggedIn.value) {
-        router.push({ name: redirectStart.value });
+    watch(currentUser, () => {
+      if (currentUser.value) {
+        const target = currentUser.value.user_metadata.user_start === 0 ? 'watchlist' : 'tracker'; // store might not be done updating data yet, so better get it right from the user Object
+        router.push({ name: target });
       }
     })
 
     return {
-      loggedIn,
+      loggedIn: computed(() => store.getters['user/loggedIn']),
     }
   }
 }

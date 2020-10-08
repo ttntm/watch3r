@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import router from '@/router'
 import store from '@/store'
 import App from '@/App.vue'
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import detectTokens from '@/helpers/authorize-tokens.js';
 
 import(/* webpackPreload: true */ '@/assets/styles/index.css');
