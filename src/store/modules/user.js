@@ -232,11 +232,11 @@ export default {
         user
           .update(userData)
           .then(response => {
-            console.log("Updated user account details", response);
+            // console.log("Updated user account details", response);
             resolve(response);
           })
           .catch(error => {
-            console.error("Failed to update user account: %o", error);
+            // console.error("Failed to update user account: %o", error);
             reject(error);
           });
       });

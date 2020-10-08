@@ -46,7 +46,6 @@ export default {
 
     watch(loggedIn, () => {
       if (loggedIn.value) {
-        console.log('redirecting...');
         router.push({ name: redirectStart.value });
       }
     })
