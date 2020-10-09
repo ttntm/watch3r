@@ -17,7 +17,7 @@
         </div>
       </div>
       <ListAddSearchResult v-if="searchResult.id" :mode="mode" :searchResult="searchResult" class="px-8" />
-      <p v-if="searchStatus" v-html="searchStatus" class="px-8 py-4 mb-0" />
+      <p v-if="searchStatus" v-html="searchStatus" class="text-center px-8 py-4 mb-0" />
     </div>
   </div>
 </template>
@@ -73,7 +73,10 @@ export default {
           if(res.Error) {
             searchStatus.value = res.Error; // response -> title not found
           } else {
-            searchStatus.value = '';
+            searchStatus.value = `
+              <span class="text-sm block pt-4">
+                Results provided by <a href="https://www.omdbapi.com" target="_blank" class="text-yellow-600 hover:text-black">OMDb API</a>
+              </span>`;
             searchResult.value.genre = res.Genre;
             searchResult.value.id = res.imdbID;
             searchResult.value.image = res.Poster;

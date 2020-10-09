@@ -48,7 +48,7 @@ import ListPosterModal from '@/components/list/ListPosterModal.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
-import { computed, onBeforeUpdate, ref } from 'vue';
+import { computed, onBeforeUpdate, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
@@ -77,8 +77,9 @@ export default {
     const posterTitle = ref('');
     const searchActive = computed(() => store.getters['tools/searchActive']);
 
-    const getListData = () => {
+    const getListData = (trigger) => {
       if (listData.value.length === 0 && !searchActive.value) {
+        console.log(trigger);
         store.dispatch('list/readList', mode.value);
       }
     }
@@ -91,13 +92,21 @@ export default {
     }
 
     onBeforeUpdate(() => {
-      getListData(); // necessary re-hydration when navigating between list modes; vue re-uses components wherever possible...
-      if (listLength.value > 0) {
+      // need to check 'mode.value', otherwise error when navigating
+      if (listLength.value > 0 && mode.value) {
         store.dispatch('tools/updateSort', mode.value);
       }
     })
 
-    getListData(); // initial data load as in what used to be 'created()'
+    watch(mode, () => {
+      // necessary re-hydration when navigating between list modes; vue re-uses components wherever possible...
+      // need to check 'mode.value', otherwise error when navigating
+      if (mode.value) {
+        getListData('in watch');
+      }
+    })
+
+    getListData('in setup'); // initial data load as in what used to be 'created()'
 
     return {
       addModalOpen: computed(() => store.getters['list/addTitleOpen']),

@@ -20,17 +20,20 @@
 
 <script>
 import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
 export default {
   name: 'Recover',
   setup() {
+    const router = useRouter();
     const store = useStore();
 
     const cred = ref({ email: '' });
 
     const handleRecover = (o) => {
       store.dispatch('user/requestPasswordRecover', o);
+      router.push({ name: 'home' });
     }
 
     return {
