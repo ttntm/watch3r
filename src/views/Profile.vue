@@ -82,7 +82,7 @@ export default {
       };
 
       if (pwd.value !== '') {
-        newData.pwd = pwd.value;
+        newData.password = pwd.value;
       }
 
       btnState.value.enabled = false;
