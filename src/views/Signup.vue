@@ -2,8 +2,7 @@
   <div class="flex flex-grow items-center justify-items-center w-full h-full">
     <form
       id="signup-form"
-      onsubmit="return false"
-      @keyup.enter="handleSignup(pwd)"
+      @submit.prevent
       class="text-center self-center max-w-full md:max-w-sm mx-auto">
       <div class="mb-12">
         <h1 class="text-3xl text-yellow-600">Signup</h1>
@@ -14,7 +13,7 @@
           <label for="signup-pwd">Password</label>
           <input v-model="pwd" id="signup-pwd" type="password" placeholder="************" required>
         </div>
-        <button @click="handleSignup(pwd)" class="btn btn-black">Signup</button>
+        <button @click="handleSignup(pwd)" class="btn btn-black" v-click-blur>Signup</button>
         <p v-if="status" v-html="status" class="text-sm font-bold mt-6 mb-0" />
       </div>
     </form>

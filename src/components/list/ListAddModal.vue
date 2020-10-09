@@ -5,6 +5,7 @@
       <button
         @click.prevent="closeModal()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
+        title="Close"
       >×</button>
     </div>
     <div class="text-gray-600">

@@ -5,11 +5,12 @@
       <button
         @click.prevent="closeModal()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
+        title="Close"
       >×</button>
     </div>
     <form
       id="edit-form"
-      onsubmit="return false"
+      @submit.prevent
       class="text-gray-800 pt-4 pb-2 px-6 sm:px-8"
     >
       <div class="mb-6">

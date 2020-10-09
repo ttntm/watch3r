@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="text-center self-center max-w-full md:max-w-sm mx-auto">
-      <div class="mb-16">
+      <div class="mb-12">
         <h1 class="text-3xl text-yellow-600">watch3r</h1>
         <h2 class="text-xl">A watchlist and tracking app for your movies and series</h2>
       </div>
@@ -15,12 +15,12 @@
         <router-link :to="{name: 'profile'}" class="btn btn-black mb-16">
           Profile
         </router-link>
-        <a href="https://www.buymeacoffee.com/ttntm" target="_blank" class="inline-block" title="Thank you!">
+        <a href="https://www.buymeacoffee.com/ttntm" target="_blank" class="inline-block shadow-lg hover:shadow-none hover:opacity-75" title="Thank you!">
           <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" class="mx-auto" style="height: 45px; width: auto" alt="Buy me a coffee">
         </a>
       </div>
       <HomeLogin v-else />
-      <p v-if="!loggedIn" class="text-sm mt-8">No account? <a href="mailto:hello@watch3r.app" class="text-yellow-600 hover:text-gray-900">Contact us</a> and ask for an invite.</p>
+      <p v-if="!loggedIn" class="text-sm mt-8">No account? <router-link :to="{name: 'invite'}" class="text-yellow-600 hover:underline">Request an invite</router-link>.</p>
     </div>
   </div>
 </template>

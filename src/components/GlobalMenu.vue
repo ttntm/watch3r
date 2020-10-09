@@ -5,22 +5,23 @@
       <button
         @click.prevent="closeMenu()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer px-4 hover:opacity-100 focus:outline-none"
+        title="Close Menu"
       >×</button>
     </div>
     <div class="flex flex-col text-gray-800">
-      <router-link :to="{name: 'home'}" class="menu-item">
+      <router-link :to="{name: 'home'}" class="menu-item" v-click-blur>
         Home
       </router-link>
-      <router-link :to="{name: 'watchlist'}" v-if="loggedIn" class="menu-item">
+      <router-link :to="{name: 'watchlist'}" v-if="loggedIn" class="menu-item" v-click-blur>
         Watchlist
       </router-link>
-      <router-link :to="{name: 'tracker'}" v-if="loggedIn" class="menu-item">
+      <router-link :to="{name: 'tracker'}" v-if="loggedIn" class="menu-item" v-click-blur>
         Tracker
       </router-link>
-      <router-link :to="{name: 'profile'}" v-if="loggedIn" class="menu-item">
+      <router-link :to="{name: 'profile'}" v-if="loggedIn" class="menu-item" v-click-blur>
         Profile
       </router-link>
-      <router-link :to="{name: 'about'}" class="menu-item">
+      <router-link :to="{name: 'about'}" class="menu-item" v-click-blur>
         About
       </router-link>
     </div>

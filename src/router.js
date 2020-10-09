@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
 
 const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
+const Invite = () => import(/* webpackChunkName: "Invite" */ '@/views/Invite.vue');
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
 const List = () => import(/* webpackChunkName: "List" */ '@/views/List.vue');
 const Profile = () => import(/* webpackChunkName: "Profile" */ '@/views/Profile.vue');
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+      path: '/invite',
+      name: 'invite',
+      component: Invite
     },
     {
       path: '/profile',

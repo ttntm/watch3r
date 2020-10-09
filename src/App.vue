@@ -5,7 +5,7 @@
       <GlobalMenu v-if="menuOpen" />
     </transition>
     <div class="container flex flex-col flex-grow flex-shrink-0 px-4 mx-auto">
-      <router-view />
+      <router-view :key="routeFull" />
     </div>
     <GlobalFooter />
     <ToastMessage />
@@ -18,6 +18,7 @@ import GlobalMenu from '@/components/GlobalMenu.vue'
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import ToastMessage from '@/components/ToastMessage.vue'
 import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 
 export default {
@@ -29,9 +30,11 @@ export default {
     ToastMessage
   },
   setup() {
+    const route = useRoute();
     const store = useStore();
 
     return {
+      routeFull: computed(() => route.fullPath),
       menuOpen: computed(() => store.getters['app/menuOpen']),
     }
   }

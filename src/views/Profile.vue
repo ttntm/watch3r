@@ -3,7 +3,7 @@
     <form
       v-if="user"
       id="user-profile-form"
-      onsubmit="return false"
+      @submit.prevent
       class="user-profile-box w-full max-w-full self-center p-8 mx-auto"
     >
       <h1 class="text-2xl text-blue-800 mb-6">User Profile</h1>

@@ -1,14 +1,14 @@
 <template>
   <div id="list" class="">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-      <div class="mb-8 sm:mb-0">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+      <div class="mb-8 sm:mb-0 mr-8 md:mr-0">
         <h2 class="text-yellow-600 capitalize">{{ mode }}</h2>
         <p class="mb-0">
           {{ subtitle }}
           <span v-if="listLength !== 0  && !searchActive" class="font-bold">Your {{ mode }} contains {{ listLength }} items.</span>
         </p>
       </div>
-      <div>
+      <div class="flex-shrink-0">
         <BtnAddTitle />
         <transition name="modal">
           <ListAddModal v-if="addModalOpen" :mode="mode" />
@@ -48,9 +48,9 @@ import ListPosterModal from '@/components/list/ListPosterModal.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
-import { computed, onBeforeUpdate, ref, watch } from 'vue';
-import { useStore } from 'vuex';
+import { computed, onBeforeUpdate, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 
 export default {
   name: 'List',
@@ -94,14 +94,6 @@ export default {
       // need to check 'mode.value', otherwise error when navigating
       if (listLength.value > 0 && mode.value) {
         store.dispatch('tools/updateSort', mode.value);
-      }
-    })
-
-    watch(mode, () => {
-      // necessary re-hydration when navigating between list modes; vue re-uses components wherever possible...
-      // need to check 'mode.value', otherwise error when navigating
-      if (mode.value) {
-        getListData();
       }
     })
 
