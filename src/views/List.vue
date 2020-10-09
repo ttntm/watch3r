@@ -77,9 +77,8 @@ export default {
     const posterTitle = ref('');
     const searchActive = computed(() => store.getters['tools/searchActive']);
 
-    const getListData = (trigger) => {
+    const getListData = () => {
       if (listData.value.length === 0 && !searchActive.value) {
-        console.log(trigger);
         store.dispatch('list/readList', mode.value);
       }
     }
@@ -102,11 +101,11 @@ export default {
       // necessary re-hydration when navigating between list modes; vue re-uses components wherever possible...
       // need to check 'mode.value', otherwise error when navigating
       if (mode.value) {
-        getListData('in watch');
+        getListData();
       }
     })
 
-    getListData('in setup'); // initial data load as in what used to be 'created()'
+    getListData(); // initial data load as in what used to be 'created()'
 
     return {
       addModalOpen: computed(() => store.getters['list/addTitleOpen']),
