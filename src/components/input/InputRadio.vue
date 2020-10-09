@@ -41,6 +41,10 @@ export default {
     height: 1px;
   }
 
+  input[type=radio]:focus + label {
+    @apply text-yellow-600 underline;
+  }
+
   input[type=radio] + label {
     @apply block pl-4 ml-2;
   }

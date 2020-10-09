@@ -7,7 +7,11 @@
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
       >×</button>
     </div>
-    <div class="text-gray-800 pt-4 pb-2 px-6 sm:px-8">
+    <form
+      id="edit-form"
+      onsubmit="return false"
+      class="text-gray-800 pt-4 pb-2 px-6 sm:px-8"
+    >
       <div class="mb-6">
         <h4>Date Watched</h4>
         <input v-model="editItem.userDateWatched" class="text-sm text-gray-600 px-4 py-2 mb-6" type="date">
@@ -28,7 +32,7 @@
         </button>
         <button @click.prevent="closeModal()" class="btn btn-muted">Cancel</button>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 

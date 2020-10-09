@@ -1,10 +1,15 @@
 <template>
   <div id="user-profile" class="flex flex-grow items-center justify-items-center w-full h-full">
-    <div v-if="user" class="user-profile-box w-full max-w-full self-center p-8 mx-auto">
+    <form
+      v-if="user"
+      id="user-profile-form"
+      onsubmit="return false"
+      class="user-profile-box w-full max-w-full self-center p-8 mx-auto"
+    >
       <h1 class="text-2xl text-blue-800 mb-6">User Profile</h1>
       <div class="input-group mb-8">
         <label for="email">Email Address</label>
-        <p class="text-xs text-gray-600 mb-3">The email address associated with your account. Self-service changes are not possible at this time.</p>
+        <p class="text-xs text-gray-600 mb-3">The email address associated with your account.</p>
         <input :value="user.email" id="email" type="email" class="text-gray-600" disabled>
       </div>
       <div class="input-group mb-8">
@@ -36,7 +41,7 @@
         </div>
       </div>
       <button @click="updateUserProfile()" class="btn btn-black" :disabled="!btnState.enabled" v-click-blur>{{ btnState.text }}</button>
-    </div>
+    </form>
   </div>
 </template>
 
@@ -68,7 +73,6 @@ export default {
     const updateStartPage = (s) => { startPage.value = s; }
 
     const updateUserProfile = () => {
-      let msg = { text: '', type: ''};
       let newData = {
         email: user.value.email,
         data: {
@@ -84,28 +88,16 @@ export default {
       btnState.value.enabled = false;
       btnState.value.text = `Updating...`;
 
-      store.dispatch('user/updateUserAccount', newData)
-        .then(() => {
-          msg.text = `Profile successfully updated.`;
-          msg.type =  'success';
-          store.dispatch('app/sendToastMessage', msg);
-          store.dispatch('user/setUserPrefs');
-        })
-        .catch(error => {
-          console.error(`Error updating the user profile`, error);
-          msg.text = `Error updating the user profile, please try again later.`;
-          msg.type =  'error';
-          store.dispatch('app/sendToastMessage', msg);
-        })
+      store.dispatch('user/updateUserAccount', newData);
 
       setTimeout(() => {
         btnState.value.enabled = true;
-      btnState.value.text = `Update Profile`;
+        btnState.value.text = `Update Profile`;
       }, 1500)
     }
 
     sortSelected.value = sortPreset.value;
-    startPage.value = pages[startPreset.value]; // the radios need strings to function
+    startPage.value = pages[startPreset.value]; // the radios need string values to function
 
     return {
       allSortModes: store.getters['tools/sortMode'],

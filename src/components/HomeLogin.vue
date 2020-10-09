@@ -1,5 +1,10 @@
 <template>
-  <div class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10">
+  <form
+    id="login-form"
+    onsubmit="return false"
+    @keyup.enter="handleLogin()"
+    class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10"
+  >
     <div class="input-group">
       <label for="login-email">Email</label>
       <input v-model="credentials.email" id="login-email" type="email" placeholder="jane@doe.com">
@@ -13,7 +18,7 @@
     </div>
     <button @click="handleLogin()" v-click-blur class="btn btn-black">Login</button>
     <p v-if="cValidateMsg !== ''" v-html="cValidateMsg" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" />
-  </div>
+  </form>
 </template>
 
 <script>

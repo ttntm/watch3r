@@ -204,10 +204,22 @@ export default {
       commit("SET_GOTRUE", initNewGoTrue(APIUrl));
     },
 
-    requestPasswordRecover({ state }, email) {
+    requestPasswordRecover({ dispatch, state }, email) {
+      let msg = { text: '', type: ''};
       state.GoTrueAuth.requestPasswordRecovery(email)
-        .then(response => alert("Recovery email sent", { response }))
-        .catch(error => alert("Error sending recovery mail:", error));
+        .then(response => {
+          msg.text = `Recovery email sent.`;
+          msg.type =  'success';
+          dispatch('app/sendToastMessage', msg, { root: true });
+          resolve(response);
+        })
+        .catch(error => {
+          console.error(`Error sending recovery email`, error);
+          msg.text = `Error sending recovery email, please try again later.`;
+          msg.type =  'error';
+          dispatch('app/sendToastMessage', msg, { root: true });
+          reject(error);
+        });
     },
 
     attemptPasswordRecovery({ state, commit }, token) {
@@ -225,18 +237,26 @@ export default {
       });
     },
 
-    updateUserAccount({ state }, userData) {
-      //TODO : fix bug in this action - https://github.com/chiubaca/vue-netlify-fauna-starter-kit/issues/12
+    updateUserAccount({ dispatch, state }, userData) {
+      let msg = { text: '', type: ''};
       return new Promise((resolve, reject) => {
         const user = state.GoTrueAuth.currentUser();
         user
           .update(userData)
           .then(response => {
             // console.log("Updated user account details", response);
+            msg.text = `Profile successfully updated.`;
+            msg.type =  'success';
+            dispatch('setUserPrefs');
+            dispatch('app/sendToastMessage', msg, { root: true });
             resolve(response);
           })
           .catch(error => {
             // console.error("Failed to update user account: %o", error);
+            console.error(`Error updating the user profile`, error);
+            msg.text = `Error updating the user profile, please try again later.`;
+            msg.type =  'error';
+            dispatch('app/sendToastMessage', msg, { root: true });
             reject(error);
           });
       });

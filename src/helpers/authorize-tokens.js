@@ -1,8 +1,13 @@
 /*
 Extract and validate tokens in the URL if they are present.
 */
-import store from '@/store';
-import router from '@/router';
+// import store from '@/store';
+// import router from '@/router';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+
+const router = useRouter();
+const store = useStore();
 
 /**
  * Reads the URL hash attempts and tries to detect if there is confirmation tokens from an email signup or
@@ -111,7 +116,7 @@ function confirmRecoveryToken(recoveryToken) {
   store
     .dispatch("user/attemptPasswordRecovery", recoveryToken)
     .then(() => {
-      // router.push("profile?showUpdateUserModal=true");
+      router.push({ name: 'profile' });
       alert("Account has been recovered. Update your password now.");
     })
     .catch(() => {
