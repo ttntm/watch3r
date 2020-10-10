@@ -11,7 +11,12 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app" class=""></div>
     <!-- built files will be auto injected -->
+    <div id="app" class=""></div>
+    <!--  skeleton invite form -- Netlify needs this for their bots to discover the form  -->
+    <form name="RequestInvite" netlify-honeypot="bot-field" netlify hidden>
+      <input name="bot-field" type="hidden">
+      <input id="email" name="email" type="email">
+    </form>
   </body>
 </html>

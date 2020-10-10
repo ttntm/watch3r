@@ -1,22 +1,28 @@
 <template>
   <div class="flex flex-grow items-center justify-items-center w-full h-full">
-    <form
-      id="signup-form"
-      @submit.prevent
-      class="text-center self-center max-w-full md:max-w-sm mx-auto">
-      <div class="mb-12">
-        <h1 class="text-3xl text-yellow-600">Signup</h1>
-        <p>Please choose a password for your account.</p>
-      </div>
-      <div class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10">
+    <div class="text-center self-center max-w-sm mx-auto">
+      <form
+        id="signup-form"
+        @submit.prevent="handleSignup(pwd)"
+        class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10"
+      >
+        <h2 class="text-xl text-blue-800">Confirm Signup</h2>
+        <p class="text-sm">
+          We're almost done processing your invite - please choose a password for your account.
+        </p>
         <div class="input-group">
           <label for="signup-pwd">Password</label>
           <input v-model="pwd" id="signup-pwd" type="password" placeholder="************" required>
         </div>
-        <button @click="handleSignup(pwd)" class="btn btn-black" v-click-blur>Signup</button>
+        <button type="submit" class="btn btn-black" v-click-blur>Signup</button>
         <p v-if="status" v-html="status" class="text-sm font-bold mt-6 mb-0" />
-      </div>
-    </form>
+      </form>
+      <p class="text-xs text-center text-gray-600 mt-8">
+        Signing up for an account means that you accept Fauna DB and Netlify processing your email and IP address according to their respective data processing guidelines: <a href="https://www2.fauna.com/privacy" target="_blank" class="underline">Fauna DB</a> | <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" class="underline">Netlify</a>.
+        <br /><br />
+        We don't use analytics, cookies or tracking, so watch3r.app itself does <em>not</em> collect and/or store any personally identifiable information.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -63,7 +69,9 @@ export default {
             msg.value.text = 'Account created, redirecting to login...';
             msg.value.type =  'success';
             store.dispatch('app/sendToastMessage', msg);
-            router.push({ name: 'home' });
+            setTimeout(() => {
+              router.push({ name: 'home' });
+            }, 2000);
           })
           .catch(error => {
             msg.value.text = 'Error processing the invite, please try again later.';
