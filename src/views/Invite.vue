@@ -4,7 +4,7 @@
       <form
         id="invite-form"
         name="RequestInvite"
-        @submit.prevent="handleInvite(cred.email)"
+        @submit.prevent="handleInvite(cred)"
         netlify-honeypot="bot-field"
         class="invite-box px-12 py-10"
         netlify
@@ -51,7 +51,7 @@ export default {
         .join("&");
     }
 
-    const handleInvite = (o) => {
+    const handleInvite = (obj) => {
       let msg = { text: '', type: ''};
 
       btnActive.value = false;
@@ -60,7 +60,7 @@ export default {
         fetch('/', {
           body: encode({
             'form-name': 'RequestInvite',
-            ...cred.value
+            ...obj
           }),
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -68,16 +68,16 @@ export default {
           method: 'POST',
         })
         .then(() => {
-          msg.value.text = `Request received! Keep an eye on your inbox, we'll contact you soon...`;
-          msg.value.type =  'success';
+          msg.text = `Request received! Keep an eye on your inbox, we'll contact you soon...`;
+          msg.type =  'success';
           store.dispatch('app/sendToastMessage', msg);
           setTimeout(() => {
             router.push({ name: 'home' });
           }, 2000);
         })
         .catch(() => {
-          msg.value.text = `Oops, seems like an error occured. Please try again later.`;
-          msg.value.type =  'error';
+          msg.text = `Oops, seems like an error occured. Please try again later.`;
+          msg.type =  'error';
           store.dispatch('app/sendToastMessage', msg);
           btnActive.value = true;
         })
