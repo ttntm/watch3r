@@ -18,7 +18,7 @@
           <label for="email">Email Address</label>
           <input v-model="cred.email" id="email" name="email" type="email" class="text-gray-600" placeholder="hello@watch3r.app">
         </div>
-        <button type="submit" class="btn btn-black mr-auto" :disabled="!btnActive" v-click-blur>Request Invite</button>
+        <button type="submit" class="btn btn-black mr-auto" :disabled="!btnRequest.active" v-click-blur>{{ btnRequest.text }}</button>
       </form>
       <p class="text-xs text-center text-gray-600 mt-8">
         This form will be processed by Netlify. As such, you'll agree with Netlify processing your email and IP address according to their <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" class="underline">data processing guidelines</a>.
@@ -38,7 +38,7 @@ export default {
     const router = useRouter();
     const store = useStore();
 
-    const btnActive = ref(true);
+    const btnRequest = ref({ active: true, text: 'Request Invite' });
     const cred = ref({ email: '' });
     const rx = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
     const valid = computed(() => rx.test(cred.value.email));
@@ -54,9 +54,10 @@ export default {
     const handleInvite = (obj) => {
       let msg = { text: '', type: ''};
 
-      btnActive.value = false;
-
       if (valid.value) {
+        btnRequest.value.active = false;
+        btnRequest.value.text = 'Requesting...'
+
         fetch('/', {
           body: encode({
             'form-name': 'RequestInvite',
@@ -79,18 +80,20 @@ export default {
           msg.text = `Oops, seems like an error occured. Please try again later.`;
           msg.type =  'error';
           store.dispatch('app/sendToastMessage', msg);
-          btnActive.value = true;
+          btnRequest.value.active = true;
+          btnRequest.value.text = 'Request Invite';
         })
       } else {
         alert('Please enter a valid email address...');
         setTimeout(() => {
-          btnActive.value = true;
+          btnRequest.value.active = true;
+          btnRequest.value.text = 'Request Invite';
         }, 1000);
       }
     }
 
     return {
-      btnActive,
+      btnRequest,
       cred,
       handleInvite
     }
