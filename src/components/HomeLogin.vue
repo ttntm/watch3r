@@ -1,8 +1,7 @@
 <template>
   <form
     id="login-form"
-    onsubmit="return false"
-    @submit.prevent
+    @submit.prevent="handleLogin()"
     class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10"
   >
     <div class="input-group">
@@ -11,12 +10,12 @@
     </div>
     <div class="input-group">
       <label for="login-pwd">Password</label>
-      <input v-model="credentials.password" @keyup.enter="handleLogin()" id="login-pwd" type="password" placeholder="************">
+      <input v-model="credentials.password" id="login-pwd" type="password" placeholder="************">
       <router-link :to="{name: 'recover'}" class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0">
         Forgot your password?
       </router-link>
     </div>
-    <button @click="handleLogin()" class="btn btn-black" v-click-blur>Login</button>
+    <button type="submit" class="btn btn-black" v-click-blur>Login</button>
     <p v-if="cValidateMsg !== ''" v-html="cValidateMsg" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" />
   </form>
 </template>
