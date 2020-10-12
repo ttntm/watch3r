@@ -2,11 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
 
 const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
-const Invite = () => import(/* webpackChunkName: "Invite" */ '@/views/Invite.vue');
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
+const Invite = () => import(/* webpackChunkName: "Invite" */ '@/views/Invite.vue');
 const List = () => import(/* webpackChunkName: "List" */ '@/views/List.vue');
 const Profile = () => import(/* webpackChunkName: "Profile" */ '@/views/Profile.vue');
 const Recover = () => import(/* webpackChunkName: "Recover" */ '@/views/Recover.vue');
+const Support = () => import(/* webpackChunkName: "Support" */ '@/views/Support.vue');
 const Signup = () => import(/* webpackChunkName: "Signup" */ '@/views/Signup.vue');
 
 const router = createRouter({
@@ -38,7 +39,20 @@ const router = createRouter({
     {
       path: '/recover',
       name: 'recover',
-      component: Recover
+      component: Recover,
+      beforeEnter: (to, from, next) => {
+        if(store.getters['user/loggedIn']) {
+          // only users that aren't logged in can go to signup
+          router.push({ name: 'home' });
+        } else {
+          return next();
+        }
+      },
+    },
+    {
+      path: '/support',
+      name: 'support',
+      component: Support
     },
     {
       path: '/signup',
@@ -94,14 +108,14 @@ router.beforeEach((to, from, next) => {
   store.dispatch('list/toggleAddTitleModal', false);
   store.dispatch('list/toggleEditTitleModal', false);
 
-  if(store.getters['tools/searchActive']) {
+  if (store.getters['tools/searchActive']) {
     store.dispatch('tools/resetList');
   }
 
-  if(!to.meta.authRequired) {
+  if (!to.meta.authRequired) {
     return next();
   }
-  if(to.meta.authRequired && store.getters['user/loggedIn']) {
+  if (to.meta.authRequired && store.getters['user/loggedIn']) {
     return next();
   } else {
     router.push({ name: 'home' });

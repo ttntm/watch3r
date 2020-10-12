@@ -13,7 +13,7 @@
         <p class="text-xs text-gray-600 mb-3">The email address associated with your account.</p>
         <input v-model="cred.email" id="email" type="email" class="text-gray-600" placeholder="forgotten@email.address">
       </div>
-      <button type="submit" class="btn btn-black mr-auto" v-click-blur>Recover Account</button>
+      <button type="submit" class="btn btn-black mr-auto" :disabled="!cred.email" v-click-blur>Recover Account</button>
     </form>
   </div>
 </template>

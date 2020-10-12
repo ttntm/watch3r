@@ -3,7 +3,7 @@
     <div class="flex-grow py-4">
       <h4 class="text-gray-800 mb-0">{{ searchResult.title }}</h4>
       <p class="text-sm mb-0">{{ searchResult.genre }}; {{ searchResult.year }}</p>
-      <a :href="`https://www.imdb.com/title/${searchResult.id}`" target="_blank" rel="noopener" class="text-xs text-yellow-600 hover:text-black" title="View on IMDb">View on IMDb</a>
+      <a v-if="showIMDb" :href="`https://www.imdb.com/title/${searchResult.id}`" target="_blank" rel="noopener" class="text-xs text-yellow-600 hover:text-black" title="View on IMDb">View on IMDb</a>
     </div>
     <button
       @click.prevent="addTitleToList(searchResult)"
@@ -47,6 +47,7 @@ export default {
     return {
       addBtnState,
       addTitleToList,
+      showIMDb: computed(() => store.getters['user/showIMDbLinks']),
       writeSuccess: computed(() => store.getters['list/writeSuccess']),
     }
   }

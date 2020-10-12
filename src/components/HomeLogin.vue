@@ -15,7 +15,7 @@
         Forgot your password?
       </router-link>
     </div>
-    <button type="submit" class="btn btn-black" v-click-blur>Login</button>
+    <button type="submit" class="btn btn-black" :disabled="!credentials.email || !credentials.password" v-click-blur>Login</button>
     <p v-if="cValidateMsg !== ''" v-html="cValidateMsg" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" />
   </form>
 </template>

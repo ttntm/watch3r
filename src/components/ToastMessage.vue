@@ -1,5 +1,5 @@
 <template>
-  <div id="toast-message" class="fixed bottom-0 right-0 max-w-md m-8">
+  <div id="toast-message" class="fixed bottom-0 right-0 max-w-md z-20 m-8">
     <transition name="slide-fade">
       <div
         v-if="toastMessage"

@@ -154,6 +154,7 @@
 
   button:disabled {
     cursor: not-allowed;
+    opacity: 0.9;
   }
 
   .btn {
@@ -165,7 +166,7 @@
   }
 
   .btn:hover {
-    @apply shadow-none;
+    @apply shadow-inner;
   }
 
   .btn-black {

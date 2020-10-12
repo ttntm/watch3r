@@ -18,7 +18,7 @@
           <label for="email">Email Address</label>
           <input v-model="cred.email" id="email" name="email" type="email" class="text-gray-600" placeholder="hello@watch3r.app">
         </div>
-        <button type="submit" class="btn btn-black mr-auto" :disabled="!btnRequest.active" v-click-blur>{{ btnRequest.text }}</button>
+        <button type="submit" class="btn btn-black mr-auto" :disabled="!btnRequest.active || !cred.email" v-click-blur>{{ btnRequest.text }}</button>
       </form>
       <p class="text-xs text-center text-gray-600 mt-8">
         This form will be processed by Netlify. As such, you'll agree with Netlify processing your email and IP address according to their <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" class="underline">data processing guidelines</a>.

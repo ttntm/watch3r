@@ -14,7 +14,7 @@
           <label for="signup-pwd">Password</label>
           <input v-model="pwd" id="signup-pwd" type="password" placeholder="************" required>
         </div>
-        <button type="submit" class="btn btn-black" v-click-blur>Signup</button>
+        <button type="submit" class="btn btn-black" :disabled="!pwd" v-click-blur>Signup</button>
         <p v-if="status" v-html="status" class="text-sm font-bold mt-6 mb-0" />
       </form>
       <p class="text-xs text-center text-gray-600 mt-8">

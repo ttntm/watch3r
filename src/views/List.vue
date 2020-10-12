@@ -91,13 +91,15 @@ export default {
     }
 
     onBeforeUpdate(() => {
-      // need to check 'mode.value', otherwise error when navigating
-      if (listLength.value > 0 && mode.value) {
+      // to keep the respective list sorted when adding/removing items
+      if (listLength.value > 0) {
         store.dispatch('tools/updateSort', mode.value);
       }
     })
 
     getListData(); // initial data load as in what used to be 'created()'
+
+    store.dispatch('tools/updateSort', mode.value);
 
     return {
       addModalOpen: computed(() => store.getters['list/addTitleOpen']),

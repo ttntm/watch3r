@@ -79,18 +79,19 @@ export default {
         case 'tracklist':
           // update a title that's already in the tracklist
           store.dispatch('list/editListItem', data); // we'll get a toast message confirmation back
-          if (searchActive.value) {
-            // update DB data and also update displayed data (so search results do not reset)
-            store.dispatch('list/updateSearchResult', [data, mode]);
-          }
           break;
         case 'watchlist':
           // write the title + user input to the tracklist
           store.dispatch('list/writeList', [data, 'tracklist']); // we'll get a toast message confirmation back
-          store.dispatch('list/deleteItem', [data.refId, 'watchlist', true]);
+          store.dispatch('list/deleteItem', [data.refId, mode, true]);
           break;
         default:
           return
+      }
+
+      if (searchActive.value) {
+        // update DB data and also update displayed data (so search results do not reset)
+        store.dispatch('list/updateSearchResult', data);
       }
     }
 

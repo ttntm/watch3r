@@ -4,7 +4,7 @@
       v-if="user"
       id="user-profile-form"
       @submit.prevent
-      class="user-profile-box w-full max-w-full self-center p-8 mx-auto"
+      class="user-profile-box w-full max-w-full self-center py-10 px-12 mx-auto"
     >
       <h1 class="text-2xl text-blue-800 mb-6">User Profile</h1>
       <div class="input-group mb-8">
@@ -18,10 +18,18 @@
         <input v-model="pwd" id="pwd" type="password" placeholder="************">
       </div>
       <div class="input-group mb-8">
+        <label>Start Page</label>
+        <p class="text-xs text-gray-600 mb-3">Automatic forwarding after login.</p>
+        <div class="flex flex-row">
+          <InputRadio class="text-sm mr-4" name="start-page" :label="'watchlist'" :value="profile_startPage" @update:radio="updateStartPage($event)" />
+          <InputRadio class="text-sm" name="start-page" :label="'tracklist'" :value="profile_startPage" @update:radio="updateStartPage($event)" />
+        </div>
+      </div>
+      <div class="input-group mb-8">
         <label for="sort-preset">List Sorting</label>
         <p class="text-xs text-gray-600 mb-3">This option controls how lists are sorted after logging in (unless cached otherwise). Does <em>not</em> override later sort mode selection.</p>
         <div class="w-full relative text-gray-700 text-sm bg-gray-300">
-          <select name="sorting" id="sort-preset" v-model="sortSelected">
+          <select name="sorting" id="sort-preset" v-model="profile_sortSelected">
             <option disabled value="">Default Sorting</option>
             <option v-for="(mode, index) in allSortModes" :key="index" :value="index" class="">{{ mode.name }} ({{ mode.order }})</option>
           </select>
@@ -33,12 +41,9 @@
         </div>
       </div>
       <div class="input-group mb-8">
-        <label>Start Page</label>
-        <p class="text-xs text-gray-600 mb-3">Automatic forwarding after login.</p>
-        <div class="flex flex-row">
-          <InputRadio class="text-sm mr-4" name="start-page" :label="'watchlist'" :value="startPage" @update:radio="updateStartPage($event)" />
-          <InputRadio class="text-sm" name="start-page" :label="'tracklist'" :value="startPage" @update:radio="updateStartPage($event)" />
-        </div>
+        <label>IMDb</label>
+        <p class="text-xs text-gray-600 mb-3">IMDb link display in search results and with list items.</p>
+        <InputCheckbox v-model="profile_imdbLinks" :name="'imdb-links'" @update:cb="updateIMDbLinks($event)">Show IMDb links</InputCheckbox>
       </div>
       <button @click="updateUserProfile()" class="btn btn-black" :disabled="!btnState.enabled" v-click-blur>{{ btnState.text }}</button>
     </form>
@@ -46,6 +51,7 @@
 </template>
 
 <script>
+import InputCheckbox from '@/components/input/InputCheckbox.vue';
 import InputRadio from '@/components/input/InputRadio.vue';
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
@@ -53,6 +59,7 @@ import { useStore } from 'vuex';
 export default {
   name: 'Profile',
   components: {
+    InputCheckbox,
     InputRadio
   },
   setup() {
@@ -64,20 +71,24 @@ export default {
     });
     const pages = ['watchlist', 'tracklist'];
     const pwd = ref('');
-    const sortPreset = computed(() => store.getters[`user/sortPreset`]);
-    const sortSelected = ref();
-    const startPage = ref('');
-    const startPreset = computed(() => store.getters[`user/startPage`]);
+    const profile_imdbLinks = ref();
+    const profile_sortSelected = ref();
+    const profile_startPage = ref('');
+    const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
+    const sortPreset = computed(() => store.getters['user/sortPreset']);
+    const startPreset = computed(() => store.getters['user/startPage']);
     const user = computed(() => store.getters['user/currentUser']);
 
-    const updateStartPage = (s) => { startPage.value = s; }
+    const updateIMDbLinks = (i) => { profile_imdbLinks.value = i; }
+    const updateStartPage = (s) => { profile_startPage.value = s; }
 
     const updateUserProfile = () => {
       let newData = {
         email: user.value.email,
         data: {
-          user_sort: sortSelected.value,
-          user_start: pages.indexOf(startPage.value)
+          user_imdb: profile_imdbLinks.value,
+          user_sort: profile_sortSelected.value,
+          user_start: pages.indexOf(profile_startPage.value)
         }
       };
 
@@ -96,15 +107,18 @@ export default {
       }, 1500)
     }
 
-    sortSelected.value = sortPreset.value;
-    startPage.value = pages[startPreset.value]; // the radios need string values to function
+    profile_imdbLinks.value = showIMDb.value;
+    profile_sortSelected.value = sortPreset.value;
+    profile_startPage.value = pages[startPreset.value]; // the radios need string values to function
 
     return {
       allSortModes: store.getters['tools/sortMode'],
       btnState,
       pwd,
-      sortSelected,
-      startPage,
+      profile_imdbLinks,
+      profile_sortSelected,
+      profile_startPage,
+      updateIMDbLinks,
       updateStartPage,
       updateUserProfile,
       user

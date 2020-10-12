@@ -10,16 +10,21 @@ export default {
     return {
       currentUser: null,
       GoTrueAuth: null,
-      sortPreset: 1, // array index based on store.getters['tools/sortMode']
-      startPage: 0 // 0 -> watchlist | 1 -> tracklist
+      userOptions: {
+        showIMDbLinks: true,
+        sortPreset: 1, // array index based on store.getters['tools/sortMode']
+        startPage: 0 // 0 -> watchlist | 1 -> tracklist
+      }
     };
   },
   getters: {
     loggedIn: state => !!state.currentUser,
     currentUser: state => state.currentUser,
     GoTrueAuth: state => state.GoTrueAuth,
-    sortPreset: state => state.sortPreset,
-    startPage: state => state.startPage
+    showIMDbLinks: state => state.userOptions.showIMDbLinks,
+    sortPreset: state => state.userOptions.sortPreset,
+    startPage: state => state.userOptions.startPage,
+    userOptions: state => state.userOptions,
   },
   mutations: {
     SET_GOTRUE(state, value) {
@@ -28,11 +33,14 @@ export default {
     SET_CURRENT_USER(state, value) {
       state.currentUser = value;
     },
+    SET_IMDB_LINKS(state, value) {
+      state.userOptions.showIMDbLinks = value;
+    },
     SET_SORT_PRESET(state, value) {
-      state.sortPreset = value;
+      state.userOptions.sortPreset = value;
     },
     SET_START_PAGE(state, value) {
-      state.startPage = value;
+      state.userOptions.startPage = value;
     }
   },
   actions: {
@@ -67,12 +75,13 @@ export default {
      */
     attemptSignup({ getters, state }, credentials) {
       //console.log(`Attempting signup for ${credentials.email}...`, credentials);
-      const userSort = getters['sortPreset'];
-      const userStart = getters['startPage'];
+      const userOptions = getters['userOptions'];
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.signup(credentials.email, credentials.password, {
-          user_sort: userSort,
-          user_start: userStart
+          // set defaults
+          user_imdb: userOptions.showIMDbLinks,
+          user_sort: userOptions.userSort,
+          user_start: userOptions.userStart
         })
           .then(response => {
             //console.log(`Confirmation email sent`, response);
@@ -266,21 +275,22 @@ export default {
       // set user preferences with login
       const user = getters['currentUser'];
       const userMeta = user.user_metadata;
-      const userSort = getters['sortPreset'];
-      const userStart = getters['startPage'];
+      const userOptions = getters['userOptions'];
 
       if (!Object.keys(userMeta).length > 0) {
         // user has no preferences -- console.log('setting DEFAULT prefs...');
         let userUpdate = {
           email: user.email,
           data: {
-            user_sort: userSort,
-            user_start: userStart
+            user_imdb: userOptions.showIMDbLinks,
+            user_sort: userOptions.userSort,
+            user_start: userOptions.userStart
           }
         };
         dispatch('updateUserAccount', userUpdate);
       } else {
         // user preferences are available -- console.log('setting USER prefs...');
+        commit('SET_IMDB_LINKS', userMeta.user_imdb);
         commit('SET_SORT_PRESET', userMeta.user_sort);
         commit('SET_START_PAGE', userMeta.user_start);
       }

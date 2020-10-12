@@ -124,7 +124,7 @@ export default {
      *  READ OPERATIONS
      */
 
-    async readList({ commit, rootGetters }, mode) {
+    async readList({ commit, dispatch, getters, rootGetters }, mode) {
       const fn = rootGetters['app/functions'];
       let response;
       const searchActive = rootGetters['tools/searchActive'];
@@ -156,11 +156,17 @@ export default {
         commit(`SET_${mode.toUpperCase()}_CACHE`, list); // always cache the new data, so we can restore it without another DB query in case search is active
 
         if (!searchActive) {
-          // search NOT active, therefore also set the display list data
+          // search NOT active, set the display list data
           commit(`SET_${mode.toUpperCase()}`, list);
+        } else {
+          // search is active, check whether there are results left
+          const activeSearchResults = getters[`${mode}`]; // with search active, the respective current list === the search results
+          if (activeSearchResults.length === 0) {
+            dispatch('tools/resetList', null, { root: true }); // no results left to display -> reset search
+          }
         }
       } else {
-        // error
+        // no 'response' = error
         msg = { text: `An error occurred loading the ${mode}. Please try again later.`, type: 'error' };
         dispatch('app/sendToastMessage', msg, { root: true });
       }
@@ -213,16 +219,26 @@ export default {
       commit('SET_EDIT_TITLE_CONTENT', getItem(id));
     },
 
-    updateSearchResult({ commit, getters }, args){
-      const [data, mode] = args;
+    updateSearchResult({ commit, getters, rootGetters }, data){
+      const mode = rootGetters['tools/listSearchMode'];
       const searchResults = getters[`${mode}`];
 
-      const listUpdate = searchResults.map((item) => {
-        if (item.refId === data.refId) {
-          item = Object.assign({}, data);
-        }
-        return item;
-      });
+      let listUpdate = [];
+
+      switch (mode) {
+        case 'tracklist':
+          listUpdate = searchResults.map((item) => {
+            if (item.refId === data.refId) {
+              item = Object.assign({}, data);
+            }
+            return item;
+          });
+          break;
+
+        case 'watchlist':
+          listUpdate = searchResults.filter(item => item.refId !== data.refId);
+          break;
+      }
 
       commit(`SET_${mode.toUpperCase()}`, listUpdate);
     },

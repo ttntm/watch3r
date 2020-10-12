@@ -13,7 +13,7 @@
     <div class="w-full sm:w-3/4 px-4 lg:px-6 self-center lg:self-start lg:py-2">
       <h3 class="text-xl mb-2">
         {{ item.title }}
-        <a :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="inline-block hover:shadow-outline focus:shadow-outline ml-1" title="View on IMDb">
+        <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="hidden lg:inline-block hover:shadow-outline focus:shadow-outline ml-1" title="View on IMDb">
           <img :src="imdbIcon" alt="IMDb icon" class="w-4">
         </a>
       </h3>
@@ -27,14 +27,17 @@
       <p v-if="mode === 'tracklist' && item.userRating" class="sm:mb-0">Your Rating: {{ item.userRating }}</p>
       <p v-if="mode === 'watchlist' || !item.userRating" class="sm:mb-0">IMDb Rating: {{ item.imdbRating }}</p>
     </div>
-    <div class="flex flex-row sm:flex-col self-center text-sm lg:text-base px-4">
+    <div class="flex flex-row flex-wrap sm:flex-col self-center justify-center text-sm lg:text-base sm:px-4">
       <BtnListItemEdit v-if="mode === 'watchlist'" :id="item.refId" :mode="mode" class="mb-4">
         Watched
       </BtnListItemEdit>
       <BtnListItemEdit v-if="mode === 'tracklist'" :id="item.refId" :mode="mode" class="mb-4">
         Edit
       </BtnListItemEdit>
-      <BtnListItemRemove :id="item.refId" :mode="mode" class="ml-4 sm:ml-0 mb-4" />
+      <BtnListItemRemove :id="item.refId" :mode="mode" class="ml-4 sm:ml-0 mb-4 lg:mb-0" />
+      <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="w-full block lg:hidden text-center text-yellow-600 font-bold mt-4 sm:mt-0" title="View on IMDb">
+        View on IMDb
+      </a>
     </div>
   </div>
 </template>
@@ -43,6 +46,7 @@
 import BtnListItemEdit from '@/components/buttons/BtnListItemEdit.vue';
 import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue';
 import { computed } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
   name: 'ListItem',
@@ -55,12 +59,15 @@ export default {
     mode: String,
   },
   setup() {
+    const store = useStore();
+
     const imdbIcon = computed(() => {
       return require('@/assets/imdb.png');
     });
 
     return {
-      imdbIcon
+      imdbIcon,
+      showIMDb: computed(() => store.getters['user/showIMDbLinks'])
     }
   }
 }
@@ -70,10 +77,23 @@ export default {
   .list-item {
     @apply flex border-b border-gray-500 py-8 px-4;
   }
+
   .poster {
     @apply block shadow;
-    min-width: 100px;
-    width: 100px;
-    max-height: 200px;
+  }
+
+  @media(max-width: 639px) {
+    .poster {
+      @apply w-full h-auto object-cover;
+      max-height: 250px;
+    }
+  }
+
+  @media(min-width: 640px) {
+    .poster {
+      min-width: 100px;
+      width: 100px;
+      max-height: 200px;
+    }
   }
 </style>
