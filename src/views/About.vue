@@ -1,10 +1,33 @@
 <template>
-  <div class="w-full lg:w-2/3 mx-auto">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id rhoncus est. Nullam sit amet justo nisi. Aliquam elementum iaculis nulla bibendum congue. Integer convallis ut nisi at tincidunt. Sed eu diam ex. Ut efficitur velit ut ultrices semper. Morbi suscipit ut purus a placerat. Cras massa lorem, pretium et nibh in, faucibus fermentum dolor. Nulla lacinia malesuada molestie. Proin et risus turpis. Aenean lacinia, orci at egestas fringilla, sem libero facilisis lectus, ut porta justo ligula a quam. Mauris vulputate purus mauris, eget semper ante rutrum id. Duis vestibulum, turpis at ultricies aliquam, enim dolor lobortis leo, at laoreet elit odio at nunc. Aliquam sit amet erat mi.</p>
-    <p>Cras mattis justo id convallis porta. Pellentesque ullamcorper fringilla odio at pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla mattis erat dui, ut tempor lectus dictum id. Mauris ornare massa a nisi gravida, id ultrices ex cursus. Donec quis porttitor nisl, non viverra dui. Donec nec gravida arcu. Pellentesque dignissim at libero id bibendum. Vivamus pulvinar nibh risus, et egestas odio interdum id. Cras eleifend risus molestie mollis finibus. Aenean tortor elit, accumsan vel fermentum pharetra, molestie ut felis.</p>
-    <p>Maecenas pulvinar ultricies dolor, vitae sagittis nunc aliquam non. Cras vitae eros mi. Pellentesque ac orci mi. Ut dignissim tincidunt ex id tincidunt. Aliquam semper felis sed leo sodales scelerisque. Vivamus vitae erat vel tellus condimentum consectetur at ac velit. Mauris massa tortor, cursus sit amet turpis in, lacinia ultricies nulla.</p>
-    <p>Integer finibus sem sit amet diam luctus, ut posuere enim dapibus. Nunc euismod dignissim dui a maximus. Phasellus pulvinar neque at lorem ultricies suscipit. Maecenas felis erat, ornare eget egestas et, ultricies vitae ante. In convallis quam lectus, sit amet elementum ligula pulvinar ac. Integer sapien ipsum, congue a purus vel, sollicitudin lacinia ligula. Ut varius sit amet lectus quis congue. Ut viverra lectus tellus, a pharetra neque egestas eu. Morbi feugiat, arcu id bibendum vulputate, risus mi finibus enim, sed pulvinar ipsum sem eu risus. Aenean accumsan elementum ipsum, eu porttitor libero auctor at. Duis nec ipsum velit. Aliquam ac ullamcorper nisl. Duis mattis malesuada leo, quis egestas turpis molestie nec. Curabitur dui tortor, volutpat quis varius et, posuere eget augue. Praesent sed pretium dui. Vivamus auctor ex vitae nisl commodo interdum.</p>
-    <p>Nam non quam vel velit sagittis consequat non vel odio. Phasellus condimentum dictum orci, quis rhoncus lacus hendrerit non. Ut vel nisl lectus. Duis vitae varius enim. Morbi placerat urna sit amet sollicitudin viverra. Vivamus maximus metus ac ornare venenatis. Ut suscipit nec sapien ac fringilla. Phasellus et justo eget odio lacinia feugiat. Nullam laoreet eros a lectus pretium, sed euismod velit tincidunt.</p>
+  <div class="w-full lg:w-3/4 xl:w-2/3 text-content mx-auto">
+    <h1>About watch3r</h1>
+    <p>Have you ever been unsure whether or not you'd already seen a certain movie or lost track of the countless things you wanted to watch and/or watched already?</p>
+    <p>IMDb is a great database, but their service is cluttered with unnecessary information, ads and things that aren't quite relevant when making time sensitive couch time choices.</p>
+    <p>So, that's basically where the idea for this web application came from - needing something better than a plain text note in Google Keep or another list page Notion while having access to basic information about the listed titles, search, sorting and a place to write down your thoughts after watching something.</p>
+    <h2>&plus; Features</h2>
+    <ul>
+      <li>Dedicated Watchlist and Tracklist views</li>
+      <li>Movie/series search wen adding titles to your lists</li>
+      <li>Save <i>date watched</i>, <i>rating</i> and <i>notes</i> for each title in your Tracklist</li>
+      <li>Search and sorting for each list view</li>
+      <li>PWA functionality for your phone/tablet to access your lists from the couch</li>
+    </ul>
+    <div class="text-center my-12 mx-auto">
+      <h3 class="text-2xl text-yellow-600">Get Your Account Now</h3>
+      <p class="text-lg mb-8">watch3r is completely free and you're welcome to try it today.</p>
+      <router-link :to="{name: 'invite'}" class="btn btn-black inline-block mx-auto" style="text-decoration: none;">
+        Join Now
+      </router-link>
+    </div>
+    <h2>&plus; Screenshots</h2>
+    <p>...go here</p>
+    <h2>&gt; Contact</h2>
+    <p>Say hi at <a href="mailto:hello@watch3r.app">hello@watch3r.app</a></p>
+    <h2>&gt; Support Development</h2>
+    <p>Thanks, much appreciated! :D</p>
+    <a href="https://www.buymeacoffee.com/ttntm" target="_blank" class="inline-block shadow-lg hover:shadow-none hover:opacity-75" title="Thank you!">
+      <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" class="mx-auto" style="height: 45px; width: auto" alt="Buy me a coffee">
+    </a>
   </div>
 </template>
 

@@ -5,19 +5,19 @@
         <h1 class="text-3xl text-yellow-600">watch3r</h1>
         <h2 class="text-xl">A watchlist and tracking app for your movies and series</h2>
       </div>
-      <div v-if="loggedIn" class="flex flex-col items-center">
-        <router-link :to="{name: 'watchlist'}" class="btn btn-black mb-4">
+      <div v-if="loggedIn" class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+        <router-link :to="{name: 'watchlist'}" class="btn btn-black mx-auto sm:m-0">
           Watchlist
         </router-link>
-        <router-link :to="{name: 'tracker'}" class="btn btn-black mb-4">
+        <router-link :to="{name: 'tracker'}" class="btn btn-black mx-auto sm:m-0">
           Tracker
         </router-link>
-        <router-link :to="{name: 'profile'}" class="btn btn-black mb-16">
+        <router-link :to="{name: 'profile'}" class="btn btn-black mx-auto sm:m-0">
           Profile
         </router-link>
-        <a href="https://www.buymeacoffee.com/ttntm" target="_blank" class="inline-block shadow-lg hover:shadow-none hover:opacity-75" title="Thank you!">
-          <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" class="mx-auto" style="height: 45px; width: auto" alt="Buy me a coffee">
-        </a>
+        <router-link :to="{name: 'support'}" class="btn btn-black mx-auto sm:m-0">
+          Support
+        </router-link>
       </div>
       <HomeLogin v-else />
       <p v-if="!loggedIn" class="text-sm mt-8">No account? <router-link :to="{name: 'invite'}" class="text-yellow-600 hover:underline">Request an invite</router-link>.</p>

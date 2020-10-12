@@ -48,6 +48,8 @@
 
   body, html {
     @apply text-gray-400;
+    @apply font-sans;
+    @apply text-base;
   }
 
   body {
@@ -276,9 +278,9 @@
       @apply bg-gray-200;
       @apply rounded-lg;
       @apply shadow-lg;
+      @apply py-6;
       @apply my-8;
       @apply mx-auto;
-      @apply py-6;
       @apply overflow-y-auto;
       width: calc(100% - 2rem);
       max-height: calc(100% - 4rem);
@@ -301,5 +303,43 @@
         @apply max-w-xl;
       }
     }
+
+  /* TEXT CONTENT BOX */
+
+  .text-content {
+    @apply bg-gray-900;
+    @apply bg-opacity-50;
+    @apply rounded-lg;
+    @apply shadow-lg;
+    @apply px-8;
+    @apply py-4;
+  }
+
+  @media(min-width:640px) {
+    .text-content {
+      @apply px-12;
+      @apply py-8;
+    }
+  }
+
+  .text-content h1 {
+    @apply text-3xl;
+    @apply text-yellow-600;
+  }
+
+  .text-content h2 {
+    @apply text-xl;
+    @apply text-gray-600;
+    @apply mt-8;
+  }
+
+  .text-content a {
+    @apply text-yellow-600;
+    @apply underline;
+  }
+
+  .text-content a:hover {
+    @apply no-underline;
+  }
 
 @tailwind utilities;
