@@ -271,7 +271,7 @@ export default {
       });
     },
 
-    setUserPrefs({ commit, getters }) {
+    setUserPrefs({ commit, dispatch, getters }) {
       // set user preferences with login
       const user = getters['currentUser'];
       const userMeta = user.user_metadata;

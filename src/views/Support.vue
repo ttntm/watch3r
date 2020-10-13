@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full lg:w-3/4 xl:w-2/3 text-content mx-auto">
+  <div class="w-full lg:w-3/4 text-content mx-auto">
     <h1>Support</h1>
     <p>Answers to questions that might come up sooner or later.</p>
     <h2>&gt; How Can I Contact You?</h2>

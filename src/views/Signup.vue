@@ -18,7 +18,7 @@
         <p v-if="status" v-html="status" class="text-sm font-bold mt-6 mb-0" />
       </form>
       <p class="text-xs text-center text-gray-600 mt-8">
-        Signing up for an account means that you accept Fauna DB and Netlify processing your email and IP address according to their respective data processing guidelines: <a href="https://www2.fauna.com/privacy" target="_blank" class="underline">Fauna DB</a> | <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" class="underline">Netlify</a>.
+        Signing up for an account means that you explicitly agree with Netlify processing your email and IP address according to their <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" class="underline">data processing guidelines</a>.
         <br /><br />
         We don't use analytics, cookies or tracking, so watch3r.app itself does <em>not</em> collect and/or store any personally identifiable information.
       </p>
