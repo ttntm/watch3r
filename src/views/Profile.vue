@@ -27,7 +27,7 @@
       </div>
       <div class="input-group mb-8">
         <label for="sort-preset">List Sorting</label>
-        <p class="text-xs text-gray-600 mb-3">This option controls how lists are sorted after logging in (unless cached otherwise). Does <em>not</em> override later sort mode selection.</p>
+        <p class="text-xs text-gray-600 mb-3">This option controls how lists are sorted after logging in. Does <em>not</em> override the current sort mode selection.</p>
         <div class="w-full relative text-gray-700 text-sm bg-gray-300">
           <select name="sorting" id="sort-preset" v-model="profile_sortSelected">
             <option disabled value="">Default Sorting</option>

@@ -4,7 +4,7 @@
       <img
         :src="item.image"
         :alt="item.title"
-        @click.prevent="$emit('open-poster', [item.image, item.title])"
+        @click.self="$emit('open-poster', [item.image, item.title])"
         class="poster click-outside-ignore self-center cursor-pointer mb-4 sm:mb-0"
         loading="lazy"
         title="Click to enlarge"

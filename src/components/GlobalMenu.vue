@@ -1,5 +1,5 @@
 <template>
-  <div class="app-menu" v-click-outside="closeMenu" v-esc="closeMenu">
+  <div class="app-menu" v-click-outside="closeMenu" v-esc="closeMenu" v-scroll-lock>
     <div class="flex flex-row justify-between items-center pt-2">
       <p class="text-sm text-gray-600 font-bold px-4 mb-0">watch3r</p>
       <button
@@ -54,7 +54,7 @@ export default {
 
 <style lang="postcss" scoped>
   .app-menu {
-    @apply fixed top-0 left-0 z-10 max-w-xs bg-gray-200 rounded-lg shadow-lg pb-4 ml-8 mt-6;
+    @apply fixed top-0 left-0 z-20 max-w-xs bg-gray-200 rounded-lg shadow-lg pb-4 ml-8 mt-6;
     width: 80%;
   }
 

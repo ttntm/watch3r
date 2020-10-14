@@ -26,7 +26,6 @@ export default {
     const menuOpen = computed(() => store.getters['app/menuOpen']);
 
     const toggleMenu = () => {
-      store.dispatch('list/toggleAddTitleModal', false);
       return menuOpen.value ? store.dispatch('app/toggleMenu', false) : store.dispatch('app/toggleMenu', true);
     }
 

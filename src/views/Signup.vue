@@ -57,26 +57,24 @@ export default {
       }
     }
 
-    const handleSignup = (pwd) => {
+    const handleSignup = (p) => {
       // clear previous msg/status state first
       msg.value = { text: '', type: ''};
       status.value = '';
 
       if(validate()) {
         status.value = `Processing...`;
-        store.dispatch('user/processInvite', { token: token.value, pwd: pwd })
+        store.dispatch('user/processInvite', { token: token.value, pwd: p })
           .then(() => {
-            msg.value.text = 'Account created, redirecting to login...';
-            msg.value.type =  'success';
-            store.dispatch('app/sendToastMessage', msg);
+            store.dispatch('app/sendToastMessage', { text: 'Account created, redirecting to login...', type: 'success' });
             setTimeout(() => {
               router.push({ name: 'home' });
             }, 2000);
           })
           .catch(error => {
-            msg.value.text = 'Error processing the invite, please try again later.';
-            msg.value.type =  'error';
-            store.dispatch('app/sendToastMessage', msg);
+            store.dispatch('app/sendToastMessage', { text: 'Error processing the invite, please try again later.', type: 'error' });
+            pwd.value = '';
+            status.value = '';
           });
       } else {
         store.dispatch('app/sendToastMessage', msg);
@@ -91,6 +89,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-</style>

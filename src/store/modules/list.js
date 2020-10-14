@@ -4,10 +4,7 @@ export default {
 
   state() {
     return {
-      addTitleOpen: false,
       editTitleContent: null,
-      editTitleOpen: false,
-      posterOpen: false,
       tracklist: [],
       tracklistCache: [],
       watchlist: [],
@@ -17,10 +14,7 @@ export default {
   },
 
   getters: {
-    addTitleOpen: state => state.addTitleOpen,
     editTitleContent: state => state.editTitleContent,
-    editTitleOpen: state => state.editTitleOpen,
-    posterOpen: state => state.posterOpen,
     tracklist: state => state.tracklist,
     tracklistCache: state => state.tracklistCache,
     watchlist: state => state.watchlist,
@@ -29,17 +23,8 @@ export default {
   },
 
   mutations: {
-    SET_ADD_TITLE_OPEN(state, value) {
-      state.addTitleOpen = value;
-    },
     SET_EDIT_TITLE_CONTENT(state, value) {
       state.editTitleContent = value;
-    },
-    SET_EDIT_TITLE_OPEN(state, value) {
-      state.editTitleOpen = value;
-    },
-    SET_POSTER_OPEN(state, value) {
-      state.posterOpen = value;
     },
     SET_WATCHLIST(state, value) {
       state.watchlist = value;
@@ -63,16 +48,13 @@ export default {
      *  COMMON LIST ACTIONS
      */
 
-    toggleAddTitleModal({ commit }, newState) {
-      commit('SET_ADD_TITLE_OPEN', newState);
-    },
-
-    toggleEditTitleModal({ commit }, newState) {
-      commit('SET_EDIT_TITLE_OPEN', newState);
-    },
-
-    togglePosterModal({ commit }, newState) {
-      commit('SET_POSTER_OPEN', newState);
+    initializeList({ commit }) {
+      commit('SET_EDIT_TITLE_CONTENT', null);
+      commit('SET_TRACKLIST', []);
+      commit('SET_TRACKLIST_CACHE', []);
+      commit('SET_WATCHLIST', []);
+      commit('SET_WATCHLIST_CACHE', []);
+      commit('SET_WRITE_SUCCESS', false);
     },
 
     toggleWriteSuccess({ commit }, newState) {
@@ -86,7 +68,6 @@ export default {
     async writeList({ dispatch, rootGetters }, args) {
       const [titleData, mode] = args; // [Object, String]
       const fn = rootGetters['app/functions'];
-      let msg = {};
       let response;
 
       const getFn = (m) => {
@@ -109,14 +90,12 @@ export default {
       }
 
       if (response) {
-        msg = { text: `"${response.data.title}" successfully added to ${mode}.`, type: 'success' };
         dispatch('readList', mode);
         dispatch('toggleWriteSuccess', true);
-        dispatch('app/sendToastMessage', msg, { root: true });
+        dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully added to ${mode}.`, type: 'success' }, { root: true });
       } else {
         // error
-        msg = { text: `An error occurred. Please try again later.`, type: 'error' };
-        dispatch('app/sendToastMessage', msg, { root: true });
+        dispatch('app/sendToastMessage', { text: `An error occurred. Please try again later.`, type: 'error' }, { root: true });
       }
     },
 
@@ -167,8 +146,7 @@ export default {
         }
       } else {
         // no 'response' = error
-        msg = { text: `An error occurred loading the ${mode}. Please try again later.`, type: 'error' };
-        dispatch('app/sendToastMessage', msg, { root: true });
+        dispatch('app/sendToastMessage', { text: `An error occurred loading the ${mode}. Please try again later.`, type: 'error' }, { root: true });
       }
     },
 
@@ -182,7 +160,6 @@ export default {
 
     async editListItem({ dispatch, rootGetters }, updatedTitleData) {
       const fn = rootGetters['app/functions'];
-      let msg = {};
       let response;
 
       try {
@@ -196,14 +173,12 @@ export default {
       }
 
       if (response) {
-        msg = { text: `"${response.data.title}" successfully updated.`, type: 'success' };
         dispatch('readList', 'tracklist');
         dispatch('toggleWriteSuccess', true);
-        dispatch('app/sendToastMessage', msg, { root: true });
+        dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully updated.`, type: 'success' }, { root: true });
       } else {
         // error
-        msg = { text: `An error occurred. Please try again later.`, type: 'error' };
-        dispatch('app/sendToastMessage', msg, { root: true });
+        dispatch('app/sendToastMessage', { text: `An error occurred. Please try again later.`, type: 'error' }, { root: true });
       }
     },
 

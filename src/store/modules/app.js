@@ -4,6 +4,9 @@ export default {
 
   state() {
     return {
+      addTitleOpen: false,
+      editTitleOpen: false,
+      posterOpen: false,
       isDevEnvironment: false,
       siteURL: 'watch3r.app',
       menuOpen: false,
@@ -22,6 +25,9 @@ export default {
   },
 
   getters: {
+    addTitleOpen: state => state.addTitleOpen,
+    editTitleOpen: state => state.editTitleOpen,
+    posterOpen: state => state.posterOpen,
     isDevEnvironment: state => state.isDevEnvironment,
     siteURL: state => state.siteURL,
     menuOpen: state => state.menuOpen,
@@ -30,8 +36,17 @@ export default {
   },
 
   mutations: {
+    SET_ADD_TITLE_OPEN(state, value) {
+      state.addTitleOpen = value;
+    },
     SET_DEV_ENV(state, value) {
       state.isDevEnvironment = value;
+    },
+    SET_EDIT_TITLE_OPEN(state, value) {
+      state.editTitleOpen = value;
+    },
+    SET_POSTER_OPEN(state, value) {
+      state.posterOpen = value;
     },
     SET_SITE_URL(state, value) {
       state.siteURL = value;
@@ -45,6 +60,25 @@ export default {
   },
 
   actions: {
+    initialize({ dispatch }) {
+      // global state reset action triggering module actions to keep things separate
+      dispatch('list/initializeList', null, { root: true });
+      dispatch('tools/initializeTools', null, { root: true });
+      dispatch('user/initializeUser', null, { root: true });
+    },
+
+    toggleAddTitleModal({ commit }, newState) {
+      commit('SET_ADD_TITLE_OPEN', newState);
+    },
+
+    toggleEditTitleModal({ commit }, newState) {
+      commit('SET_EDIT_TITLE_OPEN', newState);
+    },
+
+    togglePosterModal({ commit }, newState) {
+      commit('SET_POSTER_OPEN', newState);
+    },
+
     toggleMenu({ commit }, newState) {
       commit('SET_MENU_OPEN', newState);
     },

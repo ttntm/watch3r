@@ -5,10 +5,9 @@
         v-if="toastMessage"
         :class="{
           'error': toastMessage.type === 'error',
-          'success': toastMessage.type === 'success',
-          'bg-gray-400 text-gray-800': toastMessage.type === 'info',
+          'success': toastMessage.type === 'success'
         }"
-        class="rounded-lg shadow-md p-6 pr-10"
+        class="toast"
         style="min-width: 240px"
       >
         <button
@@ -47,36 +46,27 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+  .toast {
+    @apply bg-gray-400 text-gray-800 border-solid border-transparent rounded-lg shadow-lg p-6 pr-10;
+    border-left-width: 5px;
+  }
+
   .error {
-    @apply bg-red-200 text-red-600;
+    @apply border-red-700;
   }
+
   .success {
-    @apply bg-green-200 text-green-600;
+    @apply border-green-700;
   }
+
   .slide-fade-enter-active,
   .slide-fade-leave-active {
     transition: all 0.75s;
   }
+
   .slide-fade-enter-from,
   .slide-fade-leave-to {
     transform: translateX(400px);
     opacity: 0;
-  }
-  .smiley {
-    animation: roll 1.25s linear infinite;
-  }
-  @keyframes roll {
-    0% {
-      transform: rotate(0deg);
-    }
-    25% {
-      transform: rotate(-20deg);
-    }
-    50% {
-      transform: rotate(10deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
   }
 </style>

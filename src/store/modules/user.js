@@ -44,6 +44,12 @@ export default {
     }
   },
   actions: {
+    initializeUser({ commit }) {
+      commit('SET_IMDB_LINKS', true);
+      commit('SET_SORT_PRESET', 1);
+      commit('SET_START_PAGE', 0);
+    },
+
     /**
      * Authorise and login users via email
      * @param {*} store - vuex store object
@@ -214,19 +220,14 @@ export default {
     },
 
     requestPasswordRecover({ dispatch, state }, email) {
-      let msg = { text: '', type: ''};
       state.GoTrueAuth.requestPasswordRecovery(email)
         .then(response => {
-          msg.text = `Recovery email sent.`;
-          msg.type =  'success';
-          dispatch('app/sendToastMessage', msg, { root: true });
+          dispatch('app/sendToastMessage', { text: `Recovery email sent.`, type: 'success' }, { root: true });
           resolve(response);
         })
         .catch(error => {
           console.error(`Error sending recovery email`, error);
-          msg.text = `Error sending recovery email, please try again later.`;
-          msg.type =  'error';
-          dispatch('app/sendToastMessage', msg, { root: true });
+          dispatch('app/sendToastMessage', { text: `Error sending recovery email, please try again later.`, type: 'error' }, { root: true });
           reject(error);
         });
     },
@@ -247,25 +248,20 @@ export default {
     },
 
     updateUserAccount({ dispatch, state }, userData) {
-      let msg = { text: '', type: ''};
       return new Promise((resolve, reject) => {
         const user = state.GoTrueAuth.currentUser();
         user
           .update(userData)
           .then(response => {
             // console.log("Updated user account details", response);
-            msg.text = `Profile successfully updated.`;
-            msg.type =  'success';
             dispatch('setUserPrefs');
-            dispatch('app/sendToastMessage', msg, { root: true });
+            dispatch('app/sendToastMessage', { text: `Profile successfully updated.`, type: 'success' }, { root: true });
             resolve(response);
           })
           .catch(error => {
             // console.error("Failed to update user account: %o", error);
             console.error(`Error updating the user profile`, error);
-            msg.text = `Error updating the user profile, please try again later.`;
-            msg.type =  'error';
-            dispatch('app/sendToastMessage', msg, { root: true });
+            dispatch('app/sendToastMessage', { text: `Error updating the user profile, please try again later.`, type: 'error' }, { root: true });
             reject(error);
           });
       });

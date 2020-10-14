@@ -17,7 +17,7 @@ export default {
     const store = useStore();
 
     const closePoster = () => {
-      store.dispatch('list/togglePosterModal', false);
+      store.dispatch('app/togglePosterModal', false);
     }
 
     return {

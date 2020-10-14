@@ -4,8 +4,6 @@ import list from './modules/list';
 import tools from './modules/tools';
 import user from './modules/user';
 
-import createMultiTabState from 'vuex-multi-tab-state';
-
 import createPersistedState from 'vuex-persistedstate';
 import SecureLS from 'secure-ls'; // https://github.com/softvar/secure-ls
 
@@ -20,12 +18,8 @@ export default createStore({
     user
   },
   plugins: [
-    createMultiTabState({
-      key: 'mv-tabs',
-      // statesPaths: ['user'], // name/s of the states to be synchronized with dot notation. If the param is not provided, the whole state of your app will be in sync. Defaults to []
-    }),
     createPersistedState({
-      key: 'mv',
+      key: 'w3',
       paths: ['user'],
       reducer (val) {
         if(!val.user.currentUser) { // return empty state when user logged out

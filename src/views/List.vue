@@ -72,7 +72,7 @@ export default {
     const listData = computed(() => store.getters[`list/${mode.value}`]);
     const listLength = computed(() => listData.value.length);
     const mode = computed(() => route.meta.mode);
-    const posterModalOpen = computed(() => store.getters['list/posterOpen']);
+    const posterModalOpen = computed(() => store.getters['app/posterOpen']);
     const posterSrc = ref('');
     const posterTitle = ref('');
     const searchActive = computed(() => store.getters['tools/searchActive']);
@@ -87,7 +87,7 @@ export default {
       const [src, title] = args;
       posterSrc.value = src;
       posterTitle.value = title;
-      store.dispatch('list/togglePosterModal', true);
+      store.dispatch('app/togglePosterModal', true);
     }
 
     onBeforeUpdate(() => {
@@ -102,8 +102,8 @@ export default {
     store.dispatch('tools/updateSort', mode.value);
 
     return {
-      addModalOpen: computed(() => store.getters['list/addTitleOpen']),
-      editModalOpen: computed(() => store.getters['list/editTitleOpen']),
+      addModalOpen: computed(() => store.getters['app/addTitleOpen']),
+      editModalOpen: computed(() => store.getters['app/editTitleOpen']),
       listData,
       listLength,
       posterModalOpen,
@@ -120,7 +120,7 @@ export default {
 
 <style lang="postcss" scoped>
   .overlay {
-    @apply z-10 fixed bg-gray-900 top-0 bottom-0 left-0 right-0 w-full h-full pointer-events-none;
+    @apply z-10 fixed bg-gray-900 top-0 bottom-0 left-0 right-0 w-full h-full;
     opacity: 0.9;
   }
 

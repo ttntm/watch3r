@@ -5,22 +5,32 @@
         <h1 class="text-3xl text-yellow-600">watch3r</h1>
         <h2 class="text-xl">A watchlist and tracking app for your movies and series</h2>
       </div>
-      <div v-if="loggedIn" class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
-        <router-link :to="{name: 'watchlist'}" class="btn btn-black mx-auto sm:m-0">
-          Watchlist
-        </router-link>
-        <router-link :to="{name: 'tracker'}" class="btn btn-black mx-auto sm:m-0">
-          Tracker
-        </router-link>
-        <router-link :to="{name: 'profile'}" class="btn btn-black mx-auto sm:m-0">
-          Profile
-        </router-link>
-        <router-link :to="{name: 'support'}" class="btn btn-black mx-auto sm:m-0">
-          Support
-        </router-link>
+      <div v-if="loggedIn">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+          <router-link :to="{name: 'watchlist'}" class="btn btn-black mx-auto sm:m-0">
+            Watchlist
+          </router-link>
+          <router-link :to="{name: 'tracker'}" class="btn btn-black mx-auto sm:m-0">
+            Tracker
+          </router-link>
+          <router-link :to="{name: 'profile'}" class="btn btn-black mx-auto sm:m-0">
+            Profile
+          </router-link>
+          <router-link :to="{name: 'support'}" class="btn btn-black mx-auto sm:m-0">
+            Support
+          </router-link>
+        </div>
+        <div class="text-center mt-12">
+          <p class="mb-8">If you like it here, please consider supporting the coffee fueled development efforts.</p>
+          <a href="https://www.buymeacoffee.com/ttntm" target="_blank" class="inline-block shadow-lg hover:shadow-none hover:opacity-75" title="Thank you!">
+            <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" class="mx-auto" style="height: 45px; width: auto" alt="Buy me a coffee">
+          </a>
+        </div>
       </div>
-      <HomeLogin v-else />
-      <p v-if="!loggedIn" class="text-sm mt-8">No account? <router-link :to="{name: 'invite'}" class="text-yellow-600 hover:underline">Request an invite</router-link>.</p>
+      <div v-else>
+        <HomeLogin />
+        <p class="text-sm mt-8">No account? <router-link :to="{name: 'invite'}" class="text-yellow-600 hover:underline">Request an invite</router-link>.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -55,6 +65,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-</style>

@@ -1,6 +1,9 @@
 <template>
   <div id="app-inner" class="flex flex-col min-h-screen">
     <GlobalNav />
+    <transition name="fade">
+      <div id="app-menu-container" class="bg-gray-900 sm:bg-transparent" v-if="menuOpen" />
+    </transition>
     <transition name="slide-fade">
       <GlobalMenu v-if="menuOpen" />
     </transition>
@@ -48,9 +51,21 @@ export default {
     -moz-osx-font-smoothing: grayscale;
   }
 
+  #app-menu-container {
+    @apply fixed top-0 left-0 w-screen h-screen z-10;
+    opacity: 0.9;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active
   .slide-fade-enter-active,
   .slide-fade-leave-active {
     transition: all 0.75s;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
   }
 
   .slide-fade-enter-from,

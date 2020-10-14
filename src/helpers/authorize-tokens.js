@@ -83,28 +83,20 @@ function detectRecoveryToken() {
  * @param {string} token - authentication token used to confirm a user who has created an account via email signup.
  */
 function confirmEmailToken(token) {
-  let msg = { text: '', type: '' };
   store
     .dispatch("user/attemptConfirmation", token)
     .then(resp => {
-      msg.text = `${resp.email} has been confirmed, please login`;
-      msg.type = 'success';
-      store.dispatch('app/sendToastMessage', msg);
+      store.dispatch('app/sendToastMessage', { text: `${resp.email} has been confirmed, please login`, type: 'success' });
     })
     .catch(error => {
-      msg.text = `Can't authorize your account right now. Please try again`;
-      msg.type = 'error';
-      store.dispatch('app/sendToastMessage', msg);
+      store.dispatch('app/sendToastMessage', { text: `Can't authorize your account right now. Please try again`, type: 'error' });
       console.error(error, "Something's gone wrong confirming user");
     });
 }
 
 function confirmInviteToken(token) {
-  let msg = { text: '', type: '' };
   router.push(`/signup?t=${token}`);
-  msg.text = `Invite token found, please fill the form to complete your signup`;
-  msg.type = 'info';
-  store.dispatch('app/sendToastMessage', msg);
+  store.dispatch('app/sendToastMessage', { text: `Invite token found, please fill the form to complete your signup`, type: 'info' });
 }
 
 function confirmRecoveryToken(recoveryToken) {

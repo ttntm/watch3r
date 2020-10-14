@@ -30,11 +30,11 @@ export default {
   },
 
   mutations: {
-    SET_SEARCH_ACTIVE(state, value) {
-      state.searchActive = value;
-    },
     SET_LIST_SEARCH_MODE(state, value) {
       state.listSearchMode = value;
+    },
+    SET_SEARCH_ACTIVE(state, value) {
+      state.searchActive = value;
     },
     SET_TRACKLIST_SORTED(state, value) {
       state.tracklistSorted = value;
@@ -48,6 +48,13 @@ export default {
     /**
      *  COMMON ACTIONS
      */
+
+    initializeTools({ commit }) {
+      commit('SET_LIST_SEARCH_MODE', '');
+      commit('SET_SEARCH_ACTIVE', false);
+      commit('SET_TRACKLIST_SORTED', -1);
+      commit('SET_WATCHLIST_SORTED', -1);
+    },
 
     resetList({ commit, dispatch, getters, rootGetters }) {
       const mode = getters['listSearchMode'];

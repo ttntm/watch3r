@@ -52,8 +52,6 @@ export default {
     }
 
     const handleInvite = (obj) => {
-      let msg = { text: '', type: ''};
-
       if (valid.value) {
         btnRequest.value.active = false;
         btnRequest.value.text = 'Requesting...'
@@ -69,17 +67,13 @@ export default {
           method: 'POST',
         })
         .then(() => {
-          msg.text = `Request received! Keep an eye on your inbox, we'll contact you soon...`;
-          msg.type =  'success';
-          store.dispatch('app/sendToastMessage', msg);
+          store.dispatch('app/sendToastMessage', { text: `Request received! Keep an eye on your inbox, we'll contact you soon...`, type:  'success' });
           setTimeout(() => {
             router.push({ name: 'home' });
           }, 2000);
         })
         .catch(() => {
-          msg.text = `Oops, seems like an error occured. Please try again later.`;
-          msg.type =  'error';
-          store.dispatch('app/sendToastMessage', msg);
+          store.dispatch('app/sendToastMessage', { text: `Oops, seems like an error occured. Please try again later.`, type:  'error' });
           btnRequest.value.active = true;
           btnRequest.value.text = 'Request Invite';
         })

@@ -105,8 +105,8 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   // close open windows if there are any
   store.dispatch('app/toggleMenu', false);
-  store.dispatch('list/toggleAddTitleModal', false);
-  store.dispatch('list/toggleEditTitleModal', false);
+  store.dispatch('app/toggleAddTitleModal', false);
+  store.dispatch('app/toggleEditTitleModal', false);
 
   if (store.getters['tools/searchActive']) {
     store.dispatch('tools/resetList');

@@ -44,7 +44,6 @@ export default {
     }
 
     const handleLogin = () => {
-      let msg = { text: '', type: ''};
       const spinner = require('@/assets/loading.svg');
 
       if(!validate()) {
@@ -53,17 +52,13 @@ export default {
         cValidateMsg.value = `<img src="${spinner}" class="mx-auto">`;
         store.dispatch('user/attemptLogin', credentials.value)
           .then(() => {
-            msg.text = `You're logged in now`;
-            msg.type =  'success';
-            store.dispatch('app/sendToastMessage', msg);
+            store.dispatch('app/sendToastMessage', { text: `Login successful, have fun!`, type: 'success' });
             store.dispatch('user/setUserPrefs');
           })
           .catch(error => {
             cValidateMsg.value = '';
             console.error(`Something's gone wrong logging in`, error);
-            msg.text = `Something's gone wrong logging in, please try again later.`;
-            msg.type =  'error';
-            store.dispatch('app/sendToastMessage', msg);
+            store.dispatch('app/sendToastMessage', { text: `Something's gone wrong logging in, please try again later.`, type: 'error' });
           });
       }
     }

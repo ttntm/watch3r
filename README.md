@@ -1,8 +1,6 @@
 # About watch3r
 
-Have you ever been unsure whether or not you'd already seen a certain movie or lost track of the countless things you wanted to watch or watched already?
-
-IMDb is a great database, but their service is cluttered with unnecessary information, ads and things that aren't quite relevant when making time sensitive couch choices.
+Not sure if you have already seen a certain movie? Lost track of the countless things you wanted to watch or watched already? Got different lists in different places you keep forgetting about?
 
 That's where the idea for this web application came from - imagine a tool that provides basic information about the listed titles, paired with search and sorting. A place to keep track of your lists and collect your thoughts after watching.
 
