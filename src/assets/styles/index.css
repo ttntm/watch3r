@@ -54,9 +54,8 @@
 
   body {
     @apply min-h-screen;
-    @apply bg-blue-900;
-    /* background: rgb(26,32,44);
-    background: linear-gradient(180deg, rgba(26,32,44,1) 0%, rgba(42,67,101,1) 50%); */
+    background: rgb(26,32,44);
+    background: linear-gradient(180deg, rgba(26,32,44,1) 0%, rgba(42,67,101,1) 50%);
   }
 
   h1, h2, h3, h4, h5, h6 {
