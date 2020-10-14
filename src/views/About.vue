@@ -9,7 +9,7 @@
     <p>&#9733; Save <i>date watched</i>, <i>rating</i> and <i>notes</i> for each title in your Tracklist</p>
     <p>&#9733; Search and sorting for each list view</p>
     <p>&#9733; PWA functionality for mobile devices to access your lists from the couch</p>
-    <div class="text-center shadow-inner border-t border-b border-solid border-gray-700 px-8 py-16 -mx-12 my-8">
+    <div class="text-center shadow-inner border-t border-b border-solid border-gray-700 px-8 py-16 -mx-8 sm:-mx-12 my-8">
       <h3 class="text-2xl text-yellow-600">Get Your Account</h3>
       <p class="text-lg mb-8">watch3r is completely free! You're welcome to give it a try.</p>
       <router-link :to="{name: 'invite'}" class="btn btn-black inline-block mx-auto" style="text-decoration: none;">
