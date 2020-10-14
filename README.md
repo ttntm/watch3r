@@ -16,6 +16,12 @@ That's where the idea for this web application came from - imagine a tool that p
 
 ★ PWA functionality for mobile devices to access your lists from the couch
 
+## Get Your Account
+
+watch3r is completely free! You're welcome to give it a try.
+
+> [Join Now](https://watch3r.app/invite)
+
 ## Screenshots
 
 - [Watchlist](https://watch3r.app/img/about_watchlist.jpg)
@@ -23,11 +29,6 @@ That's where the idea for this web application came from - imagine a tool that p
 - [Add Title](https://watch3r.app/img/about_add-title.jpg)
 - [Edit Title](https://watch3r.app/img/about_edit-title.jpg)
 
-## Get Your Account
-
-watch3r is completely free! You're welcome to give it a try.
-
-[Join Now](https://watch3r.app/invite)
 
 ## Contact
 
