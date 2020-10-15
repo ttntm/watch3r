@@ -55,7 +55,11 @@
   body {
     @apply min-h-screen;
     background: rgb(26,32,44);
+<<<<<<< HEAD
     background: linear-gradient(135deg, rgba(26,32,44,1) 0%, rgba(42,67,101,1) 50%);
+=======
+    background: linear-gradient(145deg, rgba(26,32,44,1) 0%, rgba(42,67,101,1) 50%);
+>>>>>>> 3daaf4729f0bfbb392da6fd02069379946893db7
   }
 
   h1, h2, h3, h4, h5, h6 {
