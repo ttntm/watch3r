@@ -19,16 +19,16 @@
     <h2 class="text-center mb-6">Screenshots</h2>
     <div class="w-full lg:w-5/6 grid grid-cols-2 gap-6 mx-auto mb-4">
       <a href="/img/about_watchlist.jpg" class="preview" target="_blank" title="Enlarge (new tab)">
-        <img src="/img/about_watchlist.jpg" alt="Watchlist">
+        <img src="/img/about_watchlist.jpg" alt="Watchlist" loading="lazy">
       </a>
       <a href="/img/about_tracklist.jpg" class="preview" target="_blank" title="Enlarge (new tab)">
-        <img src="/img/about_tracklist.jpg" alt="Tracklist">
+        <img src="/img/about_tracklist.jpg" alt="Tracklist" loading="lazy">
       </a>
       <a href="/img/about_add-title.jpg" class="preview" target="_blank" title="Enlarge (new tab)">
-        <img src="/img/about_add-title.jpg" alt="Add Title">
+        <img src="/img/about_add-title.jpg" alt="Add Title" loading="lazy">
       </a>
       <a href="/img/about_edit-title.jpg" class="preview" target="_blank" title="Enlarge (new tab)">
-        <img src="/img/about_edit-title.jpg" alt="Edit Title">
+        <img src="/img/about_edit-title.jpg" alt="Edit Title" loading="lazy">
       </a>
     </div>
   </div>
