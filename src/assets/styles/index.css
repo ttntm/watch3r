@@ -261,6 +261,12 @@
     @apply shadow-none;
   }
 
+  @media(max-width:1023px) {
+    .list:hover {
+      @apply shadow-lg;
+    }
+  }
+
   @media(min-width:1024px) {
     .list {
       @apply shadow-lg;
