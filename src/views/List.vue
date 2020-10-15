@@ -33,7 +33,7 @@
       <ListPosterModal v-if="posterModalOpen" :poster="posterSrc" :title="posterTitle" />
     </transition>
     <transition name="overlay">
-      <div v-if="addModalOpen || editModalOpen || posterModalOpen" class="overlay"></div>
+      <div v-if="addModalOpen || editModalOpen || posterModalOpen" class="overlay" />
     </transition>
   </div>
 </template>

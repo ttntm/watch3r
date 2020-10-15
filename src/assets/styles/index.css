@@ -258,7 +258,7 @@
     @apply rounded-lg;
     @apply border;
     @apply border-gray-700;
-    @apply shadow;
+    @apply shadow-none;
   }
 
   @media(min-width:1024px) {
