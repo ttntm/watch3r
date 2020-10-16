@@ -47,6 +47,11 @@ export default {
       updateSelect();
     })
 
+    watch(sortCurrent, () => {
+      // when sorting changes in another tab
+      updateSelect();
+    })
+
     updateSelect(); // get the initial value
 
     return {

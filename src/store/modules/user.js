@@ -44,10 +44,13 @@ export default {
     }
   },
   actions: {
-    initializeUser({ commit }) {
+    initializeUser({ commit, dispatch }) {
       commit('SET_IMDB_LINKS', true);
       commit('SET_SORT_PRESET', 1);
       commit('SET_START_PAGE', 0);
+      // re-initialize GoTrue
+      commit('SET_GOTRUE', null);
+      dispatch('initAuth');
     },
 
     /**
@@ -57,13 +60,14 @@ export default {
      * @property {string} credentials.email - email of the user eg hello@email.com
      * @property {string} credentials.password - password string
      */
-    attemptLogin({ commit, state }, credentials) {
+    attemptLogin({ commit, dispatch, state }, credentials) {
       //console.log(`Attempting login for ${credentials.email}`);
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.login(credentials.email, credentials.password, true)
           .then(response => {
-            resolve(response);
             commit("SET_CURRENT_USER", response);
+            dispatch('setUserPrefs', response);
+            resolve(response);
           })
           .catch(error => {
             console.error("An error occurred logging in", error);
@@ -94,7 +98,7 @@ export default {
             resolve(response);
           })
           .catch(error => {
-            console.error("An error occurred trying to sig nup", error);
+            console.error("An error occurred trying to sign up", error);
             reject(error);
           });
       });
@@ -126,14 +130,15 @@ export default {
      * TODO: Promisify this, and remove alert out. follow up UI changes should be handled outside of vuex
      * @param {*} store - vuex store object
      */
-    attemptLogout({ state, commit }) {
+    attemptLogout({ commit, getters, state }) {
       return new Promise((resolve, reject) => {
-        state.GoTrueAuth.currentUser()
+        const user = state.GoTrueAuth.currentUser();
+        user
           .logout()
-          .then(resp => {
-            //console.log("User logged out", resp);
+          .then(response => {
+            //console.log("User logged out", response);
             commit("SET_CURRENT_USER", null);
-            resolve(resp);
+            resolve(response);
           })
           .catch(error => {
             console.error("Could not log user out", error);
@@ -149,7 +154,7 @@ export default {
      * @param {string} token - token from invite email eg. "BFX7olHxIwThlfjLGGfaCA"
      */
     processInvite({ state }, data) {
-      console.log("Attempting to verify invite", data.token);
+      // console.log("Attempting to verify invite", data.token);
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.acceptInvite(data.token, data.pwd)
           .then(response => {
@@ -170,52 +175,17 @@ export default {
      * Identity widget.
      * @param {*} store - vuex store object
      */
-    initAuth({ commit, rootGetters }) {
-      // https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp/57421931#57421931
-      const IPv4Pattern = /\b((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\b/;
-      const hostName = document.location.hostname;
-      const APIUrl = `https://${hostName}/.netlify/identity`;
+    initAuth({ commit, getters, rootGetters }) {
+      const APIUrl = `https://${rootGetters["app/siteURL"]}/.netlify/identity`;
+
       const initNewGoTrue = APIUrl => {
         return new GoTrue({
           APIUrl: APIUrl,
-          audience: "",
           setCookie: true
         });
       };
 
-      // Detect if app is being run in a development environment, if so a flag is set to indicate this so that it is
-      // possible to set the URL for the netlify identity in the login component.
-      // TODO : Move this logic into a separate action.
-      if (hostName.match(IPv4Pattern) || hostName === "localhost") {
-        //console.log("Looks like your in a dev environment", hostName);
-        commit("app/SET_DEV_ENV", true, { root: true });
-
-        commit(
-          "SET_GOTRUE",
-          initNewGoTrue(
-            `https://${rootGetters["app/siteURL"]}/.netlify/identity`
-          )
-        );
-
-        this.subscribe(mutation => {
-          if (mutation.type === "app/SET_SITE_URL") {
-            console.log(
-              "Re-initialising Go True client with",
-              rootGetters["app/siteURL"]
-            );
-            commit(
-              "SET_GOTRUE",
-              initNewGoTrue(
-                `https://${rootGetters["app/siteURL"]}/.netlify/identity`
-              )
-            );
-          }
-        });
-
-        return;
-      }
-
-      //console.log("Initialising Go True client with ", APIUrl);
+      // console.log("Initialising Go True client with ", APIUrl);
       commit("SET_GOTRUE", initNewGoTrue(APIUrl));
     },
 
@@ -254,7 +224,7 @@ export default {
           .update(userData)
           .then(response => {
             // console.log("Updated user account details", response);
-            dispatch('setUserPrefs');
+            dispatch('setUserPrefs', response);
             dispatch('app/sendToastMessage', { text: `Profile successfully updated.`, type: 'success' }, { root: true });
             resolve(response);
           })
@@ -267,9 +237,9 @@ export default {
       });
     },
 
-    setUserPrefs({ commit, dispatch, getters }) {
+    setUserPrefs({ commit, dispatch, getters }, data) {
       // set user preferences with login
-      const user = getters['currentUser'];
+      const user = data;
       const userMeta = user.user_metadata;
       const userOptions = getters['userOptions'];
 

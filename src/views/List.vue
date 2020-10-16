@@ -48,7 +48,7 @@ import ListPosterModal from '@/components/list/ListPosterModal.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
-import { computed, onBeforeUpdate, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 
@@ -90,16 +90,9 @@ export default {
       store.dispatch('app/togglePosterModal', true);
     }
 
-    onBeforeUpdate(() => {
-      // to keep the respective list sorted when adding/removing items
-      if (listLength.value > 0) {
-        store.dispatch('tools/updateSort', mode.value);
-      }
-    })
-
     getListData(); // initial data load as in what used to be 'created()'
 
-    store.dispatch('tools/updateSort', mode.value);
+    // store.dispatch('tools/updateSort', mode.value); // as of 16.10.20 -> sorting right after reading data, running this 'onCreated' here seems pointless.
 
     return {
       addModalOpen: computed(() => store.getters['app/addTitleOpen']),

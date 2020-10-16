@@ -34,8 +34,8 @@ import { useStore } from 'vuex';
 export default {
   name: 'Signup',
   setup() {
-    const router = useRouter();
     const route = useRoute();
+    const router = useRouter();
     const store = useStore();
 
     const msg = ref({ text: '', type: ''});

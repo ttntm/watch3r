@@ -20,8 +20,8 @@ import GlobalNav from '@/components/GlobalNav.vue'
 import GlobalMenu from '@/components/GlobalMenu.vue'
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import ToastMessage from '@/components/ToastMessage.vue'
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { computed, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
 export default {
@@ -34,7 +34,16 @@ export default {
   },
   setup() {
     const route = useRoute();
+    const router = useRouter();
     const store = useStore();
+
+    const loggedIn = computed(() => store.getters['user/loggedIn']);
+
+    watch(loggedIn, () => {
+      if (!loggedIn.value && route.name !== 'home') {
+        router.push({ name: 'home' }); // redirect in other tabs in case of logout
+      }
+    })
 
     return {
       routeFull: computed(() => route.fullPath),

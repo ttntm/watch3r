@@ -53,7 +53,6 @@ export default {
         store.dispatch('user/attemptLogin', credentials.value)
           .then(() => {
             store.dispatch('app/sendToastMessage', { text: `Login successful, have fun!`, type: 'success' });
-            store.dispatch('user/setUserPrefs');
           })
           .catch(error => {
             cValidateMsg.value = '';
