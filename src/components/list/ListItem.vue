@@ -14,7 +14,7 @@
       <h3 class="text-xl mb-2">
         {{ item.title }}
         <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="hidden lg:inline-block hover:shadow-outline focus:shadow-outline ml-1" title="View on IMDb">
-          <img :src="imdbIcon" alt="IMDb icon" class="w-4">
+          <img src="/img/imdb.png" alt="IMDb icon" class="w-4">
         </a>
       </h3>
       <p v-if="mode === 'tracklist' && item.userDateWatched" class="text-sm text-gray-600 mb-2">Watched: {{ item.userDateWatched }}</p>
@@ -61,12 +61,7 @@ export default {
   setup() {
     const store = useStore();
 
-    const imdbIcon = computed(() => {
-      return require('@/assets/imdb.png');
-    });
-
     return {
-      imdbIcon,
       showIMDb: computed(() => store.getters['user/showIMDbLinks'])
     }
   }

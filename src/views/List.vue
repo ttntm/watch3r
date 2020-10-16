@@ -1,7 +1,7 @@
 <template>
   <div id="list" class="">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-      <div class="mb-8 sm:mb-0 mr-8 md:mr-0">
+      <div class="mb-8 sm:mb-0 sm:mr-8 lg:mr-0">
         <h2 class="text-yellow-600 capitalize">{{ mode }}</h2>
         <p class="mb-0">
           {{ subtitle }}
