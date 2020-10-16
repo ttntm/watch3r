@@ -25,12 +25,12 @@ export default createStore({
     createPersistedState({
       key: 'w3',
       paths: ['user.GoTrueAuth'],
-      // reducer (val) {
-      //   if(!val.user.currentUser) { // return empty state when user logged out
-      //     return {}
-      //   }
-      //   return val
-      // },
+      reducer (val) {
+        if(!val.user.GoTrueAuth) { // return empty state when user logged out
+          return {}
+        }
+        return val
+      },
       storage: {
         getItem: (key) => ls.get(key),
         setItem: (key, value) => ls.set(key, value),
