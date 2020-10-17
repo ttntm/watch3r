@@ -50,6 +50,7 @@ export default {
         cValidateMsg.value = 'Please enter valid information.';
       } else {
         cValidateMsg.value = `<img src="${spinner}" class="mx-auto">`;
+        store.dispatch('list/initializeList'); // fix multi-tab re-hydration; list state of previous user comes back from local storage otherwise
         store.dispatch('user/attemptLogin', credentials.value)
           .then(() => {
             store.dispatch('app/sendToastMessage', { text: `Login successful, have fun!`, type: 'success' });
