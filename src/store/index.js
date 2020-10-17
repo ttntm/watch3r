@@ -1,4 +1,4 @@
-import { createStore } from 'vuex';
+import { createStore, Store } from 'vuex';
 import app from './modules/app';
 import list from './modules/list';
 import tools from './modules/tools';
@@ -25,12 +25,6 @@ export default createStore({
     createPersistedState({
       key: 'w3',
       paths: ['user.GoTrueAuth'],
-      reducer (val) {
-        if(!val.user.GoTrueAuth) { // return empty state when user logged out
-          return {}
-        }
-        return val
-      },
       storage: {
         getItem: (key) => ls.get(key),
         setItem: (key, value) => ls.set(key, value),
