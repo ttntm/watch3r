@@ -1,6 +1,3 @@
-/**
- * This module is responsible for all state and actions related to the current authenticated user.
- */
 import GoTrue from 'gotrue-js';
 
 export default {
@@ -27,11 +24,11 @@ export default {
     userOptions: state => state.userOptions,
   },
   mutations: {
-    SET_GOTRUE(state, value) {
-      state.GoTrueAuth = value;
-    },
     SET_CURRENT_USER(state, value) {
       state.currentUser = value;
+    },
+    SET_GOTRUE(state, value) {
+      state.GoTrueAuth = value;
     },
     SET_IMDB_LINKS(state, value) {
       state.userOptions.showIMDbLinks = value;
@@ -53,15 +50,20 @@ export default {
       dispatch('initAuth');
     },
 
-    /**
-     * Authorise and login users via email
-     * @param {*} store - vuex store object
-     * @param {object} credentials - object containing email and password
-     * @property {string} credentials.email - email of the user eg hello@email.com
-     * @property {string} credentials.password - password string
-     */
+    attemptConfirmation({ state }, token) {
+      return new Promise((resolve, reject) => {
+        state.GoTrueAuth.confirm(token)
+          .then(response => {
+            resolve(response); // User confirmed
+          })
+          .catch(error => {
+            console.error("An error occurred trying to confirm the user", error);
+            reject(error);
+          });
+      });
+    },
+
     attemptLogin({ commit, dispatch, state }, credentials) {
-      //console.log(`Attempting login for ${credentials.email}`);
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.login(credentials.email, credentials.password, true)
           .then(response => {
@@ -71,66 +73,13 @@ export default {
           })
           .catch(error => {
             console.error("An error occurred logging in", error);
+            store.dispatch('app/sendToastMessage', { text: `Something's gone wrong logging in, please try again later.`, type: 'error' }, { root: true });
             reject(error);
           });
       });
     },
 
-    /**
-     *
-     * @param {*} store - vuex store object
-     * @param {object} credentials - object containing email and password
-     * @property {string} credentials.email - email of the user eg hello@email.com
-     * @property {string} credentials.password - password string
-     */
-    attemptSignup({ getters, state }, credentials) {
-      //console.log(`Attempting signup for ${credentials.email}...`, credentials);
-      const userOptions = getters['userOptions'];
-      return new Promise((resolve, reject) => {
-        state.GoTrueAuth.signup(credentials.email, credentials.password, {
-          // set defaults
-          user_imdb: userOptions.showIMDbLinks,
-          user_sort: userOptions.userSort,
-          user_start: userOptions.userStart
-        })
-          .then(response => {
-            //console.log(`Confirmation email sent`, response);
-            resolve(response);
-          })
-          .catch(error => {
-            console.error("An error occurred trying to sign up", error);
-            reject(error);
-          });
-      });
-    },
-
-    /**
-     * This confirms a new user from an email signup by parsing the token which has been extracted from the Netlify
-     * confirmation email.
-     * @param {*} store - vuex store object
-     * @param {string} token - token from confirmation email eg. "BFX7olHxIwThlfjLGGfaCA"
-     */
-    attemptConfirmation({ state }, token) {
-      //console.log("Attempting to verify token", token);
-      return new Promise((resolve, reject) => {
-        state.GoTrueAuth.confirm(token)
-          .then(response => {
-            //console.log("User has been confirmed");
-            resolve(response);
-          })
-          .catch(error => {
-            console.error("An error occurred trying to confirm the user", error);
-            reject(error);
-          });
-      });
-    },
-
-    /**
-     * Sign out the current user if they are logged in.
-     * TODO: Promisify this, and remove alert out. follow up UI changes should be handled outside of vuex
-     * @param {*} store - vuex store object
-     */
-    attemptLogout({ commit, getters, state }) {
+    attemptLogout({ commit, dispatch, state }) {
       return new Promise((resolve, reject) => {
         const user = state.GoTrueAuth.currentUser();
         user
@@ -138,6 +87,7 @@ export default {
           .then(response => {
             //console.log("User logged out", response);
             commit("SET_CURRENT_USER", null);
+            dispatch('app/initialize', null, { root: true });
             resolve(response);
           })
           .catch(error => {
@@ -147,35 +97,41 @@ export default {
           });
       });
     },
-    /**
-     * This accepts an invite and creates a new user by parsing the token which has been extracted from the Netlify
-     * invite email.
-     * @param {*} store - vuex store object
-     * @param {string} token - token from invite email eg. "BFX7olHxIwThlfjLGGfaCA"
-     */
-    processInvite({ state }, data) {
-      // console.log("Attempting to verify invite", data.token);
+
+    attemptPasswordRecovery({ state, commit }, token) {
       return new Promise((resolve, reject) => {
-        state.GoTrueAuth.acceptInvite(data.token, data.pwd)
+        state.GoTrueAuth.recover(token)
           .then(response => {
-            // console.log("Invite was successful, user created");
+            commit("SET_CURRENT_USER", response);
             resolve(response);
           })
           .catch(error => {
-            console.error("An error occurred trying to process the invite", error);
+            console.error("Failed to verify recover token: %o", error);
             reject(error);
           });
       });
     },
 
-    /**
-     * Initialises a GoTrue instance. This method also checks if user is in a local environment  based on the URL.
-     * this updates the `app/SET_DEV_ENV` flag. This facilitates a zero-config setup as a developer can input their
-     * netlify URL in the UI (see the the `SetNetlifyURL.vue` component). Inspired from the official Netlify
-     * Identity widget.
-     * @param {*} store - vuex store object
-     */
-    initAuth({ commit, getters, rootGetters }) {
+    attemptSignup({ getters, state }, credentials) {
+      const userOptions = getters['userOptions'];
+      return new Promise((resolve, reject) => {
+        state.GoTrueAuth.signup(credentials.email, credentials.password, {
+          // set defaults
+          user_imdb: userOptions.showIMDbLinks,
+          user_sort: userOptions.userSort,
+          user_start: userOptions.userStart
+        })
+          .then(response => {
+            resolve(response); // Confirmation email sent
+          })
+          .catch(error => {
+            console.error("An error occurred trying to sign up", error);
+            reject(error);
+          });
+      });
+    },
+
+    initAuth({ commit, rootGetters }) {
       const APIUrl = `https://${rootGetters["app/siteURL"]}/.netlify/identity`;
 
       const initNewGoTrue = APIUrl => {
@@ -185,8 +141,20 @@ export default {
         });
       };
 
-      // console.log("Initialising Go True client with ", APIUrl);
       commit("SET_GOTRUE", initNewGoTrue(APIUrl));
+    },
+
+    processInvite({ state }, data) {
+      return new Promise((resolve, reject) => {
+        state.GoTrueAuth.acceptInvite(data.token, data.pwd)
+          .then(response => {
+            resolve(response); // invite successfull, user created
+          })
+          .catch(error => {
+            console.error("An error occurred trying to process the invite", error);
+            reject(error);
+          });
+      });
     },
 
     requestPasswordRecover({ dispatch, state }, email) {
@@ -202,34 +170,17 @@ export default {
         });
     },
 
-    attemptPasswordRecovery({ state, commit }, token) {
-      return new Promise((resolve, reject) => {
-        state.GoTrueAuth.recover(token)
-          .then(response => {
-            console.log("Signing in user with recovery token");
-            commit("SET_CURRENT_USER", response);
-            resolve(response);
-          })
-          .catch(error => {
-            // console.error("Failed to verify recover token: %o", error);
-            reject();
-          });
-      });
-    },
-
     updateUserAccount({ dispatch, state }, userData) {
       return new Promise((resolve, reject) => {
         const user = state.GoTrueAuth.currentUser();
         user
           .update(userData)
           .then(response => {
-            // console.log("Updated user account details", response);
             dispatch('setUserPrefs', response);
             dispatch('app/sendToastMessage', { text: `Profile successfully updated.`, type: 'success' }, { root: true });
             resolve(response);
           })
           .catch(error => {
-            // console.error("Failed to update user account: %o", error);
             console.error(`Error updating the user profile`, error);
             dispatch('app/sendToastMessage', { text: `Error updating the user profile, please try again later.`, type: 'error' }, { root: true });
             reject(error);
@@ -238,13 +189,12 @@ export default {
     },
 
     setUserPrefs({ commit, dispatch, getters }, data) {
-      // set user preferences with login
       const user = data;
       const userMeta = user.user_metadata;
       const userOptions = getters['userOptions'];
 
       if (!Object.keys(userMeta).length > 0) {
-        // user has no preferences -- console.log('setting DEFAULT prefs...');
+        // user has no preferences
         let userUpdate = {
           email: user.email,
           data: {
@@ -255,7 +205,7 @@ export default {
         };
         dispatch('updateUserAccount', userUpdate);
       } else {
-        // user preferences are available -- console.log('setting USER prefs...');
+        // user preferences are available
         commit('SET_IMDB_LINKS', userMeta.user_imdb);
         commit('SET_SORT_PRESET', userMeta.user_sort);
         commit('SET_START_PAGE', userMeta.user_start);

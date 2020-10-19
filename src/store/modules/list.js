@@ -48,7 +48,7 @@ export default {
      *  COMMON LIST ACTIONS
      */
 
-    initializeList({ commit }) {
+    initializeList({ commit, state }) {
       commit('SET_EDIT_TITLE_CONTENT', null);
       commit('SET_TRACKLIST', []);
       commit('SET_TRACKLIST_CACHE', []);
@@ -107,6 +107,7 @@ export default {
       const fn = rootGetters['app/functions'];
       let response;
       const searchActive = rootGetters['tools/searchActive'];
+      const searchMode = rootGetters['tools/listSearchMode'];
       const user = rootGetters['user/currentUser'];
 
       const getFn = (m) => {
@@ -134,8 +135,9 @@ export default {
 
         commit(`SET_${mode.toUpperCase()}_CACHE`, list); // always cache the new data, so we can restore it without another DB query in case search is active
 
-        if (!searchActive) {
-          // search NOT active, set the display list data
+        if (!searchActive || searchMode !== mode) {
+          // search not active OR active for another list mode -> set the display list data
+          // careful: not checking mode here could lead to stale data due to ASYNC race conditions, i.e. tracklist-read completed before watchlist-search was cleared...
           commit(`SET_${mode.toUpperCase()}`, list);
         } else {
           // search is active, check whether there are results left

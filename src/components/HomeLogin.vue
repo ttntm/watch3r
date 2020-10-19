@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -50,18 +50,13 @@ export default {
         cValidateMsg.value = 'Please enter valid information.';
       } else {
         cValidateMsg.value = `<img src="${spinner}" class="mx-auto">`;
-        store.dispatch('list/initializeList'); // fix multi-tab re-hydration; list state of previous user comes back from local storage otherwise
-        store.dispatch('user/attemptLogin', credentials.value)
-          .then(() => {
-            store.dispatch('app/sendToastMessage', { text: `Login successful, have fun!`, type: 'success' });
-          })
-          .catch(error => {
-            cValidateMsg.value = '';
-            console.error(`Something's gone wrong logging in`, error);
-            store.dispatch('app/sendToastMessage', { text: `Something's gone wrong logging in, please try again later.`, type: 'error' });
-          });
+        store.dispatch('user/attemptLogin', credentials.value);
       }
     }
+
+    onMounted(() => {
+      store.dispatch('app/initialize'); // double down on cleanup to circumvent multi-tab/local storage bringing back stale data
+    })
 
     return {
       credentials,
@@ -72,6 +67,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-</style>

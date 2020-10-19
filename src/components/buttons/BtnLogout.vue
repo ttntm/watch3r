@@ -28,8 +28,6 @@ export default {
     const handleLogout = () => {
       store.dispatch('user/attemptLogout')
         .then(() => {
-          store.dispatch('app/initialize');
-          store.dispatch('app/sendToastMessage', { text: 'Logout successful, redirecting...', type:  'success' });
           router.push({ name: 'home' });
         })
     }
