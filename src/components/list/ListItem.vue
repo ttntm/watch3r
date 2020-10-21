@@ -74,7 +74,7 @@ export default {
   }
 
   .poster {
-    @apply block shadow;
+    @apply block shadow rounded-sm;
   }
 
   @media(max-width: 639px) {

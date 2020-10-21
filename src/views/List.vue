@@ -35,11 +35,13 @@
     <transition name="overlay">
       <div v-if="addModalOpen || editModalOpen || posterModalOpen" class="overlay" />
     </transition>
+    <BtnToTop />
   </div>
 </template>
 
 <script>
 import BtnAddTitle from '@/components/buttons/BtnAddTitle.vue';
+import BtnToTop from '@/components/buttons/BtnToTop.vue';
 import ListAddModal from '@/components/list/ListAddModal.vue';
 import ListEditModal from '@/components/list/ListEditModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
@@ -56,6 +58,7 @@ export default {
   name: 'List',
   components: {
     BtnAddTitle,
+    BtnToTop,
     ListAddModal,
     ListEditModal,
     ListItem,
