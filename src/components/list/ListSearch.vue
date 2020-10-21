@@ -25,7 +25,6 @@ export default {
     }
 
     const searchList = (term, mode) => {
-      // handle "clearSearch()" somehow, better in here than inside the search input...
       store.dispatch('tools/searchList', [term, mode]);
     }
 

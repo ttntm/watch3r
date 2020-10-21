@@ -1,34 +1,20 @@
 <template>
   <input
     :value="modelValue"
-    :min="range.min"
-    :max="range.max"
     @input="$emit('update:modelValue', $event.target.value)"
     class="w-full focus:outline-none mb-6"
     type="range"
+    min="0"
+    max="10"
     step="0.1"
   >
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-
 export default {
   name: 'InputRange',
   props: {
     modelValue: String
-  },
-  setup() {
-    const range = ref({});
-
-    onMounted(() => {
-      range.value.min = 0;
-      range.value.max = 10;
-    })
-
-    return {
-      range
-    }
   }
 }
 </script>
