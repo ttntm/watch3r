@@ -1,14 +1,14 @@
 <template>
-  <div class="app-menu" v-click-outside="closeMenu" v-esc="closeMenu" v-scroll-lock>
-    <div class="flex flex-row justify-between items-center pt-2">
+  <nav class="app-menu" v-click-outside="closeMenu" v-esc="closeMenu" v-scroll-lock>
+    <section class="flex flex-row justify-between items-center pt-2">
       <p class="text-sm text-gray-600 font-bold px-4 mb-0">watch3r</p>
       <button
         @click.prevent="closeMenu()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer px-4 hover:opacity-100 focus:outline-none"
         title="Close Menu"
       >×</button>
-    </div>
-    <div class="flex flex-col text-gray-800">
+    </section>
+    <section class="flex flex-col text-gray-800">
       <router-link :to="{name: 'home'}" class="menu-item" v-click-blur>
         Home
       </router-link>
@@ -27,8 +27,8 @@
       <router-link :to="{name: 'support'}" class="menu-item" v-click-blur>
         Support
       </router-link>
-    </div>
-  </div>
+    </section>
+  </nav>
 </template>
 
 <script>

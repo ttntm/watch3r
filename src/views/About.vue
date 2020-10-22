@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full lg:w-3/4 text-content mx-auto">
+  <article class="w-full lg:w-3/4 text-content mx-auto">
     <h1>About watch3r</h1>
     <p>Not sure if you have already seen a certain movie? Lost track of the countless things you wanted to watch or watched already? Got different lists in different places you keep forgetting about?</p>
     <p>That's where the idea for this web application came from - imagine a tool that provides basic information about the listed titles, paired with search and sorting. A place to keep track of your lists and collect your thoughts after watching.</p>
@@ -31,7 +31,7 @@
         <img src="/img/about_edit-title.jpg" alt="Edit Title" loading="lazy">
       </a>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>

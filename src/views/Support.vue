@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full lg:w-3/4 text-content mx-auto">
+  <article class="w-full lg:w-3/4 text-content mx-auto">
     <h1>Support</h1>
     <p>Answers to questions that might come up sooner or later.</p>
     <h2>&gt; How Can I Contact You?</h2>
@@ -17,7 +17,7 @@
     </a>
     <h2>&times; Account Removal</h2>
     <p>Please send us an email. We'll take care of it and confirm your account's removal. Your list data will be permanently deleted in the process, so please let us know if you'd like to obtain a copy of your data together with your request.</p>
-  </div>
+  </article>
 </template>
 
 <script>

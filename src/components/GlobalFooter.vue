@@ -1,6 +1,6 @@
 <template>
   <footer class="text-sm px-4 py-2 sm:py-4 mt-8">
-    <div class="footer-nav flex flex-row flex-wrap justify-center items-center">
+    <nav class="footer-nav flex flex-row flex-wrap justify-center items-center">
       <router-link :to="{name: 'home'}" v-click-blur>
         Home
       </router-link>
@@ -19,7 +19,7 @@
       <router-link :to="{name: 'support'}" v-click-blur>
         Support
       </router-link>
-    </div>
+    </nav>
     <p class="text-xs text-center mt-2 mb-0">
       watch3r.app,
       &copy; <a href="https://ttntm.me" target="_blank" class="hover:text-yellow-600">ttntm</a> 2020

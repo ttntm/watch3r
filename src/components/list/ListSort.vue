@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full relative text-gray-700 bg-gray-300 shadow-lg sm:ml-8">
+  <section class="w-full relative text-gray-700 bg-gray-300 shadow-lg sm:ml-8">
     <select name="sorting" id="sort-select" v-model="selected" @change="sortSelect(selected)">
       <option disabled value="">Sort {{ mode }}...</option>
       <option v-for="(mode, index) in allSortModes" :key="index" :value="index" class="">{{ mode.name }} ({{ mode.order }})</option>
@@ -9,7 +9,7 @@
         <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
       </svg>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-grow items-center justify-items-center w-full h-full">
+  <section class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="text-center self-center max-w-sm mx-auto">
       <form
         id="signup-form"
@@ -23,7 +23,7 @@
         We don't use analytics, cookies or tracking, so watch3r.app itself does <em>not</em> collect and/or store any personally identifiable information.
       </p>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

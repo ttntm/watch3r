@@ -1,5 +1,5 @@
 <template>
-  <div id="user-profile" class="flex flex-grow items-center justify-items-center w-full h-full">
+  <section id="user-profile" class="flex flex-grow items-center justify-items-center w-full h-full">
     <form
       v-if="user"
       id="user-profile-form"
@@ -47,7 +47,7 @@
       </div>
       <button @click="updateUserProfile()" class="btn btn-black" :disabled="!btnState.enabled" v-click-blur>{{ btnState.text }}</button>
     </form>
-  </div>
+  </section>
 </template>
 
 <script>

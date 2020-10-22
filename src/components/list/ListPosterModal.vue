@@ -1,7 +1,7 @@
 <template>
-  <div id="poster-modal" v-esc="closePoster" v-scroll-lock>
+  <section id="poster-modal" v-esc="closePoster" v-scroll-lock>
     <img :src="poster" class="block self-center max-w-full shadow-lg rounded-sm" :alt="title" :title='`Poster for "${title}"`' v-click-outside="closePoster">
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
-  <div id="list" class="">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+  <section id="list" class="">
+    <section class="flex flex-col sm:flex-row sm:items-center justify-between">
       <div class="mb-8 sm:mb-0 sm:mr-8 lg:mr-0">
         <h2 class="text-yellow-600 capitalize">{{ mode }}</h2>
         <p class="mb-0">
@@ -14,18 +14,18 @@
           <ListAddModal v-if="addModalOpen" :mode="mode" />
         </transition>
       </div>
-    </div>
+    </section>
     <ListLoading v-if="listLength === 0 && !searchActive" />
-    <div v-else class="sm:px-12 my-8">
+    <section v-else class="sm:px-12 my-8">
       <div class="flex flex-col sm:flex-row items-center">
         <ListSearch :mode="mode" class="flex-1" />
         <ListSort :mode="mode" class="flex-1" />
       </div>
       <ListSearchStatus v-if="searchActive" :mode="mode" class="mt-8" />
-    </div>
-    <div v-if="listLength > 0" class="list">
+    </section>
+    <section v-if="listLength > 0" class="list">
       <ListItem v-for="title in listData" :item="title" :key="title.id" :mode="mode" @open-poster="showPoster($event)" />
-    </div>
+    </section>
     <transition name="modal">
       <ListEditModal v-if="editModalOpen" :mode="mode" />
     </transition>
@@ -36,7 +36,7 @@
       <div v-if="addModalOpen || editModalOpen || posterModalOpen" class="overlay" />
     </transition>
     <BtnToTop />
-  </div>
+  </section>
 </template>
 
 <script>

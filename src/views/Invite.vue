@@ -1,5 +1,5 @@
 <template>
-  <div id="invite" class="flex flex-grow items-center justify-items-center w-full h-full">
+  <section id="invite" class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="flex flex-col just-items-center w-full max-w-md self-center mx-auto">
       <form
         id="invite-form"
@@ -24,7 +24,7 @@
         This form will be processed by Netlify. As such, you explicitly agree with Netlify processing your email and IP address according to their <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" class="underline">data processing guidelines</a>.
       </p>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

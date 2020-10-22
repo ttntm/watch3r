@@ -1,5 +1,5 @@
 <template>
-  <div id="recover" class="flex flex-grow items-center justify-items-center w-full h-full">
+  <section id="recover" class="flex flex-grow items-center justify-items-center w-full h-full">
     <form
       id="recover-account-form"
       @submit.prevent="handleRecover(cred.email)"
@@ -15,7 +15,7 @@
       </div>
       <button type="submit" class="btn btn-black mr-auto" :disabled="!cred.email" v-click-blur>Recover Account</button>
     </form>
-  </div>
+  </section>
 </template>
 
 <script>

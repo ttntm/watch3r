@@ -1,26 +1,24 @@
 <template>
-  <div class="list-modal" role="dialog" aria-labelledby="add-modal-heading" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock>
-    <div class="flex flex-row justify-between items-center px-8">
-      <h3 id="add-modal-heading" class="text-gray-600 text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
+  <section class="list-modal text-gray-600" role="dialog" aria-labelledby="add-modal-heading" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock>
+    <section class="flex flex-row justify-between items-center px-8">
+      <h3 id="add-modal-heading" class="text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
       <button
         @click.prevent="closeModal()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
         title="Close"
       >×</button>
-    </div>
-    <div class="text-gray-600">
-      <div class="px-8 py-6">
-        <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Title or IMDb ID" />
-        <div class="flex flex-row items-center text-sm mt-4">
-          <span class="font-bold mr-2">Mode:</span>
-          <InputRadio class="mr-4" name="search-mode" :label="'title'" :value="searchMode" @update:radio="updateSearchMode($event)" />
-          <InputRadio class="" name="search-mode" :label="'id'" :value="searchMode" @update:radio="updateSearchMode($event)" />
-        </div>
+    </section>
+    <section class="px-8 py-6">
+      <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Title or IMDb ID" />
+      <div class="flex flex-row items-center text-sm mt-4">
+        <span class="font-bold mr-2">Mode:</span>
+        <InputRadio class="mr-4" name="search-mode" :label="'title'" :value="searchMode" @update:radio="updateSearchMode($event)" />
+        <InputRadio class="" name="search-mode" :label="'id'" :value="searchMode" @update:radio="updateSearchMode($event)" />
       </div>
-      <ListAddSearchResult v-if="searchResult.id" :mode="mode" :searchResult="searchResult" class="px-8" />
-      <p v-if="searchStatus" v-html="searchStatus" class="text-center px-8 py-4 mb-0" />
-    </div>
-  </div>
+    </section>
+    <ListAddSearchResult v-if="searchResult.id" :mode="mode" :searchResult="searchResult" class="px-8" />
+    <p v-if="searchStatus" v-html="searchStatus" class="text-center px-8 py-4 mb-0" />
+  </section>
 </template>
 
 <script>

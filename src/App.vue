@@ -1,18 +1,20 @@
 <template>
-  <div id="app-inner" class="flex flex-col min-h-screen">
+  <section id="app-inner" class="flex flex-col min-h-screen">
     <GlobalNav />
     <transition name="fade">
+      <!-- menu backdrop -->
       <div v-if="menuOpen" class="app-menu-container sm:bg-transparent" />
     </transition>
     <transition name="slide-fade">
+      <!-- menu modal -->
       <GlobalMenu v-if="menuOpen" />
     </transition>
-    <div class="container flex flex-col flex-grow flex-shrink-0 px-4 mx-auto">
+    <section class="container flex flex-col flex-grow flex-shrink-0 px-4 mx-auto">
       <router-view :key="routeFull" />
-    </div>
+    </section>
     <GlobalFooter />
     <ToastMessage />
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item flex-col sm:flex-row">
+  <article class="list-item flex-col sm:flex-row">
     <div class="sm:self-center px-4">
       <img
         :src="item.image"
@@ -39,7 +39,7 @@
         View on IMDb
       </a>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
