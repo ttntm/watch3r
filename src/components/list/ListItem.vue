@@ -5,7 +5,7 @@
         :src="item.image"
         :alt="item.title"
         @click.self="$emit('open-poster', [item.image, item.title])"
-        class="poster click-outside-ignore self-center cursor-pointer mb-4 sm:mb-0"
+        class="poster click-outside-ignore self-center cursor-pointer mb-6 sm:mb-0"
         loading="lazy"
         title="Click to enlarge"
       >
@@ -21,23 +21,27 @@
       <p v-if="mode === 'tracklist' && item.userNotes" class="text-sm sm:mb-0">{{ item.userNotes }}</p>
       <p v-if="mode === 'watchlist' || !item.userNotes" class="text-sm sm:mb-0">{{ item.plot }}</p>
     </div>
-    <div class="w-full sm:w-1/4 self-center text-gray-700 text-sm px-4 lg:px-6 mb-4 sm:mb-0">
+    <div class="w-full sm:w-1/4 self-center text-gray-700 text-sm px-4 lg:px-6 mb-2 sm:mb-0">
       <p>{{ item.genre }}</p>
       <p>Release: {{ item.year }}</p>
       <p v-if="mode === 'tracklist' && item.userRating" class="sm:mb-0">Your Rating: {{ item.userRating }}</p>
       <p v-if="mode === 'watchlist' || !item.userRating" class="sm:mb-0">IMDb Rating: {{ item.imdbRating }}</p>
     </div>
     <div class="flex flex-row flex-wrap sm:flex-col self-center justify-center text-sm lg:text-base sm:px-4">
-      <BtnListItemEdit v-if="mode === 'watchlist'" :id="item.refId" :mode="mode" class="mb-4">
+      <BtnListItemEdit v-if="mode === 'watchlist'" :id="item.refId" :mode="mode" class="sm:mb-4">
         Watched
       </BtnListItemEdit>
-      <BtnListItemEdit v-if="mode === 'tracklist'" :id="item.refId" :mode="mode" class="mb-4">
+      <BtnListItemEdit v-if="mode === 'tracklist'" :id="item.refId" :mode="mode" class="sm:mb-4">
         Edit
       </BtnListItemEdit>
-      <BtnListItemRemove :id="item.refId" :mode="mode" class="ml-4 sm:ml-0 mb-4 lg:mb-0" />
-      <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="w-full block lg:hidden text-center text-yellow-600 font-bold mt-4 sm:mt-0" title="View on IMDb">
-        View on IMDb
-      </a>
+      <BtnListItemRemove :id="item.refId" :mode="mode" class="ml-4 sm:ml-0" />
+      <div v-if="showIMDb" class="w-full lg:hidden text-center mt-4">
+        <a :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="btn btn-imdb inline-flex sm:flex items-center mx-auto" title="View on IMDb">
+          <img src="/img/imdb.png" alt="IMDb icon" class="w-5 inline-block mr-2">
+          <span class="inline-block sm:hidden">View on&nbsp;</span>
+          IMDb
+        </a>
+      </div>
     </div>
   </article>
 </template>
@@ -90,5 +94,13 @@ export default {
       width: 100px;
       max-height: 200px;
     }
+  }
+
+  .btn-imdb {
+    @apply border border-yellow-600 text-yellow-600 shadow-none;
+  }
+
+  .btn-imdb:hover {
+    @apply bg-gray-900 border-gray-900;
   }
 </style>

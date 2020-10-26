@@ -42,7 +42,7 @@ const router = createRouter({
       component: Recover,
       beforeEnter: (to, from, next) => {
         if(store.getters['user/loggedIn']) {
-          // only users that aren't logged in can go to signup
+          // only users that aren't logged in can go to recover
           router.push({ name: 'home' });
         } else {
           return next();
@@ -103,12 +103,9 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // close open windows if there are any
-  store.dispatch('app/toggleMenu', false);
-  store.dispatch('app/toggleAddTitleModal', false);
-  store.dispatch('app/toggleEditTitleModal', false);
+  store.dispatch('app/closeAllModals'); // close all open windows if there are any
 
-  if (store.getters['tools/searchActive']) {
+  if (store.getters['tools/searchActive']) {  // reset search when navigation occurs
     store.dispatch('tools/resetList');
   }
 

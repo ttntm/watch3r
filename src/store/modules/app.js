@@ -60,6 +60,13 @@ export default {
   },
 
   actions: {
+    closeAllModals({ dispatch }) {
+      dispatch('toggleAddTitleModal', false);
+      dispatch('toggleEditTitleModal', false);
+      dispatch('togglePosterModal', false);
+      dispatch('toggleMenu', false);
+    },
+
     initialize({ dispatch }) {
       // global state reset action triggering module actions to keep things separate
       dispatch('list/initializeList', null, { root: true });
