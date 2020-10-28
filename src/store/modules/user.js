@@ -73,7 +73,7 @@ export default {
           })
           .catch(error => {
             console.error("An error occurred logging in", error);
-            store.dispatch('app/sendToastMessage', { text: `Something's gone wrong logging in, please try again later.`, type: 'error' }, { root: true });
+            dispatch('app/sendToastMessage', { text: `Something's gone wrong logging in, please try again later.`, type: 'error' }, { root: true });
             reject(error);
           });
       });
@@ -85,7 +85,6 @@ export default {
         user
           .logout()
           .then(response => {
-            //console.log("User logged out", response);
             commit("SET_CURRENT_USER", null);
             dispatch('app/initialize', null, { root: true });
             resolve(response);

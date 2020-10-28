@@ -82,6 +82,7 @@ export default {
             searchResult.value.imdbRating = res.imdbRating;
             searchResult.value.plot = res.Plot;
             searchResult.value.title = res.Title;
+            searchResult.value.type = res.Type;
             searchResult.value.user = currentUser.value.email,
             searchResult.value.year = res.Year;
           }

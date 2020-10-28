@@ -35,13 +35,22 @@ export default {
     const addTitleToList = (title) => {
       const listMode = props.mode;
 
+      const checkDuplicateEntry = () => {
+        const listCurrent = store.getters[`list/${listMode}`];
+        return listCurrent.filter((item) => item.id === props.searchResult.id);
+      }
+
       addBtnState.value.enabled = false;
       addBtnState.value.text = 'Adding...';
 
-      if (store.getters['tools/searchActive']) {
-        store.dispatch('tools/resetList');
+      if(checkDuplicateEntry().length > 0) {
+        addBtnState.value.text = `Duplicate :(`;
+      } else {
+        if (store.getters['tools/searchActive']) {
+          store.dispatch('tools/resetList');
+        }
+        store.dispatch('list/writeList', [title, listMode]);
       }
-      store.dispatch('list/writeList', [title, listMode]);
     }
 
     return {
