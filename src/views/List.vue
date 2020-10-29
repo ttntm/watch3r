@@ -80,7 +80,7 @@ export default {
     const searchActive = computed(() => store.getters['tools/searchActive']);
 
     const getListData = () => {
-      if (listLength === 0 && !searchActive.value) {
+      if (listLength.value === 0 && !searchActive.value) {
         store.dispatch('list/readList', mode.value);
       }
     }
