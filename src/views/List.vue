@@ -35,7 +35,7 @@
     <transition name="overlay">
       <div v-if="addModalOpen || editModalOpen || posterModalOpen" class="overlay" />
     </transition>
-    <BtnToTop v-if="!addModalOpen || !editModalOpen || !posterModalOpen" />
+    <BtnToTop v-if="!addModalOpen && !editModalOpen && !posterModalOpen" />
   </section>
 </template>
 
