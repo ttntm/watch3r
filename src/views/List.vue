@@ -75,13 +75,12 @@ export default {
     const listData = computed(() => store.getters[`list/${mode.value}`]);
     const listLength = computed(() => listData.value.length);
     const mode = computed(() => route.meta.mode);
-    const posterModalOpen = computed(() => store.getters['app/posterOpen']);
     const posterSrc = ref('');
     const posterTitle = ref('');
     const searchActive = computed(() => store.getters['tools/searchActive']);
 
     const getListData = () => {
-      if (listData.value.length === 0 && !searchActive.value) {
+      if (listLength === 0 && !searchActive.value) {
         store.dispatch('list/readList', mode.value);
       }
     }
@@ -102,7 +101,7 @@ export default {
       editModalOpen: computed(() => store.getters['app/editTitleOpen']),
       listData,
       listLength,
-      posterModalOpen,
+      posterModalOpen: computed(() => store.getters['app/posterOpen']),
       mode,
       showPoster,
       posterSrc,
