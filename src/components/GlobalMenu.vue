@@ -41,7 +41,7 @@ export default {
     const store = useStore();
 
     const closeMenu = () => {
-      store.dispatch('app/toggleMenu', false);
+      store.dispatch('app/toggleWindow', 0);
     }
 
     return {

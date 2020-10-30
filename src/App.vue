@@ -40,6 +40,7 @@ export default {
     const store = useStore();
 
     const loggedIn = computed(() => store.getters['user/loggedIn']);
+    const menuOpen = computed(() => store.getters['app/windowOpen'] === 1)
 
     watch(loggedIn, () => {
       if (!loggedIn.value && route.name !== 'home') {
@@ -49,7 +50,7 @@ export default {
 
     return {
       routeFull: computed(() => route.fullPath),
-      menuOpen: computed(() => store.getters['app/menuOpen']),
+      menuOpen
     }
   }
 }

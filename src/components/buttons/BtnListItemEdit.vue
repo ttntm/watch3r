@@ -32,18 +32,15 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const editTitleOpen = computed(() => store.getters['app/editTitleOpen']);
+    const editTitleOpen = computed(() => store.getters['app/windowOpen'] === 3);
 
     const toggleListEditModal = (refId, mode) => {
-      store.dispatch('app/toggleMenu', false);
-      store.dispatch('app/toggleAddTitleModal', false);
-
       if (editTitleOpen.value) {
         store.dispatch('list/clearEditTitle');
-        store.dispatch('app/toggleEditTitleModal', false);
+        store.dispatch('app/toggleWindow', 0);
       } else {
         store.dispatch('list/selectEditTitle', [refId, mode]);
-        store.dispatch('app/toggleEditTitleModal', true);
+        store.dispatch('app/toggleWindow', 3);
       }
     }
 

@@ -23,12 +23,10 @@ export default {
   setup() {
     const store = useStore();
 
-    const addTitleOpen = computed(() => store.getters['app/addTitleOpen']);
+    const addTitleOpen = computed(() => store.getters['app/windowOpen'] === 2);
 
     const toggleListAddModal = () => {
-      store.dispatch('app/toggleMenu', false);
-      store.dispatch('app/toggleEditTitleModal', false);
-      return addTitleOpen.value ? store.dispatch('app/toggleAddTitleModal', false) : store.dispatch('app/toggleAddTitleModal', true);
+      return addTitleOpen.value ? store.dispatch('app/toggleWindow', 0) : store.dispatch('app/toggleWindow', 2);
     }
 
     return {

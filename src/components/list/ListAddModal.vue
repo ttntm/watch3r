@@ -48,7 +48,7 @@ export default {
     const spinner = require('@/assets/loading.svg');
 
     const closeModal = () => {
-      store.dispatch('app/toggleAddTitleModal', false);
+      store.dispatch('app/toggleWindow', 0);
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) when closing this modal
     }
 

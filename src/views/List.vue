@@ -11,7 +11,7 @@
       <div class="flex-shrink-0">
         <BtnAddTitle />
         <transition name="modal">
-          <ListAddModal v-if="addModalOpen" :mode="mode" />
+          <ListAddModal v-if="modalOpen === 2" :mode="mode" />
         </transition>
       </div>
     </section>
@@ -27,15 +27,15 @@
       <ListItem v-for="title in listData" :item="title" :key="title.id" :mode="mode" @open-poster="showPoster($event)" />
     </section>
     <transition name="modal">
-      <ListEditModal v-if="editModalOpen" :mode="mode" />
+      <ListEditModal v-if="modalOpen === 3" :mode="mode" />
     </transition>
     <transition name="poster">
-      <ListPosterModal v-if="posterModalOpen" :poster="posterSrc" :title="posterTitle" />
+      <ListPosterModal v-if="modalOpen === 4" :poster="posterSrc" :title="posterTitle" />
     </transition>
     <transition name="overlay">
-      <div v-if="addModalOpen || editModalOpen || posterModalOpen" class="overlay" />
+      <div v-if="modalOpen && modalOpen !== 1" class="overlay" />
     </transition>
-    <BtnToTop v-if="!addModalOpen && !editModalOpen && !posterModalOpen" />
+    <BtnToTop v-if="!modalOpen" />
   </section>
 </template>
 
@@ -89,7 +89,7 @@ export default {
       const [src, title] = args;
       posterSrc.value = src;
       posterTitle.value = title;
-      store.dispatch('app/togglePosterModal', true);
+      store.dispatch('app/toggleWindow', 4);
     }
 
     getListData(); // initial data load as in what used to be 'created()'
@@ -97,11 +97,9 @@ export default {
     // store.dispatch('tools/updateSort', mode.value); // as of 16.10.20 -> sorting right after reading data, running this 'onCreated' here seems pointless.
 
     return {
-      addModalOpen: computed(() => store.getters['app/addTitleOpen']),
-      editModalOpen: computed(() => store.getters['app/editTitleOpen']),
       listData,
       listLength,
-      posterModalOpen: computed(() => store.getters['app/posterOpen']),
+      modalOpen: computed(() => store.getters['app/windowOpen']),
       mode,
       showPoster,
       posterSrc,

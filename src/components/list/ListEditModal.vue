@@ -63,10 +63,10 @@ export default {
     const closeModal = () => {
       if (hasChanges() && !writeSuccess.value) {
         if (confirm('Unsaved changes will be discarded.')) {
-          store.dispatch('app/toggleEditTitleModal', false);
+          store.dispatch('app/toggleWindow', 0);
         }
       } else {
-        store.dispatch('app/toggleEditTitleModal', false);
+        store.dispatch('app/toggleWindow', 0);
         store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any); also used to notify the user about unsaved changes when closing the modal
       }
     }
@@ -110,7 +110,7 @@ export default {
 
     watch(writeSuccess, () => {
       if (writeSuccess.value) {
-        store.dispatch('app/toggleEditTitleModal', false); // close modal with user input only if successful
+        store.dispatch('app/toggleWindow', 0); // close modal with user input only if successful
       }
     })
 
