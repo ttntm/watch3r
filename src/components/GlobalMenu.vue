@@ -1,7 +1,7 @@
 <template>
   <nav class="app-menu" v-click-outside="closeMenu" v-esc="closeMenu" v-scroll-lock>
-    <section class="flex flex-row justify-between items-center pt-2">
-      <p class="text-sm text-gray-600 font-bold px-4 mb-0">watch3r</p>
+    <section class="flex flex-row justify-between items-center py-2">
+      <img src="/img/icon.svg" class="px-4" style="width: 60px;" alt="WATCH3R">
       <button
         @click.prevent="closeMenu()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer px-4 hover:opacity-100 focus:outline-none"

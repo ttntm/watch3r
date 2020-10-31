@@ -1,6 +1,7 @@
 <template>
   <section id="invite" class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="flex flex-col just-items-center w-full max-w-md self-center mx-auto">
+      <img src="/img/icon.svg" class="mx-auto mb-10" alt="WATCH3R" style="width: 125px;">
       <form
         id="invite-form"
         name="RequestInvite"

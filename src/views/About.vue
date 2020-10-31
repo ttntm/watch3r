@@ -1,6 +1,7 @@
 <template>
   <article class="w-full lg:w-3/4 text-content mx-auto">
-    <h1>About watch3r</h1>
+    <img src="/img/logo.svg" class="max-w-xs mx-auto mb-8" alt="WATCH3R">
+    <h1 class="text-xl text-gray-600">About this Application</h1>
     <p>Not sure if you have already seen a certain movie? Lost track of the countless things you wanted to watch or watched already? Got different lists in different places you keep forgetting about?</p>
     <p>That's where the idea for this web application came from - imagine a tool that provides basic information about the listed titles, paired with search and sorting. A place to keep track of your lists and collect your thoughts after watching.</p>
     <h2>Features</h2>
@@ -10,6 +11,7 @@
     <p>&#9733; Search and sorting for each list view</p>
     <p>&#9733; PWA functionality for mobile devices to access your lists from the couch</p>
     <div class="text-center shadow-inner border-t border-b border-solid border-gray-700 px-8 py-16 -mx-8 sm:-mx-12 my-8">
+      <img src="/img/icon.svg" class="mx-auto mb-8" alt="WATCH3R" style="width: 100px;">
       <h3 class="text-2xl text-yellow-600">Get Your Account</h3>
       <p class="text-lg mb-8">watch3r is completely free! You're welcome to give it a try.</p>
       <router-link :to="{name: 'invite'}" class="btn btn-black inline-block mx-auto" style="text-decoration: none;">

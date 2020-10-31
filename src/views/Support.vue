@@ -1,6 +1,6 @@
 <template>
   <article class="w-full lg:w-3/4 text-content mx-auto">
-    <h1>Support</h1>
+    <h1 class="text-yellow-600 text-3xl">Support</h1>
     <p>Answers to questions that might come up sooner or later.</p>
     <h2>&gt; How Can I Contact You?</h2>
     <p>You can send us an email at <a href="mailto:hello@watch3r.app">hello@watch3r.app</a></p>

@@ -1,6 +1,7 @@
 <template>
   <section class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="text-center self-center max-w-sm mx-auto">
+      <img src="/img/icon.svg" class="mx-auto mb-10" alt="WATCH3R" style="width: 125px;">
       <form
         id="signup-form"
         @submit.prevent="handleSignup(pwd)"

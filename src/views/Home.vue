@@ -2,8 +2,9 @@
   <section class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="text-center self-center max-w-full md:max-w-sm mx-auto">
       <section class="mb-12">
-        <h1 class="text-3xl text-yellow-600">watch3r</h1>
-        <h2 class="text-xl">A watchlist and tracking app for your movies and series</h2>
+        <h1 class="text-lg text-gray-600">Presenting...</h1>
+        <img src="/img/logo.svg" class="max-w-xs mx-auto my-8" alt="WATCH3R">
+        <h2 class="text-lg">A watchlist and tracking app for your movies and series</h2>
       </section>
       <section v-if="loggedIn">
         <nav class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">

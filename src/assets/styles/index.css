@@ -351,11 +351,6 @@
     }
   }
 
-  .text-content h1 {
-    @apply text-3xl;
-    @apply text-yellow-600;
-  }
-
   .text-content h2 {
     @apply text-xl;
     @apply text-gray-600;
