@@ -1,3 +1,5 @@
+![WATCH3R](https://watch3r.app/img/splash.jpg)
+
 # About watch3r
 
 Not sure if you have already seen a certain movie? Lost track of the countless things you wanted to watch or watched already? Got different lists in different places you keep forgetting about?
