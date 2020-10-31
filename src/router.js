@@ -88,7 +88,7 @@ const router = createRouter({
       },
     },
     {
-      path: '/*',
+      path: '/:pathMatch(.*)',
       name: '404',
       //component: FourOFour,
       beforeEnter: () => {
