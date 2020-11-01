@@ -36,7 +36,7 @@
       </BtnListItemEdit>
       <BtnListItemRemove :id="item.refId" :mode="mode" class="ml-4 sm:ml-0" />
       <div v-if="showIMDb" class="w-full lg:hidden text-center mt-4">
-        <a :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="btn btn-imdb inline-flex sm:flex items-center mx-auto" title="View on IMDb">
+        <a :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="btn btn-imdb inline-flex sm:flex items-center justify-center mx-auto" title="View on IMDb">
           <img src="/img/imdb.png" alt="IMDb icon" class="w-5 inline-block mr-2">
           <span class="inline-block sm:hidden">View on&nbsp;</span>
           IMDb
