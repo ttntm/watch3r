@@ -5,8 +5,8 @@ const key = process.env.VUE_APP_OMDB;
 /* export our lambda function as named "handler" export */
 exports.handler = async (event, context, callback) => {
   /* parse the string event.body into a useable JS object */
-  const data = JSON.parse(event.body)
-  console.log("Function `omdb` invoked", data)
+  const data = JSON.parse(event.body);
+  console.log("Function `omdb-get` invoked", data);
 
   try {
     const apiResponse = await fetch(`https://www.omdbapi.com/?${data.prefix}=${data.query}&apikey=${key}`, { method: 'GET' });

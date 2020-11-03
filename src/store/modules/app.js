@@ -10,6 +10,8 @@ export default {
         omdbGet: process.env.VUE_APP_F_OMDB_GET,
         readTracklist: process.env.VUE_APP_F_TRACKLIST_GET,
         readWatchlist: process.env.VUE_APP_F_WATCHLIST_GET,
+        tmdbGetRecs: process.env.VUE_APP_F_TMDB_GET_RECS,
+        tmdbToOmdb: process.env.VUE_APP_F_TMDB_OMDB_GET,
         updateTracklist: process.env.VUE_APP_F_TRACKLIST_EDT, // only tracklist has an 'update' function; watchlist can only add/delete
         writeItemTracklist: process.env.VUE_APP_F_TRACKLIST_ADD,
         writeItemWatchlist: process.env.VUE_APP_F_WATCHLIST_ADD,

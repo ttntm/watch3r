@@ -2,6 +2,12 @@
   <section>
     <p>Explore Recommendations</p>
     <BtnAddTitle />
+    <button class="btn mt-4" @click="getRecommendations()">
+      Test
+    </button>
+    <button class="btn mt-4" @click="addList()">
+      Test 2
+    </button>
   </section>
   <!-- MODALS -->
   <transition name="modal">
@@ -38,10 +44,52 @@ export default {
       // need to refine the button that opens the modal -> make it a slotted button, style differently...?
       // need to implement the logic to handle specific recommendations, i.e. auto-switch to ID search mode and immediately perform search onCreated()
 
+    // TMDb posters -> https://image.tmdb.org/t/p/w600_and_h900_bestv2/wVbeL6fkbTKSmNfalj4VoAUUqJv.jpg -- same for movies and tv it seems
+
     const route = useRoute();
     const store = useStore();
 
+    const fn = store.getters['app/functions'];
+
+    const getRecommendations = () => {
+      const data = {
+        //id: 'tt0093773',
+        //type: 'movie'
+        id: 'tt5691552',
+        type: 'series'
+      }
+      fetch(fn.tmdbGetRecs, { body: JSON.stringify(data), method: 'POST' })
+        .then(response => {
+          return response.json();
+        })
+        .then(res => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.error("TMDB API error", error);
+        })
+    }
+
+    const addList = () => {
+      const data = {
+        id: '169', // Predator 2
+        type: 'movie'
+      }
+      fetch(fn.tmdbToOmdb, { body: JSON.stringify(data), method: 'POST' })
+        .then(response => {
+          return response.json();
+        })
+        .then(res => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.error("TMDB API error", error);
+        })
+    }
+
     return {
+      addList,
+      getRecommendations,
       modalOpen: computed(() => store.getters['app/windowOpen'])
     }
   }
