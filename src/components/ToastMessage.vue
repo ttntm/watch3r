@@ -9,9 +9,10 @@
         }"
         class="toast"
         style="min-width: 240px"
+        v-click-outside="closeToastMessage"
       >
         <button
-          @click.prevent="sendToastMessage(null)"
+          @click.prevent="closeToastMessage()"
           class="font-bold text-lg opacity-75 cursor-pointer absolute top-0 right-0 py-2 px-3 hover:opacity-100 focus:outline-none"
         >×</button>
         <div class="flex items-center">
@@ -33,13 +34,13 @@ export default {
   setup() {
     const store = useStore();
 
-    const sendToastMessage = (msg) => {
-      store.dispatch('app/sendToastMessage', msg);
+    const closeToastMessage = () => {
+      store.dispatch('app/sendToastMessage', null);
     }
 
     return {
       toastMessage: computed(() => store.getters['app/toastMessage']),
-      sendToastMessage
+      closeToastMessage
     }
   },
 };
