@@ -1,15 +1,13 @@
 <template>
-  <section id="toast-message" class="fixed bottom-0 right-0 max-w-md z-20 m-8">
-    <transition name="slide-fade">
+  <transition name="slide-fade">
+    <section v-if="toastMessage" id="toast-message" class="fixed bottom-0 right-0 max-w-md z-20 m-8">
       <div
-        v-if="toastMessage"
         :class="{
           'error': toastMessage.type === 'error',
           'success': toastMessage.type === 'success'
         }"
         class="toast"
         style="min-width: 240px"
-        v-click-outside="closeToastMessage"
       >
         <button
           @click.prevent="closeToastMessage()"
@@ -21,8 +19,8 @@
           </span>
         </div>
       </div>
-    </transition>
-  </section>
+    </section>
+  </transition>
 </template>
 
 <script>
