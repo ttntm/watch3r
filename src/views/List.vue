@@ -10,9 +10,6 @@
       </div>
       <div class="flex-shrink-0">
         <BtnAddTitle />
-        <transition name="modal">
-          <ListAddModal v-if="modalOpen === 2" :mode="mode" />
-        </transition>
       </div>
     </section>
     <ListLoading v-if="listLength === 0 && !searchActive" />
@@ -26,17 +23,21 @@
     <section v-if="listLength > 0" class="list">
       <ListItem v-for="title in listData" :item="title" :key="title.id" :mode="mode" @open-poster="showPoster($event)" />
     </section>
-    <transition name="modal">
-      <ListEditModal v-if="modalOpen === 3" :mode="mode" />
-    </transition>
-    <transition name="poster">
-      <ListPosterModal v-if="modalOpen === 4" :poster="posterSrc" :title="posterTitle" />
-    </transition>
-    <transition name="overlay">
-      <div v-if="modalOpen && modalOpen !== 1" class="overlay" />
-    </transition>
-    <BtnToTop v-if="!modalOpen" />
   </section>
+  <!-- MODALS -->
+  <transition name="modal">
+    <ListAddModal v-if="modalOpen === 2" :mode="mode" />
+  </transition>
+  <transition name="modal">
+    <ListEditModal v-if="modalOpen === 3" :mode="mode" />
+  </transition>
+  <transition name="poster">
+    <ListPosterModal v-if="modalOpen === 4" :poster="posterSrc" :title="posterTitle" />
+  </transition>
+  <!-- OVERLAY -->
+  <ModalBackdrop />
+  <!-- BTT Button -->
+  <BtnToTop v-if="!modalOpen" />
 </template>
 
 <script>
@@ -50,6 +51,7 @@ import ListPosterModal from '@/components/list/ListPosterModal.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
+import ModalBackdrop from '@/components/ModalBackdrop.vue';
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
@@ -66,7 +68,8 @@ export default {
     ListPosterModal,
     ListSearch,
     ListSearchStatus,
-    ListSort
+    ListSort,
+    ModalBackdrop
   },
   setup() {
     const route = useRoute();
@@ -112,18 +115,11 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .overlay {
-    @apply z-10 fixed bg-gray-900 top-0 bottom-0 left-0 right-0 w-full h-full;
-    opacity: 0.9;
-  }
-
   .modal-enter-active,
   .modal-leave-active {
     transition: all 0.75s;
   }
 
-  .overlay-enter-active,
-  .overlay-leave-active,
   .poster-enter-active,
   .poster-leave-active {
     transition: opacity 0.5s;
@@ -135,8 +131,6 @@ export default {
     opacity: 0;
   }
 
-  .overlay-enter-from,
-  .overlay-leave-to,
   .poster-enter-from,
   .poster-leave-to {
     opacity: 0;

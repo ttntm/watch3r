@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
 
 const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
+const Explore = () => import(/* webpackChunkName: "Explore" */ '@/views/Explore.vue');
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
 const Invite = () => import(/* webpackChunkName: "Invite" */ '@/views/Invite.vue');
 const List = () => import(/* webpackChunkName: "List" */ '@/views/List.vue');
@@ -22,6 +23,14 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+      path: '/explore',
+      name: 'explore',
+      component: Explore,
+      meta: {
+        authRequired: true,
+      }
     },
     {
       path: '/invite',
@@ -50,11 +59,6 @@ const router = createRouter({
       },
     },
     {
-      path: '/support',
-      name: 'support',
-      component: Support
-    },
-    {
       path: '/signup',
       name: 'signup',
       component: Signup,
@@ -66,6 +70,11 @@ const router = createRouter({
           return next();
         }
       },
+    },
+    {
+      path: '/support',
+      name: 'support',
+      component: Support
     },
     {
       path: '/track',

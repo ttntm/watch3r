@@ -8,6 +8,9 @@
       <router-link :to="{name: 'tracker'}" v-if="loggedIn" v-click-blur class="nav-link" :class="{'active' : currentView === 'tracker'}">
         Tracker
       </router-link>
+      <router-link :to="{name: 'explore'}" v-if="loggedIn" v-click-blur class="nav-link" :class="{'active' : currentView === 'explore'}">
+        Explore
+      </router-link>
     </div>
     <BtnLogout v-if="loggedIn" class="block" />
   </nav>
