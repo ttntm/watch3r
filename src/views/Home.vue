@@ -14,11 +14,11 @@
           <router-link :to="{name: 'tracker'}" class="btn btn-black mx-auto sm:m-0">
             Tracker
           </router-link>
+          <router-link :to="{name: 'explore'}" class="btn btn-black mx-auto sm:m-0">
+            Explore
+          </router-link>
           <router-link :to="{name: 'profile'}" class="btn btn-black mx-auto sm:m-0">
             Profile
-          </router-link>
-          <router-link :to="{name: 'support'}" class="btn btn-black mx-auto sm:m-0">
-            Support
           </router-link>
         </nav>
         <section class="text-center mt-12">

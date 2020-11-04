@@ -26,6 +26,7 @@ export default {
   setup(props) {
     const store = useStore();
 
+    const recSource = computed(() => store.getters['explore/recSource']);
     const searchActive = computed(() => store.getters['tools/searchActive']);
 
     const handleRemove = (mode, id) => {
@@ -36,6 +37,10 @@ export default {
           // update displayed data (so search results do not reset)
           store.dispatch('list/deleteFromSearchResults', [id, mode]);
         }
+        if (props.mode === 'tracklist' && id === recSource.value.refId) {
+          // in case the current recommendations are based on the deleted item
+          store.dispatch('explore/initializeExplore');
+        }
       }
     }
 
@@ -45,6 +50,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-</style>

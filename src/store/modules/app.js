@@ -26,6 +26,7 @@ export default {
         // 2 -> add title
         // 3 -> edit title
         // 4 -> poster
+        // 5 -> add recommendation
     };
   },
 
@@ -59,6 +60,7 @@ export default {
 
     initialize({ dispatch }) {
       // global state reset action triggering module actions to keep things separate
+      dispatch('explore/initializeExplore', null, { root: true });
       dispatch('list/initializeList', null, { root: true });
       dispatch('tools/initializeTools', null, { root: true });
       dispatch('user/initializeUser', null, { root: true });
