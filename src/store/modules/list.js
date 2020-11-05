@@ -147,7 +147,9 @@ export default {
           }
         }
 
-        dispatch('tools/updateSort', mode, { root: true });
+        if (list.length > 0) {
+          dispatch('tools/updateSort', mode, { root: true });
+        }
       } else {
         // no 'response' = error
         dispatch('app/sendToastMessage', { text: `An error occurred loading the ${mode}. Please try again later.`, type: 'error' }, { root: true });
