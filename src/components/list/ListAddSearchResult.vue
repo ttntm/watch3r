@@ -12,8 +12,8 @@
         :disabled="!addBtnState.enabled"
         v-click-blur
       >
-        <span v-if="writeSuccess">Added &#10003;</span>
-        <span v-else v-html="addBtnState.text"></span>
+        <span v-if="writeSuccess" class="pointer-events-none">Added &#10003;</span>
+        <span v-else v-html="addBtnState.text" class="pointer-events-none"></span>
       </button>
       <a v-if="showIMDb" :href="`https://www.imdb.com/title/${searchResult.id}`" target="_blank" rel="noopener" class="text-xs text-yellow-600 hover:text-black ml-8" title="View on IMDb">View on IMDb</a>
     </div>
@@ -27,6 +27,7 @@ import { useStore } from 'vuex';
 export default {
   name: 'ListAddSearchResult',
   props: {
+    explore: Boolean,
     mode: String,
     searchResult: Object
   },
@@ -35,24 +36,30 @@ export default {
 
     const addBtnState = ref({ enabled: true, text: `&plus; <span class="capitalize">${props.mode}</span>` });
 
-    const addTitleToList = (title) => {
-      const listMode = props.mode;
+    const checkDuplicateEntry = (listMode) => {
+      const listCurrent = store.getters[`list/${listMode}`];
+      return listCurrent.filter((item) => item.id === props.searchResult.id);
+    }
 
-      const checkDuplicateEntry = () => {
-        const listCurrent = store.getters[`list/${listMode}`];
-        return listCurrent.filter((item) => item.id === props.searchResult.id);
+    const isDuplicate = () => {
+      if (props.explore) {
+        return checkDuplicateEntry('tracklist').length > 0 || checkDuplicateEntry('watchlist').length > 0
+      } else {
+        return checkDuplicateEntry(props.mode).length > 0
       }
+    }
 
+    const addTitleToList = (title) => {
       addBtnState.value.enabled = false;
       addBtnState.value.text = 'Adding...';
 
-      if(checkDuplicateEntry().length > 0) {
+      if(isDuplicate()) {
         addBtnState.value.text = `Duplicate :(`;
       } else {
         if (store.getters['tools/searchActive']) {
           store.dispatch('tools/resetList');
         }
-        store.dispatch('list/writeList', [title, listMode]);
+        store.dispatch('list/writeList', [title, props.mode]);
       }
     }
 

@@ -8,7 +8,7 @@
         title="Close"
       >×</button>
     </section>
-    <ListAddSearchResult v-if="item.id" mode="watchlist" :searchResult="item" class="px-8" />
+    <ListAddSearchResult v-if="item.id" :explore="true" mode="watchlist" :searchResult="item" class="px-8" />
     <p v-if="searchStatus" v-html="searchStatus" class="text-center px-8 py-4 mb-0" />
   </section>
 </template>
