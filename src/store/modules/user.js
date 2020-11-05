@@ -8,6 +8,7 @@ export default {
       currentUser: null,
       GoTrueAuth: null,
       userOptions: {
+        showExploreLinks: true,
         showIMDbLinks: true,
         sortPreset: 1, // array index based on store.getters['tools/sortMode']
         startPage: 0 // 0 -> watchlist | 1 -> tracklist
@@ -18,6 +19,7 @@ export default {
     loggedIn: state => !!state.currentUser,
     currentUser: state => state.currentUser,
     GoTrueAuth: state => state.GoTrueAuth,
+    showExploreLinks: state => state.userOptions.showExploreLinks,
     showIMDbLinks: state => state.userOptions.showIMDbLinks,
     sortPreset: state => state.userOptions.sortPreset,
     startPage: state => state.userOptions.startPage,
@@ -29,6 +31,9 @@ export default {
     },
     SET_GOTRUE(state, value) {
       state.GoTrueAuth = value;
+    },
+    SET_EXPLORE_LINKS(state, value) {
+      state.userOptions.showExploreLinks = value;
     },
     SET_IMDB_LINKS(state, value) {
       state.userOptions.showIMDbLinks = value;
@@ -42,6 +47,7 @@ export default {
   },
   actions: {
     initializeUser({ commit, dispatch }) {
+      commit('SET_EXPLORE_LINKS', true);
       commit('SET_IMDB_LINKS', true);
       commit('SET_SORT_PRESET', 1);
       commit('SET_START_PAGE', 0);
@@ -116,6 +122,7 @@ export default {
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.signup(credentials.email, credentials.password, {
           // set defaults
+          user_explore: userOptions.showExploreLinks,
           user_imdb: userOptions.showIMDbLinks,
           user_sort: userOptions.userSort,
           user_start: userOptions.userStart
@@ -197,6 +204,7 @@ export default {
         let userUpdate = {
           email: user.email,
           data: {
+            user_explore: userOptions.showExploreLinks,
             user_imdb: userOptions.showIMDbLinks,
             user_sort: userOptions.userSort,
             user_start: userOptions.userStart
@@ -205,6 +213,7 @@ export default {
         dispatch('updateUserAccount', userUpdate);
       } else {
         // user preferences are available
+        commit('SET_EXPLORE_LINKS', userMeta.user_explore);
         commit('SET_IMDB_LINKS', userMeta.user_imdb);
         commit('SET_SORT_PRESET', userMeta.user_sort);
         commit('SET_START_PAGE', userMeta.user_start);

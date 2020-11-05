@@ -20,6 +20,7 @@
       <p v-if="mode === 'tracklist' && item.userDateWatched" class="text-sm text-gray-600 mb-2">Watched: {{ item.userDateWatched }}</p>
       <p v-if="mode === 'tracklist' && item.userNotes" class="text-sm sm:mb-0">{{ item.userNotes }}</p>
       <p v-if="mode === 'watchlist' || !item.userNotes" class="text-sm sm:mb-0">{{ item.plot }}</p>
+      <BtnListItemExplore v-if="showExplore && mode === 'tracklist'" :id="item.id" />
     </div>
     <div class="w-full sm:w-1/4 self-center text-gray-700 text-sm px-4 lg:px-6 mb-2 sm:mb-0">
       <p>{{ item.genre }}</p>
@@ -34,20 +35,16 @@
       <BtnListItemEdit v-if="mode === 'tracklist'" :id="item.refId" :mode="mode" class="sm:mb-4">
         Edit
       </BtnListItemEdit>
-      <BtnListItemRemove :id="item.refId" :mode="mode" class="ml-4 sm:ml-0" />
-      <div v-if="showIMDb" class="w-full lg:hidden text-center mt-4">
-        <a :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="btn btn-imdb inline-flex sm:flex items-center justify-center mx-auto" title="View on IMDb">
-          <img src="/img/imdb.png" alt="IMDb icon" class="w-5 inline-block mr-2">
-          <span class="inline-block sm:hidden">View on&nbsp;</span>
-          IMDb
-        </a>
-      </div>
+      <BtnListItemControls :id="item.refId" :mode="mode" :class="{ 'hidden' : !showExplore && !showIMDb }" class="ml-4 sm:ml-0 lg:hidden" />
+      <BtnListItemRemove :id="item.refId" :mode="mode" :class="{ 'hidden' : showExplore || showIMDb }" class="ml-4 sm:ml-0 lg:flex" />
     </div>
   </article>
 </template>
 
 <script>
+import BtnListItemControls from '@/components/buttons/BtnListItemControls.vue';
 import BtnListItemEdit from '@/components/buttons/BtnListItemEdit.vue';
+import BtnListItemExplore from '@/components/buttons/BtnListItemExplore.vue';
 import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
@@ -55,7 +52,9 @@ import { useStore } from 'vuex';
 export default {
   name: 'ListItem',
   components: {
+    BtnListItemControls,
     BtnListItemEdit,
+    BtnListItemExplore,
     BtnListItemRemove
   },
   props: {
@@ -66,6 +65,7 @@ export default {
     const store = useStore();
 
     return {
+      showExplore: computed(() => store.getters['user/showExploreLinks']),
       showIMDb: computed(() => store.getters['user/showIMDbLinks'])
     }
   }

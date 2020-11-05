@@ -9,6 +9,7 @@
     <p>&#9733; Search for movies and series when adding titles to your lists</p>
     <p>&#9733; Save <i>date watched</i>, <i>rating</i> and <i>notes</i> for each title in your Tracklist</p>
     <p>&#9733; Search and sorting for each list view</p>
+    <p>&#9733; Get <i>recommendations</i> based on titles in your Tracklist</p>
     <p>&#9733; PWA functionality for mobile devices to access your lists from the couch</p>
     <div class="text-center shadow-inner border-t border-b border-solid border-gray-700 px-8 py-16 -mx-8 sm:-mx-12 my-8">
       <img src="/img/icon.svg" class="mx-auto mb-8" alt="WATCH3R" style="width: 100px;">
@@ -31,6 +32,12 @@
       </a>
       <a href="/img/about_edit-title.jpg" class="preview" target="_blank" title="Enlarge (new tab)">
         <img src="/img/about_edit-title.jpg" alt="Edit Title" loading="lazy">
+      </a>
+      <a href="/img/about_recommendations.jpg" class="preview" target="_blank" title="Enlarge (new tab)">
+        <img src="/img/about_recommendations.jpg" alt="Edit Title" loading="lazy">
+      </a>
+      <a href="/img/about_add-recommendations.jpg" class="preview" target="_blank" title="Enlarge (new tab)">
+        <img src="/img/about_add-recommendations.jpg" alt="Edit Title" loading="lazy">
       </a>
     </div>
   </article>

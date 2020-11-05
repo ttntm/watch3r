@@ -1,19 +1,22 @@
 <template>
-  <section class="flex flex-row items-center hover:bg-gray-300 hover:shadow-inner">
+  <section class="flex flex-col justify-start hover:bg-gray-300 hover:shadow-inner">
     <div class="flex-grow py-4">
       <h4 class="text-gray-800 mb-0">{{ searchResult.title }}</h4>
-      <p class="text-sm mb-0">{{ searchResult.genre }}; {{ searchResult.year }}</p>
-      <a v-if="showIMDb" :href="`https://www.imdb.com/title/${searchResult.id}`" target="_blank" rel="noopener" class="text-xs text-yellow-600 hover:text-black" title="View on IMDb">View on IMDb</a>
+      <p class="text-sm mb-2">{{ searchResult.genre }}; {{ searchResult.year }}</p>
+      <p class="text-sm text-gray-700 mb-0">{{ searchResult.plot }}</p>
     </div>
-    <button
-      @click.prevent="addTitleToList(searchResult)"
-      :class="{ 'btn btn-black' : addBtnState.enabled }"
-      :disabled="!addBtnState.enabled"
-      v-click-blur
-    >
-      <span v-if="writeSuccess">Added &#10003;</span>
-      <span v-else>{{ addBtnState.text }}</span>
-    </button>
+    <div class="w-full flex flex-row items-center justify-start mb-4">
+      <button
+        @click.prevent="addTitleToList(searchResult)"
+        :class="{ 'btn btn-black text-sm' : addBtnState.enabled }"
+        :disabled="!addBtnState.enabled"
+        v-click-blur
+      >
+        <span v-if="writeSuccess">Added &#10003;</span>
+        <span v-else v-html="addBtnState.text"></span>
+      </button>
+      <a v-if="showIMDb" :href="`https://www.imdb.com/title/${searchResult.id}`" target="_blank" rel="noopener" class="text-xs text-yellow-600 hover:text-black ml-8" title="View on IMDb">View on IMDb</a>
+    </div>
   </section>
 </template>
 
@@ -30,7 +33,7 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const addBtnState = ref({ enabled: true, text: 'Add' });
+    const addBtnState = ref({ enabled: true, text: `&plus; <span class="capitalize">${props.mode}</span>` });
 
     const addTitleToList = (title) => {
       const listMode = props.mode;
@@ -62,7 +65,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

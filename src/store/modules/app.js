@@ -10,6 +10,8 @@ export default {
         omdbGet: process.env.VUE_APP_F_OMDB_GET,
         readTracklist: process.env.VUE_APP_F_TRACKLIST_GET,
         readWatchlist: process.env.VUE_APP_F_WATCHLIST_GET,
+        tmdbGetRecs: process.env.VUE_APP_F_TMDB_GET_RECS,
+        tmdbToOmdb: process.env.VUE_APP_F_TMDB_OMDB_GET,
         updateTracklist: process.env.VUE_APP_F_TRACKLIST_EDT, // only tracklist has an 'update' function; watchlist can only add/delete
         writeItemTracklist: process.env.VUE_APP_F_TRACKLIST_ADD,
         writeItemWatchlist: process.env.VUE_APP_F_WATCHLIST_ADD,
@@ -24,6 +26,8 @@ export default {
         // 2 -> add title
         // 3 -> edit title
         // 4 -> poster
+        // 5 -> add recommendation
+        // 6 -> list item controls (mobile only)
     };
   },
 
@@ -57,6 +61,7 @@ export default {
 
     initialize({ dispatch }) {
       // global state reset action triggering module actions to keep things separate
+      dispatch('explore/initializeExplore', null, { root: true });
       dispatch('list/initializeList', null, { root: true });
       dispatch('tools/initializeTools', null, { root: true });
       dispatch('user/initializeUser', null, { root: true });

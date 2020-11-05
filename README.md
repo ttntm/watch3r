@@ -18,6 +18,8 @@ That's where the idea for this web application came from - imagine a tool that p
 
 ★ PWA functionality for mobile devices to access your lists from the couch
 
+★ Get recommendations based on titles in your Tracklist
+
 ## Get Your Account
 
 watch3r is completely free! You're welcome to give it a try.
@@ -30,6 +32,8 @@ watch3r is completely free! You're welcome to give it a try.
 - [Tracklist](https://watch3r.app/img/about_tracklist.jpg)
 - [Add Title](https://watch3r.app/img/about_add-title.jpg)
 - [Edit Title](https://watch3r.app/img/about_edit-title.jpg)
+- [Recommendations](https://watch3r.app/img/about_recommendations.jpg)
+- [Add Recommendation](https://watch3r.app/img/about_add-recommendations)
 
 
 ## Contact

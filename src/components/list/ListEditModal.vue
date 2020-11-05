@@ -69,6 +69,7 @@ export default {
         store.dispatch('app/toggleWindow', 0);
         store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any); also used to notify the user about unsaved changes when closing the modal
       }
+      store.dispatch('list/clearEditTitle');
     }
 
     const handleTitleEdit = (data, mode) => {

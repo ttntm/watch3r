@@ -12,17 +12,20 @@
       <router-link :to="{name: 'home'}" class="menu-item" v-click-blur>
         Home
       </router-link>
-      <router-link :to="{name: 'about'}" class="menu-item" v-click-blur>
-        About
-      </router-link>
       <router-link :to="{name: 'watchlist'}" v-if="loggedIn" class="menu-item" v-click-blur>
         Watchlist
       </router-link>
       <router-link :to="{name: 'tracker'}" v-if="loggedIn" class="menu-item" v-click-blur>
         Tracker
       </router-link>
+      <router-link :to="{name: 'explore'}" v-if="loggedIn" class="menu-item" v-click-blur>
+        Explore
+      </router-link>
       <router-link :to="{name: 'profile'}" v-if="loggedIn" class="menu-item" v-click-blur>
         Profile
+      </router-link>
+      <router-link :to="{name: 'about'}" class="menu-item" v-click-blur>
+        About
       </router-link>
       <router-link :to="{name: 'support'}" class="menu-item" v-click-blur>
         Support
