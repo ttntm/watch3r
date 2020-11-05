@@ -1,7 +1,7 @@
 <template>
   <section class="list-modal text-gray-600" role="dialog" aria-labelledby="add-modal-heading" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock>
     <section class="flex flex-row justify-between items-center px-8 mb-4">
-      <h3 id="add-modal-heading" class="text-base mb-0">Add Title to Watchlist</h3>
+      <h3 id="add-modal-heading" class="text-base mb-0">Add Recommendation</h3>
       <button
         @click.prevent="closeModal()"
         class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"

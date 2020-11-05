@@ -29,19 +29,22 @@ export default {
       commit('SET_REC_SOURCE', null);
     },
 
-    getRecommendations({ commit, rootGetters }, titleData) {
+    async getRecommendations({ commit, dispatch, rootGetters }, titleData) {
       const fn = rootGetters['app/functions'];
+      let response;
 
-      fetch(fn.tmdbGetRecs, { body: JSON.stringify(titleData), method: 'POST' })
-        .then(response => {
-          return response.json();
-        })
-        .then(res => {
-          commit('SET_REC_LIST', res.results)
-        })
-        .catch((error) => {
-          console.error("TMDB API error [getRecommendations()]", error);
-        })
+      try {
+        const data = await fetch(fn.tmdbGetRecs, { body: JSON.stringify(titleData), method: 'POST' });
+        response = await data.json();
+      } catch(err) {
+        console.error("TMDB API error [getRecommendations()]", err);
+      }
+
+      if (response) {
+        commit('SET_REC_LIST', response.results);
+      } else {
+        dispatch('app/sendToastMessage', { text: `Error fetching recommendations. Please try again later.`, type: 'error' }, { root: true });
+      }
     },
 
     updateRecSource({ commit }, title) {

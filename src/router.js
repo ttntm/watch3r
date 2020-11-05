@@ -30,7 +30,23 @@ const router = createRouter({
       component: Explore,
       meta: {
         authRequired: true,
-      }
+      },
+      beforeEnter: (to, from, next) => {
+        const recSource = store.getters['explore/recSource'];
+        const tl = store.getters['list/tracklist'];
+        if (to.query.title && tl.length > 0) {
+          const current = tl.filter(item => item.id === to.query.title);
+          if (current.length > 0 && current[0] !== recSource) {
+            const req = {
+              id: current[0].id,
+              type: current[0].type
+            };
+            store.dispatch('explore/getRecommendations', req);
+            store.dispatch('explore/updateRecSource', current[0]);
+          }
+        }
+        return next(); // will simply show blank 'explore' route with ability to refresh ('explore' loads tracklist if empty...)
+      },
     },
     {
       path: '/invite',

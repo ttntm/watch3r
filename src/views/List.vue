@@ -34,6 +34,9 @@
   <transition name="poster">
     <ListPosterModal v-if="modalOpen === 4" :poster="posterSrc" :title="posterTitle" />
   </transition>
+  <transition name="modal">
+    <ListItemControls v-if="modalOpen === 6" :mode="mode" />
+  </transition>
   <!-- OVERLAY -->
   <ModalBackdrop />
   <!-- BTT Button -->
@@ -46,6 +49,7 @@ import BtnToTop from '@/components/buttons/BtnToTop.vue';
 import ListAddModal from '@/components/list/ListAddModal.vue';
 import ListEditModal from '@/components/list/ListEditModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
+import ListItemControls from '@/components/list/ListItemControls.vue';
 import ListLoading from '@/components/list/ListLoading.vue';
 import ListPosterModal from '@/components/list/ListPosterModal.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
@@ -64,6 +68,7 @@ export default {
     ListAddModal,
     ListEditModal,
     ListItem,
+    ListItemControls,
     ListLoading,
     ListPosterModal,
     ListSearch,

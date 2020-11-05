@@ -1,19 +1,18 @@
 <template>
   <article class="card">
-    <img :src="`https://image.tmdb.org/t/p/w600_and_h900_bestv2${src}`" class="rounded-md" loading="lazy">
+    <img :src="imgSrc" class="rounded-md" loading="lazy">
     <div class="card-overlay">
       <div class="flex flex-col">
-        <h3 class="text-center text-yellow-600 mb-8">{{ titleDisplay }}</h3>
+        <h3 class="text-lg sm:text-2xl text-center text-yellow-600 mb-8">{{ titleDisplay }}</h3>
         <button
           class="card-btn click-outside-ignore"
           title="Add to Watchlist"
           @click.prevent="toggleExploreAdd()"
           v-click-blur
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="8" x2="12.01" y2="8" />09
+            <polyline points="11 12 12 12 12 16 13 16" />
           </svg>
         </button>
       </div>
@@ -35,6 +34,10 @@ export default {
     const store = useStore();
 
     const exploreAddOpen = computed(() => store.getters['app/windowOpen'] === 5);
+    const imgSrc = computed(() => {
+      // fallback for missing posters...
+      return props.src ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${props.src}` : `/img/poster.jpg`
+    });
     const recSource = computed(() => store.getters['explore/recSource']);
 
     const titleDisplay = computed(() => {
@@ -51,6 +54,7 @@ export default {
     }
 
     return {
+      imgSrc,
       titleDisplay,
       toggleExploreAdd
     }
@@ -77,7 +81,8 @@ export default {
   }
 
   .card-btn {
-    @apply bg-transparent text-yellow-600 border border-yellow-600 rounded-full p-2 mx-auto;
+    @apply bg-transparent text-yellow-600 border border-yellow-600 rounded-full mx-auto;
+    border-width: 2px;
   }
 
   .card-btn:hover {

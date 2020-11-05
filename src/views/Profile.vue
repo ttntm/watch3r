@@ -41,9 +41,11 @@
         </div>
       </div>
       <div class="input-group mb-8">
-        <label>IMDb</label>
+        <label>Display Options</label>
         <p class="text-xs text-gray-600 mb-3">IMDb link display in search results and with list items.</p>
         <InputCheckbox v-model="profile_imdbLinks" :name="'imdb-links'" @update:cb="updateIMDbLinks($event)">Show IMDb links</InputCheckbox>
+        <p class="text-xs text-gray-600 mt-4 mb-3">Display links to explore recommendations with list items.</p>
+        <InputCheckbox v-model="profile_exploreLinks" :name="'explore-links'" @update:cb="updateExploreLinks($event)">Show recommendation links</InputCheckbox>
       </div>
       <button @click="updateUserProfile()" class="btn btn-black" :disabled="!btnState.enabled" v-click-blur>{{ btnState.text }}</button>
     </form>
@@ -71,14 +73,17 @@ export default {
     });
     const pages = ['watchlist', 'tracklist'];
     const pwd = ref('');
+    const profile_exploreLinks = ref();
     const profile_imdbLinks = ref();
     const profile_sortSelected = ref();
     const profile_startPage = ref('');
+    const showExplore = computed(() => store.getters['user/showExploreLinks'])
     const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
     const sortPreset = computed(() => store.getters['user/sortPreset']);
     const startPreset = computed(() => store.getters['user/startPage']);
     const user = computed(() => store.getters['user/currentUser']);
 
+    const updateExploreLinks = (e) => { profile_exploreLinks.value = e; }
     const updateIMDbLinks = (i) => { profile_imdbLinks.value = i; }
     const updateStartPage = (s) => { profile_startPage.value = s; }
 
@@ -86,6 +91,7 @@ export default {
       let newData = {
         email: user.value.email,
         data: {
+          user_explore: profile_exploreLinks.value,
           user_imdb: profile_imdbLinks.value,
           user_sort: profile_sortSelected.value,
           user_start: pages.indexOf(profile_startPage.value)
@@ -107,6 +113,7 @@ export default {
       }, 1500)
     }
 
+    profile_exploreLinks.value = showExplore.value;
     profile_imdbLinks.value = showIMDb.value;
     profile_sortSelected.value = sortPreset.value;
     profile_startPage.value = pages[startPreset.value]; // the radios need string values to function
@@ -115,9 +122,11 @@ export default {
       allSortModes: store.getters['tools/sortMode'],
       btnState,
       pwd,
+      profile_exploreLinks,
       profile_imdbLinks,
       profile_sortSelected,
       profile_startPage,
+      updateExploreLinks,
       updateIMDbLinks,
       updateStartPage,
       updateUserProfile,

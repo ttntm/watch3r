@@ -27,7 +27,7 @@
     </div>
     <button
       @click.prevent="$emit('do-search', searchInput)"
-      class="btn btn-gray shadow-none hover:shadow-none"
+      class="btn btn-gray shadow-none hover:shadow-none py-2"
       title="Search"
       aria-label="Search"
     >

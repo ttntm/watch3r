@@ -27,6 +27,7 @@ export default {
         // 3 -> edit title
         // 4 -> poster
         // 5 -> add recommendation
+        // 6 -> list item controls (mobile only)
     };
   },
 

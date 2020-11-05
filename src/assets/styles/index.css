@@ -180,10 +180,11 @@
 
   .btn {
     @apply font-bold;
+    @apply leading-none;
     @apply rounded-none;
     @apply shadow-md;
     @apply px-6;
-    @apply py-2;
+    @apply py-3;
   }
 
   .btn:hover {

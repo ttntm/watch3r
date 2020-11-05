@@ -1,7 +1,7 @@
 <template>
   <button
     class="btn btn-black flex flex-row items-center justify-center click-outside-ignore"
-    @click.prevent="toggleListEditModal(id, mode)"
+    @click.prevent="openListEditModal(id, mode)"
     v-click-blur
   >
     <svg v-if="mode === 'tracklist'" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -32,20 +32,13 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const editTitleOpen = computed(() => store.getters['app/windowOpen'] === 3);
-
-    const toggleListEditModal = (refId, mode) => {
-      if (editTitleOpen.value) {
-        store.dispatch('list/clearEditTitle');
-        store.dispatch('app/toggleWindow', 0);
-      } else {
-        store.dispatch('list/selectEditTitle', [refId, mode]);
-        store.dispatch('app/toggleWindow', 3);
-      }
+    const openListEditModal = (refId, mode) => {
+      store.dispatch('list/selectEditTitle', [refId, mode]);
+      store.dispatch('app/toggleWindow', 3);
     }
 
     return {
-      toggleListEditModal
+      openListEditModal
     }
   }
 }

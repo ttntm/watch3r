@@ -6,9 +6,9 @@
     </div>
     <section class="w-full sm:w-2/3 lg:w-1/2 flex flex-row mx-auto mt-10 mb-12">
       <ExploreSelectTitle />
-      <BtnExploreClear class="ml-4 sm:ml-8" />
+      <BtnExploreClear class="hidden sm:flex py-2 ml-4 sm:ml-8" />
     </section>
-    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 xl:gap-10">
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 xl:gap-10 sm:px-4 xl:px-0">
       <ExploreTitleCard v-for="(item, index) in recommendations" :item="item" :key="index" :src="item.poster_path" @add-title="setAddTitleContent($event)" />
     </section>
     <div v-if="recommendations.length > 0" class="text-center text-sm mt-12">
@@ -36,7 +36,6 @@ import ExploreSelectTitle from '@/components/explore/ExploreSelectTitle.vue';
 import ExploreTitleCard from '@/components/explore/ExploreTitleCard.vue';
 import ModalBackdrop from '@/components/ModalBackdrop.vue';
 import { computed, ref } from 'vue';
-import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 
 export default {
@@ -50,7 +49,6 @@ export default {
     ModalBackdrop
   },
   setup() {
-    const route = useRoute();
     const store = useStore();
 
     const addTitleContent = ref({});
