@@ -1,6 +1,6 @@
 <template>
   <section class="list-modal text-gray-600" role="dialog" aria-labelledby="add-modal-heading" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock>
-    <section class="flex flex-row justify-between items-center px-8">
+    <section class="flex flex-row justify-between items-center px-8" :class="{ 'mb-4' : content }">
       <h3 id="add-modal-heading" class="text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
       <button
         @click.prevent="closeModal()"
@@ -8,7 +8,7 @@
         title="Close"
       >×</button>
     </section>
-    <section class="px-8 py-6">
+    <section v-if="!content" class="px-8 py-6">
       <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Title or IMDb ID" />
       <div class="flex flex-row items-center text-sm mt-4">
         <span class="font-bold mr-2">Mode:</span>
@@ -16,7 +16,7 @@
         <InputRadio class="" name="search-mode" :label="'id'" :value="searchMode" @update:radio="updateSearchMode($event)" />
       </div>
     </section>
-    <ListAddSearchResult v-if="searchResult.id" :mode="mode" :searchResult="searchResult" class="px-8" />
+    <ListAddSearchResult v-if="searchResult.id" :explore="!content ? false : true" :mode="mode" :searchResult="searchResult" class="px-8" />
     <p v-if="searchStatus" v-html="searchStatus" class="text-center px-8 mt-6 mb-0" />
   </section>
 </template>
@@ -36,12 +36,14 @@ export default {
     ListAddSearchResult
   },
   props: {
+    content: Object,
     mode: String
   },
   setup(props) {
     const store = useStore();
 
     const currentUser = computed(() => store.getters['user/currentUser']);
+    const fn = store.getters['app/functions'];
     const searchMode = ref('title');
     const searchResult = ref({});
     const searchStatus = ref('');
@@ -52,19 +54,13 @@ export default {
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) when closing this modal
     }
 
-    const doSearch = (val) => {
+    const getOMDB = (api, requestData) => {
       // using exact search here, i.e. only getting 0 or 1 result instead of a full list of results.
-      const fn = store.getters['app/functions'];
-      const searchQuery = {
-        prefix: searchMode.value === 'title' ? 't' : 'i', // see: https://www.omdbapi.com/#parameters
-        query: val
-      }
-
       searchResult.value = {};
       searchStatus.value = `<img src="${spinner}" class="mb-6 mx-auto">`;
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) for each search
 
-      fetch(fn.omdbGet, { body: JSON.stringify(searchQuery), method: 'POST' })
+      fetch(api, { body: JSON.stringify(requestData), method: 'POST' })
         .then(response => {
           return response.json();
         })
@@ -97,7 +93,23 @@ export default {
         })
     }
 
-    const updateSearchMode = (m) => { searchMode.value = m; }
+    const doSearch = (val) => {
+      const searchQuery = {
+        prefix: searchMode.value === 'title' ? 't' : 'i', // see: https://www.omdbapi.com/#parameters
+        query: val
+      }
+      getOMDB(fn.omdbGet, searchQuery);
+    }
+
+    const processRecommendation = () => {
+      getOMDB(fn.tmdbToOmdb, props.content);
+    }
+
+    const updateSearchMode = (m) => { searchMode.value = m; };
+
+    if (props.content) {
+      processRecommendation();
+    }
 
     return {
       closeModal,

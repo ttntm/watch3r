@@ -20,7 +20,7 @@
   </section>
   <!-- MODALS -->
   <transition name="modal">
-    <ExploreAddList v-if="modalOpen === 5" :content="addTitleContent" />
+    <ListAddModal v-if="modalOpen === 5" :content="addTitleContent" mode="watchlist" />
   </transition>
   <!-- OVERLAY -->
   <ModalBackdrop />
@@ -31,9 +31,9 @@
 <script>
 import BtnExploreClear from '@/components/buttons/BtnExploreClear.vue';
 import BtnToTop from '@/components/buttons/BtnToTop.vue';
-import ExploreAddList from '@/components/explore/ExploreAddList.vue';
 import ExploreSelectTitle from '@/components/explore/ExploreSelectTitle.vue';
 import ExploreTitleCard from '@/components/explore/ExploreTitleCard.vue';
+import ListAddModal from '@/components/list/ListAddModal.vue';
 import ModalBackdrop from '@/components/ModalBackdrop.vue';
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
@@ -43,9 +43,9 @@ export default {
   components: {
     BtnExploreClear,
     BtnToTop,
-    ExploreAddList,
     ExploreSelectTitle,
     ExploreTitleCard,
+    ListAddModal,
     ModalBackdrop
   },
   setup() {
