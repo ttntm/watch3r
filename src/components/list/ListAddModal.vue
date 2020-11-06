@@ -17,7 +17,7 @@
       </div>
     </section>
     <ListAddSearchResult v-if="searchResult.id" :mode="mode" :searchResult="searchResult" class="px-8" />
-    <p v-if="searchStatus" v-html="searchStatus" class="text-center px-8 py-4 mb-0" />
+    <p v-if="searchStatus" v-html="searchStatus" class="text-center px-8 mt-6 mb-0" />
   </section>
 </template>
 
@@ -61,7 +61,7 @@ export default {
       }
 
       searchResult.value = {};
-      searchStatus.value = `<img src="${spinner}" class="mx-auto">`;
+      searchStatus.value = `<img src="${spinner}" class="mb-6 mx-auto">`;
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) for each search
 
       fetch(fn.omdbGet, { body: JSON.stringify(searchQuery), method: 'POST' })
@@ -73,7 +73,7 @@ export default {
             searchStatus.value = res.Error; // response -> title not found
           } else {
             searchStatus.value = `
-              <span class="text-sm block pt-4">
+              <span class="text-sm block">
                 Results provided by <a href="https://www.omdbapi.com" target="_blank" class="text-yellow-600 hover:text-black">OMDb API</a>
               </span>`;
             searchResult.value.genre = res.Genre;
