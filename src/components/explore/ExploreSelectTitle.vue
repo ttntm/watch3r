@@ -1,7 +1,7 @@
 <template>
   <div class="w-full relative text-gray-700 bg-gray-300 shadow-lg">
     <select name="explore-title" id="explore-select" v-model.lazy="selected" @change="requestData(selected)">
-      <option disabled :value="{}">Select Title...</option>
+      <option disabled :value="{}" :selected="selected === {}">Select Title...</option>
       <option v-for="(item, index) in tracklist" :key="index" :value="item">{{ item.title }} ({{ item.year }})</option>
     </select>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
