@@ -5,7 +5,7 @@ export default {
   state() {
     return {
       recList: [],
-      recSource: null
+      recSource: {}
     };
   },
 
@@ -26,7 +26,7 @@ export default {
   actions: {
     initializeExplore({ commit }) {
       commit('SET_REC_LIST', []);
-      commit('SET_REC_SOURCE', null);
+      commit('SET_REC_SOURCE', {});
     },
 
     async getRecommendations({ commit, dispatch, rootGetters }, titleData) {

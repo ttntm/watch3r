@@ -36,7 +36,7 @@ export default {
     }
 
     const updateSelect = () => {
-      if (!recSource.value) {
+      if (!Object.keys(recSource.value).length > 0) {
         selected.value = {};
       } else {
         selected.value = recSource.value;
