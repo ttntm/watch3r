@@ -22,7 +22,7 @@ export default {
     const store = useStore();
 
     const recSource = computed(() => store.getters['explore/recSource']);
-    const selected = ref();
+    const selected = ref(null);
     const tracklist = computed(() => store.getters['list/tracklist']);
 
     const requestData = () => {
