@@ -54,7 +54,7 @@ export default {
     const currentUser = computed(() => store.getters['user/currentUser']);
 
     watch(currentUser, () => {
-      if (currentUser.value) {
+      if (currentUser.value !== null) {
         const target = currentUser.value.user_metadata.user_start === 0 ? 'watchlist' : 'tracker'; // store might not be done updating data yet, so better get it right from the user Object
         router.push({ name: target });
       }

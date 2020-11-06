@@ -36,11 +36,13 @@ export default {
     }
 
     const updateSelect = () => {
-      if (!Object.keys(recSource.value).length > 0) {
-        selected.value = {};
-      } else {
+      console.log('old:', selected.value);
+      if (Object.keys(recSource.value).length > 0) {
         selected.value = recSource.value;
+      } else {
+        selected.value = {};
       }
+      console.log('new:', selected.value);
     }
 
     if (tracklist.value.length === 0) {
@@ -48,6 +50,7 @@ export default {
     }
 
     watch(recSource, () => {
+      console.log('recSource change', recSource.value);
       updateSelect();
     })
 
