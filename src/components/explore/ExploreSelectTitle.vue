@@ -35,13 +35,7 @@ export default {
       store.dispatch('explore/getRecommendations', titleData);
     }
 
-    const updateSelect = () => {
-      if (Object.keys(recSource.value).length > 0) {
-        selected.value = recSource.value;
-      } else {
-        selected.value = {};
-      }
-    }
+    const updateSelect = () => { selected.value = recSource.value }
 
     if (tracklist.value.length === 0) {
       store.dispatch('list/readList', 'tracklist');
