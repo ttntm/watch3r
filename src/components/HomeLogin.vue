@@ -6,11 +6,11 @@
   >
     <div class="input-group">
       <label for="login-email">Email</label>
-      <input v-model="credentials.email" id="login-email" type="email" placeholder="jane@doe.com">
+      <input v-model="credentials.email" @input="clearValidate()" id="login-email" type="email" placeholder="jane@doe.com">
     </div>
     <div class="input-group">
       <label for="login-pwd">Password</label>
-      <input v-model="credentials.password" id="login-pwd" type="password" placeholder="************">
+      <input v-model="credentials.password" @input="clearValidate()" id="login-pwd" type="password" placeholder="************">
       <router-link :to="{name: 'recover'}" class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0">
         Forgot your password?
       </router-link>
@@ -31,6 +31,8 @@ export default {
 
     const credentials = ref({ email: '', password: '' });
     const cValidateMsg = ref('');
+
+    const clearValidate = () => { cValidateMsg.value = '' }
 
     const validate = () => {
       const c = credentials.value;
@@ -59,6 +61,7 @@ export default {
     })
 
     return {
+      clearValidate,
       credentials,
       cValidateMsg,
       handleLogin,

@@ -11,6 +11,9 @@
     <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 xl:gap-10 sm:px-4 xl:px-0">
       <ExploreTitleCard v-for="(item, index) in recommendations" :item="item" :key="index" :src="item.poster_path" @add-title="setAddTitleContent($event)" />
     </section>
+    <div v-if="!recommendations.length && Object.keys(recSource).length > 0">
+      <img :src="spinner" class="my-16 mx-auto">
+    </div>
     <div v-if="recommendations.length > 0" class="text-center text-sm mt-12">
       <p>Recommendations by:</p>
       <a href="https://www.themoviedb.org" class="inline-block hover:opacity-50" target="_blank" rel="noopener">
@@ -52,7 +55,9 @@ export default {
     const store = useStore();
 
     const addTitleContent = ref({});
+    const spinner = require('@/assets/loading.svg');
     const recommendations = computed(() => store.getters['explore/recList']);
+    const recSource = computed(() => store.getters['explore/recSource']);
 
     const setAddTitleContent = (data) => {
       addTitleContent.value = Object.assign({}, data);
@@ -62,7 +67,9 @@ export default {
       addTitleContent,
       modalOpen: computed(() => store.getters['app/windowOpen']),
       recommendations,
-      setAddTitleContent
+      recSource,
+      setAddTitleContent,
+      spinner
     }
   }
 }
