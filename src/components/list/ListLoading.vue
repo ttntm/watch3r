@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 
 export default {
   name: 'ListLoading',
@@ -26,10 +26,8 @@ export default {
         `;
       }, 5000);
     }
-
-    onMounted(() => {
-      setLoadingState();
-    })
+    
+    setLoadingState();
 
     return {
       loadingState
