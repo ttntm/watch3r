@@ -1,4 +1,4 @@
-import { createStore, Store } from 'vuex';
+import { createStore } from 'vuex';
 import app from './modules/app';
 import explore from './modules/explore';
 import list from './modules/list';
