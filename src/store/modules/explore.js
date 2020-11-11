@@ -24,9 +24,13 @@ export default {
   },
 
   actions: {
-    initializeExplore({ commit }) {
+    initializeExplore({ dispatch }) {
+      dispatch('clearRecommendations');
+      dispatch('updateRecSource', {});
+    },
+
+    clearRecommendations({ commit }) {
       commit('SET_REC_LIST', []);
-      commit('SET_REC_SOURCE', {});
     },
 
     async getRecommendations({ commit, dispatch, rootGetters }, titleData) {

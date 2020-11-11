@@ -31,6 +31,7 @@ export default {
         type: selected.value.type
       };
 
+      store.dispatch('explore/clearRecommendations'); // so we get back the 'loading' state
       store.dispatch('explore/updateRecSource', selected.value);
       store.dispatch('explore/getRecommendations', titleData);
     }
