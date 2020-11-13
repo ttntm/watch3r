@@ -51,19 +51,19 @@ export default {
 
   input[type=radio] + label::before {
     content: '';
-    @apply block bg-gray-300 border border-solid border-gray-800 text-center cursor-pointer -ml-5 mt-1;
+    @apply block rounded-full bg-gray-300 border border-solid border-gray-800 text-center cursor-pointer -ml-5 mt-1;
     float: left;
     width: 1em;
     height: 1em;
     vertical-align: top;
   }
 
-  input[type=radio] + label::before {
-    @apply rounded-full;
-  }
-
   input[type=radio]:checked + label::before {
     @apply bg-blue-800;
     box-shadow: inset 0 0 0 .15em rgba(255, 255, 255, .95);
+  }
+
+  label {
+    line-height: 22px;
   }
 </style>

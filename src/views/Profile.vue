@@ -42,9 +42,9 @@
       </div>
       <div class="input-group mb-8">
         <label>Display Options</label>
-        <p class="text-xs text-gray-600 mb-3">IMDb link display in search results and with list items.</p>
+        <p class="text-xs text-gray-600 mb-3">IMDb link display in search results and for all list items.</p>
         <InputCheckbox v-model="profile_imdbLinks" :name="'imdb-links'" @update:cb="updateIMDbLinks($event)">Show IMDb links</InputCheckbox>
-        <p class="text-xs text-gray-600 mt-4 mb-3">Display links to explore recommendations with list items.</p>
+        <p class="text-xs text-gray-600 mt-4 mb-3">Display links to explore recommendations for items in your Tracklist.</p>
         <InputCheckbox v-model="profile_exploreLinks" :name="'explore-links'" @update:cb="updateExploreLinks($event)">Show recommendation links</InputCheckbox>
       </div>
       <button @click="updateUserProfile()" class="btn btn-black" :disabled="!btnState.enabled" v-click-blur>{{ btnState.text }}</button>
