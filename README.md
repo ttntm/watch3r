@@ -39,3 +39,5 @@ watch3r is completely free! You're welcome to give it a try.
 ## Contact
 
 Say hi at hello@watch3r.app
+
+<a href="https://www.producthunt.com/posts/watch3r" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=275243&theme=dark" alt="WATCH3R - A watchlist and tracking app for your movies and series | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
