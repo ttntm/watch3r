@@ -25,8 +25,9 @@
 import InputRadio from '@/components/input/InputRadio.vue';
 import InputSearch from '@/components/input/InputSearch.vue';
 import ListAddSearchResult from '@/components/list/ListAddSearchResult.vue';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { useStore } from 'vuex';
+import { getOMDB, searchResult, searchStatus } from '@/helpers/get-omdb.js';
 
 export default {
   name: 'ListAddModal',
@@ -42,55 +43,12 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const currentUser = computed(() => store.getters['user/currentUser']);
     const fn = store.getters['app/functions'];
     const searchMode = ref('title');
-    const searchResult = ref({});
-    const searchStatus = ref('');
-    const spinner = require('@/assets/loading.svg');
 
     const closeModal = () => {
       store.dispatch('app/toggleWindow', 0);
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) when closing this modal
-    }
-
-    const getOMDB = (api, requestData) => {
-      // using exact search here, i.e. only getting 0 or 1 result instead of a full list of results.
-      searchResult.value = {};
-      searchStatus.value = `<img src="${spinner}" class="mb-6 mx-auto">`;
-      store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) for each search
-
-      fetch(api, { body: JSON.stringify(requestData), method: 'POST' })
-        .then(response => {
-          return response.json();
-        })
-        .then(res => {
-          if(res.Error) {
-            searchStatus.value = res.Error; // response -> title not found
-          } else {
-            searchStatus.value = `
-              <span class="text-sm block">
-                Results provided by <a href="https://www.omdbapi.com" target="_blank" class="text-yellow-600 hover:text-black">OMDb API</a>
-              </span>`;
-            searchResult.value.genre = res.Genre;
-            searchResult.value.id = res.imdbID;
-            searchResult.value.image = res.Poster;
-            searchResult.value.imdbRating = res.imdbRating;
-            searchResult.value.plot = res.Plot;
-            searchResult.value.title = res.Title;
-            searchResult.value.type = res.Type;
-            searchResult.value.user = currentUser.value.email,
-            searchResult.value.year = res.Year;
-          }
-        })
-        .catch((error) => {
-          console.log("OMDB API error", error);
-          searchStatus.value = `
-            <span class="text-red-600">
-              API error - please try again later.
-            </span>
-          `;
-        })
     }
 
     const doSearch = (val) => {
@@ -106,6 +64,10 @@ export default {
     }
 
     const updateSearchMode = (m) => { searchMode.value = m; };
+
+    // clear previous search result/status on modal creation; do this before evaluating 'explore' content to make sure the spinner gets shown properly
+    searchResult.value = {};
+    searchStatus.value = '';
 
     if (props.content) {
       processRecommendation();

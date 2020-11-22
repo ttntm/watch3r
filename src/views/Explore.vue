@@ -9,7 +9,7 @@
       <BtnExploreClear class="hidden sm:flex py-2 ml-4 sm:ml-8" />
     </section>
     <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 xl:gap-10 sm:px-4 xl:px-0">
-      <ExploreTitleCard v-for="(item, index) in recommendations" :item="item" :key="index" :src="item.poster_path" @add-title="setAddTitleContent($event)" />
+      <ExploreTitleCard v-for="(item, index) in recommendations" :item="item" :key="index" :src="item.poster_path" @add-title="exploreAddTitle($event)" />
     </section>
     <div v-if="!recommendations.length && Object.keys(recSource).length > 0">
       <img :src="spinner" class="my-16 mx-auto">
@@ -59,16 +59,17 @@ export default {
     const recommendations = computed(() => store.getters['explore/recList']);
     const recSource = computed(() => store.getters['explore/recSource']);
 
-    const setAddTitleContent = (data) => {
+    const exploreAddTitle = (data) => {
       addTitleContent.value = Object.assign({}, data);
+      store.dispatch('app/toggleWindow', 5);
     }
 
     return {
       addTitleContent,
+      exploreAddTitle,
       modalOpen: computed(() => store.getters['app/windowOpen']),
       recommendations,
       recSource,
-      setAddTitleContent,
       spinner
     }
   }

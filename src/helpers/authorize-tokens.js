@@ -111,6 +111,6 @@ function confirmRecoveryToken(recoveryToken) {
     });
 }
 
-export default function () {
+export default function() {
   detectTokens();
 }

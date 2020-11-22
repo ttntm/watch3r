@@ -7,7 +7,7 @@
         <button
           class="card-btn click-outside-ignore"
           title="Add to Watchlist"
-          @click.prevent="toggleExploreAdd()"
+          @click.prevent="exploreAdd()"
           v-click-blur
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -33,7 +33,6 @@ export default {
   setup(props, { emit }) {
     const store = useStore();
 
-    const exploreAddOpen = computed(() => store.getters['app/windowOpen'] === 5);
     const imgSrc = computed(() => {
       // fallback for missing posters...
       return props.src ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${props.src}` : `/img/poster.jpg`
@@ -44,19 +43,18 @@ export default {
       return props.item.original_title ? props.item.original_title : props.item.original_name
     });
 
-    const toggleExploreAdd = () => {
+    const exploreAdd = () => {
       const titleData = {
         id: props.item.id,
         type: recSource.value.type
       };
-      emit('add-title', titleData);
-      return exploreAddOpen.value ? store.dispatch('app/toggleWindow', 0) : store.dispatch('app/toggleWindow', 5);
+      return emit('add-title', titleData);
     }
 
     return {
+      exploreAdd,
       imgSrc,
-      titleDisplay,
-      toggleExploreAdd
+      titleDisplay
     }
   }
 }
