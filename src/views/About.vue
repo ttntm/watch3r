@@ -5,12 +5,30 @@
     <p>Not sure if you have already seen a certain movie? Lost track of the countless things you wanted to watch or watched already? Got different lists in different places you keep forgetting about?</p>
     <p>That's where the idea for this web application came from - imagine a tool that provides basic information about the listed titles, paired with search and sorting. A place to keep track of your lists and collect your thoughts after watching.</p>
     <h2>Features</h2>
-    <p>&#9733; Dedicated Watchlist and Tracklist views</p>
-    <p>&#9733; Search for movies and series when adding titles to your lists</p>
-    <p>&#9733; Save <i>date watched</i>, <i>rating</i> and <i>notes</i> for each title in your Tracklist</p>
-    <p>&#9733; Search and sorting for each list view</p>
-    <p>&#9733; Get <i>recommendations</i> based on titles in your Tracklist</p>
-    <p>&#9733; PWA functionality for mobile devices to access your lists from the couch</p>
+    <p>
+      <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
+      Dedicated Watchlist and Tracklist views
+    </p>
+    <p>
+      <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
+      Search for movies and series when adding titles to your lists
+    </p>
+    <p>
+      <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
+      Save <i>date watched</i>, <i>rating</i> and <i>notes</i> for each title in your Tracklist
+    </p>
+    <p>
+      <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
+      Search and sorting for each list view
+    </p>
+    <p>
+      <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
+      Get <i>recommendations</i> based on titles in your Tracklist
+    </p>
+    <p>
+      <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
+      PWA functionality for mobile devices to access your lists from the couch
+    </p>
     <div class="text-center shadow-inner border-t border-b border-solid border-gray-700 px-8 py-16 -mx-8 sm:-mx-12 my-8">
       <img src="/img/icon.svg" class="mx-auto mb-8" alt="WATCH3R" style="width: 100px;">
       <h3 class="text-2xl text-yellow-600">Get Your Account</h3>
@@ -20,7 +38,7 @@
       </router-link>
     </div>
     <h2 class="text-center mb-6">Screenshots</h2>
-    <div class="w-full lg:w-5/6 grid grid-cols-2 gap-6 mx-auto mb-4">
+    <div class="w-full lg:w-5/6 grid grid-cols-2 gap-6 mx-auto mb-6">
       <a href="/img/about_watchlist.jpg" class="preview" target="_blank" title="Enlarge (new tab)">
         <img src="/img/about_watchlist.jpg" alt="Watchlist" loading="lazy">
       </a>
@@ -38,6 +56,12 @@
       </a>
       <a href="/img/about_add-recommendations.jpg" class="preview" target="_blank" title="Enlarge (new tab)">
         <img src="/img/about_add-recommendations.jpg" alt="Edit Title" loading="lazy">
+      </a>
+    </div>
+    <div class="text-center">
+      <p class="text-3xl text-yellow-600">&#9733;</p>
+      <a href="https://www.producthunt.com/posts/watch3r" target="_blank" class="inline-block hover:opacity-75">
+        <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=275243&theme=dark" class="pointer-events-none" alt="WATCH3R - A watchlist and tracking app for your movies and series | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" loading="lazy" />
       </a>
     </div>
   </article>
