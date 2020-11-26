@@ -42,7 +42,7 @@ export async function getOMDB(api, requestData) {
     searchResult.value.plot = response.Plot;
     searchResult.value.title = response.Title;
     searchResult.value.type = response.Type;
-    searchResult.value.user = currentUser.email,
+    searchResult.value.user = currentUser.id,
     searchResult.value.year = response.Year;
   }
 }

@@ -120,7 +120,7 @@ export default {
       }
 
       try {
-        const data = await fetch(`${getFn(mode)}/${user.email}`, { method: 'POST' });
+        const data = await fetch(`${getFn(mode)}/${user.id}`, { method: 'POST' });
         response = await data.json();
       } catch (err) {
         console.error(err);

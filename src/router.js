@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
 
 const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
-const Admin = () => import(/* webpackChunkName: "Admin" */ '@/views/Admin.vue');
+// const Admin = () => import(/* webpackChunkName: "Admin" */ '@/views/Admin.vue');
 const Explore = () => import(/* webpackChunkName: "Explore" */ '@/views/Explore.vue');
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
 const Invite = () => import(/* webpackChunkName: "Invite" */ '@/views/Invite.vue');
@@ -25,11 +25,11 @@ const router = createRouter({
       name: 'about',
       component: About
     },
-    {
-      path: '/admin',
-      name: 'admin',
-      component: Admin
-    },
+    // {
+    //   path: '/admin',
+    //   name: 'admin',
+    //   component: Admin
+    // },
     {
       path: '/explore',
       name: 'explore',
