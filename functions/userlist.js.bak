@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 exports.handler = async (event, context, callback) => {
   const { identity } = context.clientContext;
-  const usersUrl = `https://watch3r.app/.netlify/identity/admin/users`;
+  const usersUrl = `${identity.url}/admin/users`;
   const adminAuthHeader = `Bearer ${identity.token}`;
 
   try {
