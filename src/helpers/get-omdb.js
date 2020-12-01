@@ -11,6 +11,7 @@ export async function getOMDB(api, requestData) {
   const currentUser = store.getters['user/currentUser'];
   const spinner = require('@/assets/loading.svg');
 
+  searchResult.value = {};
   searchStatus.value = `<img src="${spinner}" class="mb-6 mx-auto">`;
   store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) for each search
 

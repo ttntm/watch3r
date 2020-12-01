@@ -22,7 +22,7 @@ import GlobalNav from '@/components/GlobalNav.vue'
 import GlobalMenu from '@/components/GlobalMenu.vue'
 import GlobalFooter from '@/components/GlobalFooter.vue'
 import ToastMessage from '@/components/ToastMessage.vue'
-import { computed, watch } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
@@ -40,7 +40,14 @@ export default {
     const store = useStore();
 
     const loggedIn = computed(() => store.getters['user/loggedIn']);
-    const menuOpen = computed(() => store.getters['app/windowOpen'] === 1)
+    const mode = computed(() => route.meta.mode);
+
+    const updateList = () => {
+      if (mode.value) { // double check 'mode' here, just in case
+        console.log('updating...');
+        store.dispatch('list/readList', mode.value);
+      }
+    }
 
     watch(loggedIn, () => {
       if (!loggedIn.value && route.name !== 'home') {
@@ -48,9 +55,13 @@ export default {
       }
     })
 
+    onMounted(() => {
+      setTimeout(updateList, 250) // timeout is required here; otherwise 'route.meta.mode' is undefined
+    })
+
     return {
       routeFull: computed(() => route.fullPath),
-      menuOpen
+      menuOpen: computed(() => store.getters['app/windowOpen'] === 1)
     }
   }
 }

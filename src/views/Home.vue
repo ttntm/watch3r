@@ -22,10 +22,7 @@
           </router-link>
         </nav>
         <section class="text-center mt-12">
-          <p class="mb-8">If you like it here, please consider supporting the coffee fueled development efforts.</p>
-          <a href="https://www.buymeacoffee.com/ttntm" target="_blank" class="inline-block shadow-lg hover:shadow-none hover:opacity-75" title="Thank you!">
-            <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" class="mx-auto" style="height: 45px; width: auto" alt="Buy me a coffee">
-          </a>
+          <p class="mb-0">If you like it here, please spread the word and consider supporting the development efforts <a href="https://www.buymeacoffee.com/ttntm" class="text-yellow-600 underline hover:no-underline" target="_blank" rel="noopener">with coffee</a> or <a href="https://paypal.me/pools/c/8uLxAzwDUY" class="text-yellow-600 underline hover:no-underline" target="_blank" rel="noopener">via PayPal</a>.</p>
         </section>
       </section>
       <section v-else>

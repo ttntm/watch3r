@@ -12,6 +12,14 @@ const Recover = () => import(/* webpackChunkName: "Recover" */ '@/views/Recover.
 const Support = () => import(/* webpackChunkName: "Support" */ '@/views/Support.vue');
 const Signup = () => import(/* webpackChunkName: "Signup" */ '@/views/Signup.vue');
 
+function forbidden(to, from, next) {
+  if(store.getters['user/loggedIn']) {
+    router.push({ name: 'home' }); // prevent logged in users from going where they shouldn't
+  } else {
+    return next();
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -57,7 +65,7 @@ const router = createRouter({
         }
 
         return next(); // will simply show blank 'explore' route with ability to refresh ('explore' loads tracklist if empty...)
-      },
+      }
     },
     {
       path: '/invite',
@@ -76,27 +84,13 @@ const router = createRouter({
       path: '/recover',
       name: 'recover',
       component: Recover,
-      beforeEnter: (to, from, next) => {
-        if(store.getters['user/loggedIn']) {
-          // only users that aren't logged in can go to recover
-          router.push({ name: 'home' });
-        } else {
-          return next();
-        }
-      },
+      beforeEnter: [forbidden]
     },
     {
       path: '/signup',
       name: 'signup',
       component: Signup,
-      beforeEnter: (to, from, next) => {
-        if(store.getters['user/loggedIn']) {
-          // only users that aren't logged in can go to signup
-          router.push({ name: 'home' });
-        } else {
-          return next();
-        }
-      },
+      beforeEnter: [forbidden]
     },
     {
       path: '/support',
@@ -111,7 +105,7 @@ const router = createRouter({
         authRequired: true,
         mode: 'tracklist',
         subtitle: 'Track watched titles, rate them and write down some notes.'
-      },
+      }
     },
     {
       path: '/watch',
@@ -121,20 +115,18 @@ const router = createRouter({
         authRequired: true,
         mode: 'watchlist',
         subtitle: "Add titles to your watchlist so you don't lose track of things."
-      },
+      }
     },
     {
       path: '/:pathMatch(.*)',
       name: '404',
-      //component: FourOFour,
       beforeEnter: () => {
         return router.push({ name: 'home' }); //redirect invalid calls home for now
       }
     }
   ],
   scrollBehavior(to, from, savedPosition) {
-    // always scroll to top
-    return { top: 0 }
+    return { top: 0 } // always scroll to top
   }
 });
 
@@ -148,6 +140,7 @@ router.beforeEach((to, from, next) => {
   if (!to.meta.authRequired) {
     return next();
   }
+
   if (to.meta.authRequired && store.getters['user/loggedIn']) {
     return next();
   } else {
