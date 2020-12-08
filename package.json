@@ -14,7 +14,7 @@
     "secure-ls": "^1.2.6",
     "tailwindcss": "^1.8.10",
     "vue": "^3.0.2",
-    "vue-router": "^4.0.0-beta.11",
+    "vue-router": "^4.0.1",
     "vuex": "^4.0.0-beta.4",
     "vuex-multi-tab-state": "^1.0.15",
     "vuex-persistedstate": "^3.1.0"

@@ -102,8 +102,6 @@ export default {
 
     getListData(); // initial data load as in what used to be 'created()'
 
-    // store.dispatch('tools/updateSort', mode.value); // as of 16.10.20 -> sorting right after reading data, running this 'onCreated' here seems pointless.
-
     return {
       listData,
       listLength,
