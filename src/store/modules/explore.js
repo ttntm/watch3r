@@ -45,7 +45,12 @@ export default {
       }
 
       if (response) {
-        commit('SET_REC_LIST', response.results);
+        if (response.total_results > 0) {
+          commit('SET_REC_LIST', response.results);
+        } else {
+          dispatch('updateRecSource', {});
+          dispatch('app/sendToastMessage', { text: `TMDb couldn't find recommendations for your selection, sorry.`, type: 'error' }, { root: true });
+        }
       } else {
         dispatch('app/sendToastMessage', { text: `Error fetching recommendations. Please try again later.`, type: 'error' }, { root: true });
       }
