@@ -44,7 +44,6 @@ export default {
 
     const updateList = () => {
       if (mode.value) { // double check 'mode' here, just in case
-        console.log('updating...');
         store.dispatch('list/readList', mode.value);
       }
     }

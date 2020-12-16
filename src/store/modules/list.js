@@ -70,14 +70,7 @@ export default {
       const fn = rootGetters['app/functions'];
       let response;
 
-      const getFn = (m) => {
-        if (m === 'tracklist') {
-          return fn.writeItemTracklist;
-        }
-        if (m === 'watchlist') {
-          return fn.writeItemWatchlist;
-        }
-      }
+      const getFn = (m) => m === 'tracklist' ? fn.writeItemTracklist : fn.writeItemWatchlist;
 
       try {
         const data = await fetch(`${getFn(mode)}`, {
@@ -110,14 +103,7 @@ export default {
       const searchMode = rootGetters['tools/listSearchMode'];
       const user = rootGetters['user/currentUser'];
 
-      const getFn = (m) => {
-        if (m === 'tracklist') {
-          return fn.readTracklist;
-        }
-        if (m === 'watchlist') {
-          return fn.readWatchlist;
-        }
-      }
+      const getFn = (m) => m === 'tracklist' ? fn.readTracklist : fn.readWatchlist;
 
       try {
         const data = await fetch(`${getFn(mode)}/${user.id}`, { method: 'POST' });
@@ -243,14 +229,7 @@ export default {
       let msg = {};
       let response;
 
-      const getFn = (m) => {
-        if (m === 'tracklist') {
-          return fn.deleteItemTracklist;
-        }
-        if (m === 'watchlist') {
-          return fn.deleteItemWatchlist;
-        }
-      }
+      const getFn = (m) => m === 'tracklist' ? fn.deleteItemTracklist : fn.deleteItemWatchlist;
 
       try {
         const data = await fetch(`${getFn(mode)}/${id}`, { method: 'POST' });
