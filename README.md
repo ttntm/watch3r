@@ -1,7 +1,7 @@
 <a href="https://watch3r.app" style="margin: 0 auto;">
   <img align="center" alt="Banner" src="https://watch3r.app/img/splash.jpg" />
 </a>
-<br>
+<br><br>
 <p align="center" style="text-align: center;">
   <a href="https://www.producthunt.com/posts/watch3r">
     <img alt="On product hunt"
