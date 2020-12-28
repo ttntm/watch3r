@@ -1,4 +1,25 @@
-![WATCH3R](https://watch3r.app/img/splash.jpg)
+<a href="https://watch3r.app" style="margin: 0 auto;">
+  <img align="center" alt="Banner" src="https://watch3r.app/img/splash.jpg" />
+</a>
+<br>
+<p align="center" style="text-align: center;">
+  <a href="https://www.producthunt.com/posts/watch3r">
+    <img alt="On product hunt"
+         src="https://img.shields.io/badge/on-product%20hunt-blue.svg?style=flat-square"
+         align="center">
+  </a>
+  <a href="https://www.indiehackers.com/product/watch3r">
+    <img alt="On Indie Hackers"
+         src="https://img.shields.io/badge/on-indie%20hackers-blue?style=flat-square"
+         align="center">
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=WATCH3R%20%20https%3A%2F%2Fwatch3r.app">
+    <img alt="tweet"
+         src="https://img.shields.io/twitter/url/https/github.com/ArmynC/ArminC-AutoExec.svg?style=flat-square&logo=twitter"
+         target="_blank"
+         align="center" />
+  </a>
+</p>
 
 # About watch3r
 
@@ -39,5 +60,3 @@ watch3r is completely free! You're welcome to give it a try.
 ## Contact
 
 Say hi at hello@watch3r.app
-
-<a href="https://www.producthunt.com/posts/watch3r" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=275243&theme=dark" alt="WATCH3R - A watchlist and tracking app for your movies and series | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
