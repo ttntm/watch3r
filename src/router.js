@@ -5,6 +5,7 @@ const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
 // const Admin = () => import(/* webpackChunkName: "Admin" */ '@/views/Admin.vue');
 const Explore = () => import(/* webpackChunkName: "Explore" */ '@/views/Explore.vue');
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
+const Import = () => import(/* webpackChunkName: "Import" */ '@/views/Import.vue');
 const Invite = () => import(/* webpackChunkName: "Invite" */ '@/views/Invite.vue');
 const List = () => import(/* webpackChunkName: "List" */ '@/views/List.vue');
 const Profile = () => import(/* webpackChunkName: "Profile" */ '@/views/Profile.vue');
@@ -65,6 +66,14 @@ const router = createRouter({
         }
 
         return next(); // will simply show blank 'explore' route with ability to refresh ('explore' loads tracklist if empty...)
+      }
+    },
+    {
+      path: '/import',
+      name: 'import',
+      component: Import,
+      meta: {
+        authRequired: true,
       }
     },
     {

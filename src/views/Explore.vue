@@ -23,7 +23,7 @@
   </section>
   <!-- MODALS -->
   <transition name="modal">
-    <ListAddModal v-if="modalOpen === 5" :content="addTitleContent" mode="watchlist" />
+    <ListAddModal v-if="modalOpen === 5" :contentExplore="exploreContent" mode="watchlist" />
   </transition>
   <!-- OVERLAY -->
   <ModalBackdrop />
@@ -54,19 +54,19 @@ export default {
   setup() {
     const store = useStore();
 
-    const addTitleContent = ref({});
-    const spinner = require('@/assets/loading.svg');
+    const exploreContent = ref({});
     const recommendations = computed(() => store.getters['explore/recList']);
     const recSource = computed(() => store.getters['explore/recSource']);
+    const spinner = require('@/assets/loading.svg');
 
     const exploreAddTitle = (data) => {
-      addTitleContent.value = Object.assign({}, data);
+      exploreContent.value = Object.assign({}, data);
       store.dispatch('app/toggleWindow', 5);
     }
 
     return {
-      addTitleContent,
       exploreAddTitle,
+      exploreContent,
       modalOpen: computed(() => store.getters['app/windowOpen']),
       recommendations,
       recSource,

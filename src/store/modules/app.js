@@ -26,8 +26,9 @@ export default {
         // 2 -> add title
         // 3 -> edit title
         // 4 -> poster
-        // 5 -> add recommendation
+        // 5 -> add recommendation (current === add title)
         // 6 -> list item controls (mobile only)
+        // 7 -> add import (current === add title)
     };
   },
 

@@ -21,6 +21,9 @@
       <router-link :to="{name: 'explore'}" v-if="loggedIn" class="menu-item" v-click-blur>
         Explore
       </router-link>
+      <router-link :to="{name: 'import'}" v-if="loggedIn" class="menu-item" v-click-blur>
+        Import
+      </router-link>
       <router-link :to="{name: 'profile'}" v-if="loggedIn" class="menu-item" v-click-blur>
         Profile
       </router-link>

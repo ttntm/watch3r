@@ -281,16 +281,18 @@
     @apply shadow-none;
   }
 
-  @media(max-width:1023px) {
-    .list:hover {
-      @apply shadow-lg;
-    }
-  }
-
   @media(min-width:1024px) {
     .list {
       @apply shadow-lg;
     }
+  }
+
+  .list-item {
+    @apply flex;
+    @apply border-b;
+    @apply border-gray-500;
+    @apply py-8;
+    @apply px-4;
   }
 
   .list .list-item:last-child {

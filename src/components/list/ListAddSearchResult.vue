@@ -23,6 +23,7 @@
 <script>
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
+import { checkDuplicate } from '@/helpers/shared.js';
 
 export default {
   name: 'ListAddSearchResult',
@@ -34,18 +35,14 @@ export default {
   setup(props) {
     const store = useStore();
 
-    const addBtnState = ref({ enabled: true, text: `&plus; <span class="capitalize">${props.mode}</span>` });
-
-    const checkDuplicateEntry = (listMode) => {
-      const listCurrent = store.getters[`list/${listMode}`];
-      return listCurrent.filter((item) => item.id === props.searchResult.id);
-    }
+    const addBtnState = ref({ enabled: true, text: `&plus; <span class="capitalize pointer-events-none">${props.mode}</span>` });
 
     const isDuplicate = () => {
+      const id = props.searchResult.id;
       if (props.explore) {
-        return checkDuplicateEntry('tracklist').length > 0 || checkDuplicateEntry('watchlist').length > 0
+        return checkDuplicate('tracklist', id).length > 0 || checkDuplicate('watchlist', id).length > 0
       } else {
-        return checkDuplicateEntry(props.mode).length > 0
+        return checkDuplicate(props.mode, id).length > 0
       }
     }
 

@@ -1,6 +1,6 @@
 <template>
   <section class="list-modal text-gray-600" role="dialog" aria-labelledby="add-modal-heading" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock>
-    <section class="flex flex-row justify-between items-center px-8" :class="{ 'mb-4' : content }">
+    <section class="flex flex-row justify-between items-center px-8" :class="{ 'mb-4' : contentExplore || contentImport }">
       <h3 id="add-modal-heading" class="text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
       <button
         @click.prevent="closeModal()"
@@ -8,7 +8,7 @@
         title="Close"
       >×</button>
     </section>
-    <section v-if="!content" class="px-8 py-6">
+    <section v-if="!contentExplore && !contentImport" class="px-8 py-6">
       <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Title or IMDb ID" />
       <div class="flex flex-row items-center text-sm mt-4">
         <span class="font-bold mr-2">Mode:</span>
@@ -16,7 +16,7 @@
         <InputRadio class="" name="search-mode" :label="'id'" :value="searchMode" @update:radio="updateSearchMode($event)" />
       </div>
     </section>
-    <ListAddSearchResult v-if="searchResult.id" :explore="!content ? false : true" :mode="mode" :searchResult="searchResult" class="px-8" />
+    <ListAddSearchResult v-if="searchResult.id" :explore="!contentExplore ? false : true" :mode="mode" :searchResult="searchResult" class="px-8" />
     <p v-if="searchStatus" v-html="searchStatus" class="text-center px-8 mt-6 mb-0" />
   </section>
 </template>
@@ -37,7 +37,8 @@ export default {
     ListAddSearchResult
   },
   props: {
-    content: Object,
+    contentExplore: Object,
+    contentImport: Object,
     mode: String
   },
   setup(props) {
@@ -59,18 +60,18 @@ export default {
       getOMDB(fn.omdbGet, searchQuery);
     }
 
-    const processRecommendation = () => {
-      getOMDB(fn.tmdbToOmdb, props.content);
-    }
-
     const updateSearchMode = (m) => { searchMode.value = m; };
 
     // clear previous search result/status on modal creation; do this before evaluating 'explore' content to make sure the spinner gets shown properly
     searchResult.value = {};
     searchStatus.value = '';
 
-    if (props.content) {
-      processRecommendation();
+    if (props.contentExplore) {
+      getOMDB(fn.tmdbToOmdb, props.contentExplore);
+    }
+
+    if (props.contentImport) {
+      getOMDB(fn.omdbGet, props.contentImport);
     }
 
     return {

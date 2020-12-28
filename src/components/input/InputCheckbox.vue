@@ -1,6 +1,6 @@
 <template>
 <!-- BOOLEAN CHECKBOX, DO NOT USE WITH STRING VALUES -->
-  <label class="cb-container" :for="name" style="">
+  <label class="cb-container" :for="name">
     <slot></slot>
     <input
       :id="name"
@@ -14,19 +14,11 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-
 export default {
   name: 'InputCheckbox',
   props: {
     modelValue: Boolean,
     name: String
-  },
-  setup() {
-
-    return {
-
-    }
   }
 }
 </script>
