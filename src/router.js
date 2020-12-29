@@ -5,6 +5,7 @@ const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
 // const Admin = () => import(/* webpackChunkName: "Admin" */ '@/views/Admin.vue');
 const Explore = () => import(/* webpackChunkName: "Explore" */ '@/views/Explore.vue');
 const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
+const Import = () => import(/* webpackChunkName: "Import" */ '@/views/Import.vue');
 const Invite = () => import(/* webpackChunkName: "Invite" */ '@/views/Invite.vue');
 const List = () => import(/* webpackChunkName: "List" */ '@/views/List.vue');
 const Profile = () => import(/* webpackChunkName: "Profile" */ '@/views/Profile.vue');
@@ -62,9 +63,33 @@ const router = createRouter({
             store.dispatch('explore/updateRecSource', current[0]);
             store.dispatch('explore/getRecommendations', req);
           }
+        } else if (tl.length === 0) {
+          store.dispatch('list/readList', 'tracklist');
         }
 
         return next(); // will simply show blank 'explore' route with ability to refresh ('explore' loads tracklist if empty...)
+      }
+    },
+    {
+      path: '/import',
+      name: 'import',
+      component: Import,
+      meta: {
+        authRequired: true,
+      },
+      beforeEnter: (to, from, next) => {
+        const tl = store.getters['list/tracklist'];
+        const wl = store.getters['list/watchlist'];
+
+        if (tl.length === 0) {
+          store.dispatch('list/readList', 'tracklist');
+        }
+
+        if (wl.length === 0) {
+          store.dispatch('list/readList', 'watchlist');
+        }
+
+        return next();
       }
     },
     {

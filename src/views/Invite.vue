@@ -32,28 +32,25 @@
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { validateEmail } from '@/helpers/shared.js';
 
 export default {
-  name: 'Recover',
+  name: 'Invite',
   setup() {
     const router = useRouter();
     const store = useStore();
 
     const btnRequest = ref({ active: true, text: 'Request Invite' });
     const cred = ref({ email: '' });
-    const rx = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
-    const valid = computed(() => rx.test(cred.value.email));
 
     const encode = (data) => {
       return Object.keys(data)
-        .map(
-          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-        )
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
         .join("&");
     }
 
     const handleInvite = (obj) => {
-      if (valid.value) {
+      if (validateEmail(cred.value.email)) {
         btnRequest.value.active = false;
         btnRequest.value.text = 'Requesting...'
 
@@ -80,10 +77,11 @@ export default {
         })
       } else {
         alert('Please enter a valid email address...');
+        btnRequest.value.active = false;
         setTimeout(() => {
           btnRequest.value.active = true;
           btnRequest.value.text = 'Request Invite';
-        }, 1000);
+        }, 2000);
       }
     }
 

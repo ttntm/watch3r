@@ -121,11 +121,11 @@ export default {
     return {
       allSortModes: store.getters['tools/sortMode'],
       btnState,
-      pwd,
       profile_exploreLinks,
       profile_imdbLinks,
       profile_sortSelected,
       profile_startPage,
+      pwd,
       updateExploreLinks,
       updateIMDbLinks,
       updateStartPage,

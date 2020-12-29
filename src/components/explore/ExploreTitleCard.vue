@@ -6,7 +6,7 @@
         <h3 class="text-lg sm:text-2xl text-center text-yellow-600 mb-8">{{ titleDisplay }}</h3>
         <button
           class="card-btn click-outside-ignore"
-          title="Add to Watchlist"
+          title="View Details"
           @click.prevent="exploreAdd()"
           v-click-blur
         >

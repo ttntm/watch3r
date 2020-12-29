@@ -20,10 +20,16 @@
       <button
         v-if="searchInput"
         @click.prevent="clearSearch()"
-        class="click-outside-ignore font-bold text-lg opacity-75 hover:opacity-100 focus:opacity-100 px-2 py-0"
+        class="btn opacity-75 hover:opacity-100 focus:opacity-100 px-0 py-2 click-outside-ignore"
         title="Clear search"
         aria-label="Clear search"
-      >&times;</button>
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
     </div>
     <button
       @click.prevent="$emit('do-search', searchInput)"

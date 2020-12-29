@@ -4,6 +4,18 @@
     <h1 class="text-xl text-gray-600">About this Application</h1>
     <p>Not sure if you have already seen a certain movie? Lost track of the countless things you wanted to watch or watched already? Got different lists in different places you keep forgetting about?</p>
     <p>That's where the idea for this web application came from - imagine a tool that provides basic information about the listed titles, paired with search and sorting. A place to keep track of your lists and collect your thoughts after watching.</p>
+    <div class="flex items-center mt-8">
+      <span class="text-lg text-gray-600 font-bold leading-none">Social:</span>
+      <a class="px-4" href="https://www.producthunt.com/posts/watch3r" target="_blank" rel="noopener">
+        <img alt="On product hunt" src="https://img.shields.io/badge/on-product%20hunt-blue.svg?style=flat-square">
+      </a>
+      <a class="pr-4" href="https://www.indiehackers.com/product/watch3r" target="_blank" rel="noopener">
+        <img alt="On Indie Hackers" src="https://img.shields.io/badge/on-indie%20hackers-blue?style=flat-square">
+      </a>
+      <a class="" href="https://twitter.com/intent/tweet?text=WATCH3R%20%20https%3A%2F%2Fwatch3r.app" target="_blank" rel="noopener">
+        <img alt="tweet" src="https://img.shields.io/twitter/url/https/github.com/ArmynC/ArminC-AutoExec.svg?style=flat-square&logo=twitter" />
+      </a>
+    </div>
     <h2>Features</h2>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
@@ -28,6 +40,10 @@
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
       PWA functionality for mobile devices to access your lists from the couch
+    </p>
+    <p>
+      <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
+      IMDb list import based on their export files
     </p>
     <div class="text-center shadow-inner border-t border-b border-solid border-gray-700 px-8 py-16 -mx-8 sm:-mx-12 my-8">
       <img src="/img/icon.svg" class="mx-auto mb-8" alt="WATCH3R" style="width: 100px;">
@@ -58,12 +74,7 @@
         <img src="/img/about_add-recommendations.jpg" alt="Edit Title" loading="lazy">
       </a>
     </div>
-    <div class="text-center">
-      <p class="text-3xl text-yellow-600">&#9733;</p>
-      <a href="https://www.producthunt.com/posts/watch3r" target="_blank" class="inline-block hover:opacity-75">
-        <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=275243&theme=dark" class="pointer-events-none" alt="WATCH3R - A watchlist and tracking app for your movies and series | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" loading="lazy" />
-      </a>
-    </div>
+    <p class="text-3xl text-yellow-600 text-center mb-0">&#9733;</p>
   </article>
 </template>
 

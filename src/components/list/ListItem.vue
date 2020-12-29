@@ -73,10 +73,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-  .list-item {
-    @apply flex border-b border-gray-500 py-8 px-4;
-  }
-
   .poster {
     @apply block shadow rounded-sm;
   }

@@ -38,10 +38,6 @@ export default {
 
     const updateSelect = () => { selected.value = recSource.value }
 
-    if (tracklist.value.length === 0) {
-      store.dispatch('list/readList', 'tracklist');
-    }
-
     watch(recSource, () => {
       updateSelect();
     })
