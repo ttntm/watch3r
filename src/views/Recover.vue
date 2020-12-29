@@ -22,6 +22,7 @@
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { validateEmail } from '@/helpers/shared.js';
 
 export default {
   name: 'Recover',
@@ -30,11 +31,9 @@ export default {
     const store = useStore();
 
     const cred = ref({ email: '' });
-    const rx = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
-    const valid = computed(() => rx.test(cred.value.email));
 
     const handleRecover = (o) => {
-      if (valid.value) {
+      if (validateEmail(cred.value.email)) {
         store.dispatch('user/requestPasswordRecover', o);
         router.push({ name: 'home' });
       } else {

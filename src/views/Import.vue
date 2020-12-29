@@ -80,8 +80,6 @@ export default {
       if (importList.value.length > 0) {
         const answer = window.confirm('Do you really want to leave? The open CSV file will be closed.');
         if (!answer) return false;
-      } else {
-        return true;
       }
     })
 

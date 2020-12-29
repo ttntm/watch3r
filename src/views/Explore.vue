@@ -55,9 +55,6 @@ export default {
     const store = useStore();
 
     const exploreContent = ref({});
-    const recommendations = computed(() => store.getters['explore/recList']);
-    const recSource = computed(() => store.getters['explore/recSource']);
-    const spinner = require('@/assets/loading.svg');
 
     const exploreAddTitle = (data) => {
       exploreContent.value = Object.assign({}, data);
@@ -68,9 +65,9 @@ export default {
       exploreAddTitle,
       exploreContent,
       modalOpen: computed(() => store.getters['app/windowOpen']),
-      recommendations,
-      recSource,
-      spinner
+      recommendations: computed(() => store.getters['explore/recList']),
+      recSource: computed(() => store.getters['explore/recSource']),
+      spinner: require('@/assets/loading.svg')
     }
   }
 }

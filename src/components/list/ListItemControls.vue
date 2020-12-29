@@ -1,12 +1,8 @@
 <template>
   <section class="list-item-menu" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock>
-    <section class="flex flex-row justify-between items-center py-2">
-      <p class="font-bold text-sm px-4 mb-0">Actions</p>
-      <button
-        @click.prevent="closeModal()"
-        class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer px-4 hover:opacity-100 focus:outline-none"
-        title="Close Menu"
-      >×</button>
+    <section class="flex flex-row justify-between items-center px-4 py-2">
+      <p class="font-bold text-sm mb-0">Actions</p>
+      <BtnClose @click="closeModal" btnTitle="Close Menu" />
     </section>
     <section class="flex flex-col text-gray-800">
       <p class="text-gray-600 text-center px-4 mb-2">{{ item.title }}</p>
@@ -22,6 +18,7 @@
 </template>
 
 <script>
+import BtnClose from '@/components/buttons/BtnClose.vue';
 import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
@@ -29,6 +26,7 @@ import { useStore } from 'vuex';
 export default {
   name: 'ListItemControls',
   components: {
+    BtnClose,
     BtnListItemRemove
   },
   props: {

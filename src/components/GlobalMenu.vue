@@ -1,12 +1,8 @@
 <template>
   <nav class="app-menu" v-click-outside="closeMenu" v-esc="closeMenu" v-scroll-lock>
-    <section class="flex flex-row justify-between items-center py-2">
+    <section class="flex flex-row justify-between items-center pr-4 py-2">
       <img src="/img/icon.svg" class="px-4" style="width: 60px;" alt="WATCH3R">
-      <button
-        @click.prevent="closeMenu()"
-        class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer px-4 hover:opacity-100 focus:outline-none"
-        title="Close Menu"
-      >×</button>
+      <BtnClose @click="closeMenu" btnTitle="Close Menu" />
     </section>
     <section class="flex flex-col text-gray-800">
       <router-link :to="{name: 'home'}" class="menu-item" v-click-blur>
@@ -38,11 +34,15 @@
 </template>
 
 <script>
+import BtnClose from '@/components/buttons/BtnClose.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
   name: 'GlobalMenu',
+  components: {
+    BtnClose
+  },
   setup() {
     const store = useStore();
 
@@ -60,8 +60,9 @@ export default {
 
 <style lang="postcss" scoped>
   .app-menu {
-    @apply fixed top-0 left-0 z-20 max-w-xs bg-gray-200 rounded-lg shadow-lg pb-4 ml-8 mt-6;
+    @apply fixed top-0 left-0 z-20 max-w-xs bg-gray-200 rounded-lg shadow-lg overflow-y-auto pb-4 ml-8 my-6;
     width: 80%;
+    max-height: calc(100% - 3rem);
   }
 
   @media(max-width: 767px) {

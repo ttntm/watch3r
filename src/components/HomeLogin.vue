@@ -23,6 +23,7 @@
 <script>
 import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
+import { validateEmail } from '@/helpers/shared.js';
 
 export default {
   name: 'HomeLogin',
@@ -36,11 +37,10 @@ export default {
 
     const validate = () => {
       const c = credentials.value;
-      const rx = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
-      const valid = rx.test(c.email);
+
       if(!c.password || !c.email) {
         return false;
-      } else if(c.password && c.email && valid) {
+      } else if(c.password && c.email && validateEmail(c.email)) {
         return true;
       } else { return false; }
     }

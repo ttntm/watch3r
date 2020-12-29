@@ -2,11 +2,7 @@
   <section class="list-modal text-gray-600" role="dialog" aria-labelledby="add-modal-heading" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock>
     <section class="flex flex-row justify-between items-center px-8" :class="{ 'mb-4' : contentExplore || contentImport }">
       <h3 id="add-modal-heading" class="text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
-      <button
-        @click.prevent="closeModal()"
-        class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
-        title="Close"
-      >×</button>
+      <BtnClose @click="closeModal" btnTitle="Close" />
     </section>
     <section v-if="!contentExplore && !contentImport" class="px-8 py-6">
       <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Title or IMDb ID" />
@@ -22,6 +18,7 @@
 </template>
 
 <script>
+import BtnClose from '@/components/buttons/BtnClose.vue';
 import InputRadio from '@/components/input/InputRadio.vue';
 import InputSearch from '@/components/input/InputSearch.vue';
 import ListAddSearchResult from '@/components/list/ListAddSearchResult.vue';
@@ -32,6 +29,7 @@ import { getOMDB, searchResult, searchStatus } from '@/helpers/get-omdb.js';
 export default {
   name: 'ListAddModal',
   components: {
+    BtnClose,
     InputRadio,
     InputSearch,
     ListAddSearchResult

@@ -63,6 +63,8 @@ const router = createRouter({
             store.dispatch('explore/updateRecSource', current[0]);
             store.dispatch('explore/getRecommendations', req);
           }
+        } else if (tl.length === 0) {
+          store.dispatch('list/readList', 'tracklist');
         }
 
         return next(); // will simply show blank 'explore' route with ability to refresh ('explore' loads tracklist if empty...)
@@ -74,6 +76,20 @@ const router = createRouter({
       component: Import,
       meta: {
         authRequired: true,
+      },
+      beforeEnter: (to, from, next) => {
+        const tl = store.getters['list/tracklist'];
+        const wl = store.getters['list/watchlist'];
+
+        if (tl.length === 0) {
+          store.dispatch('list/readList', 'tracklist');
+        }
+
+        if (wl.length === 0) {
+          store.dispatch('list/readList', 'watchlist');
+        }
+
+        return next();
       }
     },
     {

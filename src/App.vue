@@ -59,8 +59,8 @@ export default {
     })
 
     return {
-      routeFull: computed(() => route.fullPath),
-      menuOpen: computed(() => store.getters['app/windowOpen'] === 1)
+      menuOpen: computed(() => store.getters['app/windowOpen'] === 1),
+      routeFull: computed(() => route.fullPath)
     }
   }
 }

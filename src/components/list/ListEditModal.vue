@@ -2,11 +2,7 @@
   <section class="list-modal" role="dialog" aria-labelledby="edit-modal-heading" v-esc="closeModal" v-scroll-lock>
     <section class="flex flex-row justify-between items-center px-6 sm:px-8">
       <h3 id="edit-modal-heading" class="text-gray-600 text-base mb-0">Edit Title: "{{ editItem.title }}"</h3>
-      <button
-        @click.prevent="closeModal()"
-        class="font-bold text-gray-800 text-xl opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
-        title="Close"
-      >×</button>
+      <BtnClose @click="closeModal" btnTitle="Close" />
     </section>
     <form
       id="edit-form"
@@ -38,13 +34,15 @@
 </template>
 
 <script>
+import BtnClose from '@/components/buttons/BtnClose.vue';
+import InputRange from '@/components/input/InputRange.vue';
 import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
-import InputRange from '@/components/input/InputRange.vue';
 
 export default {
   name: 'ListEditModal',
   components: {
+    BtnClose,
     InputRange
   },
   props: {

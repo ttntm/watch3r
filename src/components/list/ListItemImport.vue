@@ -44,6 +44,7 @@ export default {
 
     const duplicate = ref(false);
     const list = computed(() => store.getters[`list/${props.mode}`]);
+    const mode = computed(() => props.mode);
 
     const importAdd = () => {
       const titleData = {
@@ -53,13 +54,19 @@ export default {
       return emit('import-title', titleData);
     }
 
+    const isDuplicate = () => { return checkDuplicate(mode.value, props.item.Const).length > 0 ? true : false }
+
     watch(list, () => {
       if (list.value.length > 0) {
-        duplicate.value = checkDuplicate(props.mode, props.item.Const).length > 0 ? true : false;
+        duplicate.value = isDuplicate();
       }
     })
 
-    duplicate.value = checkDuplicate(props.mode, props.item.Const).length > 0 ? true : false;
+    watch(mode, () => {
+      duplicate.value = isDuplicate();
+    })
+
+    duplicate.value = isDuplicate();
 
     return {
       duplicate,
