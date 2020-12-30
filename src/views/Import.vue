@@ -38,6 +38,7 @@ import { computed, ref } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router'
 import { useStore } from 'vuex';
 
+
 export default {
   name: 'Import',
   components: {
@@ -66,7 +67,13 @@ export default {
         header: true,
         skipEmptyLines: true,
         complete: function(results) {
-          importList.value = results.data;
+          const parsed = results.data;
+          if (parsed.length > 0 && parsed[0].Const) {
+            // parsed[0].Const => means checking the first Object in the parsed Array for an IMDb ID - if that's not there, we consider the CSV invalid
+            importList.value = parsed;
+          } else {
+            store.dispatch('app/sendToastMessage', { text: `Invalid data in the selected CSV. Please try exporting from IMDb again.`, type:  'error' });
+          }
         },
         error: function(error) {
           console.error(error);

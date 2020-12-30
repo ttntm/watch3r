@@ -13,3 +13,9 @@ export function validateEmail(email) {
   const rx = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
   return rx.test(email);
 }
+
+export function validateExtension(filename) {
+  const split = filename.split(/\W/g); // returns an Array where the extensions should always be the last item
+  const ext = split[split.length - 1].toLowerCase(); // isolate the file's extension
+  return ext === 'csv' ? true : false;
+}

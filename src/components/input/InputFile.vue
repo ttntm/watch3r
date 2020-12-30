@@ -21,6 +21,7 @@
 
 <script>
 import { ref } from 'vue';
+import { validateExtension } from '@/helpers/shared.js';
 
 export default {
   name: 'InputFile',
@@ -30,7 +31,7 @@ export default {
     const handleInput = (e) => {
       const file = e.target.files[0]; //get the first file
 
-      if (file) {
+      if (file && validateExtension(file.name)) {
         const reader = new FileReader();
 
         selected.value = `
@@ -43,7 +44,8 @@ export default {
 
         reader.readAsText(file);
       } else {
-        // cancel if there's no file or if the file is removed
+        // abort if wrong file extension
+        alert('Please select a CSV file.');
         return;
       }
     }
