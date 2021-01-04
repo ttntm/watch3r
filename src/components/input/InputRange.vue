@@ -1,12 +1,12 @@
 <template>
   <input
     :value="modelValue"
-    @input="$emit('update:modelValue', $event.target.value)"
     class="w-full focus:outline-none mb-6"
     type="range"
     min="0"
     max="10"
     step="0.1"
+    @input="$emit('update:modelValue', $event.target.value)"
   >
 </template>
 
@@ -15,7 +15,8 @@ export default {
   name: 'InputRange',
   props: {
     modelValue: String
-  }
+  },
+  emits: ['update:modelValue']
 }
 </script>
 

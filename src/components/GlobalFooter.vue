@@ -1,25 +1,25 @@
 <template>
   <footer class="text-sm px-4 py-2 sm:py-4 mt-8">
     <nav class="footer-nav flex flex-row flex-wrap justify-center items-center">
-      <router-link :to="{name: 'home'}" v-click-blur>
+      <router-link v-click-blur :to="{name: 'home'}">
         Home
       </router-link>
-      <router-link :to="{name: 'watchlist'}" v-if="loggedIn" v-click-blur>
+      <router-link v-if="loggedIn" v-click-blur :to="{name: 'watchlist'}">
         Watchlist
       </router-link>
-      <router-link :to="{name: 'tracker'}" v-if="loggedIn" v-click-blur>
+      <router-link v-if="loggedIn" v-click-blur :to="{name: 'tracker'}">
         Tracker
       </router-link>
-      <router-link :to="{name: 'explore'}" v-if="loggedIn" v-click-blur>
+      <router-link v-if="loggedIn" v-click-blur :to="{name: 'explore'}">
         Explore
       </router-link>
-      <router-link :to="{name: 'profile'}" v-if="loggedIn" v-click-blur>
+      <router-link v-if="loggedIn" v-click-blur :to="{name: 'profile'}">
         Profile
       </router-link>
-      <router-link :to="{name: 'about'}" v-click-blur>
+      <router-link v-click-blur :to="{name: 'about'}">
         About
       </router-link>
-      <router-link :to="{name: 'support'}" v-click-blur>
+      <router-link v-click-blur :to="{name: 'support'}">
         Support
       </router-link>
     </nav>

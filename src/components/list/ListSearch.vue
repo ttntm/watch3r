@@ -1,6 +1,6 @@
 <template>
   <section class="w-full shadow-lg mb-8 sm:mb-0 sm:mr-8">
-    <InputSearch @do-search="searchList($event, mode)" @reset-search="resetSearch()" class="text-gray-700" pch="Title or Genre" />
+    <InputSearch class="text-gray-700" pch="Title or Genre" @do-search="searchList($event, mode)" @reset-search="resetSearch()" />
   </section>
 </template>
 

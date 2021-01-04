@@ -1,15 +1,15 @@
 <template>
-<!-- BOOLEAN CHECKBOX, DO NOT USE WITH STRING VALUES -->
+  <!-- BOOLEAN CHECKBOX, DO NOT USE WITH STRING VALUES -->
   <label class="cb-container" :for="name">
-    <slot></slot>
+    <slot />
     <input
       :id="name"
       :name="name"
       :checked="modelValue"
-      @input="$emit('update:modelValue', $event.target.checked)"
       type="checkbox"
+      @input="$emit('update:modelValue', $event.target.checked)"
     >
-    <span class="checkmark"></span>
+    <span class="checkmark" />
   </label>
 </template>
 
@@ -19,7 +19,8 @@ export default {
   props: {
     modelValue: Boolean,
     name: String
-  }
+  },
+  emits: ['update:modelValue']
 }
 </script>
 

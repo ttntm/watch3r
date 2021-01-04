@@ -7,22 +7,28 @@
           <img src="/img/imdb.png" alt="IMDb icon" class="w-4">
         </a>
       </h3>
-      <p class="text-sm sm:mb-0">{{ item.Genres }}</p>
+      <p class="text-sm sm:mb-0">
+        {{ item.Genres }}
+      </p>
     </div>
     <div class="w-full sm:w-1/4 self-center text-gray-700 text-sm px-4 lg:px-6 mb-2 sm:mb-0">
       <p>Release: {{ item.Year }}</p>
-      <p class="sm:mb-0">IMDb Rating: {{ item["IMDb Rating"] }}</p>
+      <p class="sm:mb-0">
+        IMDb Rating: {{ item["IMDb Rating"] }}
+      </p>
     </div>
     <div class="sm:w-1/4 flex flex-row flex-wrap sm:flex-col self-center justify-center text-sm lg:text-base sm:px-4">
       <button
         v-if="!duplicate"
-        @click.prevent="importAdd()"
-        class="btn btn-black click-outside-ignore"
         v-click-blur
+        class="btn btn-black click-outside-ignore"
+        @click.prevent="importAdd()"
       >
         &plus; <span class="capitalize pointer-events-none">{{ mode }}</span>
       </button>
-      <p v-else class="text-center mb-0">Added &#10003;</p>
+      <p v-else class="text-center mb-0">
+        Added &#10003;
+      </p>
     </div>
   </article>
 </template>
@@ -34,11 +40,11 @@ import { checkDuplicate } from '@/helpers/shared.js';
 
 export default {
   name: 'ListItemImport',
-  components: {},
   props: {
     item: Object,
     mode: String,
   },
+  emits: ['import-title'],
   setup(props, { emit }) {
     const store = useStore();
 

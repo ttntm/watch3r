@@ -1,19 +1,21 @@
 <template>
-  <section class="list-modal text-gray-600" role="dialog" aria-labelledby="add-modal-heading" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock>
+  <section v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock class="list-modal text-gray-600" role="dialog" aria-labelledby="add-modal-heading">
     <section class="flex flex-row justify-between items-center px-8" :class="{ 'mb-4' : contentExplore || contentImport }">
-      <h3 id="add-modal-heading" class="text-base mb-0">Add Title to <span class="capitalize">{{ mode }}</span></h3>
-      <BtnClose @click="closeModal" btnTitle="Close" />
+      <h3 id="add-modal-heading" class="text-base mb-0">
+        Add Title to <span class="capitalize">{{ mode }}</span>
+      </h3>
+      <BtnClose btn-title="Close" @click="closeModal" />
     </section>
     <section v-if="!contentExplore && !contentImport" class="px-8 py-6">
-      <InputSearch @do-search="doSearch($event)" :autofocus="true" pch="Title or IMDb ID" />
+      <InputSearch :autofocus="true" pch="Title or IMDb ID" @do-search="doSearch($event)" />
       <div class="flex flex-row items-center text-sm mt-4">
         <span class="font-bold mr-2">Mode:</span>
         <InputRadio class="mr-4" name="search-mode" :label="'title'" :value="searchMode" @update:radio="updateSearchMode($event)" />
         <InputRadio class="" name="search-mode" :label="'id'" :value="searchMode" @update:radio="updateSearchMode($event)" />
       </div>
     </section>
-    <ListAddSearchResult v-if="searchResult.id" :explore="!contentExplore ? false : true" :mode="mode" :searchResult="searchResult" class="px-8" />
-    <p v-if="searchStatus" v-html="searchStatus" class="text-center px-8 mt-6 mb-0" />
+    <ListAddSearchResult v-if="searchResult.id" :explore="!contentExplore ? false : true" :mode="mode" :search-result="searchResult" class="px-8" />
+    <p v-if="searchStatus" class="text-center px-8 mt-6 mb-0" v-html="searchStatus" />
   </section>
 </template>
 

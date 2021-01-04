@@ -3,23 +3,31 @@
     <form
       v-if="user"
       id="user-profile-form"
-      @submit.prevent
       class="user-profile-box w-full max-w-full self-center py-10 px-12 mx-auto"
+      @submit.prevent
     >
-      <h1 class="text-2xl text-blue-800 mb-6">User Profile</h1>
+      <h1 class="text-2xl text-blue-800 mb-6">
+        User Profile
+      </h1>
       <div class="input-group mb-8">
         <label for="email">Email Address</label>
-        <p class="text-xs text-gray-600 mb-3">The email address associated with your account.</p>
-        <input :value="user.email" id="email" type="email" class="text-gray-600" disabled>
+        <p class="text-xs text-gray-600 mb-3">
+          The email address associated with your account.
+        </p>
+        <input id="email" :value="user.email" type="email" class="text-gray-600" disabled>
       </div>
       <div class="input-group mb-8">
         <label for="pwd">New Password</label>
-        <p class="text-xs text-gray-600 mb-3">Optional; fill to change your current password.</p>
-        <input v-model="pwd" id="pwd" type="password" placeholder="************">
+        <p class="text-xs text-gray-600 mb-3">
+          Optional; fill to change your current password.
+        </p>
+        <input id="pwd" v-model="pwd" type="password" placeholder="************">
       </div>
       <div class="input-group mb-8">
         <label>Start Page</label>
-        <p class="text-xs text-gray-600 mb-3">Automatic forwarding after login.</p>
+        <p class="text-xs text-gray-600 mb-3">
+          Automatic forwarding after login.
+        </p>
         <div class="flex flex-row">
           <InputRadio class="text-sm mr-4" name="start-page" :label="'watchlist'" :value="profile_startPage" @update:radio="updateStartPage($event)" />
           <InputRadio class="text-sm" name="start-page" :label="'tracklist'" :value="profile_startPage" @update:radio="updateStartPage($event)" />
@@ -27,27 +35,43 @@
       </div>
       <div class="input-group mb-8">
         <label for="sort-preset">List Sorting</label>
-        <p class="text-xs text-gray-600 mb-3">This option controls how lists are sorted after logging in. Does <em>not</em> override the current sort mode selection.</p>
+        <p class="text-xs text-gray-600 mb-3">
+          This option controls how lists are sorted after logging in. Does <em>not</em> override the current sort mode selection.
+        </p>
         <div class="w-full relative text-gray-700 text-sm bg-gray-300">
-          <select name="sorting" id="sort-preset" v-model="profile_sortSelected">
-            <option disabled value="">Default Sorting</option>
-            <option v-for="(mode, index) in allSortModes" :key="index" :value="index" class="">{{ mode.name }} ({{ mode.order }})</option>
+          <select id="sort-preset" v-model="profile_sortSelected" name="sorting">
+            <option disabled value="">
+              Default Sorting
+            </option>
+            <option v-for="(mode, index) in allSortModes" :key="index" :value="index" class="">
+              {{ mode.name }} ({{ mode.order }})
+            </option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
             <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
             </svg>
           </div>
         </div>
       </div>
       <div class="input-group mb-8">
         <label>Display Options</label>
-        <p class="text-xs text-gray-600 mb-3">IMDb link display in search results and for all list items.</p>
-        <InputCheckbox v-model="profile_imdbLinks" :name="'imdb-links'" @update:cb="updateIMDbLinks($event)">Show IMDb links</InputCheckbox>
-        <p class="text-xs text-gray-600 mt-4 mb-3">Display links to explore recommendations for items in your Tracklist.</p>
-        <InputCheckbox v-model="profile_exploreLinks" :name="'explore-links'" @update:cb="updateExploreLinks($event)">Show recommendation links</InputCheckbox>
+        <p class="text-xs text-gray-600 mb-3">
+          IMDb link display in search results and for all list items.
+        </p>
+        <InputCheckbox v-model="profile_imdbLinks" :name="'imdb-links'" @update:cb="updateIMDbLinks($event)">
+          Show IMDb links
+        </InputCheckbox>
+        <p class="text-xs text-gray-600 mt-4 mb-3">
+          Display links to explore recommendations for items in your Tracklist.
+        </p>
+        <InputCheckbox v-model="profile_exploreLinks" :name="'explore-links'" @update:cb="updateExploreLinks($event)">
+          Show recommendation links
+        </InputCheckbox>
       </div>
-      <button @click="updateUserProfile()" class="btn btn-black" :disabled="!btnState.enabled" v-click-blur>{{ btnState.text }}</button>
+      <button v-click-blur class="btn btn-black" :disabled="!btnState.enabled" @click="updateUserProfile()">
+        {{ btnState.text }}
+      </button>
     </form>
   </section>
 </template>

@@ -3,12 +3,14 @@
     <img :src="imgSrc" class="rounded-md" loading="lazy">
     <div class="card-overlay">
       <div class="flex flex-col">
-        <h3 class="text-lg sm:text-2xl text-center text-yellow-600 mb-8">{{ titleDisplay }}</h3>
+        <h3 class="text-lg sm:text-2xl text-center text-yellow-600 mb-8">
+          {{ titleDisplay }}
+        </h3>
         <button
+          v-click-blur
           class="card-btn click-outside-ignore"
           title="View Details"
           @click.prevent="exploreAdd()"
-          v-click-blur
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="8" x2="12.01" y2="8" />09
@@ -30,6 +32,7 @@ export default {
     item: Object,
     src: String
   },
+  emits: ['add-title'],
   setup(props, { emit }) {
     const store = useStore();
 

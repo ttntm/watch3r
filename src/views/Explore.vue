@@ -1,15 +1,19 @@
 <template>
   <section id="explore">
     <div class="sm:text-center">
-      <h1 class="h2 text-yellow-600">Explore Recommendations</h1>
-      <h2 class="text-base font-normal mb-0">Select a title from your Tracklist based on which you'd like to get recommendations.</h2>
+      <h1 class="h2 text-yellow-600">
+        Explore Recommendations
+      </h1>
+      <h2 class="text-base font-normal mb-0">
+        Select a title from your Tracklist based on which you'd like to get recommendations.
+      </h2>
     </div>
     <section class="w-full sm:w-2/3 lg:w-1/2 flex flex-row mx-auto mt-10 mb-12">
       <ExploreSelectTitle />
       <BtnExploreClear class="hidden sm:flex py-2 ml-4 sm:ml-8" />
     </section>
     <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 xl:gap-10 sm:px-4 xl:px-0">
-      <ExploreTitleCard v-for="(item, index) in recommendations" :item="item" :key="index" :src="item.poster_path" @add-title="exploreAddTitle($event)" />
+      <ExploreTitleCard v-for="(item, index) in recommendations" :key="index" :item="item" :src="item.poster_path" @add-title="exploreAddTitle($event)" />
     </section>
     <div v-if="!recommendations.length && Object.keys(recSource).length > 0">
       <img :src="spinner" class="my-16 mx-auto">
@@ -23,7 +27,7 @@
   </section>
   <!-- MODALS -->
   <transition name="modal">
-    <ListAddModal v-if="modalOpen === 5" :contentExplore="exploreContent" mode="watchlist" />
+    <ListAddModal v-if="modalOpen === 5" :content-explore="exploreContent" mode="watchlist" />
   </transition>
   <!-- OVERLAY -->
   <ModalBackdrop />

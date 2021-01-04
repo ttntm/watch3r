@@ -7,38 +7,38 @@
       <line x1="21" y1="21" x2="15" y2="15" />
     </svg>
     <input
+      id="search-input"
+      ref="input"
       v-model.trim="searchInput"
-      @keyup.enter="$emit('do-search', searchInput)"
       v-focus="autofocus"
       type="text"
       class="w-full search-input"
-      id="search-input"
       :placeholder="pch"
-      ref="input"
-    />
+      @keyup.enter="$emit('do-search', searchInput)"
+    >
     <div class="search-input-group-append">
       <button
         v-if="searchInput"
-        @click.prevent="clearSearch()"
         class="btn opacity-75 hover:opacity-100 focus:opacity-100 px-0 py-2 click-outside-ignore"
         title="Clear search"
         aria-label="Clear search"
+        @click.prevent="clearSearch()"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <line x1="18" y1="6" x2="6" y2="18" />
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
     </div>
     <button
-      @click.prevent="$emit('do-search', searchInput)"
       class="btn btn-gray shadow-none hover:shadow-none py-2"
       title="Search"
       aria-label="Search"
+      @click.prevent="$emit('do-search', searchInput)"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevrons-right" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <polyline points="7 7 12 12 7 17" />
         <polyline points="13 7 18 12 13 17" />
       </svg>
@@ -52,10 +52,20 @@ import { useStore } from 'vuex';
 
 export default {
   name: 'InputSearch',
+  directives: {
+    focus: {
+      mounted(el, binding) {
+        if (binding.value) {
+          el.focus();
+        }
+      }
+    }
+  },
   props: {
     autofocus: Boolean,
     pch: String
   },
+  emits: ['do-search','reset-search'],
   setup(props, { emit }) {
     const store = useStore();
 
@@ -79,15 +89,6 @@ export default {
       clearSearch,
       input,
       searchInput
-    }
-  },
-  directives: {
-    focus: {
-      mounted(el, binding) {
-        if (binding.value) {
-          el.focus();
-        }
-      }
     }
   }
 }

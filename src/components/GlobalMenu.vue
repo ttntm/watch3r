@@ -1,32 +1,32 @@
 <template>
-  <nav class="app-menu" v-click-outside="closeMenu" v-esc="closeMenu" v-scroll-lock>
+  <nav v-click-outside="closeMenu" v-esc="closeMenu" v-scroll-lock class="app-menu">
     <section class="flex flex-row justify-between items-center pr-4 py-2">
       <img src="/img/icon.svg" class="px-4" style="width: 60px;" alt="WATCH3R">
-      <BtnClose @click="closeMenu" btnTitle="Close Menu" />
+      <BtnClose btn-title="Close Menu" @click="closeMenu" />
     </section>
     <section class="flex flex-col text-gray-800">
-      <router-link :to="{name: 'home'}" class="menu-item" v-click-blur>
+      <router-link v-click-blur :to="{name: 'home'}" class="menu-item">
         Home
       </router-link>
-      <router-link :to="{name: 'watchlist'}" v-if="loggedIn" class="menu-item" v-click-blur>
+      <router-link v-if="loggedIn" v-click-blur :to="{name: 'watchlist'}" class="menu-item">
         Watchlist
       </router-link>
-      <router-link :to="{name: 'tracker'}" v-if="loggedIn" class="menu-item" v-click-blur>
+      <router-link v-if="loggedIn" v-click-blur :to="{name: 'tracker'}" class="menu-item">
         Tracker
       </router-link>
-      <router-link :to="{name: 'explore'}" v-if="loggedIn" class="menu-item" v-click-blur>
+      <router-link v-if="loggedIn" v-click-blur :to="{name: 'explore'}" class="menu-item">
         Explore
       </router-link>
-      <router-link :to="{name: 'import'}" v-if="loggedIn" class="menu-item" v-click-blur>
+      <router-link v-if="loggedIn" v-click-blur :to="{name: 'import'}" class="menu-item">
         Import
       </router-link>
-      <router-link :to="{name: 'profile'}" v-if="loggedIn" class="menu-item" v-click-blur>
+      <router-link v-if="loggedIn" v-click-blur :to="{name: 'profile'}" class="menu-item">
         Profile
       </router-link>
-      <router-link :to="{name: 'about'}" class="menu-item" v-click-blur>
+      <router-link v-click-blur :to="{name: 'about'}" class="menu-item">
         About
       </router-link>
-      <router-link :to="{name: 'support'}" class="menu-item" v-click-blur>
+      <router-link v-click-blur :to="{name: 'support'}" class="menu-item">
         Support
       </router-link>
     </section>

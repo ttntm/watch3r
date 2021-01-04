@@ -7,6 +7,8 @@ module.exports = {
   rules: {
     // override/add rules settings here, such as:
     // 'vue/no-unused-vars': 'error'
-    'vue/max-attributes-per-line': 'off'
+    'vue/max-attributes-per-line': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/no-v-html': 'off'
   }
 }

@@ -4,23 +4,27 @@
       <img src="/img/icon.svg" class="mx-auto mb-10" alt="WATCH3R" style="width: 125px;">
       <form
         id="signup-form"
-        @submit.prevent="handleSignup(pwd)"
         class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10"
+        @submit.prevent="handleSignup(pwd)"
       >
-        <h2 class="text-xl text-blue-800">Confirm Signup</h2>
+        <h2 class="text-xl text-blue-800">
+          Confirm Signup
+        </h2>
         <p class="text-sm">
           We're almost done processing your invite - please choose a password for your account.
         </p>
         <div class="input-group">
           <label for="signup-pwd">Password</label>
-          <input v-model="pwd" id="signup-pwd" type="password" placeholder="************" required>
+          <input id="signup-pwd" v-model="pwd" type="password" placeholder="************" required>
         </div>
-        <button type="submit" class="btn btn-black" :disabled="!pwd" v-click-blur>Signup</button>
-        <p v-if="status" v-html="status" class="text-sm font-bold mt-6 mb-0" />
+        <button v-click-blur type="submit" class="btn btn-black" :disabled="!pwd">
+          Signup
+        </button>
+        <p v-if="status" class="text-sm font-bold mt-6 mb-0" v-html="status" />
       </form>
       <p class="text-xs text-center text-gray-600 mt-8">
         Signing up for an account means that you explicitly agree with Netlify processing your email and IP address according to their <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" class="underline">data processing guidelines</a>.
-        <br /><br />
+        <br><br>
         We don't use analytics, cookies or tracking, so watch3r.app itself does <em>not</em> collect and/or store any personally identifiable information.
       </p>
     </div>

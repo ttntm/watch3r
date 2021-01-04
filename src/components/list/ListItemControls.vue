@@ -1,18 +1,22 @@
 <template>
-  <section class="list-item-menu" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock>
+  <section v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock class="list-item-menu">
     <section class="flex flex-row justify-between items-center px-4 py-2">
-      <p class="font-bold text-sm mb-0">Actions</p>
-      <BtnClose @click="closeModal" btnTitle="Close Menu" />
+      <p class="font-bold text-sm mb-0">
+        Actions
+      </p>
+      <BtnClose btn-title="Close Menu" @click="closeModal" />
     </section>
     <section class="flex flex-col text-gray-800">
-      <p class="text-gray-600 text-center px-4 mb-2">{{ item.title }}</p>
+      <p class="text-gray-600 text-center px-4 mb-2">
+        {{ item.title }}
+      </p>
       <router-link v-if="showExplore && mode === 'tracklist'" :to="{ name: 'explore', query: { title: item.id } }" class="menu-item">
         Get Recommendations
       </router-link>
       <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" class="menu-item" target="_blank" rel="noopener" title="View on IMDb">
         View on IMDb
       </a>
-      <BtnListItemRemove display="text" :id="item.refId" :mode="mode" class="menu-item" />
+      <BtnListItemRemove :id="item.refId" display="text" :mode="mode" class="menu-item" />
     </section>
   </section>
 </template>

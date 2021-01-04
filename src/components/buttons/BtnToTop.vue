@@ -1,14 +1,14 @@
 <template>
   <transition name="btt-fade">
     <button
-      class="back-to-top mx-2 my-4 lg:m-6"
       v-show="visible"
-      @click="backToTop()"
-      title="Back to Top"
       v-click-blur
+      class="back-to-top mx-2 my-4 lg:m-6"
+      title="Back to Top"
+      @click="backToTop()"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none icon icon-tabler icon-tabler-chevron-up" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <polyline points="6 15 12 9 18 15" />
       </svg>
     </button>

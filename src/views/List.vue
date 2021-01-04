@@ -2,10 +2,12 @@
   <section id="list" class="">
     <section class="flex flex-col sm:flex-row sm:items-center justify-between">
       <div class="mb-8 sm:mb-0 sm:mr-8 lg:mr-0">
-        <h2 class="text-yellow-600 capitalize">{{ mode }}</h2>
+        <h2 class="text-yellow-600 capitalize">
+          {{ mode }}
+        </h2>
         <p class="mb-0">
           {{ subtitle }}
-          <span v-if="listLength !== 0  && !searchActive" class="font-bold">Your {{ mode }} contains {{ listLength }} items.</span>
+          <span v-if="listLength !== 0 && !searchActive" class="font-bold">Your {{ mode }} contains {{ listLength }} items.</span>
         </p>
       </div>
       <div class="flex-shrink-0">
@@ -21,7 +23,7 @@
       <ListSearchStatus v-if="searchActive" :mode="mode" class="mt-8" />
     </section>
     <section v-if="listLength > 0" class="list">
-      <ListItem v-for="title in listData" :item="title" :key="title.id" :mode="mode" @open-poster="showPoster($event)" />
+      <ListItem v-for="title in listData" :key="title.id" :item="title" :mode="mode" @open-poster="showPoster($event)" />
     </section>
   </section>
   <!-- MODALS -->

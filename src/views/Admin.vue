@@ -4,18 +4,20 @@
     name="login"
     @submit.prevent="handleAdmin()"
   >
-    <div class="message"></div>
+    <div class="message" />
     <p>
-      <label>Email<br />
-        <input type="email" name="email" v-model="credentials.email" />
+      <label>Email<br>
+        <input v-model="credentials.email" type="email" name="email">
       </label>
     </p>
     <p>
-      <label>Password<br />
-        <input type="password" name="password" v-model="credentials.password" />
+      <label>Password<br>
+        <input v-model="credentials.password" type="password" name="password">
       </label>
     </p>
-    <button type="submit">Log in</button>
+    <button type="submit">
+      Log in
+    </button>
   </form>
 </template>
 

@@ -1,22 +1,24 @@
 <template>
   <form
     id="login-form"
-    @submit.prevent="handleLogin()"
     class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10"
+    @submit.prevent="handleLogin()"
   >
     <div class="input-group">
       <label for="login-email">Email</label>
-      <input v-model="credentials.email" @input="clearValidate()" id="login-email" type="email" placeholder="jane@doe.com">
+      <input id="login-email" v-model="credentials.email" type="email" placeholder="jane@doe.com" @input="clearValidate()">
     </div>
     <div class="input-group">
       <label for="login-pwd">Password</label>
-      <input v-model="credentials.password" @input="clearValidate()" id="login-pwd" type="password" placeholder="************">
+      <input id="login-pwd" v-model="credentials.password" type="password" placeholder="************" @input="clearValidate()">
       <router-link :to="{name: 'recover'}" class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0">
         Forgot your password?
       </router-link>
     </div>
-    <button type="submit" class="btn btn-black" :disabled="!credentials.email || !credentials.password" v-click-blur>Login</button>
-    <p v-if="cValidateMsg !== ''" v-html="cValidateMsg" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" />
+    <button v-click-blur type="submit" class="btn btn-black" :disabled="!credentials.email || !credentials.password">
+      Login
+    </button>
+    <p v-if="cValidateMsg !== ''" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" v-html="cValidateMsg" />
   </form>
 </template>
 

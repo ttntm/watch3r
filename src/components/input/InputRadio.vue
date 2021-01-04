@@ -1,6 +1,6 @@
 <template>
   <div class="inline-flex items-center relative">
-    <input type="radio" v-model="radio" :id="label" :name="name" :value="label">
+    <input :id="label" v-model="radio" type="radio" :name="name" :value="label">
     <label class="capitalize w-full" :for="label">{{ label }}</label>
   </div>
 </template>
@@ -15,6 +15,7 @@ export default {
     label: String,
     value: String
   },
+  emits: ['update:radio'],
   setup(props, { emit }) {
     // see: https://stackoverflow.com/questions/40474634/vuejs-radio-button-component
     const radio = computed({

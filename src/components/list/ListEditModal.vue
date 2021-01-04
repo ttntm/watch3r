@@ -1,33 +1,39 @@
 <template>
-  <section class="list-modal" role="dialog" aria-labelledby="edit-modal-heading" v-esc="closeModal" v-scroll-lock>
+  <section v-esc="closeModal" v-scroll-lock class="list-modal" role="dialog" aria-labelledby="edit-modal-heading">
     <section class="flex flex-row justify-between items-center px-6 sm:px-8">
-      <h3 id="edit-modal-heading" class="text-gray-600 text-base mb-0">Edit Title: "{{ editItem.title }}"</h3>
-      <BtnClose @click="closeModal" btnTitle="Close" />
+      <h3 id="edit-modal-heading" class="text-gray-600 text-base mb-0">
+        Edit Title: "{{ editItem.title }}"
+      </h3>
+      <BtnClose btn-title="Close" @click="closeModal" />
     </section>
     <form
       id="edit-form"
-      @submit.prevent
       class="text-gray-800 pt-4 pb-2 px-6 sm:px-8"
+      @submit.prevent
     >
       <div class="mb-6">
         <h4>Date Watched</h4>
         <input v-model="editItem.userDateWatched" class="text-sm text-gray-600 px-4 py-2 mb-6" type="date">
         <h4>Rating</h4>
         <InputRange v-model="editItem.userRating" />
-        <p class="text-sm text-gray-600 mb-6">Your Rating: {{ editItem.userRating }}</p>
+        <p class="text-sm text-gray-600 mb-6">
+          Your Rating: {{ editItem.userRating }}
+        </p>
         <h4>Notes</h4>
-        <textarea v-model="editItem.userNotes" class="text-sm px-4 py-2" name="notes" rows="5" placeholder="Notes, comments, etc."></textarea>
+        <textarea v-model="editItem.userNotes" class="text-sm px-4 py-2" name="notes" rows="5" placeholder="Notes, comments, etc." />
       </div>
       <div class="flex flex-row">
         <button
-          @click.prevent="handleTitleEdit(editItem, mode)"
           class="btn btn-black mr-4"
           :class="{ 'bg-gray-700' : !saveBtnState.enabled }"
           :disabled="!saveBtnState.enabled"
+          @click.prevent="handleTitleEdit(editItem, mode)"
         >
           {{ saveBtnState.text }}
         </button>
-        <button @click.prevent="closeModal()" class="btn btn-muted">Cancel</button>
+        <button class="btn btn-muted" @click.prevent="closeModal()">
+          Cancel
+        </button>
       </div>
     </form>
   </section>

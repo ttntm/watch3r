@@ -1,5 +1,5 @@
 <template>
-  <p @click="toImport" class="text-center text-lg mt-16" v-html="loadingState"></p>
+  <p class="text-center text-lg mt-16" @click="toImport" v-html="loadingState" />
 </template>
 
 <script>

@@ -1,10 +1,16 @@
 <template>
   <section id="import">
     <section class="w-full sm:w-2/3 lg:w-1/2 sm:text-center mx-auto">
-      <h1 class="h2 text-yellow-600">List Import</h1>
-      <h2 class="text-base font-normal">Select an IMDb export CSV file and import your listed titles.</h2>
-      <p class="text-sm mb-0">To export a list from IMDb (i.e. the default watchlist), simply scroll down to the end of the list and click "Export this list".</p>
-      <div class="h-px bg-gray-600 my-8"></div>
+      <h1 class="h2 text-yellow-600">
+        List Import
+      </h1>
+      <h2 class="text-base font-normal">
+        Select an IMDb export CSV file and import your listed titles.
+      </h2>
+      <p class="text-sm mb-0">
+        To export a list from IMDb (i.e. the default watchlist), simply scroll down to the end of the list and click "Export this list".
+      </p>
+      <div class="h-px bg-gray-600 my-8" />
       <InputFile @update:file="processCSV($event)" />
       <div v-if="importList.length > 0" class="flex flex-row items-center justify-center text-sm my-8">
         <span class="font-bold mr-2">Import Mode:</span>
@@ -18,7 +24,7 @@
   </section>
   <!-- MODALS -->
   <transition name="modal">
-    <ListAddModal v-if="modalOpen === 7" :contentImport="importContent" :mode="importMode" />
+    <ListAddModal v-if="modalOpen === 7" :content-import="importContent" :mode="importMode" />
   </transition>
   <!-- OVERLAY -->
   <ModalBackdrop />
