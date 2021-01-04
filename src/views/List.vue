@@ -48,17 +48,13 @@
 <script>
 import BtnAddTitle from '@/components/buttons/BtnAddTitle.vue';
 import BtnToTop from '@/components/buttons/BtnToTop.vue';
-import ListAddModal from '@/components/list/ListAddModal.vue';
-import ListEditModal from '@/components/list/ListEditModal.vue';
 import ListItem from '@/components/list/ListItem.vue';
 import ListItemControls from '@/components/list/ListItemControls.vue';
 import ListLoading from '@/components/list/ListLoading.vue';
-import ListPosterModal from '@/components/list/ListPosterModal.vue';
 import ListSearch from '@/components/list/ListSearch.vue';
 import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
 import ListSort from '@/components/list/ListSort.vue';
-import ModalBackdrop from '@/components/ModalBackdrop.vue';
-import { computed, ref } from 'vue';
+import { computed, defineAsyncComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 
@@ -67,16 +63,16 @@ export default {
   components: {
     BtnAddTitle,
     BtnToTop,
-    ListAddModal,
-    ListEditModal,
+    ListAddModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListAddModal.vue')),
+    ListEditModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListEditModal.vue')),
     ListItem,
     ListItemControls,
     ListLoading,
-    ListPosterModal,
+    ListPosterModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListPosterModal.vue')),
     ListSearch,
     ListSearchStatus,
     ListSort,
-    ModalBackdrop
+    ModalBackdrop: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/ModalBackdrop.vue'))
   },
   setup() {
     const route = useRoute();

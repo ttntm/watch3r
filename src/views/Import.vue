@@ -36,11 +36,9 @@
 import BtnToTop from '@/components/buttons/BtnToTop.vue';
 import InputFile from '@/components/input/InputFile.vue';
 import InputRadio from '@/components/input/InputRadio.vue';
-import ListAddModal from '@/components/list/ListAddModal.vue';
 import ListItemImport from '@/components/list/ListItemImport.vue';
-import ModalBackdrop from '@/components/ModalBackdrop.vue';
 import Papa from 'papaparse';
-import { computed, ref } from 'vue';
+import { computed, defineAsyncComponent, ref } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router'
 import { useStore } from 'vuex';
 
@@ -51,9 +49,9 @@ export default {
     BtnToTop,
     InputFile,
     InputRadio,
-    ListAddModal,
+    ListAddModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListAddModal.vue')),
     ListItemImport,
-    ModalBackdrop
+    ModalBackdrop: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/ModalBackdrop.vue'))
   },
   setup() {
     const store = useStore();

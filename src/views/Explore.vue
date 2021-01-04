@@ -39,10 +39,7 @@
 import BtnExploreClear from '@/components/buttons/BtnExploreClear.vue';
 import BtnToTop from '@/components/buttons/BtnToTop.vue';
 import ExploreSelectTitle from '@/components/explore/ExploreSelectTitle.vue';
-import ExploreTitleCard from '@/components/explore/ExploreTitleCard.vue';
-import ListAddModal from '@/components/list/ListAddModal.vue';
-import ModalBackdrop from '@/components/ModalBackdrop.vue';
-import { computed, ref } from 'vue';
+import { computed, defineAsyncComponent, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -51,9 +48,9 @@ export default {
     BtnExploreClear,
     BtnToTop,
     ExploreSelectTitle,
-    ExploreTitleCard,
-    ListAddModal,
-    ModalBackdrop
+    ExploreTitleCard: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/explore/ExploreTitleCard.vue')),
+    ListAddModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListAddModal.vue')),
+    ModalBackdrop: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/ModalBackdrop.vue'))
   },
   setup() {
     const store = useStore();
