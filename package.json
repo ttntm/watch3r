@@ -10,6 +10,7 @@
   "dependencies": {
     "body-scroll-lock": "^3.1.5",
     "core-js": "^3.6.5",
+    "file-saver": "^2.0.5",
     "gotrue-js": "^0.9.27",
     "papaparse": "^5.3.0",
     "secure-ls": "^1.2.6",

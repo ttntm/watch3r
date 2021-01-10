@@ -1,92 +1,36 @@
 <template>
   <section id="user-profile" class="flex flex-grow items-center justify-items-center w-full h-full">
-    <form
-      v-if="user"
-      id="user-profile-form"
-      class="user-profile-box w-full max-w-full self-center py-10 px-12 mx-auto"
-      @submit.prevent
-    >
-      <h1 class="text-2xl text-blue-800 mb-6">
-        User Profile
-      </h1>
-      <div class="input-group mb-8">
-        <label for="email">Email Address</label>
-        <p class="text-xs text-gray-600 mb-3">
-          The email address associated with your account.
-        </p>
-        <input id="email" :value="user.email" type="email" class="text-gray-600" disabled>
+    <section id="user-profile-form" class="user-profile-box flex flex-col md:flex-row self-start py-10 px-12 md:p-0 mx-auto">
+      <div class="user-profile-sidebar flex flex-row md:flex-col justify-center md:justify-start flex-wrap md:py-10 md:px-12">
+        <a class="mb-4" :class="{ 'active' : profileTab === 0 }" href="#account" @click.prevent="setProfileTab(0)">Account</a>
+        <a class="px-4 md:px-0 mb-4" :class="{ 'active' : profileTab === 1 }" href="#settings" @click.prevent="setProfileTab(1)">Settings</a>
+        <a class="mb-4" :class="{ 'active' : profileTab === 2 }" href="#export" @click.prevent="setProfileTab(2)">Export</a>
       </div>
-      <div class="input-group mb-8">
-        <label for="pwd">New Password</label>
-        <p class="text-xs text-gray-600 mb-3">
-          Optional; fill to change your current password.
-        </p>
-        <input id="pwd" v-model="pwd" type="password" placeholder="************">
+      <div class="h-px bg-gray-500 mb-6 md:hidden" />
+      <div class="user-profile-content self-stretch md:py-10 md:px-12">
+        <ProfileUserDetails v-if="profileTab === 0" v-model="userSettings.password" :email="user.email" />
+        <ProfileUserSettings v-if="profileTab === 1" @update:settings="updateSettings($event)" />
+        <ProfileExport v-if="profileTab === 2" />
+        <button v-if="profileTab !== 2" v-click-blur class="btn btn-black" :disabled="!btnState.enabled" @click="updateUserProfile()">
+          {{ btnState.text }}
+        </button>
       </div>
-      <div class="input-group mb-8">
-        <label>Start Page</label>
-        <p class="text-xs text-gray-600 mb-3">
-          Automatic forwarding after login.
-        </p>
-        <div class="flex flex-row">
-          <InputRadio class="text-sm mr-4" name="start-page" :label="'watchlist'" :value="profile_startPage" @update:radio="updateStartPage($event)" />
-          <InputRadio class="text-sm" name="start-page" :label="'tracklist'" :value="profile_startPage" @update:radio="updateStartPage($event)" />
-        </div>
-      </div>
-      <div class="input-group mb-8">
-        <label for="sort-preset">List Sorting</label>
-        <p class="text-xs text-gray-600 mb-3">
-          This option controls how lists are sorted after logging in. Does <em>not</em> override the current sort mode selection.
-        </p>
-        <div class="w-full relative text-gray-700 text-sm bg-gray-300">
-          <select id="sort-preset" v-model="profile_sortSelected" name="sorting">
-            <option disabled value="">
-              Default Sorting
-            </option>
-            <option v-for="(mode, index) in allSortModes" :key="index" :value="index" class="">
-              {{ mode.name }} ({{ mode.order }})
-            </option>
-          </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-            <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="input-group mb-8">
-        <label>Display Options</label>
-        <p class="text-xs text-gray-600 mb-3">
-          IMDb link display in search results and for all list items.
-        </p>
-        <InputCheckbox v-model="profile_imdbLinks" :name="'imdb-links'" @update:cb="updateIMDbLinks($event)">
-          Show IMDb links
-        </InputCheckbox>
-        <p class="text-xs text-gray-600 mt-4 mb-3">
-          Display links to explore recommendations for items in your Tracklist.
-        </p>
-        <InputCheckbox v-model="profile_exploreLinks" :name="'explore-links'" @update:cb="updateExploreLinks($event)">
-          Show recommendation links
-        </InputCheckbox>
-      </div>
-      <button v-click-blur class="btn btn-black" :disabled="!btnState.enabled" @click="updateUserProfile()">
-        {{ btnState.text }}
-      </button>
-    </form>
+    </section>
   </section>
 </template>
 
 <script>
-import InputCheckbox from '@/components/input/InputCheckbox.vue';
-import InputRadio from '@/components/input/InputRadio.vue';
-import { computed, ref } from 'vue';
+import ProfileUserDetails from '@/components/profile/ProfileUserDetails.vue';
+import ProfileUserSettings from '@/components/profile/ProfileUserSettings.vue';
+import { computed, defineAsyncComponent, reactive, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
   name: 'Profile',
   components: {
-    InputCheckbox,
-    InputRadio
+    ProfileExport: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/profile/ProfileExport.vue')),
+    ProfileUserDetails,
+    ProfileUserSettings
   },
   setup() {
     const store = useStore();
@@ -96,34 +40,36 @@ export default {
       text: 'Update Profile'
     });
     const pages = ['watchlist', 'tracklist'];
-    const pwd = ref('');
-    const profile_exploreLinks = ref();
-    const profile_imdbLinks = ref();
-    const profile_sortSelected = ref();
-    const profile_startPage = ref('');
-    const showExplore = computed(() => store.getters['user/showExploreLinks'])
-    const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
-    const sortPreset = computed(() => store.getters['user/sortPreset']);
-    const startPreset = computed(() => store.getters['user/startPage']);
+    const profileTab = ref(0);
     const user = computed(() => store.getters['user/currentUser']);
+    const userOptions = computed(() => store.getters['user/userOptions']);
+    const userSettings = reactive({
+      email: user.value.email,
+      password: '',
+      data: {
+        // initial data in case user never goes to the 'settings' tab
+        user_explore: userOptions.value.showExploreLinks,
+        user_imdb: userOptions.value.showIMDbLinks,
+        user_sort: userOptions.value.sortPreset,
+        user_start: userOptions.value.startPage
+      }
+    });
 
-    const updateExploreLinks = (e) => { profile_exploreLinks.value = e; }
-    const updateIMDbLinks = (i) => { profile_imdbLinks.value = i; }
-    const updateStartPage = (s) => { profile_startPage.value = s; }
+    const setProfileTab = (t) => { profileTab.value = t; }
+
+    const updateSettings = (s) => {
+      userSettings.data = s;
+      userSettings.data.user_start = pages.indexOf(s.user_start); // convert String (required for radio inputs) back to Number
+    }
 
     const updateUserProfile = () => {
       let newData = {
         email: user.value.email,
-        data: {
-          user_explore: profile_exploreLinks.value,
-          user_imdb: profile_imdbLinks.value,
-          user_sort: profile_sortSelected.value,
-          user_start: pages.indexOf(profile_startPage.value)
-        }
+        data: { ...userSettings.data }
       };
 
-      if (pwd.value !== '') {
-        newData.password = pwd.value;
+      if (userSettings.password !== '') {
+        newData.password = userSettings.password;
       }
 
       btnState.value.enabled = false;
@@ -137,24 +83,14 @@ export default {
       }, 1500)
     }
 
-    profile_exploreLinks.value = showExplore.value;
-    profile_imdbLinks.value = showIMDb.value;
-    profile_sortSelected.value = sortPreset.value;
-    profile_startPage.value = pages[startPreset.value]; // the radios need string values to function
-
     return {
-      allSortModes: store.getters['tools/sortMode'],
       btnState,
-      profile_exploreLinks,
-      profile_imdbLinks,
-      profile_sortSelected,
-      profile_startPage,
-      pwd,
-      updateExploreLinks,
-      updateIMDbLinks,
-      updateStartPage,
+      profileTab,
+      setProfileTab,
+      updateSettings,
       updateUserProfile,
-      user
+      user,
+      userSettings
     }
   }
 }
@@ -162,18 +98,36 @@ export default {
 
 <style lang="postcss" scoped>
   .user-profile-box {
-    @apply flex flex-col max-w-md bg-gray-400 text-gray-800 text-left rounded-md shadow-lg border border-gray-700;
+    @apply w-full bg-gray-400 text-gray-800 text-left rounded-md shadow-lg border border-gray-700 max-w-screen-sm;
   }
 
-  select, select option {
-    @apply capitalize;
+  .user-profile-sidebar {
+    @apply font-bold tracking-wide;
   }
 
-  #sort-preset {
-    @apply w-full block appearance-none bg-gray-300 border border-transparent px-2 py-1;
+  .user-profile-sidebar a {
+    @apply text-gray-600;
   }
 
-  #sort-preset:focus {
-    @apply border-yellow-600 shadow-inner;
+  .user-profile-sidebar a:hover {
+    @apply text-blue-800;
+  }
+
+  .user-profile-sidebar a.active {
+    @apply text-gray-800;
+  }
+
+  .user-profile-content {
+    @apply w-full;
+  }
+
+  @media (min-width: 768px) {
+    .user-profile-sidebar {
+      @apply text-lg shadow;
+    }
+
+    .user-profile-content {
+      min-width: 24rem;
+    }
   }
 </style>
