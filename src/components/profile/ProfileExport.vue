@@ -20,7 +20,7 @@
     <InputRadio class="mr-4" name="export-format" :label="'CSV'" :value="exportFormat" @update:radio="updateExportFormat($event)" />
     <InputRadio class="" name="export-format" :label="'JSON'" :value="exportFormat" @update:radio="updateExportFormat($event)" />
   </div>
-  <div class="h-px bg-gray-500 my-6" />
+  <div class="h-px bg-gray-500 mt-6 mb-8" />
   <button v-click-blur class="btn btn-black flex flex-row items-center justify-center" :disabled="listLength === 0" @click="exportList()">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
