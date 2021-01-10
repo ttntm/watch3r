@@ -34,7 +34,7 @@
       &times; Account Removal
     </h2>
     <p>
-      Please send us an email. We'll take care of it and confirm your account's removal. Your list data will be permanently deleted in the process, so please let us know if you'd like to obtain a copy of your data together with your request.
+      Please send us an email. We'll take care of it and confirm your account's removal. Your list data will be permanently deleted in the process, so please make sure you export it first (Profile -> Export).
     </p>
   </article>
 </template>

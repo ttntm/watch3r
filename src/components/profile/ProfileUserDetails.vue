@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-2xl text-blue-800 mb-6">
+  <h1 class="text-2xl text-blue-800">
     User Profile
   </h1>
   <div class="input-group mb-8">
@@ -28,7 +28,3 @@ export default {
   emits: ['update:modelValue']
 }
 </script>
-
-<style lang="postcss" scoped>
-
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-2xl text-blue-800 mb-6">
+  <h1 class="text-2xl text-blue-800">
     Settings
   </h1>
   <div class="input-group mb-8">
@@ -62,18 +62,18 @@ export default {
     InputCheckbox,
     InputRadio
   },
-  props: {
-    options: Object,
-  },
   emits: ['update:settings'],
   setup(props, { emit }) {
     const store = useStore();
 
+    const pages = ['watchlist', 'tracklist'];
+    const userOptions = computed(() => store.getters['user/userOptions']);
+
     const settings = reactive({
-      user_explore: props.options.user_explore,
-      user_imdb: props.options.user_imdb,
-      user_sort: props.options.user_sort,
-      user_start: props.options.user_start
+      user_explore: userOptions.value.showExploreLinks,
+      user_imdb: userOptions.value.showIMDbLinks,
+      user_sort: userOptions.value.sortPreset,
+      user_start: pages[userOptions.value.startPage]
     });
 
     const updateExploreLinks = (e) => { settings.user_explore = e; }
@@ -82,6 +82,14 @@ export default {
 
     watch(settings, () => {
       emit('update:settings', {...settings});
+    })
+
+    watch(userOptions, () => {
+      // provides multi-tab synchronization
+      settings.user_explore = userOptions.value.showExploreLinks;
+      settings.user_imdb = userOptions.value.showIMDbLinks;
+      settings.user_sort = userOptions.value.sortPreset;
+      settings.user_start = pages[userOptions.value.startPage];
     })
 
     return {
