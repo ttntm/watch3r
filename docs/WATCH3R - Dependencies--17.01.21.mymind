@@ -1,0 +1,1827 @@
+{
+	"root": {
+		"id": "erpbydro",
+		"text": "WATCH3R - Dependencies",
+		"notes": null,
+		"layout": "map",
+		"shape": "box",
+		"children": [
+			{
+				"id": "caujpjog",
+				"text": "Helpers",
+				"notes": null,
+				"side": "right",
+				"color": "#fa3",
+				"icon": "fa-cogs",
+				"layout": "tree-right",
+				"children": [
+					{
+						"id": "gibxmntx",
+						"text": "authorize-tokens.js",
+						"notes": null
+					},
+					{
+						"id": "fbfbilnk",
+						"text": "get-omdb.js",
+						"notes": null
+					},
+					{
+						"id": "rqqoxyto",
+						"text": "shared.js",
+						"notes": null
+					}
+				]
+			},
+			{
+				"id": "cygabjri",
+				"text": "Components",
+				"notes": null,
+				"side": "right",
+				"color": "#d3d",
+				"icon": "fa-cubes",
+				"layout": "graph-bottom",
+				"children": [
+					{
+						"id": "vigvqkao",
+						"text": "<b>_global</b>",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "yamnqrze",
+								"text": "GlobalFooter",
+								"notes": null,
+								"children": [
+									{
+										"id": "typxefzl",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "llzvotxc",
+												"text": "user",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "fpazjiko",
+								"text": "GlobalMenu",
+								"notes": null,
+								"children": [
+									{
+										"id": "jblzeyso",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "vsaxwxpb",
+												"text": "user",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "injcfucz",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "idgdppvq",
+												"text": "app",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "uqxqgdoj",
+								"text": "GlobalNav",
+								"notes": null,
+								"children": [
+									{
+										"id": "yjeewqim",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "qxkboeea",
+												"text": "user",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "puwtszjf",
+								"text": "HomeLogin",
+								"notes": null,
+								"children": [
+									{
+										"id": "eufnwbts",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "ctwgztef",
+												"text": "app",
+												"notes": null
+											},
+											{
+												"id": "kllbvrrs",
+												"text": "user",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "ntcwavox",
+								"text": "ModalBackdrop",
+								"notes": "<div>Global shared modal backdrop component</div>",
+								"children": [
+									{
+										"id": "tgqewrqp",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "lefghfzr",
+												"text": "app",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "nklvluoe",
+								"text": "ToastMessage",
+								"notes": "<div>Global toast messge component based on Vuex state from the <i>app.js</i> module.</div>",
+								"children": [
+									{
+										"id": "qvsonngk",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "kxqmqipq",
+												"text": "app",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "qfbisrto",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "zckcfhxr",
+												"text": "app",
+												"notes": null
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "vbsjzmio",
+						"text": "buttons",
+						"notes": null,
+						"layout": "graph-right",
+						"children": [
+							{
+								"id": "peozkwzu",
+								"text": "BtnAddTitle",
+								"notes": "<div>Opens ListAddModal</div>",
+								"children": [
+									{
+										"id": "qrgvxbvj",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "xbhnpuvv",
+												"text": "app",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "rxqupodg",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "taysksdo",
+												"text": "app",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "ztnambfw",
+								"text": "BtnClose",
+								"notes": "<div>Re-usable close button</div>"
+							},
+							{
+								"id": "ebukbukf",
+								"text": "BtnExploreClear",
+								"notes": null,
+								"children": [
+									{
+										"id": "hvufpqbi",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "trnxxtip",
+												"text": "explore",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "mdmjywgb",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "srrccoyw",
+												"text": "explore",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "ajfeoypd",
+								"text": "BtnListItemControls",
+								"notes": null,
+								"children": [
+									{
+										"id": "yfxfyjll",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "hvmzmrws",
+												"text": "app",
+												"notes": null
+											},
+											{
+												"id": "pbfxoqja",
+												"text": "list",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "btnlbxcn",
+								"text": "BtnListItemEdit",
+								"notes": null,
+								"children": [
+									{
+										"id": "fwezbxxf",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "btcoruob",
+												"text": "app",
+												"notes": null
+											},
+											{
+												"id": "wvfituht",
+												"text": "list",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "ictgbxbu",
+								"text": "BtnListItemExplore",
+								"notes": null
+							},
+							{
+								"id": "xfbtcuei",
+								"text": "BtnListItemRemove",
+								"notes": null,
+								"children": [
+									{
+										"id": "pkiibjgv",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "fniunhyz",
+												"text": "app",
+												"notes": null
+											},
+											{
+												"id": "uwxgxwci",
+												"text": "explore",
+												"notes": null
+											},
+											{
+												"id": "zauipyaj",
+												"text": "list",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "rwxanivb",
+								"text": "BtnLogout",
+								"notes": null,
+								"children": [
+									{
+										"id": "luituywu",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "cwomhxiq",
+												"text": "user",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "lkdlkrjx",
+								"text": "BtnMenu",
+								"notes": null,
+								"children": [
+									{
+										"id": "xtlputff",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "lmoutrwq",
+												"text": "app",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "venuufkq",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "iusimkqn",
+												"text": "app",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "ikjvikpd",
+								"text": "BtnToTop",
+								"notes": null
+							}
+						]
+					},
+					{
+						"id": "zwkbrdbp",
+						"text": "explore",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "udnzhhbz",
+								"text": "ExploreSelectTitle",
+								"notes": null,
+								"children": [
+									{
+										"id": "rzdzphoi",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "lgsostof",
+												"text": "explore",
+												"notes": null
+											},
+											{
+												"id": "owvvnneu",
+												"text": "list",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "pglhydzs",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "awjknljk",
+												"text": "explore",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "fxewzjtp",
+								"text": "ExploreTitleCard",
+								"notes": null,
+								"children": [
+									{
+										"id": "kgnflund",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "uyutvysx",
+												"text": "explore",
+												"notes": null
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "ksfcwqyl",
+						"text": "input",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "eldmgroy",
+								"text": "InputCheckbox",
+								"notes": null
+							},
+							{
+								"id": "unhiuytk",
+								"text": "InputFile",
+								"notes": null
+							},
+							{
+								"id": "riyhkdwf",
+								"text": "InputRadio",
+								"notes": null
+							},
+							{
+								"id": "toyyedrv",
+								"text": "InputRange",
+								"notes": null
+							},
+							{
+								"id": "xzukwcmh",
+								"text": "InputSearch",
+								"notes": null,
+								"children": [
+									{
+										"id": "qdxhuurb",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "gxhjtzfn",
+												"text": "tools",
+												"notes": null
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "txgaibwf",
+						"text": "list",
+						"notes": null,
+						"layout": "graph-right",
+						"children": [
+							{
+								"id": "eeiprrmu",
+								"text": "ListAddModal",
+								"notes": null,
+								"children": [
+									{
+										"id": "vhhbhhdn",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "juphfsva",
+												"text": "app",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "egolgvzb",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "uaskyail",
+												"text": "app",
+												"notes": null
+											},
+											{
+												"id": "wfihpgmj",
+												"text": "list",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "ijmlpsgm",
+								"text": "ListAddSearchResult",
+								"notes": null,
+								"children": [
+									{
+										"id": "lkuupgez",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "agogvzna",
+												"text": "list",
+												"notes": null
+											},
+											{
+												"id": "drszeuac",
+												"text": "tools",
+												"notes": null
+											},
+											{
+												"id": "parxqzlh",
+												"text": "user",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "fpoizvxv",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "jojmiloe",
+												"text": "list",
+												"notes": null
+											},
+											{
+												"id": "wfxbhpxu",
+												"text": "tools",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "pcsperzo",
+								"text": "ListEditModal",
+								"notes": null,
+								"children": [
+									{
+										"id": "jnwjuard",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "lyvkzpkj",
+												"text": "list",
+												"notes": null
+											},
+											{
+												"id": "sznjttds",
+												"text": "tools",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "wrxxgdvg",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "zoavpjht",
+												"text": "app",
+												"notes": null
+											},
+											{
+												"id": "vzmrhzhp",
+												"text": "list",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "zkbgpuhs",
+								"text": "ListItem",
+								"notes": null,
+								"children": [
+									{
+										"id": "fsxilcho",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "zuxjwxer",
+												"text": "user",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "tcvivnix",
+								"text": "ListItemControls",
+								"notes": null,
+								"children": [
+									{
+										"id": "ystpvndw",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "nfbrsajz",
+												"text": "list",
+												"notes": null
+											},
+											{
+												"id": "aplsbwbl",
+												"text": "user",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "jydsehea",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "htlttjlk",
+												"text": "app",
+												"notes": null
+											},
+											{
+												"id": "uqktsxeu",
+												"text": "list",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "fpglbtmb",
+								"text": "ListItemImport",
+								"notes": null,
+								"children": [
+									{
+										"id": "cassucwh",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "kpuzpzhg",
+												"text": "list",
+												"notes": null
+											},
+											{
+												"id": "tcjhndlw",
+												"text": "user",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "mfbvmnuo",
+								"text": "ListLoading",
+								"notes": null
+							},
+							{
+								"id": "qguxkqjt",
+								"text": "ListPosterModal",
+								"notes": null,
+								"children": [
+									{
+										"id": "tgvjkmip",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "guwpixqj",
+												"text": "app",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "mshzvust",
+								"text": "ListSearch",
+								"notes": null,
+								"children": [
+									{
+										"id": "podylcfk",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "qsegkxeq",
+												"text": "tools",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "fsolhzix",
+								"text": "ListSearchStatus",
+								"notes": null,
+								"children": [
+									{
+										"id": "ixdcrfbk",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "qisetpxv",
+												"text": "list",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "ytppvxfw",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "kzhvgiad",
+												"text": "tools",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "nboigqyd",
+								"text": "ListSort",
+								"notes": null,
+								"children": [
+									{
+										"id": "fpxcdigy",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "mkihvybp",
+												"text": "tools",
+												"notes": null
+											},
+											{
+												"id": "pbzozbrd",
+												"text": "user",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "leeiltgy",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "lfkpujhs",
+												"text": "tools",
+												"notes": null
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "zgbyxhol",
+						"text": "profile",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "jzhejegq",
+								"text": "ProfileExport",
+								"notes": null,
+								"children": [
+									{
+										"id": "eetjyigp",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "nhdpjctj",
+												"text": "list",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "zfcsolzd",
+										"text": "actions",
+										"notes": null,
+										"children": [
+											{
+												"id": "wfbjvltr",
+												"text": "list",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "optluzrl",
+								"text": "ProfileUserDetails",
+								"notes": null
+							},
+							{
+								"id": "mocttluk",
+								"text": "ProfileUserSettings",
+								"notes": null,
+								"children": [
+									{
+										"id": "qjxhxgyn",
+										"text": "state",
+										"notes": null,
+										"children": [
+											{
+												"id": "uvagpluc",
+												"text": "tools",
+												"notes": null
+											},
+											{
+												"id": "aqssfnma",
+												"text": "user",
+												"notes": null
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "ovorkkdu",
+				"text": "Functions",
+				"notes": null,
+				"side": "left",
+				"color": "#3dd",
+				"icon": "fa-cloud",
+				"layout": "graph-bottom",
+				"children": [
+					{
+						"id": "tfvpbztr",
+						"text": "tracklist",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "mqfzbnyk",
+								"text": "delete-tracklist",
+								"notes": null
+							},
+							{
+								"id": "ttufcjez",
+								"text": "read-tracklist",
+								"notes": null
+							},
+							{
+								"id": "byrqsndo",
+								"text": "update-tracklist",
+								"notes": null
+							},
+							{
+								"id": "gpicukwq",
+								"text": "write-tracklist",
+								"notes": null
+							}
+						]
+					},
+					{
+						"id": "khhmumel",
+						"text": "watchlist",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "oyjkqtzd",
+								"text": "delete-watchlist",
+								"notes": null
+							},
+							{
+								"id": "ofzzkiop",
+								"text": "read-watchlist",
+								"notes": null
+							},
+							{
+								"id": "oxtgyekf",
+								"text": "write-watchlist",
+								"notes": null
+							}
+						]
+					},
+					{
+						"id": "oawnfezs",
+						"text": "misc",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "ekrdkwsm",
+								"text": "omdb-get",
+								"notes": null
+							},
+							{
+								"id": "ttvosdly",
+								"text": "tmdb-get-recs",
+								"notes": null
+							},
+							{
+								"id": "xwhojvts",
+								"text": "tmdb-omdb-get",
+								"notes": null
+							},
+							{
+								"id": "wtxpomqy",
+								"text": "userlist",
+								"notes": null
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "jqovaaom",
+				"text": "Vuex Store",
+				"notes": null,
+				"side": "left",
+				"color": "#33e",
+				"icon": "fa-database",
+				"layout": "graph-bottom",
+				"children": [
+					{
+						"id": "qrdosrgl",
+						"text": "app.js",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "qmtxspqr",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "bvnynkdx",
+										"text": "functions",
+										"notes": "<div>Reference to the serverless function paths based on ENV</div>"
+									},
+									{
+										"id": "cmqycatf",
+										"text": "toastMessage",
+										"notes": "<div>Global toast message state</div>"
+									},
+									{
+										"id": "oyxfssrr",
+										"text": "windowOpen",
+										"notes": "<div>Global modal window state, indicates which modal's open</div>"
+									}
+								]
+							},
+							{
+								"id": "ytuoiqal",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "xcnxytpx",
+										"text": "closeAllModals()",
+										"notes": null
+									},
+									{
+										"id": "qagxcvei",
+										"text": "initialize()",
+										"notes": null
+									},
+									{
+										"id": "cbgsltrz",
+										"text": "toggleWindow()",
+										"notes": null
+									},
+									{
+										"id": "adrivcgd",
+										"text": "sendToastMessage()",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "jitorgkn",
+						"text": "explore.js",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "mqnlnhsw",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "rwstikgi",
+										"text": "recList",
+										"notes": null
+									},
+									{
+										"id": "qefzecex",
+										"text": "recSource",
+										"notes": null
+									}
+								]
+							},
+							{
+								"id": "tzrnjije",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "yqnrskbt",
+										"text": "clearRecommendations()",
+										"notes": null
+									},
+									{
+										"id": "nlzarqwe",
+										"text": "getRecommendations()",
+										"notes": null
+									},
+									{
+										"id": "ciudbjba",
+										"text": "initializeExplore()",
+										"notes": null
+									},
+									{
+										"id": "dngoshtv",
+										"text": "updateRecSource()",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "xgnvwszf",
+						"text": "list.js",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "adtphtos",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "ybiviotk",
+										"text": "editTitleContent",
+										"notes": null
+									},
+									{
+										"id": "barkvaty",
+										"text": "tracklist",
+										"notes": null
+									},
+									{
+										"id": "ondfawgs",
+										"text": "tracklistCache",
+										"notes": null
+									},
+									{
+										"id": "rfvcysqf",
+										"text": "watchlist",
+										"notes": null
+									},
+									{
+										"id": "tbdqqejo",
+										"text": "watchlistCache",
+										"notes": null
+									},
+									{
+										"id": "dzsnhvif",
+										"text": "writeSuccess",
+										"notes": null
+									}
+								]
+							},
+							{
+								"id": "kpcynvna",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "qoihaamz",
+										"text": "common",
+										"notes": null,
+										"children": [
+											{
+												"id": "kehyiufg",
+												"text": "initializeList()",
+												"notes": null
+											},
+											{
+												"id": "kntrzejv",
+												"text": "toggleWriteSuccess()",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "qazmnikl",
+										"text": "create",
+										"notes": null,
+										"children": [
+											{
+												"id": "wnzkcsgm",
+												"text": "writeList()",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "aqogfolb",
+										"text": "read",
+										"notes": null,
+										"children": [
+											{
+												"id": "ulfiewdg",
+												"text": "readList()",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "pgkoxzsc",
+										"text": "update",
+										"notes": null,
+										"children": [
+											{
+												"id": "ituyexrq",
+												"text": "clearEditTitle()",
+												"notes": null
+											},
+											{
+												"id": "idaosywr",
+												"text": "editListItem()",
+												"notes": null
+											},
+											{
+												"id": "awvhqsaa",
+												"text": "selectEditTitle()",
+												"notes": null
+											},
+											{
+												"id": "wxlvblnq",
+												"text": "updateSearchResult()",
+												"notes": null
+											}
+										]
+									},
+									{
+										"id": "tcfkhkzk",
+										"text": "delete",
+										"notes": null,
+										"children": [
+											{
+												"id": "bnwjkhrc",
+												"text": "deleteFromSearchResults()",
+												"notes": null
+											},
+											{
+												"id": "abuglxnl",
+												"text": "deleteItem()",
+												"notes": null
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "lptaqbhb",
+						"text": "tools.js",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "nwtfgzpd",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "ndasgego",
+										"text": "listSearchMode",
+										"notes": null
+									},
+									{
+										"id": "gzoslkck",
+										"text": "searchActive",
+										"notes": null
+									},
+									{
+										"id": "uohfmwqo",
+										"text": "sortMode",
+										"notes": null
+									},
+									{
+										"id": "srqgjych",
+										"text": "tracklistSorted",
+										"notes": null
+									},
+									{
+										"id": "dohxovml",
+										"text": "watchlistSorted",
+										"notes": null
+									}
+								]
+							},
+							{
+								"id": "gimxlqfm",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "dsdkydkz",
+										"text": "initializeTools()",
+										"notes": null
+									},
+									{
+										"id": "syqjeqbp",
+										"text": "resetList()",
+										"notes": null
+									},
+									{
+										"id": "eedetkfc",
+										"text": "updateSort()",
+										"notes": null
+									},
+									{
+										"id": "jpevuzri",
+										"text": "searchList()",
+										"notes": null
+									},
+									{
+										"id": "jkhgbecq",
+										"text": "sortList()",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "ktzivppb",
+						"text": "user.js",
+						"notes": null,
+						"layout": "graph-right",
+						"children": [
+							{
+								"id": "dhwnvruk",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "omkfmxhm",
+										"text": "currentUser",
+										"notes": null
+									},
+									{
+										"id": "fxfsvgox",
+										"text": "GoTrueAuth",
+										"notes": null
+									},
+									{
+										"id": "ctxpnjtq",
+										"text": "userOptions",
+										"notes": null,
+										"children": [
+											{
+												"id": "fhyythum",
+												"text": "showExploreLinks",
+												"notes": null
+											},
+											{
+												"id": "qodbzwqj",
+												"text": "showIMDBLinks",
+												"notes": null
+											},
+											{
+												"id": "dbsrzqsb",
+												"text": "sortPreset",
+												"notes": null
+											},
+											{
+												"id": "vuuxlsdm",
+												"text": "startPage",
+												"notes": null
+											}
+										]
+									}
+								]
+							},
+							{
+								"id": "hktydihd",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "hzlhxunh",
+										"text": "initializeUser()",
+										"notes": null
+									},
+									{
+										"id": "wennspjg",
+										"text": "attemptConfirmation()",
+										"notes": null
+									},
+									{
+										"id": "zitwnaem",
+										"text": "attemptLogin()",
+										"notes": null
+									},
+									{
+										"id": "bynnrsfz",
+										"text": "attemptLogout()",
+										"notes": null
+									},
+									{
+										"id": "nspcgllj",
+										"text": "attemptPasswordRecovery()",
+										"notes": null
+									},
+									{
+										"id": "fvyqdtrb",
+										"text": "attemptSignup()",
+										"notes": null
+									},
+									{
+										"id": "ygoirhah",
+										"text": "initAuth()",
+										"notes": null
+									},
+									{
+										"id": "qknpfqvk",
+										"text": "processInvite()",
+										"notes": null
+									},
+									{
+										"id": "tkynbhcf",
+										"text": "requestPasswordRecover()",
+										"notes": null
+									},
+									{
+										"id": "avhfhmlg",
+										"text": "updateUserAccount()",
+										"notes": null
+									},
+									{
+										"id": "oylobkno",
+										"text": "setUserPrefs()",
+										"notes": null
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "weilxtyo",
+				"text": "Global",
+				"notes": null,
+				"side": "left",
+				"icon": "fa-globe",
+				"layout": "graph-bottom",
+				"children": [
+					{
+						"id": "endoanzy",
+						"text": "App",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "drzouupj",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "qcccorsh",
+										"text": "app",
+										"notes": null
+									},
+									{
+										"id": "dmyhcxfd",
+										"text": "user",
+										"notes": null
+									}
+								]
+							},
+							{
+								"id": "tdrovqoe",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "xfctvbwr",
+										"text": "list",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "ekebapeq",
+						"text": "Router",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "mbixiklg",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "zwekqyrl",
+										"text": "explore",
+										"notes": null
+									},
+									{
+										"id": "uxiwmphi",
+										"text": "list",
+										"notes": null
+									},
+									{
+										"id": "xcocbhiu",
+										"text": "tools",
+										"notes": null
+									},
+									{
+										"id": "aavnogcg",
+										"text": "user",
+										"notes": null
+									}
+								]
+							},
+							{
+								"id": "pqscrzxb",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "hwmestjv",
+										"text": "app",
+										"notes": null
+									},
+									{
+										"id": "grigviug",
+										"text": "explore",
+										"notes": null
+									},
+									{
+										"id": "swoytqou",
+										"text": "list",
+										"notes": null
+									},
+									{
+										"id": "njxteuqp",
+										"text": "tools",
+										"notes": null
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "fztokfdw",
+				"text": "Views",
+				"notes": null,
+				"side": "right",
+				"icon": "fa-desktop",
+				"layout": "graph-bottom",
+				"children": [
+					{
+						"id": "ymwmzsxv",
+						"text": "About",
+						"notes": null
+					},
+					{
+						"id": "znuvdxxz",
+						"text": "Admin",
+						"notes": null,
+						"layout": "graph-bottom",
+						"children": [
+							{
+								"id": "cljdrbqy",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "qypxoqqa",
+										"text": "user",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "eggppjrk",
+						"text": "Explore",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "nzyevpds",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "jzxlmawh",
+										"text": "app",
+										"notes": null
+									},
+									{
+										"id": "qqdppqjg",
+										"text": "explore",
+										"notes": null
+									}
+								]
+							},
+							{
+								"id": "ofclbqzw",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "gknnntcr",
+										"text": "app",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "xelqjsnz",
+						"text": "Home",
+						"notes": null,
+						"layout": "graph-bottom",
+						"children": [
+							{
+								"id": "nigmpvyj",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "tiqwjpqj",
+										"text": "user",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "bpfjvfis",
+						"text": "Import",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "eeusqfvy",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "cowxnbjn",
+										"text": "app",
+										"notes": null
+									}
+								]
+							},
+							{
+								"id": "gpmbmotb",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "atvcnueh",
+										"text": "app",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "cafeawww",
+						"text": "Invite",
+						"notes": null,
+						"children": [
+							{
+								"id": "eehbhrrl",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "bdtctxnv",
+										"text": "app",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "veetglvb",
+						"text": "List",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "qpnnjhiz",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "hkthzccx",
+										"text": "app",
+										"notes": null
+									},
+									{
+										"id": "xugkydkr",
+										"text": "list",
+										"notes": null
+									},
+									{
+										"id": "yfrvkhrn",
+										"text": "tools",
+										"notes": null
+									}
+								]
+							},
+							{
+								"id": "tsfweeev",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "xxlaqzti",
+										"text": "app",
+										"notes": null
+									},
+									{
+										"id": "pbzieppe",
+										"text": "list",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "ugqquemn",
+						"text": "Profile",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "vxwdkoll",
+								"text": "state",
+								"notes": null,
+								"children": [
+									{
+										"id": "atymfwmz",
+										"text": "user",
+										"notes": null
+									}
+								]
+							},
+							{
+								"id": "djepgxuh",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "zuwbrqky",
+										"text": "user",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "jswsspdm",
+						"text": "Recover",
+						"notes": null,
+						"children": [
+							{
+								"id": "woiovblg",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "yytazjrd",
+										"text": "user",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "zuahjxuk",
+						"text": "Signup",
+						"notes": null,
+						"layout": "tree-right",
+						"children": [
+							{
+								"id": "mmjhezjr",
+								"text": "actions",
+								"notes": null,
+								"children": [
+									{
+										"id": "eldggftb",
+										"text": "app",
+										"notes": null
+									},
+									{
+										"id": "fjbyhqyu",
+										"text": "user",
+										"notes": null
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "zpfntnem",
+						"text": "Support",
+						"notes": null
+					}
+				]
+			}
+		]
+	}
+}
