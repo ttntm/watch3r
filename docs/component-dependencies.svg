@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="648px" preserveAspectRatio="none" style="width:3328px;height:648px;" version="1.1" viewBox="0 0 3328 648" width="3328px" zoomAndPan="magnify"><defs><filter height="300%" id="f1j0zp8b333rei" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[4541fb81c80c07473fe4b07432ef0971]
+entity app--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="2006.5,231,2016.5,221,2072.5,221,2072.5,257.2969,2062.5,267.2969,2006.5,267.2969,2006.5,231" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2062.5" x2="2072.5" y1="231" y2="221"/><line style="stroke:#000000;stroke-width:1.5;" x1="2006.5" x2="2062.5" y1="231" y2="231"/><line style="stroke:#000000;stroke-width:1.5;" x1="2062.5" x2="2062.5" y1="231" y2="267.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="26" x="2021.5" y="253.9951">app</text><!--MD5=[58538f3f67f3b628f0e96597b0d53596]
+entity about--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="1842.5,337,1852.5,327,1922.5,327,1922.5,363.2969,1912.5,373.2969,1842.5,373.2969,1842.5,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="1912.5" x2="1922.5" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="1842.5" x2="1912.5" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="1912.5" x2="1912.5" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="1857.5" y="359.9951">about</text><!--MD5=[79a439086b036a57b90a01d7b2f8bbd1]
+entity admin--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="243.5,337,253.5,327,325.5,327,325.5,363.2969,315.5,373.2969,243.5,373.2969,243.5,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="315.5" x2="325.5" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="243.5" x2="315.5" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="315.5" x2="315.5" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="42" x="258.5" y="359.9951">admin</text><!--MD5=[a6df08d62429cc7e382e487fec3dc789]
+entity explore--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="1293,337,1303,327,1384,327,1384,363.2969,1374,373.2969,1293,373.2969,1293,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="1374" x2="1384" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="1293" x2="1374" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="1374" x2="1374" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="51" x="1308" y="359.9951">explore</text><!--MD5=[75b734d1db3ce9d09c7f82392295d704]
+entity home--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="2657.5,337,2667.5,327,2737.5,327,2737.5,363.2969,2727.5,373.2969,2657.5,373.2969,2657.5,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2727.5" x2="2737.5" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="2657.5" x2="2727.5" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="2727.5" x2="2727.5" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="2672.5" y="359.9951">home</text><!--MD5=[6b4bfa9e00b0b9cc08101d1a1ff13128]
+entity import--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="825.5,337,835.5,327,909.5,327,909.5,363.2969,899.5,373.2969,825.5,373.2969,825.5,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="899.5" x2="909.5" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="825.5" x2="899.5" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="899.5" x2="899.5" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="840.5" y="359.9951">import</text><!--MD5=[915be7ac3006206ba82b7ba4636ca428]
+entity invite--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="2052.5,337,2062.5,327,2128.5,327,2128.5,363.2969,2118.5,373.2969,2052.5,373.2969,2052.5,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2118.5" x2="2128.5" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="2052.5" x2="2118.5" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="2118.5" x2="2118.5" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="36" x="2067.5" y="359.9951">invite</text><!--MD5=[e4d82bda88e552a72016f1ec85699593]
+entity list--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="1958,337,1968,327,2017,327,2017,363.2969,2007,373.2969,1958,373.2969,1958,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2007" x2="2017" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="1958" x2="2007" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="2007" x2="2007" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="19" x="1973" y="359.9951">list</text><!--MD5=[7acc01a6845e7bd2e8afe94137bb9829]
+entity profile--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="360.5,337,370.5,327,442.5,327,442.5,363.2969,432.5,373.2969,360.5,373.2969,360.5,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="432.5" x2="442.5" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="360.5" x2="432.5" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="432.5" x2="432.5" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="42" x="375.5" y="359.9951">profile</text><!--MD5=[be1591b9eb4bbd0d0c9834afaf4d2ab2]
+entity recover--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="2163.5,337,2173.5,327,2255.5,327,2255.5,363.2969,2245.5,373.2969,2163.5,373.2969,2163.5,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2245.5" x2="2255.5" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="2163.5" x2="2245.5" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="2245.5" x2="2245.5" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="52" x="2178.5" y="359.9951">recover</text><!--MD5=[388f72378e697285ab83d1e46414999a]
+entity signup--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="2291,337,2301,327,2378,327,2378,363.2969,2368,373.2969,2291,373.2969,2291,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2368" x2="2378" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="2291" x2="2368" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="2368" x2="2368" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="47" x="2306" y="359.9951">signup</text><!--MD5=[3f2528b1916f297db3f7bc315380272e]
+entity support--><polygon fill="#FEFECE" filter="url(#f1j0zp8b333rei)" points="2413.5,337,2423.5,327,2507.5,327,2507.5,363.2969,2497.5,373.2969,2413.5,373.2969,2413.5,337" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2497.5" x2="2507.5" y1="337" y2="327"/><line style="stroke:#000000;stroke-width:1.5;" x1="2413.5" x2="2497.5" y1="337" y2="337"/><line style="stroke:#000000;stroke-width:1.5;" x1="2497.5" x2="2497.5" y1="337" y2="373.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="54" x="2428.5" y="359.9951">support</text><!--MD5=[81530f3ae9a3ae2925960b251bfddac9]
+entity GlobalFooter--><ellipse cx="2039.5" cy="132" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="88" x="1995.5" y="161.9951">GlobalFooter</text><!--MD5=[7b23fabd565bfdb0a1a772b3edab4086]
+entity GlobalMenu--><ellipse cx="2620.5" cy="132" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="82" x="2579.5" y="161.9951">GlobalMenu</text><!--MD5=[e41c2361626b7c0b701b71dc28e8f149]
+entity GlobalNav--><ellipse cx="1910.5" cy="132" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="1876.5" y="161.9951">GlobalNav</text><!--MD5=[3e0ef251a43eeff3e46753a398e5292f]
+entity ToastMessage--><ellipse cx="2185.5" cy="132" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="102" x="2134.5" y="161.9951">ToastMessage</text><!--MD5=[f1feeba2dcd25f2ccd64c1c1e8594d1e]
+entity BtnExploreClear--><ellipse cx="1338.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="110" x="1283.5" y="491.9951">BtnExploreClear</text><!--MD5=[fd158be71842722bdadf88fd6f0ea596]
+entity BtnToTop--><ellipse cx="1651.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="69" x="1617" y="491.9951">BtnToTop</text><!--MD5=[793208c06d574d185a6be926d002623e]
+entity ExploreSelectTitle--><ellipse cx="1505.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="123" x="1444" y="491.9951">ExploreSelectTitle</text><!--MD5=[6e7069b2fb70ae044bdaa172b7a2fe1f]
+entity ExploreTitleCard--><ellipse cx="1176.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="1120.5" y="491.9951">ExploreTitleCard</text><!--MD5=[107c78871a8b2d3ff3134690f6087d87]
+entity ListAddModal--><ellipse cx="867.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="91" x="822" y="491.9951">ListAddModal</text><!--MD5=[d10e11d61269f5495d33905fe852a32e]
+entity ModalBackdrop--><ellipse cx="1016.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="107" x="963" y="491.9951">ModalBackdrop</text><!--MD5=[87dee05883e795e7b10a158e8d542f18]
+entity HomeLogin--><ellipse cx="2881.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="78" x="2842.5" y="491.9951">HomeLogin</text><!--MD5=[fc518a3e66ce16c429f4fb9d3c48521e]
+entity InputFile--><ellipse cx="742.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="58" x="713.5" y="491.9951">InputFile</text><!--MD5=[a523a7ad8698941f053da5c5f3524808]
+entity InputRadio--><ellipse cx="453.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="74" x="416.5" y="609.9951">InputRadio</text><!--MD5=[c4e729ad1721e6971f09aa86409a412c]
+entity ListItemImport--><ellipse cx="614.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="97" x="566" y="491.9951">ListItemImport</text><!--MD5=[d1a1cc4095c72d4ba01e002c4592e383]
+entity BtnAddTitle--><ellipse cx="2590.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="80" x="2550.5" y="491.9951">BtnAddTitle</text><!--MD5=[0264e7136bf6e7bdf14f0445b607cfa7]
+entity ListEditModal--><ellipse cx="2454.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="90" x="2409.5" y="491.9951">ListEditModal</text><!--MD5=[b8b29a480ecb666c0e8b08e9667940d5]
+entity ListItem--><ellipse cx="3068.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="53" x="3042" y="491.9951">ListItem</text><!--MD5=[061d6c4b63eb2b48c0bfca297a41fc23]
+entity ListItemControls--><ellipse cx="2736.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="111" x="2681" y="491.9951">ListItemControls</text><!--MD5=[3c8af9ee5709e9c104d71deb5b928b3e]
+entity ListLoading--><ellipse cx="1774.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="77" x="1736" y="491.9951">ListLoading</text><!--MD5=[555760220fa19b3dbd9a19c7012901ef]
+entity ListPosterModal--><ellipse cx="1917.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="109" x="1863" y="491.9951">ListPosterModal</text><!--MD5=[dac136cb72c935ddf82c0bc09f145690]
+entity ListSearch--><ellipse cx="2057.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="2022" y="491.9951">ListSearch</text><!--MD5=[acf4674e284c636259c23249eb7891d6]
+entity ListSearchStatus--><ellipse cx="2200.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="115" x="2143" y="491.9951">ListSearchStatus</text><!--MD5=[5d729cba19251178e7e0f6833562d130]
+entity ListSort--><ellipse cx="2333.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="51" x="2308" y="491.9951">ListSort</text><!--MD5=[4929d2329edc137d6ee338775a29d48c]
+entity ProfileExport--><ellipse cx="401.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="86" x="358.5" y="491.9951">ProfileExport</text><!--MD5=[cf1872e0d4e75c8605d18e1f22814020]
+entity ProfileUserDetails--><ellipse cx="247.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="121" x="187" y="491.9951">ProfileUserDetails</text><!--MD5=[2f6eab6fd472e18b261955556bb01512]
+entity ProfileUserSettings--><ellipse cx="71.5" cy="462" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="131" x="6" y="491.9951">ProfileUserSettings</text><!--MD5=[81e8c6e69b56c0ef21e966708bec7ec3]
+entity BtnClose--><ellipse cx="2582.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="63" x="2551" y="609.9951">BtnClose</text><!--MD5=[0e1714b3195a2473507e2c7735af7f20]
+entity BtnLogout--><ellipse cx="1969.5" cy="14" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="72" x="1933.5" y="43.9951">BtnLogout</text><!--MD5=[e4e149136f242ef38b333c600d6a96ba]
+entity BtnMenu--><ellipse cx="1851.5" cy="14" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="63" x="1820" y="43.9951">BtnMenu</text><!--MD5=[e1f86fcb0bc1e4ed55aae1295f553b22]
+entity InputSearch--><ellipse cx="1544.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="83" x="1503" y="609.9951">InputSearch</text><!--MD5=[f1fe8f1aad41dcc65a2e6bc34a87d443]
+entity ListAddSearchResult--><ellipse cx="867.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="142" x="796.5" y="609.9951">ListAddSearchResult</text><!--MD5=[5d0df68fb85f1cd138e9cef2deb378e1]
+entity InputRange--><ellipse cx="2454.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="80" x="2414.5" y="609.9951">InputRange</text><!--MD5=[56a3f632eebd50edd3ca8942fcb39fe7]
+entity BtnListItemControls--><ellipse cx="3253.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="135" x="3186" y="609.9951">BtnListItemControls</text><!--MD5=[d242034780c9cd4b93680ef5338e4744]
+entity BtnListItemEdit--><ellipse cx="2905.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="103" x="2854" y="609.9951">BtnListItemEdit</text><!--MD5=[a554a45288a83c85e3b1bcd0a0dc25d8]
+entity BtnListItemExplore--><ellipse cx="3071.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="128" x="3007.5" y="609.9951">BtnListItemExplore</text><!--MD5=[faa5642c0dc12a6bbb74bd9cc3fb0088]
+entity BtnListItemRemove--><ellipse cx="2736.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="134" x="2669.5" y="609.9951">BtnListItemRemove</text><!--MD5=[195979b53261ed4d8e04c883241b0d30]
+entity InputCheckbox--><ellipse cx="71.5" cy="580" fill="#FEFECE" filter="url(#f1j0zp8b333rei)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="104" x="19.5" y="609.9951">InputCheckbox</text><!--MD5=[d160707886c70e275c498d6075c6f3b7]
+link app to about--><path d="M2006.2043,266.4799 C1982.077,282.7697 1949.3072,304.8945 1923.5569,322.28 " fill="none" id="app-to-about" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1916.833,326.8197,1925.142,324.8295,1921.7846,319.8568,1916.833,326.8197" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d752475c29dd0367ae1252b8da04b5e1]
+link app to admin--><path d="M2006.3691,244.1428 C1798.931,245.2583 676.9184,254.6015 342.5,327 C339.5753,327.6332 336.6065,328.3975 333.637,329.2573 " fill="none" id="app-to-admin" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="325.8053,331.7319,334.3374,332.1822,332.5297,326.461,325.8053,331.7319" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2454730aa4157ba6cfcd7a8d9ae43eb5]
+link app to explore--><path d="M2006.1609,249.0413 C1894.1143,265.9841 1530.4049,320.9816 1392.3339,341.8596 " fill="none" id="app-to-explore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1384.3551,343.0661,1392.7137,344.8362,1391.8166,338.9037,1384.3551,343.0661" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[576d647fdda66d8f41ba1864573638a4]
+link app to home--><path d="M2072.5813,249.3292 C2180.45,266.7062 2522.3251,321.7803 2649.3575,342.2445 " fill="none" id="app-to-home" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2657.4095,343.5416,2649.9885,339.3074,2649.0342,345.231,2657.4095,343.5416" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[15036fc39c3cd61547ab08e7f8351983]
+link app to import--><path d="M2006.3122,247.0016 C1842.0639,261.8569 1116.1551,327.5107 917.759,345.4544 " fill="none" id="app-to-import" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="909.5397,346.1978,917.7774,348.4649,917.2369,342.4893,909.5397,346.1978" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a99dea3179553eeb7f1043c94a34322b]
+link app to invite--><path d="M2050.5662,267.0004 C2057.9337,282.3132 2067.698,302.6076 2075.7271,319.2956 " fill="none" id="app-to-invite" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2079.2792,326.6784,2078.514,318.1687,2073.1073,320.7701,2079.2792,326.6784" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[35f517e97da0112a819e143a8c274c12]
+link app to list--><path d="M2028.2168,267.0004 C2020.7048,282.3132 2010.7491,302.6076 2002.5625,319.2956 " fill="none" id="app-to-list" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1998.9408,326.6784,2005.1576,320.8174,1999.7709,318.1748,1998.9408,326.6784" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2d733b26daea794e52fec85eee3cae20]
+link app to profile--><path d="M2006.4102,246.1413 C1800.802,259.4469 698.6701,330.7692 450.9546,346.7996 " fill="none" id="app-to-profile" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="442.8471,347.3243,451.0242,349.8013,450.6366,343.8138,442.8471,347.3243" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b25f90cced642151817bf6b074c9e993]
+link app to recover--><path d="M2072.6813,264.6895 C2099.2496,281.2556 2136.7402,304.6321 2165.7598,322.7267 " fill="none" id="app-to-recover" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2172.5659,326.9705,2167.3648,320.192,2164.1901,325.2833,2172.5659,326.9705" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b1779b7a87ed44d7ffed11fa10233f7e]
+link app to signup--><path d="M2072.7316,255.6848 C2117.9787,271.6294 2201.4722,301.1759 2272.5,327 C2276.0235,328.2811 2279.6569,329.6096 2283.315,330.9525 " fill="none" id="app-to-signup" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2290.8307,333.719,2284.3594,328.1402,2282.2869,333.7709,2290.8307,333.719" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d906f56446e369e670bedb9b808fca57]
+link app to support--><path d="M2072.702,250.456 C2136.0372,263.0539 2278.2469,292.7017 2395.5,327 C2398.8874,327.9909 2402.3568,329.0586 2405.8443,330.1723 " fill="none" id="app-to-support" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2413.4833,332.672,2406.8131,327.3327,2404.947,333.0351,2413.4833,332.672" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b2273a4894b441721ab6fbc8b36456ec]
+reverse link GlobalFooter to app--><path d="M2039.5,149.3002 C2039.5,168.4797 2039.5,199.512 2039.5,220.7914 " fill="none" id="GlobalFooter-backto-app" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2039.5,141.1654,2036.5,149.1654,2042.5,149.1654,2039.5,141.1654" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[8143c19c34c6bd5131ec716558c710ac]
+reverse link GlobalMenu to app--><path d="M2603.2227,135.3306 C2522.4481,150.9016 2181.4178,216.6424 2072.8454,237.572 " fill="none" id="GlobalMenu-backto-app" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2611.3739,133.7593,2602.9507,132.3278,2604.0864,138.2193,2611.3739,133.7593" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7eeb8e775d3a4e24bcbde4b5838172dc]
+reverse link GlobalNav to app--><path d="M1925.8293,145.3092 C1947.2865,163.9386 1986.5923,198.0647 2012.886,220.8933 " fill="none" id="GlobalNav-backto-app" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1919.7774,140.0548,1923.8514,147.565,1927.785,143.0343,1919.7774,140.0548" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[903bb9cf4b53405f53eccb5eaf3ae4e0]
+reverse link ToastMessage to app--><path d="M2170.0102,143.8826 C2146.235,162.1211 2100.2998,197.3591 2069.7638,220.784 " fill="none" id="ToastMessage-backto-app" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2176.367,139.0061,2168.1936,141.4951,2171.8455,146.2557,2176.367,139.0061" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2724ff5e56c0467d0e0220ea6f2660d3]
+link explore to BtnExploreClear--><path d="M1338.5,373.2065 C1338.5,394.4467 1338.5,425.4053 1338.5,444.5936 " fill="none" id="explore-to-BtnExploreClear" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1338.5,452.7393,1341.5,444.7393,1335.5,444.7393,1338.5,452.7393" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2405ef72d553101bf486b068e2a186ce]
+link explore to BtnToTop--><path d="M1384.401,363.049 C1435.6004,378.0657 1520.5551,404.3661 1591.5,433 C1606.4933,439.0514 1622.9973,447.1381 1634.8945,453.2345 " fill="none" id="explore-to-BtnToTop" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1642.3199,457.0877,1636.6009,450.74,1633.8372,456.0657,1642.3199,457.0877" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e6c2d954997f9d8b4d7797ee45525e28]
+link explore to ExploreSelectTitle--><path d="M1373.1025,373.2065 C1408.9068,397.2189 1463.231,433.6519 1489.7803,451.4575 " fill="none" id="explore-to-ExploreSelectTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1496.4936,455.9598,1491.5204,449.0123,1488.1785,453.9954,1496.4936,455.9598" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5dd0c5a9f69a7f15fa310ebfeb6eb6e5]
+link explore to ExploreTitleCard--><path d="M1298.0791,377.9453 C1263.8604,401.6027 1216.6146,434.2665 1192.3254,451.059 " fill="none" id="explore-ExploreTitleCard" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1185.5642,455.7334,1193.8507,453.6516,1190.4386,448.7163,1185.5642,455.7334" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1304.9335,373.2065,1296.647,375.2883,1300.0591,380.2236,1304.9335,373.2065" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a9dc9070f20e9f92c0b5f31fe3696b19]
+link explore to ListAddModal--><path d="M1292.9973,356.5488 C1217.8893,367.993 1063.7195,394.1727 937.5,433 C918.7918,438.755 898.1828,447.6172 884.203,454.0304 " fill="none" id="explore-to-ListAddModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="876.8024,457.4813,885.3207,456.8193,882.785,451.3814,876.8024,457.4813" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[88567009ffe58a3162dcfddf38ae6e8f]
+link explore to ModalBackdrop--><path d="M1292.9479,365.0704 C1243.8356,381.4176 1163.4229,408.4703 1094.5,433 C1073.3689,440.5206 1049.181,449.585 1033.4154,455.5549 " fill="none" id="explore-to-ModalBackdrop" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1025.5961,458.5237,1034.14,458.4888,1032.0104,452.8795,1025.5961,458.5237" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c062487eaf52a8192075b896d71ac508]
+link home to HomeLogin--><path d="M2735.6249,373.2065 C2775.629,397.5568 2836.6166,434.6797 2865.3966,452.198 " fill="none" id="home-to-HomeLogin" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2872.3026,456.4016,2867.029,449.6793,2863.9092,454.8045,2872.3026,456.4016" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[af0533598c07946d9b0434ff521882dc]
+link import to BtnToTop--><path d="M909.5395,352.9594 C1043.8898,362.7078 1461.632,395.3486 1591.5,433 C1606.996,437.4926 1623.4139,445.6961 1635.151,452.2344 " fill="none" id="import-to-BtnToTop" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1642.1313,456.2348,1636.6821,449.6541,1633.6987,454.8598,1642.1313,456.2348" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d29420e45fcc089198c5a7cadc887969]
+link import to InputFile--><path d="M835.4758,378.6937 C810.5527,401.0248 777.0686,431.0265 757.8324,448.2622 " fill="none" id="import-InputFile" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="751.6599,453.7927,759.6201,450.6885,755.6162,446.2199,751.6599,453.7927" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="841.5999,373.2065,833.6398,376.3108,837.6437,380.7794,841.5999,373.2065" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[59c9140daeef1dd3ed4397b934eb34bc]
+link import to InputRadio--><path d="M817.4454,357.8791 C737.1484,371.3019 584.1354,400.3425 540.5,433 C495.1427,466.9462 469.032,532.0898 458.7012,562.9649 " fill="none" id="import-InputRadio" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="456.2029,570.7101,461.5139,564.0173,455.8036,562.1754,456.2029,570.7101" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="825.4538,356.5519,817.0709,354.9004,818.052,360.8196,825.4538,356.5519" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7b06d5267e4ec7655c5c6571cbbf3cee]
+link import to ListAddModal--><path d="M867.5,373.2065 C867.5,394.4467 867.5,425.4053 867.5,444.5936 " fill="none" id="import-to-ListAddModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="867.5,452.7393,870.5,444.7393,864.5,444.7393,867.5,452.7393" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2e7dcc5030cb01d678366d4e646ee883]
+link import to ListItemImport--><path d="M818.1137,371.8627 C760.7223,397.2692 669.0898,437.8338 631.4659,454.4894 " fill="none" id="import-ListItemImport" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="623.8944,457.8412,632.424,457.346,629.9952,451.8596,623.8944,457.8412" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="825.4382,368.6202,816.9086,369.1154,819.3374,374.6018,825.4382,368.6202" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2ea9d50fe580ae682c55205fae6e8d3e]
+link import to ModalBackdrop--><path d="M898.3729,373.2065 C929.5608,396.6498 976.4985,431.9318 1000.7491,450.1604 " fill="none" id="import-to-ModalBackdrop" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1007.2304,455.0323,1002.6381,447.8274,999.033,452.6235,1007.2304,455.0323" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[26d837641000746847c72835e7e4ce3c]
+link list to BtnAddTitle--><path d="M2017.2403,366.3833 C2022.8439,368.9394 2028.7521,371.2943 2034.5,373 C2244.8385,435.4178 2312.9232,374.9178 2524.5,433 C2542.0908,437.829 2561.0449,446.5595 2574.108,453.1837 " fill="none" id="list-to-BtnAddTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2581.4155,456.9823,2575.701,450.6306,2572.9336,455.9542,2581.4155,456.9823" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[eafb4783651de79924c56f7a42ecd05e]
+link list to BtnToTop--><path d="M1957.9214,365.254 C1951.9134,368.0436 1945.5728,370.7726 1939.5,373 C1840.7214,409.2301 1809.0961,396.2763 1710.5,433 C1695.7266,438.5026 1679.7194,446.5097 1668.1105,452.7167 " fill="none" id="list-to-BtnToTop" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1660.8456,456.6735,1669.3061,455.4817,1666.4363,450.2125,1660.8456,456.6735" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[82bb9a2c2e1dca1dd1e6d9c3cefaa11a]
+link list to ListAddModal--><path d="M1957.9621,366.3301 C1952.0047,368.9946 1945.6725,371.402 1939.5,373 C1507.6076,484.8115 1372.2577,332.9067 937.5,433 C918.4256,437.3914 897.8761,446.4752 884.0104,453.313 " fill="none" id="list-to-ListAddModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="876.6804,457.027,885.1726,456.0873,882.4607,450.7351,876.6804,457.027" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[35a3744ec3b832979f3da209be3d3332]
+link list to ListEditModal--><path d="M2017.0571,366.0369 C2022.7293,368.6601 2028.7086,371.1277 2034.5,373 C2184.2555,421.4134 2232.1998,389.6546 2383.5,433 C2402.5461,438.4564 2423.438,447.3672 2437.5956,453.8733 " fill="none" id="list-to-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2445.0882,457.3818,2439.1153,451.2724,2436.571,456.7062,2445.0882,457.3818" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[769b7e96e5373196b1aee11529d377f1]
+link list to ListItem--><path d="M2024.6748,369.7847 C2027.9391,371.0313 2031.2412,372.1316 2034.5,373 C2426.583,477.4847 2544.209,372.9027 2945.5,433 C2983.7871,438.7339 3027.7318,450.3415 3051.3439,457.0013 " fill="none" id="list-ListItem" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3059.3438,459.2889,3052.477,454.205,3050.8273,459.9737,3059.3438,459.2889" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2017.165,366.6507,2023.3924,372.5004,2025.7033,366.9633,2017.165,366.6507" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f1724e17c1cdc0c1e60b363ffde26b80]
+link list to ListItemControls--><path d="M2017.2051,366.5048 C2022.8123,369.0484 2028.7308,371.3678 2034.5,373 C2301.3128,448.4854 2384.9018,372.4712 2655.5,433 C2678.3394,438.1088 2703.5647,447.8278 2719.6992,454.5996 " fill="none" id="list-to-ListItemControls" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2727.247,457.8322,2721.0741,451.9249,2718.712,457.4404,2727.247,457.8322" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c87b0407c4211d83bd343620acf461e1]
+link list to ListLoading--><path d="M1957.8833,365.5731 C1912.3987,389.4899 1826.8522,434.4721 1790.9846,453.3321 " fill="none" id="list-to-ListLoading" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1783.7378,457.1425,1792.2148,456.0745,1789.4223,450.7639,1783.7378,457.1425" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[17bbf251a0eca26ebefce04a158289ec]
+link list to ListPosterModal--><path d="M1972.996,373.2065 C1959.4204,394.9273 1939.4931,426.8111 1927.5764,445.8777 " fill="none" id="list-to-ListPosterModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1923.2879,452.7393,1930.0719,447.5453,1924.9839,444.3653,1923.2879,452.7393" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[afe43e1a9beb8b2c449e00b5c5921a3a]
+link list to ListSearch--><path d="M2002.004,373.2065 C2015.5796,394.9273 2035.5069,426.8111 2047.4236,445.8777 " fill="none" id="list-to-ListSearch" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2051.7121,452.7393,2050.0161,444.3653,2044.9281,447.5453,2051.7121,452.7393" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9446d3dee64cc52d49b92dce5858a1f3]
+link list to ListSearchStatus--><path d="M2017.1167,365.5731 C2062.6013,389.4899 2148.1478,434.4721 2184.0154,453.3321 " fill="none" id="list-to-ListSearchStatus" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2191.2622,457.1425,2185.5777,450.7639,2182.7852,456.0745,2191.2622,457.1425" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9f739770e04cfc0fd54546a67d7eea7b]
+link list to ListSort--><path d="M2017.1652,365.7209 C2022.8269,368.3747 2028.7747,370.9345 2034.5,373 C2141.1724,411.4843 2177.0702,391.2315 2282.5,433 C2294.8754,437.9028 2307.9066,445.3575 2317.6989,451.4809 " fill="none" id="list-to-ListSort" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2324.4912,455.8397,2319.3786,448.9942,2316.1381,454.0438,2324.4912,455.8397" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[1a79662ae50902c35518e2715ae40c4a]
+link list to ModalBackdrop--><path d="M1957.9478,366.2754 C1951.9917,368.9446 1945.6636,371.3678 1939.5,373 C1575.5434,469.378 1462.459,353.2549 1094.5,433 C1072.8177,437.6991 1049.0815,447.1955 1033.5573,454.0431 " fill="none" id="list-to-ModalBackdrop" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1025.8428,457.5275,1034.3685,456.9686,1031.8988,451.5004,1025.8428,457.5275" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b5ad647e56cda174f1dd38811e39d8cd]
+link profile to ProfileExport--><path d="M401.5,373.2065 C401.5,394.4467 401.5,425.4053 401.5,444.5936 " fill="none" id="profile-to-ProfileExport" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="401.5,452.7393,404.5,444.7393,398.5,444.7393,401.5,452.7393" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5d3a3b3a2b53630c028a38742a158f50]
+link profile to ProfileUserDetails--><path d="M362.698,378.2197 C330.5278,401.6161 286.4445,433.6767 263.2468,450.5478 " fill="none" id="profile-ProfileUserDetails" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="256.7544,455.2696,264.9888,452.9904,261.4597,448.138,256.7544,455.2696" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="369.5911,373.2065,361.3567,375.4856,364.8857,380.3381,369.5911,373.2065" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0b52332c42b2c55adfa55998717a6f92]
+link profile to ProfileUserSettings--><path d="M352.7612,369.2377 C349.2965,370.532 345.8501,371.7979 342.5,373 C317.5021,381.9698 144.0998,438.4036 88.5674,456.4547 " fill="none" id="profile-ProfileUserSettings" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="80.7076,459.0091,89.2431,459.3895,87.3886,453.6833,80.7076,459.0091" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="360.3451,366.3724,351.8011,366.3934,353.9217,372.0062,360.3451,366.3724" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[192acf0b0d51e29c69fb231975a7c5eb]
+link GlobalMenu to BtnClose--><path d="M2629.6389,135.9467 C2693.8084,164.1727 3070.5882,338.615 2945.5,491 C2858.674,596.7732 2773.4007,507.9592 2643.5,551 C2627.7948,556.2037 2610.8718,564.4805 2598.844,570.8623 " fill="none" id="GlobalMenu-to-BtnClose" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2591.7089,574.731,2600.1716,573.555,2597.3116,568.2805,2591.7089,574.731" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[221039a347eb699fba10dfb08676d91b]
+reverse link BtnLogout to GlobalNav--><path d="M1961.1926,30.6148 C1948.5855,55.829 1925.0406,102.9188 1915.1081,122.7838 " fill="none" id="BtnLogout-backto-GlobalNav" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1964.8704,23.2593,1958.6094,29.0731,1963.976,31.7564,1964.8704,23.2593" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[78a6323778fc4c8f92f1cf2ac016b367]
+reverse link BtnMenu to GlobalNav--><path d="M1859.8074,30.6148 C1872.4145,55.829 1895.9594,102.9188 1905.8919,122.7838 " fill="none" id="BtnMenu-backto-GlobalNav" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1856.1296,23.2593,1857.024,31.7564,1862.3906,29.0731,1856.1296,23.2593" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[35ad7ab9f226df621cafcf5badb6b2c4]
+link ListAddModal to BtnClose--><path d="M876.6648,467.0426 C889.7189,473.9309 914.6259,485.9968 937.5,491 C1624.8666,641.3448 1835.1662,387.4042 2519.5,551 C2536.023,554.95 2553.4699,563.3551 2565.8032,570.1045 " fill="none" id="ListAddModal-to-BtnClose" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2573.1084,574.2374,2567.6227,567.687,2564.6683,572.9092,2573.1084,574.2374" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6228641717bfb1050a34abee1375ff69]
+link ListAddModal to InputRadio--><path d="M850.9441,469.5004 C836.7037,475.7724 815.5126,484.682 796.5,491 C673.6832,531.8124 521.0957,565.6492 470.6017,576.4151 " fill="none" id="ListAddModal-InputRadio" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="462.6392,578.1013,471.0872,579.3786,469.844,573.5088,462.6392,578.1013" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="858.4564,466.1518,849.9281,466.6689,852.3709,472.1491,858.4564,466.1518" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d2fe36052b604ecb9ca66d65e61ba8fe]
+link ListAddModal to InputSearch--><path d="M884.1186,470.2589 C898.0485,476.8432 918.6315,485.7948 937.5,491 C1165.44,553.8814 1454.5305,574.6327 1527.2897,579.0351 " fill="none" id="ListAddModal-InputSearch" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1535.4165,579.5123,1527.6061,576.0485,1527.2544,582.0381,1535.4165,579.5123" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="876.749,466.7019,882.6497,472.8811,885.2577,467.4776,876.749,466.7019" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[586fcee083503fe1e1aefe2d81e9948b]
+link ListAddModal to ListAddSearchResult--><path d="M867.5,471.2593 C867.5,490.9911 867.5,537.4436 867.5,562.7807 " fill="none" id="ListAddModal-to-ListAddSearchResult" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="867.5,570.7838,870.5,562.7838,864.5,562.7838,867.5,570.7838" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7eb1d9edfc41e05327f6f00b5a04e5a3]
+link ListEditModal to BtnClose--><path d="M2463.7054,470.4863 C2485.4773,490.5572 2540.32,541.1153 2567.1872,565.8835 " fill="none" id="ListEditModal-to-BtnClose" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2573.378,571.5906,2569.5295,563.9624,2565.4627,568.3738,2573.378,571.5906" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a122b030e6074e46f803ec1023dad208]
+link ListEditModal to InputRange--><path d="M2454.5,479.2746 C2454.5,501.5705 2454.5,540.1507 2454.5,562.5376 " fill="none" id="ListEditModal-InputRange" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2454.5,570.7838,2457.5,562.7838,2451.5,562.7838,2454.5,570.7838" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2454.5,471.2593,2451.5,479.2593,2457.5,479.2593,2454.5,471.2593" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ee4bff8bb6a82ea603480b968aa1e3ad]
+link ListItem to BtnListItemControls--><path d="M3077.6742,467.8516 C3107.0791,486.6072 3199.2587,545.4028 3237.0694,569.52 " fill="none" id="ListItem-to-BtnListItemControls" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3244.2704,574.113,3239.1389,567.2816,3235.9123,572.3402,3244.2704,574.113" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[22803b3654b1ba5a0fa2905134a0081b]
+link ListItem to BtnListItemEdit--><path d="M3059.2694,468.6823 C3032.5969,487.9912 2955.1808,544.0348 2921.4838,568.4289 " fill="none" id="ListItem-to-BtnListItemEdit" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2914.6294,573.391,2922.8688,571.13,2919.3505,566.2698,2914.6294,573.391" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5c1af6416c5bbf4910b8e7e6d169d986]
+link ListItem to BtnListItemExplore--><path d="M3068.7354,471.2593 C3069.2371,490.9911 3070.4181,537.4436 3071.0622,562.7807 " fill="none" id="ListItem-to-BtnListItemExplore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3071.2657,570.7838,3074.0613,562.7101,3068.0632,562.8627,3071.2657,570.7838" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d64e12b301d64029494d9c5ba0192bf3]
+link ListItem to BtnListItemRemove--><path d="M3059.1556,466.8982 C3047.3254,472.9927 3026.2261,483.5086 3007.5,491 C2982.8415,500.8646 2809.2097,556.6935 2753.5941,574.5252 " fill="none" id="ListItem-to-BtnListItemRemove" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2745.7224,577.0479,2754.2563,577.4632,2752.4251,571.7495,2745.7224,577.0479" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5a3d6be15d299373f32641475e672d1a]
+link ListItemControls to BtnClose--><path d="M2727.3278,469.0281 C2701.9235,488.4937 2630.4145,543.2863 2598.3742,567.8366 " fill="none" id="ListItemControls-to-BtnClose" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2591.8189,572.8596,2599.9937,570.3752,2596.3444,565.6125,2591.8189,572.8596" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[bdc6747577fcdb200a19143983f122d8]
+link ListItemControls to BtnListItemRemove--><path d="M2736.5,471.2593 C2736.5,490.9911 2736.5,537.4436 2736.5,562.7807 " fill="none" id="ListItemControls-to-BtnListItemRemove" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2736.5,570.7838,2739.5,562.7838,2733.5,562.7838,2736.5,570.7838" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[85bb12402438687e3ed97e70dfd9d2ad]
+link ListSearch to InputSearch--><path d="M2041.1587,471.1458 C2029.1322,477.5315 2012.2096,485.8097 1996.5,491 C1832.169,545.2933 1622.6963,571.3909 1561.8108,578.1668 " fill="none" id="ListSearch-InputSearch" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1553.6351,579.0588,1561.9133,581.1734,1561.2625,575.2088,1553.6351,579.0588" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2048.2928,467.2742,2039.8306,468.4533,2042.6924,473.7268,2048.2928,467.2742" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[71264ee1c659c3cb4f47ab3aa6faddbb]
+link ProfileExport to InputRadio--><path d="M408.8218,478.6148 C418.7178,501.0712 436.2605,540.8796 446.1639,563.3527 " fill="none" id="ProfileExport-InputRadio" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="449.4386,570.7838,448.9577,562.2533,443.4672,564.6729,449.4386,570.7838" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="405.5804,471.2593,406.0613,479.7898,411.5518,477.3702,405.5804,471.2593" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a9b89372c89f825e88da147941fa1e85]
+link ProfileUserSettings to InputCheckbox--><path d="M71.5,479.2746 C71.5,501.5705 71.5,540.1507 71.5,562.5376 " fill="none" id="ProfileUserSettings-InputCheckbox" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="71.5,570.7838,74.5,562.7838,68.5,562.7838,71.5,570.7838" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="71.5,471.2593,68.5,479.2593,74.5,479.2593,71.5,471.2593" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[317bde8cacad60639e4af696ae963489]
+link ProfileUserSettings to InputRadio--><path d="M88.5866,467.5948 C106.6709,473.4953 136.0575,483.0241 161.5,491 C265.8012,523.697 391.5745,561.4778 436.52,574.9273 " fill="none" id="ProfileUserSettings-InputRadio" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="444.4011,577.2841,437.5961,572.1177,435.8769,577.8662,444.4011,577.2841" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="80.6836,465.0123,87.3561,470.3488,89.2197,464.6455,80.6836,465.0123" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[70b74f7e207d47ad1edcdb55ce7e3ddf]
+@startuml
+'node setup
+  node app
+  node about
+  node admin
+  node explore
+  node home
+  node import
+  node invite
+  node list
+  node profile
+  node recover
+  node signup
+  node support
+
+'node connections
+  app - ->> about
+  app - ->> admin
+  app - ->> explore
+  app - ->> home
+  app - ->> import
+  app - ->> invite
+  app - ->> list
+  app - ->> profile
+  app - ->> recover
+  app - ->> signup
+  app - ->> support
+
+'view <-> component dependencies
+  'app global
+    app -up->> GlobalFooter
+    app -up->> GlobalMenu
+    app -up->> GlobalNav
+    app -up->> ToastMessage
+  
+  'explore route
+    explore - ->> BtnExploreClear
+    explore - ->> BtnToTop
+    explore - ->> ExploreSelectTitle
+    explore <<- ->> ExploreTitleCard
+    explore - ->> ListAddModal
+    explore - ->> ModalBackdrop
+  
+  'home route
+    home - ->> HomeLogin
+  
+  'import route
+    import - ->> BtnToTop
+    import <<- ->> InputFile
+    import <<- ->> InputRadio
+    import - ->> ListAddModal
+    import <<- ->> ListItemImport
+    import - ->> ModalBackdrop
+  
+  'list route
+    list - ->> BtnAddTitle
+    list - ->> BtnToTop
+    list - ->> ListAddModal
+    list - ->> ListEditModal
+    list <<- ->> ListItem
+    list - ->> ListItemControls
+    list - ->> ListLoading
+    list - ->> ListPosterModal
+    list - ->> ListSearch
+    list - ->> ListSearchStatus
+    list - ->> ListSort
+    list - ->> ModalBackdrop
+
+  'profile route
+    profile - ->> ProfileExport
+    profile <<- ->> ProfileUserDetails
+    profile <<- ->> ProfileUserSettings
+
+'component <-> component dependencies
+  'globals
+    GlobalMenu - ->> BtnClose
+    GlobalNav -up->> BtnLogout
+    GlobalNav -up->> BtnMenu
+  
+  ListAddModal - ->> BtnClose
+  ListAddModal <<- ->> InputRadio
+  ListAddModal <<- ->> InputSearch
+  ListAddModal - ->> ListAddSearchResult
+
+  ListEditModal - ->> BtnClose
+  ListEditModal <<- ->> InputRange
+
+  ListItem - ->> BtnListItemControls
+  ListItem - ->> BtnListItemEdit
+  ListItem - ->> BtnListItemExplore
+  ListItem - ->> BtnListItemRemove
+
+  ListItemControls - ->> BtnClose
+  ListItemControls - ->> BtnListItemRemove
+
+  ListSearch <<- ->> InputSearch
+
+  ProfileExport <<- ->> InputRadio
+
+  ProfileUserSettings <<- ->> InputCheckbox
+  ProfileUserSettings <<- ->> InputRadio
+@enduml
+
+@startuml
+  node app
+  node about
+  node admin
+  node explore
+  node home
+  node import
+  node invite
+  node list
+  node profile
+  node recover
+  node signup
+  node support
+
+  app - ->> about
+  app - ->> admin
+  app - ->> explore
+  app - ->> home
+  app - ->> import
+  app - ->> invite
+  app - ->> list
+  app - ->> profile
+  app - ->> recover
+  app - ->> signup
+  app - ->> support
+
+    app -up->> GlobalFooter
+    app -up->> GlobalMenu
+    app -up->> GlobalNav
+    app -up->> ToastMessage
+  
+    explore - ->> BtnExploreClear
+    explore - ->> BtnToTop
+    explore - ->> ExploreSelectTitle
+    explore <<- ->> ExploreTitleCard
+    explore - ->> ListAddModal
+    explore - ->> ModalBackdrop
+  
+    home - ->> HomeLogin
+  
+    import - ->> BtnToTop
+    import <<- ->> InputFile
+    import <<- ->> InputRadio
+    import - ->> ListAddModal
+    import <<- ->> ListItemImport
+    import - ->> ModalBackdrop
+  
+    list - ->> BtnAddTitle
+    list - ->> BtnToTop
+    list - ->> ListAddModal
+    list - ->> ListEditModal
+    list <<- ->> ListItem
+    list - ->> ListItemControls
+    list - ->> ListLoading
+    list - ->> ListPosterModal
+    list - ->> ListSearch
+    list - ->> ListSearchStatus
+    list - ->> ListSort
+    list - ->> ModalBackdrop
+
+    profile - ->> ProfileExport
+    profile <<- ->> ProfileUserDetails
+    profile <<- ->> ProfileUserSettings
+
+    GlobalMenu - ->> BtnClose
+    GlobalNav -up->> BtnLogout
+    GlobalNav -up->> BtnMenu
+  
+  ListAddModal - ->> BtnClose
+  ListAddModal <<- ->> InputRadio
+  ListAddModal <<- ->> InputSearch
+  ListAddModal - ->> ListAddSearchResult
+
+  ListEditModal - ->> BtnClose
+  ListEditModal <<- ->> InputRange
+
+  ListItem - ->> BtnListItemControls
+  ListItem - ->> BtnListItemEdit
+  ListItem - ->> BtnListItemExplore
+  ListItem - ->> BtnListItemRemove
+
+  ListItemControls - ->> BtnClose
+  ListItemControls - ->> BtnListItemRemove
+
+  ListSearch <<- ->> InputSearch
+
+  ProfileExport <<- ->> InputRadio
+
+  ProfileUserSettings <<- ->> InputCheckbox
+  ProfileUserSettings <<- ->> InputRadio
+@enduml
+
+PlantUML version 1.2020.22(Sun Dec 06 09:36:27 UTC 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

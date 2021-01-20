@@ -1,0 +1,282 @@
+@startuml "State Mgt. Dependencies"
+
+'nodes
+  'store
+    node "vuex store" as store
+    node app
+    node explore
+    node list
+    node tools
+    node user
+
+  'module state
+    node "app state" as astate
+    node "explore state" as estate
+    node "list state" as lstate
+    node "tools state" as tstate
+    node "user state" as ustate
+
+  'module actions
+    node "app actions" as aactions
+    node "explore actions" as eactions
+    node "list actions" as lactions
+    node "tools actions" as tactions
+    node "user actions" as uactions
+
+'module hierarchy
+  store -->> app
+  store -->> explore
+  store -->> list
+  store -->> tools
+  store -->> user
+
+  'state
+    app -->> astate
+    explore -->> estate
+    list -->> lstate
+    tools -->> tstate
+    user -->> ustate
+
+  'actions
+    app -->> aactions
+    explore -->> eactions
+    list -->> lactions
+    tools -->> tactions
+    user -->> uactions
+
+'state mapping
+  'app state
+    astate -->> functions
+    astate -->> toastMessage
+    astate -->> windowOpen
+
+  'explore state
+    estate -->> recList
+    estate -->> recSource
+
+  'list state
+    lstate -->> editTitleContent
+    lstate -->> tracklist
+    lstate -->> tracklistCache
+    lstate -->> watchlist
+    lstate -->> watchlistCache
+    lstate -->> writeSuccess
+
+  'tools state
+    tstate -->> listSearchMode
+    tstate -->> searchActive
+    tstate -->> sortMode
+    tstate -->> tracklistSorted
+    tstate -->> watchlistSorted
+
+  'user state
+    ustate -->> currentUser
+    ustate -->> GoTrueAuth
+    ustate -->> userOptions
+
+'actions mapping
+  'app actions
+    aactions -->> closeAllModals
+    aactions -->> initialize
+    aactions -->> toggleWindow
+    aactions -->> sendToastMessage
+
+  'explore actions
+    eactions -->> clearRecommendations
+    eactions -->> getRecommendations
+    eactions -->> initializeExplore
+    eactions -->> updateRecSource
+
+  'list actions
+    lactions -->> clearEditTitle
+    lactions -->> deleteFromSearchResults
+    lactions -->> deleteItem
+    lactions -->> editListItem
+    lactions -->> initializeList
+    lactions -->> readList
+    lactions -->> selectEditTitle
+    lactions -->> toggleWriteSuccess
+    lactions -->> updateSearchResult
+    lactions -->> writeList
+
+  'tools actions
+    tactions -->> initializeTools
+    tactions -->> resetList
+    tactions -->> searchList
+    tactions -->> sortList
+    tactions -->> updateSort
+
+  'user actions
+    uactions -->> attemptConfirmation
+    uactions -->> attemptLogin
+    uactions -->> attemptLogout
+    uactions -->> attemptPasswordRecovery
+    uactions -->> attemptSignup
+    uactions -->> initAuth
+    uactions -->> initializeUser
+    uactions -->> processInvite
+    uactions -->> requestPasswordRecovery
+    uactions -->> updateUserAccount
+    uactions -->> setUserPrefs
+
+'action dependencies
+  initialize -->> initializeExplore
+  initialize -->> initializeList
+  initialize -->> initializeTools
+  initialize -->> initializeUser
+  initialize -->> attemptLogout
+
+  setToastMessage <<-- getRecommendations
+  setToastMessage <<-- deleteItem
+  setToastMessage <<-- editListItem
+  setToastMessage <<-- readList
+  setToastMessage <<-- writeList
+  setToastMessage <<-- attemptLogin
+
+  readList -->> resetList
+  readList -->> updateSort
+
+'state <-> component mapping
+  'views
+    app <<-up- currentUser
+    app -up->> readList
+    app <<-up- windowOpen
+
+    admin <<-up- GoTrueAuth
+
+    explore <<-up- recList
+    explore <<-up- recSource
+    explore <<-up- windowOpen
+
+    home <<-up- currentUser
+
+    import -up->> sendToastMessage
+    import -up->> toggleWindow
+
+    invite -up->> sendToastMessage
+
+    list -up->> readList
+    list <<-up- searchActive
+    list <<-up- tracklist
+    list -up->> toggleWindow
+    list <<-up- watchlist
+    list <<-up- windowOpen
+
+    profile <<-up- currentUser
+    profile -up->> updateUserAccount
+
+    recover -up->> requestPasswordRecovery
+
+    signup -up->> processInvite
+    signup -up->> sendToastMessage
+
+  'app global
+    GlobalFooter <<-up- currentUser
+
+    GlobalMenu <<-up- currentUser
+    GlobalMenu -up->> toggleWindow
+
+    GlobalNav <<-up- currentUser
+
+    HomeLogin -up->> attemptLogin
+    HomeLogin -up->> initialize
+
+    ModalBackdrop <<-up- windowOpen
+
+    ToastMessage <<-up->> toastMessage
+
+  'buttons
+    BtnAddTitle -up->> toggleWindow
+    BtnAddTitle <<-up- windowOpen
+
+    BtnExploreClear -up->> initializeExplore
+    BtnExploreClear <<-up- recSource
+
+    BtnListItemControls -up->> selectEditTitle
+    BtnListItemControls -up->> toggleWindow
+
+    BtnListItemEdit -up->> selectEditTitle
+    BtnListItemEdit -up->> toggleWindow
+
+    BtnListItemRemove -up->> deleteFromSearchResults
+    BtnListItemRemove -up->> deleteItem
+    BtnListItemRemove -up->> initializeExplore
+    BtnListItemRemove <<-up- recSource
+    BtnListItemRemove <<-up- searchActive
+    BtnListItemRemove -up->> toggleWindow
+    BtnListItemRemove <<-up- windowOpen
+
+    BtnLogout -up->> attemptLogout
+
+    BtnMenu -up->> toggleWindow
+    BtnMenu <<-up- windowOpen
+
+  'explore
+    ExploreSelectTitle -up->> clearRecommendations
+    ExploreSelectTitle -up->> getRecommendations
+    ExploreSelectTitle <<-up- recSource
+    ExploreSelectTitle <<-up- tracklist
+    ExploreSelectTitle -up->> updateRecSource
+
+    ExploreTitleCard <<-up- recSource
+
+  'input
+    InputSearch <<-up- searchActive
+
+  'list
+    ListAddModal <<-up- functions
+    ListAddModal -up->> toggleWindow
+    ListAddModal -up->> toggleWriteSuccess
+
+    ListAddSearchResult -up->> resetList
+    ListAddSearchResult <<-up- searchActive
+    ListAddSearchResult <<-up- userOptions
+    ListAddSearchResult -up->> writeList
+    ListAddSearchResult <<-up- writeSuccess
+
+    ListEditModal -up->> clearEditTitle
+    ListEditModal -up->> deleteItem
+    ListEditModal -up->> editListItem
+    ListEditModal -up->> editTitleContent
+    ListEditModal <<-up- searchActive
+    ListEditModal -up->> toggleWindow
+    ListEditModal -up->> toggleWriteSuccess
+    ListEditModal -up->> updateSearchResult
+    ListEditModal -up->> writeList
+    ListEditModal <<-up- writeSuccess
+
+    ListItem <<-up- userOptions
+
+    ListItemControls -up->> editTitleContent
+    ListItemControls <<-up- userOptions
+
+    ListItemImport <<-up- tracklist
+    ListItemImport <<-up- watchlist
+    ListItemImport <<-up- userOptions
+
+    ListPosterModal -up->> toggleWindow
+
+    ListSearch -up->> resetList
+    ListSearch -up->> searchList
+
+    ListSearchStatus -up->> resetList
+    ListSearchStatus <<-up- tracklist
+    ListSearchStatus <<-up- tracklistCache
+    ListSearchStatus <<-up- watchlist
+    ListSearchStatus <<-up- watchlistCache
+
+    ListSort -up->> sortList
+    ListSort <<-up- sortMode
+    ListSort <<-up- tracklistSorted
+    ListSort <<-up- userOptions
+    ListSort <<-up- watchlistSorted
+
+  'profile
+    ProfileExport -up->> readList
+    ProfileExport <<-up- tracklist
+    ProfileExport <<-up- watchlist
+
+    ProfileUserSettings <<-up- sortMode
+    ProfileUserSettings <<-up- userOptions
+
+@enduml

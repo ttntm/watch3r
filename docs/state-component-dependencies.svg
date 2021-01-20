@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1571px" preserveAspectRatio="none" style="width:5741px;height:1571px;" version="1.1" viewBox="0 0 5741 1571" width="5741px" zoomAndPan="magnify"><defs><filter height="300%" id="fctz9p2zhh5l3" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[0686720d71d32ea68f81164171d509ce]
+entity store--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="3077,16,3087,6,3192,6,3192,42.2969,3182,52.2969,3077,52.2969,3077,16" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="3182" x2="3192" y1="16" y2="6"/><line style="stroke:#000000;stroke-width:1.5;" x1="3077" x2="3182" y1="16" y2="16"/><line style="stroke:#000000;stroke-width:1.5;" x1="3182" x2="3182" y1="16" y2="52.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="3092" y="38.9951">vuex store</text><!--MD5=[4541fb81c80c07473fe4b07432ef0971]
+entity app--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="2934.5,812,2944.5,802,3002.5,802,3002.5,838.2969,2992.5,848.2969,2934.5,848.2969,2934.5,812" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2992.5" x2="3002.5" y1="812" y2="802"/><line style="stroke:#000000;stroke-width:1.5;" x1="2934.5" x2="2992.5" y1="812" y2="812"/><line style="stroke:#000000;stroke-width:1.5;" x1="2992.5" x2="2992.5" y1="812" y2="848.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="2949.5" y="834.9951">app</text><!--MD5=[a6df08d62429cc7e382e487fec3dc789]
+entity explore--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="4136,1166,4146,1156,4231,1156,4231,1192.2969,4221,1202.2969,4136,1202.2969,4136,1166" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="4221" x2="4231" y1="1166" y2="1156"/><line style="stroke:#000000;stroke-width:1.5;" x1="4136" x2="4221" y1="1166" y2="1166"/><line style="stroke:#000000;stroke-width:1.5;" x1="4221" x2="4221" y1="1166" y2="1202.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="4151" y="1188.9951">explore</text><!--MD5=[e4d82bda88e552a72016f1ec85699593]
+entity list--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="3758.5,458,3768.5,448,3820.5,448,3820.5,484.2969,3810.5,494.2969,3758.5,494.2969,3758.5,458" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="3810.5" x2="3820.5" y1="458" y2="448"/><line style="stroke:#000000;stroke-width:1.5;" x1="3758.5" x2="3810.5" y1="458" y2="458"/><line style="stroke:#000000;stroke-width:1.5;" x1="3810.5" x2="3810.5" y1="458" y2="494.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="22" x="3773.5" y="480.9951">list</text><!--MD5=[35dc5981f426b321e66b521db4fdbff3]
+entity tools--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="3005.5,122,3015.5,112,3081.5,112,3081.5,148.2969,3071.5,158.2969,3005.5,158.2969,3005.5,122" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="3071.5" x2="3081.5" y1="122" y2="112"/><line style="stroke:#000000;stroke-width:1.5;" x1="3005.5" x2="3071.5" y1="122" y2="122"/><line style="stroke:#000000;stroke-width:1.5;" x1="3071.5" x2="3071.5" y1="122" y2="158.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="3020.5" y="144.9951">tools</text><!--MD5=[8fc3522a43f8c7199df5e09e5bb0188e]
+entity user--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="2231.5,458,2241.5,448,2301.5,448,2301.5,484.2969,2291.5,494.2969,2231.5,494.2969,2231.5,458" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2291.5" x2="2301.5" y1="458" y2="448"/><line style="stroke:#000000;stroke-width:1.5;" x1="2231.5" x2="2291.5" y1="458" y2="458"/><line style="stroke:#000000;stroke-width:1.5;" x1="2291.5" x2="2291.5" y1="458" y2="494.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="2246.5" y="480.9951">user</text><!--MD5=[57c4135cb70adf6adf9b56fcad01bb43]
+entity astate--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="2933.5,930,2943.5,920,3043.5,920,3043.5,956.2969,3033.5,966.2969,2933.5,966.2969,2933.5,930" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="3033.5" x2="3043.5" y1="930" y2="920"/><line style="stroke:#000000;stroke-width:1.5;" x1="2933.5" x2="3033.5" y1="930" y2="930"/><line style="stroke:#000000;stroke-width:1.5;" x1="3033.5" x2="3033.5" y1="930" y2="966.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="2948.5" y="952.9951">app state</text><!--MD5=[f0fe33dfc274e80893c63e847226e24d]
+entity estate--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="4054,1284,4064,1274,4191,1274,4191,1310.2969,4181,1320.2969,4054,1320.2969,4054,1284" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="4181" x2="4191" y1="1284" y2="1274"/><line style="stroke:#000000;stroke-width:1.5;" x1="4054" x2="4181" y1="1284" y2="1284"/><line style="stroke:#000000;stroke-width:1.5;" x1="4181" x2="4181" y1="1284" y2="1320.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="4069" y="1306.9951">explore state</text><!--MD5=[f84ea155fb3518ecea10acad8bb935d1]
+entity lstate--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="5159.5,694,5169.5,684,5263.5,684,5263.5,720.2969,5253.5,730.2969,5159.5,730.2969,5159.5,694" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="5253.5" x2="5263.5" y1="694" y2="684"/><line style="stroke:#000000;stroke-width:1.5;" x1="5159.5" x2="5253.5" y1="694" y2="694"/><line style="stroke:#000000;stroke-width:1.5;" x1="5253.5" x2="5253.5" y1="694" y2="730.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="5174.5" y="716.9951">list state</text><!--MD5=[79b360a4dd7aa2120d69ea4f0eba48f7]
+entity tstate--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="2798.5,228,2808.5,218,2916.5,218,2916.5,254.2969,2906.5,264.2969,2798.5,264.2969,2798.5,228" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2906.5" x2="2916.5" y1="228" y2="218"/><line style="stroke:#000000;stroke-width:1.5;" x1="2798.5" x2="2906.5" y1="228" y2="228"/><line style="stroke:#000000;stroke-width:1.5;" x1="2906.5" x2="2906.5" y1="228" y2="264.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="2813.5" y="250.9951">tools state</text><!--MD5=[92c5f0087d0123f5d01b3731e9495345]
+entity ustate--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="2210.5,576,2220.5,566,2322.5,566,2322.5,602.2969,2312.5,612.2969,2210.5,612.2969,2210.5,576" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2312.5" x2="2322.5" y1="576" y2="566"/><line style="stroke:#000000;stroke-width:1.5;" x1="2210.5" x2="2312.5" y1="576" y2="576"/><line style="stroke:#000000;stroke-width:1.5;" x1="2312.5" x2="2312.5" y1="576" y2="612.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="2225.5" y="598.9951">user state</text><!--MD5=[2ef8f5bc50720acd9fa58e11d5dceaa9]
+entity aactions--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="2443.5,930,2453.5,920,2567.5,920,2567.5,956.2969,2557.5,966.2969,2443.5,966.2969,2443.5,930" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="2557.5" x2="2567.5" y1="930" y2="920"/><line style="stroke:#000000;stroke-width:1.5;" x1="2443.5" x2="2557.5" y1="930" y2="930"/><line style="stroke:#000000;stroke-width:1.5;" x1="2557.5" x2="2557.5" y1="930" y2="966.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="2458.5" y="952.9951">app actions</text><!--MD5=[be733b3e5a63d2061916bc7863e58ec1]
+entity eactions--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="4298,1284,4308,1274,4449,1274,4449,1310.2969,4439,1320.2969,4298,1320.2969,4298,1284" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="4439" x2="4449" y1="1284" y2="1274"/><line style="stroke:#000000;stroke-width:1.5;" x1="4298" x2="4439" y1="1284" y2="1284"/><line style="stroke:#000000;stroke-width:1.5;" x1="4439" x2="4439" y1="1284" y2="1320.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="4313" y="1306.9951">explore actions</text><!--MD5=[6f4dce0f3a2ce3fb0b36f57b948aa09b]
+entity lactions--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="4119.5,576,4129.5,566,4237.5,566,4237.5,602.2969,4227.5,612.2969,4119.5,612.2969,4119.5,576" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="4227.5" x2="4237.5" y1="576" y2="566"/><line style="stroke:#000000;stroke-width:1.5;" x1="4119.5" x2="4227.5" y1="576" y2="576"/><line style="stroke:#000000;stroke-width:1.5;" x1="4227.5" x2="4227.5" y1="576" y2="612.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78" x="4134.5" y="598.9951">list actions</text><!--MD5=[29cc70a7cafc0f6715c31d7403ee69c1]
+entity tactions--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="3218.5,694,3228.5,684,3350.5,684,3350.5,720.2969,3340.5,730.2969,3218.5,730.2969,3218.5,694" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="3340.5" x2="3350.5" y1="694" y2="684"/><line style="stroke:#000000;stroke-width:1.5;" x1="3218.5" x2="3340.5" y1="694" y2="694"/><line style="stroke:#000000;stroke-width:1.5;" x1="3340.5" x2="3340.5" y1="694" y2="730.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="3233.5" y="716.9951">tools actions</text><!--MD5=[15c4f31ee4598c459e8fe7281a1b3ae9]
+entity uactions--><polygon fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" points="975.5,930,985.5,920,1101.5,920,1101.5,956.2969,1091.5,966.2969,975.5,966.2969,975.5,930" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="1091.5" x2="1101.5" y1="930" y2="920"/><line style="stroke:#000000;stroke-width:1.5;" x1="975.5" x2="1091.5" y1="930" y2="930"/><line style="stroke:#000000;stroke-width:1.5;" x1="1091.5" x2="1091.5" y1="930" y2="966.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="86" x="990.5" y="952.9951">user actions</text><!--MD5=[ea6a73a916d4abe1122c6cccf1bbd880]
+entity functions--><ellipse cx="3285.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="3252" y="1090.9951">functions</text><!--MD5=[0ac7619169cad91e898f3e082ec1a87c]
+entity toastMessage--><ellipse cx="2766.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="2717" y="1090.9951">toastMessage</text><!--MD5=[cae204c238df1650c483c588a76980f6]
+entity windowOpen--><ellipse cx="2930.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="2884.5" y="1090.9951">windowOpen</text><!--MD5=[2be7112ea292f355354e6b4996d07335]
+entity recList--><ellipse cx="4227.5" cy="1415" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="4203" y="1444.9951">recList</text><!--MD5=[9cb85fe90131504a9bf07bd55d5ea5a6]
+entity recSource--><ellipse cx="4116.5" cy="1415" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="4080.5" y="1444.9951">recSource</text><!--MD5=[e312ec23384fffd607f5185df2f2209d]
+entity editTitleContent--><ellipse cx="4782.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="122" x="4721.5" y="854.9951">editTitleContent</text><!--MD5=[04780db482782321030e5e6c96003ee2]
+entity tracklist--><ellipse cx="5324.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="5294.5" y="854.9951">tracklist</text><!--MD5=[161d8f0a533d8aa5e04e33b7fd76c593]
+entity tracklistCache--><ellipse cx="5616.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="5564.5" y="854.9951">tracklistCache</text><!--MD5=[1a72a96beaced937dff9a1c17831fad0]
+entity watchlist--><ellipse cx="5211.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="5179" y="854.9951">watchlist</text><!--MD5=[52dc1cf9e5029e1378a9e0dd9cff2303]
+entity watchlistCache--><ellipse cx="5459.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="5405" y="854.9951">watchlistCache</text><!--MD5=[6a5d044c8f9f6440a99860e829123c92]
+entity writeSuccess--><ellipse cx="5011.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="4965" y="854.9951">writeSuccess</text><!--MD5=[05826ad2eb397e30a833232d8afbeb77]
+entity listSearchMode--><ellipse cx="2915.5" cy="353" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="2860.5" y="382.9951">listSearchMode</text><!--MD5=[937454950e9877643191918dde046af0]
+entity searchActive--><ellipse cx="3489.5" cy="353" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="3443" y="382.9951">searchActive</text><!--MD5=[43e5cf5ebf696d12f1ed07020142b7fe]
+entity sortMode--><ellipse cx="2752.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="2718.5" y="854.9951">sortMode</text><!--MD5=[8a1657c2d0a79db1e53259ea1435d814]
+entity tracklistSorted--><ellipse cx="2677.5" cy="353" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="2623" y="382.9951">tracklistSorted</text><!--MD5=[84ec308d5500b65e0169be799eae2597]
+entity watchlistSorted--><ellipse cx="2539.5" cy="471" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="2482.5" y="500.9951">watchlistSorted</text><!--MD5=[5650dae74460c2ae6ebc69e757ae6c24]
+entity currentUser--><ellipse cx="2075.5" cy="707" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="2033.5" y="736.9951">currentUser</text><!--MD5=[5ae6eba2581a391eb63929fdd1701a2e]
+entity GoTrueAuth--><ellipse cx="2266.5" cy="707" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="86" x="2223.5" y="736.9951">GoTrueAuth</text><!--MD5=[9ed8300f541000e4730fb43311f8cb98]
+entity userOptions--><ellipse cx="3103.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="3060" y="854.9951">userOptions</text><!--MD5=[04cbbac750ee44b464f01d68ab2f8c27]
+entity closeAllModals--><ellipse cx="2507.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="2455.5" y="1090.9951">closeAllModals</text><!--MD5=[66c308b75a8f792154a0bb8bd06d4837]
+entity initialize--><ellipse cx="1693.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="1663" y="1090.9951">initialize</text><!--MD5=[d1bda9891f633baf7b37041fb4dfff38]
+entity toggleWindow--><ellipse cx="3119.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="3068" y="1090.9951">toggleWindow</text><!--MD5=[8030af13d02d55eefbf3564b8ffebe12]
+entity sendToastMessage--><ellipse cx="2337.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135" x="2270" y="1090.9951">sendToastMessage</text><!--MD5=[a37de1674343512a3841dc583898e730]
+entity clearRecommendations--><ellipse cx="4564.5" cy="1415" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="170" x="4479.5" y="1444.9951">clearRecommendations</text><!--MD5=[b8646ce8206181961d4e59632bfea99d]
+entity getRecommendations--><ellipse cx="4780.5" cy="1415" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="4700.5" y="1444.9951">getRecommendations</text><!--MD5=[fbe40134e8cdc0d9e56509723cbf5f20]
+entity initializeExplore--><ellipse cx="3971.5" cy="1415" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="3913.5" y="1444.9951">initializeExplore</text><!--MD5=[42b32f6e73fc75ab6f64b4da3ffc9eb4]
+entity updateRecSource--><ellipse cx="4365.5" cy="1415" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127" x="4302" y="1444.9951">updateRecSource</text><!--MD5=[ed716a328e0ac493d744f7528402cdca]
+entity clearEditTitle--><ellipse cx="4598.5" cy="707" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="4550" y="736.9951">clearEditTitle</text><!--MD5=[1fe09a8f8bef3669f1a28f45d11c2a04]
+entity deleteFromSearchResults--><ellipse cx="3776.5" cy="1297" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="185" x="3684" y="1326.9951">deleteFromSearchResults</text><!--MD5=[264334d77edd9da13e28d00891a43ef4]
+entity deleteItem--><ellipse cx="4178.5" cy="707" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="4138" y="736.9951">deleteItem</text><!--MD5=[e49d09a7644d19228f2989bb34f2fc2b]
+entity editListItem--><ellipse cx="4384.5" cy="707" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="4340" y="736.9951">editListItem</text><!--MD5=[cbb1ac3e6ad31f515d306d2d5a6720e2]
+entity initializeList--><ellipse cx="1730.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="1687" y="1208.9951">initializeList</text><!--MD5=[ebf751a36e53ac02513ce094ea0031f5]
+entity readList--><ellipse cx="3789.5" cy="707" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="3760.5" y="736.9951">readList</text><!--MD5=[f7c6b558eab8b1613b13c32fb2712c5a]
+entity selectEditTitle--><ellipse cx="4293.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106" x="4240.5" y="1090.9951">selectEditTitle</text><!--MD5=[46c5184d6b3ae66553146f20c8c2e8ba]
+entity toggleWriteSuccess--><ellipse cx="4118.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="143" x="4047" y="1090.9951">toggleWriteSuccess</text><!--MD5=[0906f7027bccf909121e3b36d644f08d]
+entity updateSearchResult--><ellipse cx="4840.5" cy="707" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="4768" y="736.9951">updateSearchResult</text><!--MD5=[e4db35978202b880369d355d4c0dfd0a]
+entity writeList--><ellipse cx="3985.5" cy="707" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="3954" y="736.9951">writeList</text><!--MD5=[725c5023783735631445ca632e28d545]
+entity initializeTools--><ellipse cx="1873.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="1824" y="1208.9951">initializeTools</text><!--MD5=[d7665046934b088bc254035a5c574218]
+entity resetList--><ellipse cx="3700.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="3668.5" y="854.9951">resetList</text><!--MD5=[0ffe990260fe690731d5818dd73b86a7]
+entity searchList--><ellipse cx="3304.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="3268" y="854.9951">searchList</text><!--MD5=[f0c2230300e26764e62a14a37347daae]
+entity sortList--><ellipse cx="2864.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="2837" y="854.9951">sortList</text><!--MD5=[66800b50615814abd4e08bdbd52456c2]
+entity updateSort--><ellipse cx="3576.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="3535.5" y="854.9951">updateSort</text><!--MD5=[fe3332f1ae2510456b690a11e6b4f993]
+entity attemptConfirmation--><ellipse cx="925.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="847" y="1090.9951">attemptConfirmation</text><!--MD5=[114dc5aec6608ec9d5e3d58bc0dfd933]
+entity attemptLogin--><ellipse cx="1562.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="1512" y="1090.9951">attemptLogin</text><!--MD5=[523e72b40de4309a3994db789b99f5c4]
+entity attemptLogout--><ellipse cx="1235.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="1179.5" y="1208.9951">attemptLogout</text><!--MD5=[c5191123737a3781e1e35de756ad3640]
+entity attemptPasswordRecovery--><ellipse cx="1151.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="195" x="1054" y="1090.9951">attemptPasswordRecovery</text><!--MD5=[e5e8c383a12238f1c785bd240e510ce2]
+entity attemptSignup--><ellipse cx="61.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="6" y="1090.9951">attemptSignup</text><!--MD5=[1840545db498fff3a90c72a37f3feeda]
+entity initAuth--><ellipse cx="196.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="167.5" y="1090.9951">initAuth</text><!--MD5=[e23e3c25bc676936afb71a0a93041579]
+entity initializeUser--><ellipse cx="1388.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="1342.5" y="1208.9951">initializeUser</text><!--MD5=[a3989abc4f9d70dc2bce6396947f41bc]
+entity processInvite--><ellipse cx="1928.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="1880" y="1090.9951">processInvite</text><!--MD5=[bc832c5d1bb5e1acdf5424093225f9e7]
+entity requestPasswordRecovery--><ellipse cx="511.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="188" x="417.5" y="1090.9951">requestPasswordRecovery</text><!--MD5=[35e8c4d2f08b3128a319a3c06819fb8b]
+entity updateUserAccount--><ellipse cx="726.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="141" x="656" y="1090.9951">updateUserAccount</text><!--MD5=[c0ebd11ed1951afed2d9293631edb1d6]
+entity setUserPrefs--><ellipse cx="321.5" cy="1061" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="276" y="1090.9951">setUserPrefs</text><!--MD5=[062b412d0deb7d745b231cf548043446]
+entity setToastMessage--><ellipse cx="3956.5" cy="589" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="124" x="3894.5" y="618.9951">setToastMessage</text><!--MD5=[79a439086b036a57b90a01d7b2f8bbd1]
+entity admin--><ellipse cx="2266.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="2244.5" y="854.9951">admin</text><!--MD5=[75b734d1db3ce9d09c7f82392295d704]
+entity home--><ellipse cx="1957.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="1937" y="854.9951">home</text><!--MD5=[6b4bfa9e00b0b9cc08101d1a1ff13128]
+entity import--><ellipse cx="2337.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="2312.5" y="1208.9951">import</text><!--MD5=[915be7ac3006206ba82b7ba4636ca428]
+entity invite--><ellipse cx="2090.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="2070" y="1208.9951">invite</text><!--MD5=[7acc01a6845e7bd2e8afe94137bb9829]
+entity profile--><ellipse cx="896.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="872.5" y="1208.9951">profile</text><!--MD5=[be1591b9eb4bbd0d0c9834afaf4d2ab2]
+entity recover--><ellipse cx="511.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="484" y="1208.9951">recover</text><!--MD5=[388f72378e697285ab83d1e46414999a]
+entity signup--><ellipse cx="1996.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="1973" y="1208.9951">signup</text><!--MD5=[81530f3ae9a3ae2925960b251bfddac9]
+entity GlobalFooter--><ellipse cx="2075.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="2028.5" y="854.9951">GlobalFooter</text><!--MD5=[7b23fabd565bfdb0a1a772b3edab4086]
+entity GlobalMenu--><ellipse cx="2455.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="2413.5" y="1208.9951">GlobalMenu</text><!--MD5=[e41c2361626b7c0b701b71dc28e8f149]
+entity GlobalNav--><ellipse cx="1850.5" cy="825" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="1814.5" y="854.9951">GlobalNav</text><!--MD5=[87dee05883e795e7b10a158e8d542f18]
+entity HomeLogin--><ellipse cx="1525.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="1485" y="1208.9951">HomeLogin</text><!--MD5=[d10e11d61269f5495d33905fe852a32e]
+entity ModalBackdrop--><ellipse cx="2674.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="2619" y="1208.9951">ModalBackdrop</text><!--MD5=[3e0ef251a43eeff3e46753a398e5292f]
+entity ToastMessage--><ellipse cx="2211.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="2161" y="1208.9951">ToastMessage</text><!--MD5=[d1a1cc4095c72d4ba01e002c4592e383]
+entity BtnAddTitle--><ellipse cx="2823.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="2780" y="1208.9951">BtnAddTitle</text><!--MD5=[f1feeba2dcd25f2ccd64c1c1e8594d1e]
+entity BtnExploreClear--><ellipse cx="3971.5" cy="1533" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="118" x="3912.5" y="1562.9951">BtnExploreClear</text><!--MD5=[56a3f632eebd50edd3ca8942fcb39fe7]
+entity BtnListItemControls--><ellipse cx="3653.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="147" x="3580" y="1208.9951">BtnListItemControls</text><!--MD5=[d242034780c9cd4b93680ef5338e4744]
+entity BtnListItemEdit--><ellipse cx="3472.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="3415" y="1208.9951">BtnListItemEdit</text><!--MD5=[faa5642c0dc12a6bbb74bd9cc3fb0088]
+entity BtnListItemRemove--><ellipse cx="3776.5" cy="1533" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="3704" y="1562.9951">BtnListItemRemove</text><!--MD5=[0e1714b3195a2473507e2c7735af7f20]
+entity BtnLogout--><ellipse cx="1235.5" cy="1297" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="1197.5" y="1326.9951">BtnLogout</text><!--MD5=[e4e149136f242ef38b333c600d6a96ba]
+entity BtnMenu--><ellipse cx="2949.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="2917.5" y="1208.9951">BtnMenu</text><!--MD5=[793208c06d574d185a6be926d002623e]
+entity ExploreSelectTitle--><ellipse cx="4564.5" cy="1533" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="4497.5" y="1562.9951">ExploreSelectTitle</text><!--MD5=[6e7069b2fb70ae044bdaa172b7a2fe1f]
+entity ExploreTitleCard--><ellipse cx="4141.5" cy="1533" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="4081" y="1562.9951">ExploreTitleCard</text><!--MD5=[e1f86fcb0bc1e4ed55aae1295f553b22]
+entity InputSearch--><ellipse cx="3299.5" cy="471" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="3256" y="500.9951">InputSearch</text><!--MD5=[107c78871a8b2d3ff3134690f6087d87]
+entity ListAddModal--><ellipse cx="3316.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="3268.5" y="1208.9951">ListAddModal</text><!--MD5=[f1fe8f1aad41dcc65a2e6bc34a87d443]
+entity ListAddSearchResult--><ellipse cx="3780.5" cy="943" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="3706.5" y="972.9951">ListAddSearchResult</text><!--MD5=[0264e7136bf6e7bdf14f0445b607cfa7]
+entity ListEditModal--><ellipse cx="4584.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="4536" y="1208.9951">ListEditModal</text><!--MD5=[b8b29a480ecb666c0e8b08e9667940d5]
+entity ListItem--><ellipse cx="3116.5" cy="943" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="3086.5" y="972.9951">ListItem</text><!--MD5=[061d6c4b63eb2b48c0bfca297a41fc23]
+entity ListItemControls--><ellipse cx="3595.5" cy="943" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="3535" y="972.9951">ListItemControls</text><!--MD5=[c4e729ad1721e6971f09aa86409a412c]
+entity ListItemImport--><ellipse cx="5091.5" cy="943" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="5036.5" y="972.9951">ListItemImport</text><!--MD5=[555760220fa19b3dbd9a19c7012901ef]
+entity ListPosterModal--><ellipse cx="3160.5" cy="1179" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="3103" y="1208.9951">ListPosterModal</text><!--MD5=[dac136cb72c935ddf82c0bc09f145690]
+entity ListSearch--><ellipse cx="3305.5" cy="943" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="3268" y="972.9951">ListSearch</text><!--MD5=[acf4674e284c636259c23249eb7891d6]
+entity ListSearchStatus--><ellipse cx="5404.5" cy="943" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="5344" y="972.9951">ListSearchStatus</text><!--MD5=[5d729cba19251178e7e0f6833562d130]
+entity ListSort--><ellipse cx="2372.5" cy="943" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57" x="2344" y="972.9951">ListSort</text><!--MD5=[4929d2329edc137d6ee338775a29d48c]
+entity ProfileExport--><ellipse cx="5245.5" cy="943" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="5197.5" y="972.9951">ProfileExport</text><!--MD5=[2f6eab6fd472e18b261955556bb01512]
+entity ProfileUserSettings--><ellipse cx="2821.5" cy="943" fill="#FEFECE" filter="url(#fctz9p2zhh5l3)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="2752" y="972.9951">ProfileUserSettings</text><!--MD5=[e42bbd300dfec03977e313e59311a9ab]
+link store to app--><path d="M3134.5,52.07 C3134.5,90.33 3134.5,171.46 3134.5,240 C3134.5,240 3134.5,240 3134.5,354 C3134.5,530.11 3029.59,723.243 2986.57,795.038 " fill="none" id="store-to-app" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2982.37,802,2989.0763,796.7061,2983.9418,793.6018,2982.37,802" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[453b7fb2725f9849e17dce5e4b2df955]
+link store to explore--><path d="M3192.03,31.55 C3574.07,42.21 5729.5,108.18 5729.5,240 C5729.5,240 5729.5,240 5729.5,708 C5729.5,774.727 5734.39,800.512 5694.5,854 C5631.88,937.961 5589.23,937.034 5490.5,972 C5252.13,1056.419 4457.04,1148.001 4239.14,1171.984 " fill="none" id="store-to-explore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4231.02,1172.876,4239.2992,1174.9868,4238.6456,1169.0225,4231.02,1172.876" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0d77421d531f73af6e752e21ab850a50]
+link store to list--><path d="M3167.43,52.12 C3277.82,126.28 3634.4,365.81 3751.7,444.61 " fill="none" id="store-to-list" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3758.43,449.13,3753.4686,442.1741,3750.1182,447.1515,3758.43,449.13" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b85e1bcd7abea99fcac3527ced825dee]
+link store to tools--><path d="M3115.2,52.06 C3101.45,67.77 3082.85,89.03 3068.04,105.96 " fill="none" id="store-to-tools" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3062.77,111.98,3070.2944,107.9324,3065.7776,103.9829,3062.77,111.98" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[82672bb1ee9870247152706955e77f33]
+link store to user--><path d="M3090.75,52.1 C2993.92,101.02 2754.12,222.21 2553.5,324 C2466.67,368.06 2365.13,419.75 2309.1,448.29 " fill="none" id="store-to-user" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2301.83,451.99,2310.3204,451.0345,2307.5986,445.6874,2301.83,451.99" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[913acc6d6a5e45e1c94182e81d8a8b41]
+link app to astate--><path d="M2972.31,848.092 C2975.44,866.233 2979.9,892.101 2983.34,912.096 " fill="none" id="app-to-astate" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2984.71,919.99,2986.3067,911.5965,2980.394,912.6162,2984.71,919.99" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[cf195e1fcdf3ea272b0acdca1d0f4adb]
+link explore to estate--><path d="M4171.88,1202.092 C4162.22,1220.475 4148.38,1246.793 4137.81,1266.893 " fill="none" id="explore-to-estate" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4134.07,1273.99,4140.4467,1268.3033,4135.1352,1265.5127,4134.07,1273.99" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e5956e0286f09de3e33abb2c054916fc]
+link list to lstate--><path d="M3820.66,474.04 C3928.21,481.39 4293.67,508.79 4591.5,560 C4799.1,595.695 5041.02,659.103 5151.25,689.22 " fill="none" id="list-to-lstate" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5159.28,691.418,5152.3573,686.4104,5150.7716,692.1971,5159.28,691.418" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4d5c12d22a05aa467594f2ed6906da28]
+link tools to tstate--><path d="M3005.41,157.3 C2976.19,173.64 2935.7,196.28 2904.46,213.74 " fill="none" id="tools-to-tstate" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2897.14,217.83,2905.5864,216.5424,2902.6571,211.3061,2897.14,217.83" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[678d8ede0648adba9c8fb1141824fbce]
+link user to ustate--><path d="M2266.5,494.09 C2266.5,512.15 2266.5,537.87 2266.5,557.83 " fill="none" id="user-to-ustate" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2266.5,565.99,2269.5,557.99,2263.5,557.99,2266.5,565.99" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[64aae7aac86f5cd018d074929c2097d7]
+link app to aactions--><path d="M2934.45,846.088 C2928.59,849.032 2922.47,851.806 2916.5,854 C2854.74,876.716 2675.99,911.105 2575.76,929.443 " fill="none" id="app-to-aactions" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2567.79,930.897,2576.1972,932.4199,2575.1256,926.5164,2567.79,930.897" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[1fa080fb75cde26fd35f94dc6a556c00]
+link explore to eactions--><path d="M4219.68,1202.092 C4251.25,1221.362 4297.09,1249.351 4330.52,1269.757 " fill="none" id="explore-to-eactions" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4337.45,1273.99,4332.187,1267.2594,4329.0591,1272.3797,4337.45,1273.99" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[07537743bea07864aa0d733ee3070adb]
+link list to lactions--><path d="M3820.68,481.3 C3883.53,500.04 4026.68,542.73 4111.64,568.063 " fill="none" id="list-to-lactions" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4119.43,570.384,4112.6208,565.2231,4110.9063,570.973,4119.43,570.384" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4a56176c2c8e867320a703bd93028d87]
+link tools to tactions--><path d="M3052.95,158.34 C3090.52,247.21 3229.38,575.638 3271.99,676.406 " fill="none" id="tools-to-tactions" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3275.12,683.81,3274.7687,675.2732,3269.2421,677.6092,3275.12,683.81" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[194e200d67681a173076c4556d5667c1]
+link user to uactions--><path d="M2231.4,485.43 C2062,550.27 1328,831.198 1103.79,917.01 " fill="none" id="user-to-uactions" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1096.03,919.98,1104.5737,919.9104,1102.4213,914.3098,1096.03,919.98" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6a6e647f715cab5ca81992cf8db56679]
+link astate to functions--><path d="M3043.67,965.547 C3112.55,992.451 3226.49,1036.954 3268.91,1053.522 " fill="none" id="astate-to-functions" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3276.41,1056.45,3270.0523,1050.7422,3267.8668,1056.33,3276.41,1056.45" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[209d4dd84a9e0794ea88bf0942f207ef]
+link astate to toastMessage--><path d="M2946.22,966.092 C2896.84,991.895 2817.54,1033.33 2783.22,1051.262 " fill="none" id="astate-to-toastMessage" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2775.88,1055.101,2784.3603,1054.0594,2781.5844,1048.7402,2775.88,1055.101" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b3b2d00a1bd234e1b7a23fa6512776c9]
+link astate to windowOpen--><path d="M2977.45,966.092 C2965.96,989.086 2948.25,1024.495 2938.19,1044.621 " fill="none" id="astate-to-windowOpen" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2934.5,1051.998,2940.7601,1046.1832,2935.3931,1043.5008,2934.5,1051.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2494dd022332852976f8a0609dd6bb72]
+link estate to recList--><path d="M4142.5,1320.092 C4163.77,1343.597 4196.79,1380.075 4214.77,1399.94 " fill="none" id="estate-to-recList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4220.26,1405.998,4217.1139,1398.0543,4212.6664,1402.0817,4220.26,1405.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3ac445fb6f757fa6e4393616377988b6]
+link estate to recSource--><path d="M4121.36,1320.092 C4120.18,1342.78 4118.39,1377.553 4117.34,1397.808 " fill="none" id="estate-to-recSource" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4116.91,1405.998,4120.319,1398.1636,4114.327,1397.8538,4116.91,1405.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[eaa073195481dbb3092d6f6574da224e]
+link lstate to editTitleContent--><path d="M5159.33,722.108 C5062.49,748.293 4859.35,803.221 4799.46,819.414 " fill="none" id="lstate-to-editTitleContent" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4791.69,821.514,4800.1955,822.3244,4798.6311,816.5319,4791.69,821.514" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0d902fdd41a224bbb00aaf67140e4691]
+link lstate to tracklist--><path d="M5233.02,730.092 C5256.02,753.699 5291.76,790.392 5311.06,810.198 " fill="none" id="lstate-to-tracklist" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5316.7,815.998,5313.2649,808.1749,5308.968,812.3626,5316.7,815.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[8877409f010f491edf050a6bfdc899fa]
+link lstate to tracklistCache--><path d="M5263.6,720.495 C5328.63,736.433 5443.07,765.593 5539.5,796 C5560.33,802.569 5583.88,811.332 5599.39,817.293 " fill="none" id="lstate-to-tracklistCache" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5607.11,820.285,5600.7315,814.6004,5598.5665,820.1962,5607.11,820.285" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[faea5b5ec46ed7bd87544f9e9ec66940]
+link lstate to watchlist--><path d="M5211.5,730.092 C5211.5,752.78 5211.5,787.553 5211.5,807.808 " fill="none" id="lstate-to-watchlist" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5211.5,815.998,5214.5,807.998,5208.5,807.998,5211.5,815.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d121f1ff167bb14b4a8b8eb33478dfa5]
+link lstate to watchlistCache--><path d="M5258.73,730.092 C5314.91,756.37 5405.76,798.863 5442.89,816.229 " fill="none" id="lstate-to-watchlistCache" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5450.35,819.72,5444.3722,813.6154,5441.8322,819.0512,5450.35,819.72" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ac01733138fec71f1dcff9d29fd4083d]
+link lstate to writeSuccess--><path d="M5173.41,730.092 C5129.53,755.544 5059.42,796.205 5027.85,814.517 " fill="none" id="lstate-to-writeSuccess" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5020.69,818.668,5029.1153,817.2487,5026.1046,812.0588,5020.69,818.668" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[fde6bed93dc9fa733b7da0f47f9e2598]
+link tstate to listSearchMode--><path d="M2869.24,264.26 C2880.59,285.79 2897.49,317.85 2907.42,336.67 " fill="none" id="tstate-to-listSearchMode" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2911.21,343.86,2910.1324,335.3842,2904.825,338.1827,2911.21,343.86" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c8d72e6e41a323bf6100f7998e65f44d]
+link tstate to searchActive--><path d="M2916.67,252.3 C3054.66,276.32 3392.12,335.05 3472.23,348.99 " fill="none" id="tstate-to-searchActive" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3480.32,350.4,3472.9523,346.0736,3471.9243,351.9849,3480.32,350.4" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3cac87d9d97eb9e0a028fa578505e9db]
+link tstate to sortMode--><path d="M2847.92,264.18 C2831.45,304.39 2799.5,392.4 2799.5,470 C2799.5,470 2799.5,470 2799.5,590 C2799.5,673.243 2770.56,769.94 2758.1,807.712 " fill="none" id="tstate-to-sortMode" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2755.44,815.623,2760.8294,808.9932,2755.1411,807.0842,2755.44,815.623" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5b7c86ea62e3d85892b58585ee16790b]
+link tstate to tracklistSorted--><path d="M2821.07,264.26 C2782.2,288.02 2722.36,324.59 2693.78,342.05 " fill="none" id="tstate-to-tracklistSorted" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2686.59,346.44,2694.9809,344.8297,2691.853,339.7094,2686.59,346.44" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d038717c788d90c92a8ba0ee1df33767]
+link tstate to watchlistSorted--><path d="M2798.36,246.22 C2740.38,253.35 2652.87,272.51 2597.5,324 C2559.31,359.51 2545.81,423.43 2541.43,453.51 " fill="none" id="tstate-to-watchlistSorted" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2540.34,461.68,2544.3576,454.1395,2538.4089,453.3571,2540.34,461.68" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[536657f121532b3111bd77905602b282]
+link ustate to currentUser--><path d="M2230.12,612.092 C2188.42,637.422 2121.9,677.818 2091.55,696.253 " fill="none" id="ustate-to-currentUser" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2084.65,700.445,2093.0442,698.8521,2089.927,693.7254,2084.65,700.445" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[52068335790316f8e5d777f7d25925cf]
+link ustate to GoTrueAuth--><path d="M2266.5,612.092 C2266.5,634.78 2266.5,669.553 2266.5,689.808 " fill="none" id="ustate-to-GoTrueAuth" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2266.5,697.998,2269.5,689.998,2263.5,689.998,2266.5,697.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3812b8ba406fe359f50dd4b7955bc2ed]
+link ustate to userOptions--><path d="M2322.53,604.209 C2447.98,636.265 2760.74,717.544 3019.5,796 C3042.8,803.065 3069.42,812.106 3086.34,817.974 " fill="none" id="ustate-to-userOptions" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3094.23,820.725,3087.6694,815.2515,3085.6881,820.9149,3094.23,820.725" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ef85696298cb409323bde925be318198]
+link aactions to closeAllModals--><path d="M2505.88,966.092 C2506.27,988.78 2506.87,1023.553 2507.22,1043.808 " fill="none" id="aactions-to-closeAllModals" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2507.36,1051.998,2510.221,1043.9472,2504.2219,1044.0512,2507.36,1051.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d6884bcb2de89ee988020c7b306e230b]
+link aactions to initialize--><path d="M2447.41,966.084 C2440.11,968.34 2432.68,970.389 2425.5,972 C2176.51,1027.857 2107.23,996.786 1854.5,1032 C1801.79,1039.345 1739.88,1050.961 1710.55,1056.644 " fill="none" id="aactions-to-initialize" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1702.54,1058.206,1710.9659,1059.6219,1709.8193,1053.7325,1702.54,1058.206" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[66becc4e9bf30b5fe947bb00b217ffd5]
+link aactions to toggleWindow--><path d="M2567.58,953.839 C2661.72,969.024 2846.07,999.798 3001.5,1032 C3037.7,1039.499 3079.75,1049.882 3102.6,1055.666 " fill="none" id="aactions-to-toggleWindow" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3110.36,1057.642,3103.3461,1052.763,3101.8674,1058.5779,3110.36,1057.642" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[03baab09877c737f28b34d55721792f3]
+link aactions to sendToastMessage--><path d="M2473.51,966.092 C2437.5,990.953 2380.48,1030.326 2353.13,1049.206 " fill="none" id="aactions-to-sendToastMessage" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2346.55,1053.752,2354.8383,1051.6773,2351.4304,1046.739,2346.55,1053.752" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[21022c657b1c275d991d725a72637a18]
+link eactions to clearRecommendations--><path d="M4409.88,1320.092 C4451.58,1345.422 4518.1,1385.818 4548.45,1404.253 " fill="none" id="eactions-to-clearRecommendations" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4555.35,1408.445,4550.073,1401.7254,4546.9558,1406.8521,4555.35,1408.445" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3105b90e3c7ccc88de0d8665fccc5dbc]
+link eactions to getRecommendations--><path d="M4449.1,1319.547 C4546.88,1347.414 4710.9,1394.162 4763.63,1409.192 " fill="none" id="eactions-to-getRecommendations" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4771.37,1411.398,4764.4942,1406.3261,4762.8547,1412.0978,4771.37,1411.398" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[cd5ad49ac97d480b41a2a0f3eb2c995e]
+link eactions to initializeExplore--><path d="M4297.74,1317.615 C4232.89,1334.712 4137.17,1360.674 4054.5,1386 C4031.47,1393.055 4005.16,1402.099 3988.45,1407.969 " fill="none" id="eactions-to-initializeExplore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3980.66,1410.723,3989.2023,1410.895,3987.2091,1405.2357,3980.66,1410.723" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[fbd9fa9880dca5c59879a7668a93405b]
+link eactions to updateRecSource--><path d="M4371.98,1320.092 C4370.41,1342.78 4368.01,1377.553 4366.62,1397.808 " fill="none" id="eactions-to-updateRecSource" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4366.05,1405.998,4369.5926,1398.223,4363.6068,1397.8108,4366.05,1405.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4eb9e76a8460a17d8b57a69ee44c177f]
+link lactions to clearEditTitle--><path d="M4237.59,604.103 C4305.16,620.533 4418.89,649.129 4515.5,678 C4538.58,684.897 4564.87,693.978 4581.57,699.9 " fill="none" id="lactions-to-clearEditTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4589.36,702.681,4582.8318,697.169,4580.8171,702.8207,4589.36,702.681" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e04636c6ed0c8c4d52c57c7f625c5b27]
+link lactions to deleteFromSearchResults--><path d="M4161.17,612.058 C4147.55,629.64 4128.31,655.033 4112.5,678 C4007.07,831.173 3975.91,867.348 3889.5,1032 C3883.21,1043.993 3806.15,1225.911 3783.02,1280.579 " fill="none" id="lactions-to-deleteFromSearchResults" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3779.9,1287.952,3785.7789,1281.7521,3780.2527,1279.4153,3779.9,1287.952" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e383268d29ee6669f954e5f32c463ee4]
+link lactions to deleteItem--><path d="M4178.5,612.092 C4178.5,634.78 4178.5,669.553 4178.5,689.808 " fill="none" id="lactions-to-deleteItem" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4178.5,697.998,4181.5,689.998,4175.5,689.998,4178.5,697.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[1db3f265d23af874580c3566f02c1b9e]
+link lactions to editListItem--><path d="M4217.73,612.092 C4263.15,637.665 4335.83,678.592 4368.12,696.777 " fill="none" id="lactions-to-editListItem" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4375.42,700.887,4369.9233,694.3459,4366.9776,699.5731,4375.42,700.887" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a9b4982ed69d50dce4059130bb20442d]
+link lactions to initializeList--><path d="M4119.32,604.057 C4095.84,609.167 4068.51,614.532 4043.5,618 C3671.45,669.589 3573.14,630.794 3200.5,678 C3058.41,696 3024.86,712.955 2883.5,736 C2697.83,766.268 2639.67,727.399 2464.5,796 C2422.26,812.544 2419.81,831.346 2380.5,854 C2326.41,885.172 2307.5,882.683 2253.5,914 C2135.32,982.532 2124.6,1030.761 2001.5,1090 C1916.73,1130.797 1887.23,1118.714 1798.5,1150 C1780.75,1156.258 1760.9,1164.593 1747.25,1170.538 " fill="none" id="lactions-to-initializeList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1739.62,1173.891,1748.1512,1173.4226,1745.7396,1167.9286,1739.62,1173.891" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[36776d21cb05affdf3490bce814c7451]
+link lactions to readList--><path d="M4119.42,607.618 C4028.82,634.635 3860.39,684.859 3806.53,700.921 " fill="none" id="lactions-to-readList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3798.63,703.276,3807.1537,703.865,3805.4392,698.1151,3798.63,703.276" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0f3fd866efcbdaa9a11c4ae89658cc68]
+link lactions to selectEditTitle--><path d="M4237.72,608.833 C4318.43,634.516 4453.09,677.433 4453.5,678 C4546.18,804.961 4363.89,993.655 4308.67,1046.061 " fill="none" id="lactions-to-selectEditTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4302.59,1051.763,4310.4776,1048.4788,4306.3732,1044.1022,4302.59,1051.763" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d2e37030da6af05c36c7755383d62fda]
+link lactions to toggleWriteSuccess--><path d="M4201.32,612.273 C4216.52,628.792 4235.18,652.743 4243.5,678 C4251.56,702.485 4248.22,710.658 4243.5,736 C4220.28,860.69 4150.81,999.242 4126.79,1044.673 " fill="none" id="lactions-to-toggleWriteSuccess" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4122.97,1051.826,4129.3791,1046.1759,4124.0836,1043.3549,4122.97,1051.826" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9a58ad30362f7efb088a696227451159]
+link lactions to updateSearchResult--><path d="M4237.54,600.345 C4380.63,625.419 4740.31,688.444 4823.25,702.978 " fill="none" id="lactions-to-updateSearchResult" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4831.19,704.369,4823.8305,700.0288,4822.7913,705.9381,4831.19,704.369" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ddff8f0688fcfec76af571b90daa6c69]
+link lactions to writeList--><path d="M4141.74,612.092 C4099.6,637.422 4032.39,677.818 4001.72,696.253 " fill="none" id="lactions-to-writeList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3994.74,700.445,4003.1433,698.9007,4000.0558,693.7561,3994.74,700.445" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f12acec8f255078729a93284b2235c59]
+link tactions to initializeTools--><path d="M3218.31,729.447 C3209.36,731.9 3200.25,734.172 3191.5,736 C2972.85,781.702 2910.84,748.858 2692.5,796 C2607.31,814.393 2391.45,866.328 2318.5,914 C2231.49,970.856 2252.52,1034.713 2164.5,1090 C2079.77,1143.225 2042.62,1118.928 1947.5,1150 C1927.63,1156.489 1905.25,1165.155 1890.35,1171.118 " fill="none" id="tactions-to-initializeTools" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1882.52,1174.28,1891.0616,1174.0756,1888.821,1168.5096,1882.52,1174.28" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9e69b96c20cb37c074da80fb059f70df]
+link tactions to resetList--><path d="M3350.71,719.964 C3423.5,734.103 3543.28,760.3 3642.5,796 C3657.03,801.229 3672.77,808.967 3684.18,814.984 " fill="none" id="tactions-to-resetList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3691.32,818.822,3685.7029,812.384,3682.8547,817.6649,3691.32,818.822" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d708d9dd11124841283af3f27ecf730e]
+link tactions to searchList--><path d="M3288.31,730.092 C3292.24,752.882 3298.27,787.866 3301.76,808.081 " fill="none" id="tactions-to-searchList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3303.12,815.998,3304.7167,807.6045,3298.804,808.6242,3303.12,815.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3b284a6b977394a0d5a3d53279941095]
+link tactions to sortList--><path d="M3218.38,728.594 C3209.38,731.196 3200.23,733.736 3191.5,736 C3070.4,767.389 3033.82,752.59 2916.5,796 C2903.93,800.65 2890.65,807.849 2880.65,813.783 " fill="none" id="tactions-to-sortList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2873.71,818.011,2882.1012,816.4022,2878.9743,811.2814,2873.71,818.011" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5e06a6853d9e3848a7384eac18fd3dd7]
+link tactions to updateSort--><path d="M3340.11,730.092 C3407.61,756.905 3517.59,800.598 3559.53,817.257 " fill="none" id="tactions-to-updateSort" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3567.19,820.301,3560.8653,814.5566,3558.6477,820.1317,3567.19,820.301" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[44a484f1ce687709cb71eae9b869c819]
+link uactions to attemptConfirmation--><path d="M1016.98,966.092 C993.983,989.699 958.239,1026.392 938.945,1046.198 " fill="none" id="uactions-to-attemptConfirmation" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="933.295,1051.998,941.0265,1048.3616,936.7291,1044.1745,933.295,1051.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[447e566f55b684b0b5e08992249c7e2c]
+link uactions to attemptLogin--><path d="M1101.57,954.183 C1187.33,968.588 1345.22,997.091 1477.5,1032 C1501.29,1038.28 1528.18,1047.507 1545.23,1053.631 " fill="none" id="uactions-to-attemptLogin" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1553.18,1056.518,1546.6833,1050.9688,1544.6365,1056.6089,1553.18,1056.518" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[70caef5462606c6b0a7f8f62823ee02c]
+link uactions to attemptLogout--><path d="M1101.68,948.408 C1157.24,956.019 1235.09,976.597 1273.5,1032 C1302.27,1073.493 1266.16,1135.284 1246.57,1163.275 " fill="none" id="uactions-to-attemptLogout" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1241.78,1169.93,1248.8884,1165.1896,1244.0186,1161.6845,1241.78,1169.93" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[34eafc702653c7d68014ba256561892c]
+link uactions to attemptPasswordRecovery--><path d="M1060.02,966.092 C1083.02,989.699 1118.76,1026.392 1138.06,1046.198 " fill="none" id="uactions-to-attemptPasswordRecovery" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1143.7,1051.998,1140.2649,1044.1749,1135.968,1048.3626,1143.7,1051.998" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[94302b1c13560d82d134ab1b5a10686e]
+link uactions to attemptSignup--><path d="M975.436,945.034 C827.852,948.565 449.199,964.086 141.5,1032 C118.985,1036.969 94.0619,1046.345 78.1127,1052.871 " fill="none" id="uactions-to-attemptSignup" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="70.6506,1055.986,79.1888,1055.6723,76.8772,1050.1354,70.6506,1055.986" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[33e072a0665292de0981ba7b89fd698e]
+link uactions to initAuth--><path d="M975.387,943.311 C839.647,943.488 511.137,952.863 250.5,1032 C237.002,1036.098 222.888,1043.543 212.476,1049.726 " fill="none" id="uactions-to-initAuth" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="205.61,1053.94,213.9976,1052.3127,210.8594,1047.1988,205.61,1053.94" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[96d4798b58dff0c6d238f7de8820b06d]
+link uactions to initializeUser--><path d="M1101.65,951.664 C1160.05,961.566 1246.5,983.686 1305.5,1032 C1348.82,1067.474 1373.86,1131.887 1383.66,1161.858 " fill="none" id="uactions-to-initializeUser" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1386.12,1169.665,1386.5796,1161.1334,1380.8565,1162.9348,1386.12,1169.665" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7e4547bceb1815fc3c46aafceb8c1cea]
+link uactions to processInvite--><path d="M1101.75,951.173 C1225.9,965.399 1510.16,998.701 1748.5,1032 C1808.34,1040.36 1879.11,1051.836 1911.17,1057.121 " fill="none" id="uactions-to-processInvite" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1919.15,1058.44,1911.7439,1054.1798,1910.7688,1060.1,1919.15,1058.44" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9c01f37a6e9e8b17d798a10c023ef458]
+link uactions to requestPasswordRecovery--><path d="M975.165,957.278 C894.88,974.197 752.26,1004.547 630.5,1032 C594.15,1040.196 551.687,1050.32 528.594,1055.872 " fill="none" id="uactions-to-requestPasswordRecovery" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="520.744,1057.763,529.2242,1058.8055,527.8187,1052.9725,520.744,1057.763" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a3da2a807b8173a9fddc02324af2fc2b]
+link uactions to updateUserAccount--><path d="M979.081,966.092 C906.329,993.14 787.375,1037.367 743.471,1053.69 " fill="none" id="uactions-to-updateUserAccount" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="735.951,1056.486,744.495,1056.5094,742.4036,1050.8857,735.951,1056.486" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[48a2fb601f89d50012db3072a79cebcb]
+link uactions to setUserPrefs--><path d="M975.499,947.431 C858.646,954.92 601.135,976.716 391.5,1032 C372.668,1036.966 352.079,1045.619 338.138,1051.995 " fill="none" id="uactions-to-setUserPrefs" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="330.761,1055.44,339.2789,1054.7725,336.7397,1049.3363,330.761,1055.44" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[26d99e4a56157cc0438e593bc9c3fa16]
+link initialize to initializeExplore--><path d="M1687.46,1070.203 C1670.25,1094.614 1624.54,1167.601 1661.5,1208 C1826.27,1388.122 3752.03,1411.846 3954.34,1413.845 " fill="none" id="initialize-to-initializeExplore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3962.43,1413.922,3954.4626,1410.8365,3954.3983,1416.8361,3962.43,1413.922" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[af9fda8bb074b160e3ee32de052c2534]
+link initialize to initializeList--><path d="M1696.16,1070.342 C1702.27,1089.488 1717.38,1136.852 1725.36,1161.891 " fill="none" id="initialize-to-initializeList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1727.86,1169.733,1728.2904,1161.1998,1722.5734,1163.0209,1727.86,1169.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[18fd6efbf3bb71c4233565c93e4ed829]
+link initialize to initializeTools--><path d="M1702.67,1067.912 C1731.43,1086.446 1820.11,1143.595 1857.07,1167.411 " fill="none" id="initialize-to-initializeTools" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1864.13,1171.961,1859.027,1165.1083,1855.7794,1170.1534,1864.13,1171.961" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[bfdc166f1b4171cb8a090b7ec683d70a]
+link initialize to initializeUser--><path d="M1684.17,1067.164 C1673.21,1073.117 1654.36,1082.983 1637.5,1090 C1560.42,1122.078 1537.91,1121.344 1459.5,1150 C1440.77,1156.844 1419.53,1165.316 1405.2,1171.137 " fill="none" id="initialize-to-initializeUser" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1397.63,1174.227,1406.1703,1173.9756,1403.8992,1168.422,1397.63,1174.227" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[53db8fc3fcc5304372b1e1bafb75902a]
+link initialize to attemptLogout--><path d="M1684.33,1067.589 C1673.52,1073.942 1654.81,1084.183 1637.5,1090 C1499.92,1136.236 1456.8,1112.856 1316.5,1150 C1293.96,1155.966 1268.67,1165.119 1252.44,1171.322 " fill="none" id="initialize-to-attemptLogout" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1244.84,1174.264,1253.3836,1174.1763,1251.2193,1168.5803,1244.84,1174.264" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7824a7b083f8264a2c30978c79e4fac1]
+reverse link setToastMessage to getRecommendations--><path d="M3949.94,605.544 C3943.02,622.859 3932.56,651.86 3928.5,678 C3924.55,703.473 3925.2,710.435 3928.5,736 C3949.34,897.332 3906.56,974.887 4021.5,1090 C4095.23,1163.845 4150.82,1113.286 4248.5,1150 C4469.52,1233.072 4720.82,1378.772 4771.37,1408.582 " fill="none" id="setToastMessage-backto-getRecommendations" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3953.01,598.047,3947.2002,604.3117,3952.7521,606.5871,3953.01,598.047" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a37b11331446d60e24cba9258087a8bf]
+reverse link setToastMessage to deleteItem--><path d="M3973.04,598.645 C4016.91,621.565 4135.15,683.347 4169.2,701.143 " fill="none" id="setToastMessage-backto-deleteItem" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3965.76,594.837,3971.4644,601.1978,3974.2403,595.8786,3965.76,594.837" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f0f924e4ab20db5b8036c729f4270cd8]
+reverse link setToastMessage to editListItem--><path d="M3973.98,594.738 C4046.36,614.356 4321.34,688.882 4375.29,703.503 " fill="none" id="setToastMessage-backto-editListItem" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3965.84,592.531,3972.7809,597.5134,3974.3455,591.721,3965.84,592.531" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c7831a31e80d1b7fd2ff66a72f44b594]
+reverse link setToastMessage to readList--><path d="M3940.43,601.165 C3906.02,625.062 3826.16,680.534 3798.85,699.503 " fill="none" id="setToastMessage-backto-readList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3947.04,596.569,3938.7565,598.6627,3942.1756,603.5931,3947.04,596.569" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9fc8aa7962cb497893724b06fd8ec5a0]
+reverse link setToastMessage to writeList--><path d="M3960.55,606.208 C3966.83,631.306 3978.67,678.662 3983.43,697.733 " fill="none" id="setToastMessage-backto-writeList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3958.59,598.342,3957.6221,606.831,3963.4425,605.3743,3958.59,598.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5e6c233f540bd2428c36ceabb38e9bdf]
+reverse link setToastMessage to attemptLogin--><path d="M3939.2,591.541 C3852.82,599.302 3459.79,635.413 3139.5,678 C2807.19,722.187 2704.66,668.779 2394.5,796 C2353.53,812.803 2353.57,835.163 2313.5,854 C2032.33,986.177 1933.62,937.996 1637.5,1032 C1613.39,1039.654 1585.65,1050.577 1571.63,1056.252 " fill="none" id="setToastMessage-backto-attemptLogin" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3947.2,590.825,3938.9641,588.5514,3939.4998,594.5274,3947.2,590.825" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[cd4b5ca94bb13edc411121f1aab71618]
+link readList to resetList--><path d="M3783.1,716.342 C3768.15,735.822 3730.79,784.516 3711.87,809.182 " fill="none" id="readList-to-resetList" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3706.84,815.733,3714.0908,811.2136,3709.3313,807.5603,3706.84,815.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c1a545083f82b4625a9dc42b9a0766cd]
+link readList to updateSort--><path d="M3780.35,712.984 C3747.51,730.866 3635.35,791.948 3592.93,815.051 " fill="none" id="readList-to-updateSort" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3585.86,818.904,3594.3202,817.7102,3591.4492,812.4417,3585.86,818.904" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[95a3dbb9656b9900f6de7dc7691e1e90]
+link currentUser to app--><path d="M2084.6,710.557 C2104.75,716.119 2154.77,729.348 2197.5,736 C2514.35,785.324 2609.1,704.735 2916.5,796 C2919.97,797.029 2923.46,798.306 2926.92,799.743 " fill="none" id="currentUser-to-app" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2934.39,803.11,2928.3382,797.0787,2925.8647,802.5452,2934.39,803.11" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[607f0b5b8b182ce91ba682a0205d8a37]
+reverse link readList to app--><path d="M3772.03,709.355 C3672.98,717.144 3181.1,757.216 3034.5,796 C3023.91,798.801 3012.8,802.985 3002.78,807.27 " fill="none" id="readList-backto-app" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3780.14,708.721,3771.929,706.3588,3772.4004,712.3403,3780.14,708.721" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7418064a8d74b2ba359c8ec5f6f0e295]
+link windowOpen to app--><path d="M2921.28,1056.702 C2883.04,1042.928 2738.26,989.885 2726.5,972 C2712.34,950.463 2711.26,934.792 2726.5,914 C2778.85,842.574 2834.93,888.478 2916.5,854 C2919.98,852.53 2923.53,850.905 2927.06,849.198 " fill="none" id="windowOpen-to-app" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2934.26,845.604,2925.7622,846.491,2928.4407,851.8599,2934.26,845.604" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3734132df86c711308246816fa53d309]
+link GoTrueAuth to admin--><path d="M2266.5,716.342 C2266.5,735.404 2266.5,782.439 2266.5,807.561 " fill="none" id="GoTrueAuth-to-admin" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2266.5,815.733,2269.5,807.733,2263.5,807.733,2266.5,815.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5e56e80468f2d522f1d31299c8da9d8a]
+link recList to explore--><path d="M4226.85,1405.697 C4225.01,1383.297 4219.17,1319.824 4208.5,1268 C4204.48,1248.482 4198.4,1226.958 4193.24,1210.082 " fill="none" id="recList-to-explore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4190.79,1202.2,4190.2955,1210.7297,4196.026,1208.9516,4190.79,1202.2" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[19368f3c32f990b366d0d7ee2283c939]
+link recSource to explore--><path d="M4107.24,1407.589 C4089.44,1394.633 4050.94,1363.361 4036.5,1326 C4027.2,1301.957 4023.79,1290.425 4036.5,1268 C4056.05,1233.504 4095.11,1211.072 4128.05,1197.493 " fill="none" id="recSource-to-explore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4135.84,1194.397,4127.2977,1194.5663,4129.5153,1200.1414,4135.84,1194.397" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[95949ca5569eb581f30f6ca3751c8aab]
+link windowOpen to explore--><path d="M2939.68,1064.856 C2958.67,1070.635 3003.72,1083.703 3042.5,1090 C3150.21,1107.49 3913.34,1159.769 4127.65,1174.247 " fill="none" id="windowOpen-to-explore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4135.94,1174.807,4128.162,1171.271,4127.7549,1177.2572,4135.94,1174.807" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[1e4afdded29a13d4d065ce086ff4834a]
+link currentUser to home--><path d="M2067.01,716.342 C2046.94,736.073 1996.38,785.774 1971.62,810.123 " fill="none" id="currentUser-to-home" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1965.91,815.733,1973.7165,812.2604,1969.5082,807.9836,1965.91,815.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[1832e813dbae175281af9de46888f0ee]
+reverse link sendToastMessage to import--><path d="M2337.5,1078.538 C2337.5,1103.719 2337.5,1150.745 2337.5,1169.733 " fill="none" id="sendToastMessage-backto-import" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2337.5,1070.342,2334.5,1078.342,2340.5,1078.342,2337.5,1070.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[db4cc14fb868a048450626b1ff7edc0d]
+reverse link toggleWindow to import--><path d="M3102.67,1066.755 C3079.91,1073.01 3037.96,1083.921 3001.5,1090 C2731.04,1135.089 2649.12,1067.938 2387.5,1150 C2372.12,1154.824 2356.18,1164.755 2346.55,1171.398 " fill="none" id="toggleWindow-backto-import" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3110.41,1064.605,3101.8988,1063.8572,3103.5058,1069.638,3110.41,1064.605" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2eefcd44d0d3c756db0c2cb669979723]
+reverse link sendToastMessage to invite--><path d="M2320.54,1068.415 C2285.33,1081.95 2202,1115.066 2135.5,1150 C2122.63,1156.761 2108.5,1165.842 2099.58,1171.804 " fill="none" id="sendToastMessage-backto-invite" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2328.42,1065.407,2319.8762,1065.4613,2322.0186,1071.0658,2328.42,1065.407" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[aec351c49b2d596085d536dc81ae5d9d]
+reverse link readList to list--><path d="M3789.5,689.383 C3789.5,648.043 3789.5,540.55 3789.5,494.01 " fill="none" id="readList-backto-list" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3789.5,697.573,3792.5,689.573,3786.5,689.573,3789.5,697.573" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[66aba95b32a17311c2111ab7f79e2d9f]
+link searchActive to list--><path d="M3498.81,357.6 C3536.66,372.24 3680.37,427.8 3750.51,454.93 " fill="none" id="searchActive-to-list" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3758.29,457.93,3751.8987,452.2598,3749.7463,457.8604,3758.29,457.93" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[46e9f0754cb5e4da525c8732dca5ca4c]
+link tracklist to list--><path d="M5324.69,815.932 C5324.8,791.267 5321.59,716.23 5280.5,678 C5061.51,474.24 4041.74,470.17 3828.61,471.59 " fill="none" id="tracklist-to-list" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3820.5,471.65,3828.5265,474.5785,3828.4729,468.5787,3820.5,471.65" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[426d3a016ef87d2a30b680dc3c6d48d2]
+reverse link toggleWindow to list--><path d="M3136.59,1055.257 C3186.05,1041.329 3328.29,999.782 3367.5,972 C3449.51,913.893 3445.08,873.145 3509.5,796 C3605.52,681.017 3723.86,546.31 3769.89,494.17 " fill="none" id="toggleWindow-backto-list" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3128.73,1057.458,3137.2426,1058.1899,3135.6249,1052.4121,3128.73,1057.458" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[aab4b23e26372b8ea24dee2e8325f946]
+link watchlist to list--><path d="M5202.07,817.504 C5168.09,794.441 5048.17,715.866 4937.5,678 C4788.17,626.906 4742.9,645.536 4587.5,618 C4295.65,566.287 3944.36,500.93 3828.58,479.31 " fill="none" id="watchlist-to-list" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3820.66,477.83,3827.9711,482.2513,3829.0755,476.3538,3820.66,477.83" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[272028f0dbca6cdd9b92228875dbd8bd]
+link windowOpen to list--><path d="M2939.69,1058.007 C2980.06,1049.063 3141,1011.338 3171.5,972 C3251.95,868.234 3119.34,781.215 3200.5,678 C3339.99,500.6 3642.5,475.51 3750.34,472.31 " fill="none" id="windowOpen-to-list" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3758.36,472.11,3750.2825,469.3253,3750.4432,475.3231,3758.36,472.11" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5968662864fbff723d0715ad0dd985a6]
+link currentUser to profile--><path d="M2066.31,710.032 C2030.06,718.211 1893.74,750.495 1788.5,796 C1546.59,900.604 1518.84,993.705 1273.5,1090 C1140.43,1142.23 968.238,1168.416 913.79,1175.781 " fill="none" id="currentUser-to-profile" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="905.553,1176.872,913.8779,1178.7947,913.0894,1172.8467,905.553,1176.872" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c38346cc8c0d6a5a74d19a1a6c35529f]
+reverse link updateUserAccount to profile--><path d="M742.318,1072.793 C777.175,1096.578 859.697,1152.888 887.315,1171.733 " fill="none" id="updateUserAccount-backto-profile" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="735.64,1068.237,740.5578,1075.2238,743.9393,1070.2674,735.64,1068.237" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[189530c19c86c1d65a61962593b5f787]
+reverse link requestPasswordRecovery to recover--><path d="M511.5,1078.538 C511.5,1103.719 511.5,1150.745 511.5,1169.733 " fill="none" id="requestPasswordRecovery-backto-recover" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="511.5,1070.342,508.5,1078.342,514.5,1078.342,511.5,1070.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[57840af7afaf2b3dd65f58c612bb602b]
+reverse link processInvite to signup--><path d="M1937.62,1077.556 C1952.23,1102.476 1980.38,1150.496 1991.65,1169.733 " fill="none" id="processInvite-backto-signup" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1933.39,1070.342,1934.8485,1078.7606,1940.0244,1075.7258,1933.39,1070.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[16ca6c684a4916fb1a566fe2225c38b6]
+reverse link sendToastMessage to signup--><path d="M2320.52,1066.846 C2262,1083.581 2070.85,1138.549 2044.5,1150 C2030.34,1156.152 2015.13,1165.551 2005.71,1171.736 " fill="none" id="sendToastMessage-backto-signup" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2328.44,1064.582,2319.9235,1063.8973,2321.5732,1069.666,2328.44,1064.582" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[cedc2876abe6ad53925c5ad88a6ed71f]
+link currentUser to GlobalFooter--><path d="M2075.5,716.342 C2075.5,735.404 2075.5,782.439 2075.5,807.561 " fill="none" id="currentUser-to-GlobalFooter" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2075.5,815.733,2078.5,807.733,2072.5,807.733,2075.5,815.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4906476d6d37452e50a9dadd2c9472d4]
+link currentUser to GlobalMenu--><path d="M2082.39,716.286 C2106.07,744.54 2184.5,836.335 2218.5,854 C2364.78,929.992 2477.79,788.367 2584.5,914 C2635.14,973.618 2621.04,1020.838 2584.5,1090 C2560.52,1135.379 2501.46,1161.766 2472.32,1172.435 " fill="none" id="currentUser-to-GlobalMenu" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2464.63,1175.137,2473.1719,1175.3244,2471.1889,1169.6616,2464.63,1175.137" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7c45b8e976e1f69d10f9aad51e68d8db]
+reverse link toggleWindow to GlobalMenu--><path d="M3102.63,1066.493 C3079.81,1072.455 3037.8,1083.037 3001.5,1090 C2821.5,1124.524 2774.04,1118.432 2593.5,1150 C2544.62,1158.547 2486.48,1171.146 2464.51,1175.996 " fill="none" id="toggleWindow-backto-GlobalMenu" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3110.38,1064.451,3101.8792,1063.5927,3103.4109,1069.3939,3110.38,1064.451" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2ecf6df48591fe4550b56a496475bd63]
+link currentUser to GlobalNav--><path d="M2066.4,712.691 C2032.28,730.285 1911.58,792.508 1867.11,815.435 " fill="none" id="currentUser-to-GlobalNav" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1859.96,819.122,1868.4448,818.1178,1865.6923,812.7863,1859.96,819.122" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f82406a58ae0c37931acc9f713d4fa37]
+reverse link attemptLogin to HomeLogin--><path d="M1557.33,1078.208 C1549.32,1103.306 1534.22,1150.662 1528.14,1169.733 " fill="none" id="attemptLogin-backto-HomeLogin" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1559.84,1070.342,1554.5523,1077.0532,1560.2689,1078.8752,1559.84,1070.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5b18b71da7b1c1bb32229cbf20b81ef1]
+reverse link initialize to HomeLogin--><path d="M1677.87,1072.793 C1643.42,1096.578 1561.87,1152.888 1534.58,1171.733 " fill="none" id="initialize-backto-HomeLogin" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1684.47,1068.237,1676.1848,1070.3239,1679.5999,1075.2571,1684.47,1068.237" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[31e25a3bff37ede878940900187a27b7]
+link windowOpen to ModalBackdrop--><path d="M2921.39,1066.129 C2883.75,1083.183 2740.08,1148.285 2691.03,1170.512 " fill="none" id="windowOpen-to-ModalBackdrop" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2683.5,1173.921,2692.0251,1173.353,2689.5496,1167.8875,2683.5,1173.921" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2f38c65e81ee50111f51ecb71f2ee133]
+link toastMessage to ToastMessage--><path d="M2749.1,1064.767 C2674.04,1076.772 2377.53,1124.873 2286.5,1150 C2265.93,1155.679 2243.05,1164.62 2228.03,1170.866 " fill="none" id="toastMessage-ToastMessage" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2220.57,1174.021,2229.1068,1173.6705,2226.7714,1168.1437,2220.57,1174.021" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2757.13,1063.486,2748.7579,1061.7805,2749.7009,1067.706,2757.13,1063.486" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f94595362f41bc15619190db143b9f3a]
+reverse link toggleWindow to BtnAddTitle--><path d="M3102.79,1068.303 C3065.03,1082.579 2970.28,1118.584 2891.5,1150 C2870.39,1158.418 2845.76,1168.667 2832.71,1174.13 " fill="none" id="toggleWindow-backto-BtnAddTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3110.35,1065.448,3101.806,1065.4557,3103.9178,1071.0718,3110.35,1065.448" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[34ef2c9f95826ec9fecfdb6f00bee4a4]
+link windowOpen to BtnAddTitle--><path d="M2922.8,1070.342 C2904.68,1089.99 2859.15,1139.354 2836.59,1163.812 " fill="none" id="windowOpen-to-BtnAddTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2831.13,1169.733,2838.7576,1165.8833,2834.3455,1161.8172,2831.13,1169.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[921e3b70bebb57405799318c1a59cfcb]
+reverse link initializeExplore to BtnExploreClear--><path d="M3971.5,1432.538 C3971.5,1457.719 3971.5,1504.7454 3971.5,1523.7332 " fill="none" id="initializeExplore-backto-BtnExploreClear" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3971.5,1424.342,3968.5,1432.342,3974.5,1432.342,3971.5,1424.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4d20c03514087fd667aa368ffa98e262]
+link recSource to BtnExploreClear--><path d="M4107.43,1423.256 C4083.32,1442.542 4017.44,1495.2517 3987.13,1519.4962 " fill="none" id="recSource-to-BtnExploreClear" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3980.57,1524.7464,3988.6904,1522.0895,3984.9411,1517.4052,3980.57,1524.7464" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d98381962a8b85cd40df21c3b681422b]
+reverse link selectEditTitle to BtnListItemControls--><path d="M4276.6,1069.019 C4260.79,1075.336 4236.4,1084.452 4214.5,1090 C3994.22,1145.803 3715.81,1172.459 3662.53,1177.216 " fill="none" id="selectEditTitle-backto-BtnListItemControls" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4284.43,1065.838,4275.8892,1066.073,4278.1497,1071.6309,4284.43,1065.838" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[53d3392c8ee5b20da1f1c27d321b2875]
+reverse link toggleWindow to BtnListItemControls--><path d="M3136.31,1066.817 C3157.3,1072.736 3194.37,1082.868 3226.5,1090 C3371.18,1122.115 3410.15,1116.463 3554.5,1150 C3587.9,1157.761 3626.89,1169.63 3644.29,1175.08 " fill="none" id="toggleWindow-backto-BtnListItemControls" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3128.6,1064.63,3135.4847,1069.6897,3137.1141,1063.9152,3128.6,1064.63" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[39a7aa3b32b0876652ef4e69e1872e49]
+reverse link selectEditTitle to BtnListItemEdit--><path d="M4277.11,1069.17 C4261.38,1075.726 4236.77,1085.121 4214.5,1090 C3926.78,1153.024 3842.58,1088.641 3554.5,1150 C3527.43,1155.766 3496.91,1167.708 3481.89,1173.97 " fill="none" id="selectEditTitle-backto-BtnListItemEdit" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4284.47,1066.039,4275.9339,1066.4071,4278.2808,1071.9291,4284.47,1066.039" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0d689b1e90a1bec4a744d5da5c5ef753]
+reverse link toggleWindow to BtnListItemEdit--><path d="M3136.61,1067.509 C3179.32,1081.276 3294.06,1118.35 3389.5,1150 C3416.35,1158.904 3448,1169.65 3463.3,1174.861 " fill="none" id="toggleWindow-backto-BtnListItemEdit" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3128.84,1065.005,3135.5321,1070.3169,3137.3747,1064.6068,3128.84,1065.005" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[76c50066f4e75a7de1cecdf7ca68cb32]
+reverse link deleteFromSearchResults to BtnListItemRemove--><path d="M3776.5,1314.328 C3776.5,1360.419 3776.5,1490.361 3776.5,1523.9791 " fill="none" id="deleteFromSearchResults-backto-BtnListItemRemove" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3776.5,1306.055,3773.5,1314.055,3779.5,1314.055,3776.5,1306.055" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4f837612b02a1586cc62727496b9e9e9]
+reverse link deleteItem to BtnListItemRemove--><path d="M4170.71,723.511 C4147.42,769.982 4076.55,912.26 4021.5,1032 C3961.97,1161.485 3957.22,1198.527 3893.5,1326 C3853.96,1405.096 3798.31,1496.635 3781.5,1523.9272 " fill="none" id="deleteItem-backto-BtnListItemRemove" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4174.37,716.203,4168.1034,722.0108,4173.4674,724.6992,4174.37,716.203" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[68394ecf1dc1caa0252205e856e64d0c]
+reverse link initializeExplore to BtnListItemRemove--><path d="M3955.35,1425.606 C3916.13,1448.939 3816.79,1508.0298 3785.85,1526.4375 " fill="none" id="initializeExplore-backto-BtnListItemRemove" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3962.36,1421.439,3953.9501,1422.9467,3957.0151,1428.1047,3962.36,1421.439" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[397266b742ae52514670175ed01a524f]
+link recSource to BtnListItemRemove--><path d="M4107.4,1420.518 C4095.44,1426.361 4073.69,1436.657 4054.5,1444 C3957.63,1481.0602 3837.75,1515.1662 3793.74,1527.3085 " fill="none" id="recSource-to-BtnListItemRemove" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3785.75,1529.4991,3794.2584,1530.278,3792.6726,1524.4913,3785.75,1529.4991" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[cb0f74c4ed6bb7e128a388b20a340a80]
+link searchActive to BtnListItemRemove--><path d="M3484.12,362.1 C3465.29,391.25 3403.5,494.08 3403.5,588 C3403.5,588 3403.5,588 3403.5,826 C3403.5,1037.324 3656.11,961.429 3751.5,1150 C3763.14,1173.002 3763.83,1185.364 3751.5,1208 C3727.96,1251.193 3682.04,1224.807 3658.5,1268 C3646.17,1290.636 3651.87,1301.089 3658.5,1326 C3679.49,1404.872 3738.61,1484.9838 3764.31,1517.2247 " fill="none" id="searchActive-to-BtnListItemRemove" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3769.54,1523.6971,3766.8414,1515.5904,3762.1764,1519.3637,3769.54,1523.6971" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[eeb438fac6e12c9de2db7473e93f0666]
+reverse link toggleWindow to BtnListItemRemove--><path d="M3107.78,1076.873 C3087.44,1104.627 3050.26,1165.354 3077.5,1208 C3247.41,1474.0355 3698.1,1524.9206 3767.48,1531.2476 " fill="none" id="toggleWindow-backto-BtnListItemRemove" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3112.77,1070.259,3105.5566,1074.8379,3110.346,1078.4519,3112.77,1070.259" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[33929e29b3346b95fd885439125d88bb]
+link windowOpen to BtnListItemRemove--><path d="M2921.36,1065.055 C2905.16,1070.421 2870.31,1081.752 2840.5,1090 C2723.24,1122.446 2523.02,1108.835 2593.5,1208 C2739.27,1413.09 3624.02,1515.6323 3759.19,1530.1862 " fill="none" id="windowOpen-to-BtnListItemRemove" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3767.3,1531.0502,3759.6606,1527.224,3759.0284,1533.1906,3767.3,1531.0502" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e3bae7d0415c054113e60d6cf41376fe]
+reverse link attemptLogout to BtnLogout--><path d="M1235.5,1196.538 C1235.5,1221.719 1235.5,1268.745 1235.5,1287.733 " fill="none" id="attemptLogout-backto-BtnLogout" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1235.5,1188.342,1232.5,1196.342,1238.5,1196.342,1235.5,1188.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[8797225aafddfc4362037162d5676b36]
+reverse link toggleWindow to BtnMenu--><path d="M3103.68,1072.793 C3068.83,1096.578 2986.3,1152.888 2958.69,1171.733 " fill="none" id="toggleWindow-backto-BtnMenu" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3110.36,1068.237,3102.0619,1070.2722,3105.4463,1075.2267,3110.36,1068.237" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[cd88ecec449ed52fd4b61406bd808ba3]
+link windowOpen to BtnMenu--><path d="M2931.87,1070.342 C2934.99,1089.404 2942.69,1136.439 2946.81,1161.561 " fill="none" id="windowOpen-to-BtnMenu" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2948.15,1169.733,2949.8186,1161.3535,2943.8973,1162.3225,2948.15,1169.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a3f0ad3fa10bcb70ec1a6d0dde8f6f97]
+reverse link clearRecommendations to ExploreSelectTitle--><path d="M4564.5,1432.538 C4564.5,1457.719 4564.5,1504.7454 4564.5,1523.7332 " fill="none" id="clearRecommendations-backto-ExploreSelectTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4564.5,1424.342,4561.5,1432.342,4567.5,1432.342,4564.5,1424.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0e8454eec32a4e25cbfbfd4c10e5f7f3]
+reverse link getRecommendations to ExploreSelectTitle--><path d="M4764.4,1424.645 C4721.72,1447.565 4606.68,1509.3474 4573.54,1527.1427 " fill="none" id="getRecommendations-backto-ExploreSelectTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4771.49,1420.837,4763.0227,1421.9794,4765.8617,1427.2652,4771.49,1420.837" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f1d17255377e4f82b74115433bb54df8]
+link recSource to ExploreSelectTitle--><path d="M4125.76,1420.986 C4137.51,1427.136 4158.52,1437.563 4177.5,1444 C4316.58,1491.1646 4492.32,1520.7921 4547.28,1529.3915 " fill="none" id="recSource-to-ExploreSelectTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4555.31,1530.6316,4547.8655,1526.4388,4546.9442,1532.3676,4555.31,1530.6316" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a4eb0d622a40de46d9e9593ed59ebdc3]
+link tracklist to ExploreSelectTitle--><path d="M5333.73,830.762 C5368.23,848.579 5487.77,910.471 5490.5,914 C5531.38,966.742 5525.5,993.273 5525.5,1060 C5525.5,1060 5525.5,1060 5525.5,1298 C5525.5,1500.2767 4711.59,1528.4296 4581.84,1531.6324 " fill="none" id="tracklist-to-ExploreSelectTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4573.7,1531.8219,4581.7675,1534.6354,4581.6282,1528.637,4573.7,1531.8219" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[71714579b3ff8164e425205d0a049930]
+reverse link updateRecSource to ExploreSelectTitle--><path d="M4381.7,1425.441 C4421.7,1448.763 4524.22,1508.519 4555.38,1526.6832 " fill="none" id="updateRecSource-backto-ExploreSelectTitle" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4374.57,1421.286,4379.9708,1427.9065,4382.9923,1422.7228,4374.57,1421.286" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6223929ae76228fac45bf281658a942e]
+link recSource to ExploreTitleCard--><path d="M4118.3,1424.342 C4122.42,1443.488 4132.63,1490.8524 4138.03,1515.8907 " fill="none" id="recSource-to-ExploreTitleCard" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4139.72,1523.7332,4140.9659,1515.2805,4135.1007,1516.5455,4139.72,1523.7332" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c158c9c2654bf2848a0169b3593f3139]
+link searchActive to InputSearch--><path d="M3480.34,359.59 C3450.18,378.01 3353.75,436.88 3315.43,460.28 " fill="none" id="searchActive-to-InputSearch" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3308.57,464.46,3316.9609,462.8497,3313.833,457.7294,3308.57,464.46" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e48fa9964f4c71532fd72f52486102fa]
+link functions to ListAddModal--><path d="M3287.73,1070.342 C3292.85,1089.488 3305.5,1136.852 3312.19,1161.891 " fill="none" id="functions-to-ListAddModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3314.29,1169.733,3315.1225,1161.2297,3309.326,1162.779,3314.29,1169.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3900e376cae75c1b01407b74f3865476]
+reverse link toggleWindow to ListAddModal--><path d="M3135.81,1071.606 C3175.44,1094.939 3275.79,1154.03 3307.05,1172.437 " fill="none" id="toggleWindow-backto-ListAddModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3128.74,1067.439,3134.1126,1074.0824,3137.1561,1068.9116,3128.74,1067.439" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6baad2e2130b8b67154a7a72e4252b0b]
+reverse link toggleWriteSuccess to ListAddModal--><path d="M4101.09,1062.526 C4019.54,1065.317 3667.69,1080.98 3389.5,1150 C3365.79,1155.884 3339.33,1167.336 3325.71,1173.618 " fill="none" id="toggleWriteSuccess-backto-ListAddModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4109.29,1062.259,4101.1928,1059.5321,4101.3964,1065.5287,4109.29,1062.259" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6d5b3cb4d0291cf6c23d8996b28646fe]
+reverse link resetList to ListAddSearchResult--><path d="M3711.01,841.234 C3728.13,866.06 3761.47,914.412 3774.8,933.733 " fill="none" id="resetList-backto-ListAddSearchResult" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3706.25,834.342,3708.3231,842.6307,3713.262,839.2238,3706.25,834.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5405254fce34afc7e4bbe1b3e5e690dd]
+link searchActive to ListAddSearchResult--><path d="M3496.12,362.09 C3530.24,404.24 3687.37,604.265 3757.5,796 C3773.97,841.034 3778.65,898.119 3779.98,925.664 " fill="none" id="searchActive-to-ListAddSearchResult" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3780.31,933.813,3782.98,925.6969,3776.9851,925.9425,3780.31,933.813" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2e51fe5ba371f594ab89bff6f7546a43]
+link userOptions to ListAddSearchResult--><path d="M3112.57,828.032 C3134.69,832.945 3193.23,845.671 3242.5,854 C3436.24,886.75 3488.11,874.084 3680.5,914 C3710.02,920.126 3743.65,930.198 3763.42,936.446 " fill="none" id="userOptions-to-ListAddSearchResult" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3771.23,938.944,3764.5187,933.6564,3762.6968,939.3731,3771.23,938.944" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ac3cdaf1b291a3c6d5c6f38a59c82237]
+reverse link writeList to ListAddSearchResult--><path d="M3973.16,722.09 C3934.64,766.052 3817.47,899.8 3787.53,933.979 " fill="none" id="writeList-backto-ListAddSearchResult" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3978.44,716.055,3970.9108,720.0938,3975.423,724.0486,3978.44,716.055" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[449d07ecb213524c6e4bf1e60b3fa973]
+link writeSuccess to ListAddSearchResult--><path d="M5002.19,828.201 C4979.48,833.489 4919.37,846.985 4868.5,854 C4435.71,913.681 3900.05,937.238 3797.8,941.333 " fill="none" id="writeSuccess-to-ListAddSearchResult" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3789.74,941.651,3797.8517,944.3344,3797.616,938.339,3789.74,941.651" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a3dbdcfa6919d9a29719d5685f0167e1]
+reverse link clearEditTitle to ListEditModal--><path d="M4598.01,724.58 C4595.74,800.738 4586.36,1115.611 4584.74,1169.984 " fill="none" id="clearEditTitle-backto-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4598.26,716.158,4595.0229,724.065,4601.0202,724.2439,4598.26,716.158" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b9d7f0452a44e7f4a860b03e96cb6655]
+reverse link deleteItem to ListEditModal--><path d="M4190.88,722.329 C4253.05,794.298 4530.13,1115.057 4577.58,1169.984 " fill="none" id="deleteItem-backto-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4185.55,716.158,4188.5076,724.1738,4193.049,720.2526,4185.55,716.158" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[80bf1e2f3ca5751fcb88565965879c29]
+reverse link editListItem to ListEditModal--><path d="M4391.16,723.662 C4422.87,798.168 4557.86,1115.389 4581.09,1169.984 " fill="none" id="editListItem-backto-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4387.97,716.158,4388.3427,724.6939,4393.8634,722.3441,4387.97,716.158" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9408bbe9103016345ae6da66f894a839]
+reverse link editTitleContent to ListEditModal--><path d="M4788.55,841.881 C4804.14,885.693 4840.93,1010.281 4788.5,1090 C4742.29,1160.253 4626.85,1174.67 4593.6,1177.403 " fill="none" id="editTitleContent-backto-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4785.75,834.234,4785.685,842.7778,4791.3189,840.7138,4785.75,834.234" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f029aa475d0d761ea30e3aa67f285196]
+link searchActive to ListEditModal--><path d="M3498.64,354.99 C3600.16,366.23 4516.36,472.86 4671.5,678 C4731.5,757.34 4617.98,1085.703 4590.35,1162.077 " fill="none" id="searchActive-to-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4587.56,1169.756,4593.1169,1163.2659,4587.4793,1161.2124,4587.56,1169.756" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[076a2c9d4157c4f3d72891b993ac1e83]
+reverse link toggleWindow to ListEditModal--><path d="M3136.19,1067.465 C3157.06,1074.043 3194,1084.845 3226.5,1090 C3675.89,1161.274 3794.64,1117.771 4248.5,1150 C4378.41,1159.225 4536.32,1173.566 4575.42,1177.161 " fill="none" id="toggleWindow-backto-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3128.53,1065.013,3135.241,1070.301,3137.0632,1064.5844,3128.53,1065.013" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[88d38115579d102dc9288ea5a10865e1]
+reverse link toggleWriteSuccess to ListEditModal--><path d="M4135.55,1067.254 C4154.69,1073.086 4186.7,1082.645 4214.5,1090 C4357.48,1127.829 4533.53,1166.832 4575.3,1175.992 " fill="none" id="toggleWriteSuccess-backto-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4127.72,1064.858,4134.4908,1070.0691,4136.2478,1064.3322,4127.72,1064.858" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4c97fc2097b36e0cc8f9bce94dfc91d7]
+reverse link updateSearchResult to ListEditModal--><path d="M4847.06,723.544 C4853.98,740.859 4864.44,769.86 4868.5,796 C4884.1,896.458 4830.44,1085.31 4826.5,1090 C4763.21,1165.282 4629.98,1176.163 4593.76,1177.735 " fill="none" id="updateSearchResult-backto-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4843.99,716.047,4844.2479,724.5871,4849.7998,722.3117,4843.99,716.047" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[399d1515eba0fd12405205728c423622]
+reverse link writeList to ListEditModal--><path d="M4001.13,721.657 C4059.35,772.339 4269.73,953.735 4453.5,1090 C4497.96,1122.964 4553.82,1158.697 4575.41,1172.305 " fill="none" id="writeList-backto-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3994.79,716.136,3998.8486,723.6545,4002.7915,719.1319,3994.79,716.136" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[469d2b1a22e8ebec5a32032bb5203a36]
+link writeSuccess to ListEditModal--><path d="M5011.67,834.354 C5011.92,870.665 5007.91,1016.263 4930.5,1090 C4881.52,1136.653 4664.54,1167.723 4601.64,1175.869 " fill="none" id="writeSuccess-to-ListEditModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4593.52,1176.903,4601.8358,1178.8645,4601.0751,1172.913,4593.52,1176.903" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[74cd81425feef5a106bcc2077f9253c2]
+link userOptions to ListItem--><path d="M3104.43,834.342 C3106.57,853.404 3111.84,900.439 3114.66,925.561 " fill="none" id="userOptions-to-ListItem" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3115.57,933.733,3117.6607,925.4487,3111.698,926.1167,3115.57,933.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0075e492e33118db7b7b6ad5f090a9d8]
+reverse link editTitleContent to ListItemControls--><path d="M4765.17,825.845 C4661.64,825.236 4114.7,826.456 3680.5,914 C3652.17,919.712 3620.14,931.905 3604.74,938.146 " fill="none" id="editTitleContent-backto-ListItemControls" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="4773.32,825.903,4765.3416,822.8459,4765.2988,828.8458,4773.32,825.903" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[83d99171d34b46961d12771aa5d9b47f]
+link userOptions to ListItemControls--><path d="M3112.89,828.214 C3172.63,842.298 3499.69,919.411 3578.44,937.978 " fill="none" id="userOptions-to-ListItemControls" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3586.41,939.857,3579.3076,935.1076,3577.936,940.9487,3586.41,939.857" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6ace3cfa437863497ebccff41a59f4b8]
+link tracklist to ListItemImport--><path d="M5315.39,830.565 C5304.31,836.113 5285.04,845.755 5268.5,854 C5209.58,883.378 5139.56,918.148 5108.17,933.727 " fill="none" id="tracklist-to-ListItemImport" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5100.72,937.427,5109.2196,936.557,5106.5518,931.1827,5100.72,937.427" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7aaf30cb8db98946a6f23ba5d212b672]
+link watchlist to ListItemImport--><path d="M5202.87,834.342 C5182.46,854.073 5131.04,903.774 5105.86,928.123 " fill="none" id="watchlist-to-ListItemImport" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5100.05,933.733,5107.8878,930.3316,5103.7186,926.0167,5100.05,933.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[28482ebd387d61877542ea611c649431]
+link userOptions to ListItemImport--><path d="M3112.53,828.314 C3134.56,833.852 3192.91,847.861 3242.5,854 C3996.99,947.402 4935.97,943.327 5074.19,942.17 " fill="none" id="userOptions-to-ListItemImport" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5082.44,942.097,5074.4135,939.1685,5074.4671,945.1683,5082.44,942.097" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[bfc8170f74fabab37ae84941ea6138a8]
+reverse link toggleWindow to ListPosterModal--><path d="M3125.23,1078.208 C3134.1,1103.306 3150.84,1150.662 3157.58,1169.733 " fill="none" id="toggleWindow-backto-ListPosterModal" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3122.45,1070.342,3122.2871,1078.8845,3127.9443,1076.8852,3122.45,1070.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4a2cb9e5283b4258b91ea5d6624062b2]
+reverse link resetList to ListSearch--><path d="M3684.15,834.95 C3672.73,840.937 3656.99,848.667 3642.5,854 C3515.95,900.566 3354.16,932.78 3314.55,940.312 " fill="none" id="resetList-backto-ListSearch" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3691.3,831.134,3682.8304,832.2588,3685.6583,837.5505,3691.3,831.134" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[44f23d43643734188563d75edd28d92e]
+reverse link searchList to ListSearch--><path d="M3304.64,842.538 C3304.86,867.719 3305.27,914.745 3305.43,933.733 " fill="none" id="searchList-backto-ListSearch" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3304.57,834.342,3301.6387,842.3674,3307.6385,842.316,3304.57,834.342" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[8dbe87169fc8fd0d81071feabc78a969]
+reverse link resetList to ListSearchStatus--><path d="M3717.98,826.323 C3871.3,829.25 4989.05,852.502 5318.5,914 C5347.21,919.359 5379.6,931.712 5395.17,938.066 " fill="none" id="resetList-backto-ListSearchStatus" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3709.64,826.166,3717.5795,829.3226,3717.6974,823.3237,3709.64,826.166" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ab6f3d2e5daa4faf176190ba91dd16b4]
+link tracklist to ListSearchStatus--><path d="M5330.25,834.342 C5343.63,853.739 5376.98,902.098 5394.06,926.863 " fill="none" id="tracklist-to-ListSearchStatus" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5398.8,933.733,5396.7282,925.444,5391.7887,928.8502,5398.8,933.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c367d3753583ae8142f2dcadf8510664]
+link tracklistCache to ListSearchStatus--><path d="M5607.39,830.984 C5574.71,848.866 5463.08,909.948 5420.86,933.051 " fill="none" id="tracklistCache-to-ListSearchStatus" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5413.81,936.904,5422.2678,935.6934,5419.3863,930.4306,5413.81,936.904" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5e89ae9f035673ce8235f0e07ba7086d]
+link watchlist to ListSearchStatus--><path d="M5220.55,831.439 C5250.87,849.664 5349.17,908.744 5388.25,932.236 " fill="none" id="watchlist-to-ListSearchStatus" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5395.25,936.437,5389.9335,929.7486,5386.8466,934.8935,5395.25,936.437" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3b4d84042e37e22737b71a347ca04841]
+link watchlistCache to ListSearchStatus--><path d="M5455.54,834.342 C5446.43,853.572 5423.81,901.267 5411.98,926.217 " fill="none" id="watchlistCache-to-ListSearchStatus" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5408.42,933.733,5414.558,927.7895,5409.1364,925.2191,5408.42,933.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3600cae944c35e8302b47460d64c6fe8]
+reverse link sortList to ListSort--><path d="M2848.11,836.483 C2837.95,842.513 2824.41,849.72 2811.5,854 C2646.7,908.633 2590.3,859.367 2425.5,914 C2409.3,919.371 2392.11,929.351 2381.84,935.831 " fill="none" id="sortList-backto-ListSort" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2855.16,832.169,2846.7696,833.7817,2849.8988,838.901,2855.16,832.169" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[98bc3ce3f9eab5ce547d7f56711d9937]
+link sortMode to ListSort--><path d="M2743.3,830.277 C2730.23,836.226 2705.44,847.046 2683.5,854 C2571.28,889.576 2535.79,872.83 2425.5,914 C2412.6,918.814 2398.88,926.129 2388.63,932.075 " fill="none" id="sortMode-to-ListSort" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2381.55,936.291,2389.9599,934.7833,2386.8949,929.6253,2381.55,936.291" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9e8cb665122938f230dfd83005b7ffea]
+link tracklistSorted to ListSort--><path d="M2676.31,362.06 C2672,391.93 2657.5,499.11 2657.5,588 C2657.5,588 2657.5,588 2657.5,708 C2657.5,778 2449.54,899.158 2388.9,932.995 " fill="none" id="tracklistSorted-to-ListSort" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2381.66,937.012,2390.1123,935.7633,2387.2071,930.5135,2381.66,937.012" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[fb546043a6c38b41b46f82c4bd85883f]
+link userOptions to ListSort--><path d="M3094.36,829.791 C3079.13,835.941 3047.46,848.006 3019.5,854 C2760.05,909.627 2679.51,837.273 2425.5,914 C2412.48,917.933 2398.94,925.147 2388.81,931.268 " fill="none" id="userOptions-to-ListSort" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2381.79,935.663,2390.1632,933.963,2386.9808,928.8766,2381.79,935.663" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[8277f7b359aa603739dc1b5b55b97dc1]
+link watchlistSorted to ListSort--><path d="M2536.6,480.16 C2517.08,535.09 2404.78,851.157 2378.16,926.077 " fill="none" id="watchlistSorted-to-ListSort" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2375.35,933.984,2380.8542,927.4492,2375.2001,925.4413,2375.35,933.984" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[be0988056932de5721f7eed355ee53f8]
+reverse link readList to ProfileExport--><path d="M3806.32,712.222 C3832.33,718.56 3883.96,730.386 3928.5,736 C4183.28,768.108 4845.11,698.088 5082.5,796 C5101.64,803.895 5206.38,904.217 5237.06,933.826 " fill="none" id="readList-backto-ProfileExport" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="3798.53,710.3,3805.5797,715.1272,3807.0155,709.3016,3798.53,710.3" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[11d1b7fa523c76f0fce7e352c3036d0c]
+link tracklist to ProfileExport--><path d="M5318.82,834.342 C5305.61,853.739 5272.67,902.098 5255.81,926.863 " fill="none" id="tracklist-to-ProfileExport" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5251.13,933.733,5258.1119,928.8082,5253.1521,925.4317,5251.13,933.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[af6d710576bd7ae976fc32fd92939bbe]
+link watchlist to ProfileExport--><path d="M5213.95,834.342 C5219.56,853.488 5233.44,900.852 5240.78,925.891 " fill="none" id="watchlist-to-ProfileExport" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="5243.08,933.733,5243.7072,925.212,5237.9497,926.9007,5243.08,933.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d16fac1836410afe9b3f3a775353a60e]
+link sortMode to ProfileUserSettings--><path d="M2757.46,834.342 C2768.95,853.655 2797.52,901.682 2812.3,926.542 " fill="none" id="sortMode-to-ProfileUserSettings" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2816.58,933.733,2815.0661,925.3242,2809.9103,928.393,2816.58,933.733" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[352dcbbfca36bcbfaf88fe6d6448c45a]
+link userOptions to ProfileUserSettings--><path d="M3094.44,829.728 C3054.17,846.293 2891.12,913.361 2838.19,935.136 " fill="none" id="userOptions-to-ProfileUserSettings" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="2830.67,938.227,2839.2098,937.958,2836.9272,932.4092,2830.67,938.227" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[537fee9e677aefb8014570f4f88ebcd0]
+@startuml
+'nodes
+  'store
+    node "vuex store" as store
+    node app
+    node explore
+    node list
+    node tools
+    node user
+
+  'module state
+    node "app state" as astate
+    node "explore state" as estate
+    node "list state" as lstate
+    node "tools state" as tstate
+    node "user state" as ustate
+
+  'module actions
+    node "app actions" as aactions
+    node "explore actions" as eactions
+    node "list actions" as lactions
+    node "tools actions" as tactions
+    node "user actions" as uactions
+
+'module hierarchy
+  store - ->> app
+  store - ->> explore
+  store - ->> list
+  store - ->> tools
+  store - ->> user
+
+  'state
+    app - ->> astate
+    explore - ->> estate
+    list - ->> lstate
+    tools - ->> tstate
+    user - ->> ustate
+
+  'actions
+    app - ->> aactions
+    explore - ->> eactions
+    list - ->> lactions
+    tools - ->> tactions
+    user - ->> uactions
+
+'state mapping
+  'app state
+    astate - ->> functions
+    astate - ->> toastMessage
+    astate - ->> windowOpen
+
+  'explore state
+    estate - ->> recList
+    estate - ->> recSource
+
+  'list state
+    lstate - ->> editTitleContent
+    lstate - ->> tracklist
+    lstate - ->> tracklistCache
+    lstate - ->> watchlist
+    lstate - ->> watchlistCache
+    lstate - ->> writeSuccess
+
+  'tools state
+    tstate - ->> listSearchMode
+    tstate - ->> searchActive
+    tstate - ->> sortMode
+    tstate - ->> tracklistSorted
+    tstate - ->> watchlistSorted
+
+  'user state
+    ustate - ->> currentUser
+    ustate - ->> GoTrueAuth
+    ustate - ->> userOptions
+
+'actions mapping
+  'app actions
+    aactions - ->> closeAllModals
+    aactions - ->> initialize
+    aactions - ->> toggleWindow
+    aactions - ->> sendToastMessage
+
+  'explore actions
+    eactions - ->> clearRecommendations
+    eactions - ->> getRecommendations
+    eactions - ->> initializeExplore
+    eactions - ->> updateRecSource
+
+  'list actions
+    lactions - ->> clearEditTitle
+    lactions - ->> deleteFromSearchResults
+    lactions - ->> deleteItem
+    lactions - ->> editListItem
+    lactions - ->> initializeList
+    lactions - ->> readList
+    lactions - ->> selectEditTitle
+    lactions - ->> toggleWriteSuccess
+    lactions - ->> updateSearchResult
+    lactions - ->> writeList
+
+  'tools actions
+    tactions - ->> initializeTools
+    tactions - ->> resetList
+    tactions - ->> searchList
+    tactions - ->> sortList
+    tactions - ->> updateSort
+
+  'user actions
+    uactions - ->> attemptConfirmation
+    uactions - ->> attemptLogin
+    uactions - ->> attemptLogout
+    uactions - ->> attemptPasswordRecovery
+    uactions - ->> attemptSignup
+    uactions - ->> initAuth
+    uactions - ->> initializeUser
+    uactions - ->> processInvite
+    uactions - ->> requestPasswordRecovery
+    uactions - ->> updateUserAccount
+    uactions - ->> setUserPrefs
+
+'action dependencies
+  initialize - ->> initializeExplore
+  initialize - ->> initializeList
+  initialize - ->> initializeTools
+  initialize - ->> initializeUser
+  initialize - ->> attemptLogout
+
+  setToastMessage <<- - getRecommendations
+  setToastMessage <<- - deleteItem
+  setToastMessage <<- - editListItem
+  setToastMessage <<- - readList
+  setToastMessage <<- - writeList
+  setToastMessage <<- - attemptLogin
+
+  readList - ->> resetList
+  readList - ->> updateSort
+
+'state <-> component mapping
+  'views
+    app <<-up- currentUser
+    app -up->> readList
+    app <<-up- windowOpen
+
+    admin <<-up- GoTrueAuth
+
+    explore <<-up- recList
+    explore <<-up- recSource
+    explore <<-up- windowOpen
+
+    home <<-up- currentUser
+
+    import -up->> sendToastMessage
+    import -up->> toggleWindow
+
+    invite -up->> sendToastMessage
+
+    list -up->> readList
+    list <<-up- searchActive
+    list <<-up- tracklist
+    list -up->> toggleWindow
+    list <<-up- watchlist
+    list <<-up- windowOpen
+
+    profile <<-up- currentUser
+    profile -up->> updateUserAccount
+
+    recover -up->> requestPasswordRecovery
+
+    signup -up->> processInvite
+    signup -up->> sendToastMessage
+
+  'app global
+    GlobalFooter <<-up- currentUser
+
+    GlobalMenu <<-up- currentUser
+    GlobalMenu -up->> toggleWindow
+
+    GlobalNav <<-up- currentUser
+
+    HomeLogin -up->> attemptLogin
+    HomeLogin -up->> initialize
+
+    ModalBackdrop <<-up- windowOpen
+
+    ToastMessage <<-up->> toastMessage
+
+  'buttons
+    BtnAddTitle -up->> toggleWindow
+    BtnAddTitle <<-up- windowOpen
+
+    BtnExploreClear -up->> initializeExplore
+    BtnExploreClear <<-up- recSource
+
+    BtnListItemControls -up->> selectEditTitle
+    BtnListItemControls -up->> toggleWindow
+
+    BtnListItemEdit -up->> selectEditTitle
+    BtnListItemEdit -up->> toggleWindow
+
+    BtnListItemRemove -up->> deleteFromSearchResults
+    BtnListItemRemove -up->> deleteItem
+    BtnListItemRemove -up->> initializeExplore
+    BtnListItemRemove <<-up- recSource
+    BtnListItemRemove <<-up- searchActive
+    BtnListItemRemove -up->> toggleWindow
+    BtnListItemRemove <<-up- windowOpen
+
+    BtnLogout -up->> attemptLogout
+
+    BtnMenu -up->> toggleWindow
+    BtnMenu <<-up- windowOpen
+
+  'explore
+    ExploreSelectTitle -up->> clearRecommendations
+    ExploreSelectTitle -up->> getRecommendations
+    ExploreSelectTitle <<-up- recSource
+    ExploreSelectTitle <<-up- tracklist
+    ExploreSelectTitle -up->> updateRecSource
+
+    ExploreTitleCard <<-up- recSource
+
+  'input
+    InputSearch <<-up- searchActive
+
+  'list
+    ListAddModal <<-up- functions
+    ListAddModal -up->> toggleWindow
+    ListAddModal -up->> toggleWriteSuccess
+
+    ListAddSearchResult -up->> resetList
+    ListAddSearchResult <<-up- searchActive
+    ListAddSearchResult <<-up- userOptions
+    ListAddSearchResult -up->> writeList
+    ListAddSearchResult <<-up- writeSuccess
+
+    ListEditModal -up->> clearEditTitle
+    ListEditModal -up->> deleteItem
+    ListEditModal -up->> editListItem
+    ListEditModal -up->> editTitleContent
+    ListEditModal <<-up- searchActive
+    ListEditModal -up->> toggleWindow
+    ListEditModal -up->> toggleWriteSuccess
+    ListEditModal -up->> updateSearchResult
+    ListEditModal -up->> writeList
+    ListEditModal <<-up- writeSuccess
+
+    ListItem <<-up- userOptions
+
+    ListItemControls -up->> editTitleContent
+    ListItemControls <<-up- userOptions
+
+    ListItemImport <<-up- tracklist
+    ListItemImport <<-up- watchlist
+    ListItemImport <<-up- userOptions
+
+    ListPosterModal -up->> toggleWindow
+
+    ListSearch -up->> resetList
+    ListSearch -up->> searchList
+
+    ListSearchStatus -up->> resetList
+    ListSearchStatus <<-up- tracklist
+    ListSearchStatus <<-up- tracklistCache
+    ListSearchStatus <<-up- watchlist
+    ListSearchStatus <<-up- watchlistCache
+
+    ListSort -up->> sortList
+    ListSort <<-up- sortMode
+    ListSort <<-up- tracklistSorted
+    ListSort <<-up- userOptions
+    ListSort <<-up- watchlistSorted
+
+  'profile
+    ProfileExport -up->> readList
+    ProfileExport <<-up- tracklist
+    ProfileExport <<-up- watchlist
+
+    ProfileUserSettings <<-up- sortMode
+    ProfileUserSettings <<-up- userOptions
+@enduml
+
+@startuml
+    node "vuex store" as store
+    node app
+    node explore
+    node list
+    node tools
+    node user
+
+    node "app state" as astate
+    node "explore state" as estate
+    node "list state" as lstate
+    node "tools state" as tstate
+    node "user state" as ustate
+
+    node "app actions" as aactions
+    node "explore actions" as eactions
+    node "list actions" as lactions
+    node "tools actions" as tactions
+    node "user actions" as uactions
+
+  store - ->> app
+  store - ->> explore
+  store - ->> list
+  store - ->> tools
+  store - ->> user
+
+    app - ->> astate
+    explore - ->> estate
+    list - ->> lstate
+    tools - ->> tstate
+    user - ->> ustate
+
+    app - ->> aactions
+    explore - ->> eactions
+    list - ->> lactions
+    tools - ->> tactions
+    user - ->> uactions
+
+    astate - ->> functions
+    astate - ->> toastMessage
+    astate - ->> windowOpen
+
+    estate - ->> recList
+    estate - ->> recSource
+
+    lstate - ->> editTitleContent
+    lstate - ->> tracklist
+    lstate - ->> tracklistCache
+    lstate - ->> watchlist
+    lstate - ->> watchlistCache
+    lstate - ->> writeSuccess
+
+    tstate - ->> listSearchMode
+    tstate - ->> searchActive
+    tstate - ->> sortMode
+    tstate - ->> tracklistSorted
+    tstate - ->> watchlistSorted
+
+    ustate - ->> currentUser
+    ustate - ->> GoTrueAuth
+    ustate - ->> userOptions
+
+    aactions - ->> closeAllModals
+    aactions - ->> initialize
+    aactions - ->> toggleWindow
+    aactions - ->> sendToastMessage
+
+    eactions - ->> clearRecommendations
+    eactions - ->> getRecommendations
+    eactions - ->> initializeExplore
+    eactions - ->> updateRecSource
+
+    lactions - ->> clearEditTitle
+    lactions - ->> deleteFromSearchResults
+    lactions - ->> deleteItem
+    lactions - ->> editListItem
+    lactions - ->> initializeList
+    lactions - ->> readList
+    lactions - ->> selectEditTitle
+    lactions - ->> toggleWriteSuccess
+    lactions - ->> updateSearchResult
+    lactions - ->> writeList
+
+    tactions - ->> initializeTools
+    tactions - ->> resetList
+    tactions - ->> searchList
+    tactions - ->> sortList
+    tactions - ->> updateSort
+
+    uactions - ->> attemptConfirmation
+    uactions - ->> attemptLogin
+    uactions - ->> attemptLogout
+    uactions - ->> attemptPasswordRecovery
+    uactions - ->> attemptSignup
+    uactions - ->> initAuth
+    uactions - ->> initializeUser
+    uactions - ->> processInvite
+    uactions - ->> requestPasswordRecovery
+    uactions - ->> updateUserAccount
+    uactions - ->> setUserPrefs
+
+  initialize - ->> initializeExplore
+  initialize - ->> initializeList
+  initialize - ->> initializeTools
+  initialize - ->> initializeUser
+  initialize - ->> attemptLogout
+
+  setToastMessage <<- - getRecommendations
+  setToastMessage <<- - deleteItem
+  setToastMessage <<- - editListItem
+  setToastMessage <<- - readList
+  setToastMessage <<- - writeList
+  setToastMessage <<- - attemptLogin
+
+  readList - ->> resetList
+  readList - ->> updateSort
+
+    app <<-up- currentUser
+    app -up->> readList
+    app <<-up- windowOpen
+
+    admin <<-up- GoTrueAuth
+
+    explore <<-up- recList
+    explore <<-up- recSource
+    explore <<-up- windowOpen
+
+    home <<-up- currentUser
+
+    import -up->> sendToastMessage
+    import -up->> toggleWindow
+
+    invite -up->> sendToastMessage
+
+    list -up->> readList
+    list <<-up- searchActive
+    list <<-up- tracklist
+    list -up->> toggleWindow
+    list <<-up- watchlist
+    list <<-up- windowOpen
+
+    profile <<-up- currentUser
+    profile -up->> updateUserAccount
+
+    recover -up->> requestPasswordRecovery
+
+    signup -up->> processInvite
+    signup -up->> sendToastMessage
+
+    GlobalFooter <<-up- currentUser
+
+    GlobalMenu <<-up- currentUser
+    GlobalMenu -up->> toggleWindow
+
+    GlobalNav <<-up- currentUser
+
+    HomeLogin -up->> attemptLogin
+    HomeLogin -up->> initialize
+
+    ModalBackdrop <<-up- windowOpen
+
+    ToastMessage <<-up->> toastMessage
+
+    BtnAddTitle -up->> toggleWindow
+    BtnAddTitle <<-up- windowOpen
+
+    BtnExploreClear -up->> initializeExplore
+    BtnExploreClear <<-up- recSource
+
+    BtnListItemControls -up->> selectEditTitle
+    BtnListItemControls -up->> toggleWindow
+
+    BtnListItemEdit -up->> selectEditTitle
+    BtnListItemEdit -up->> toggleWindow
+
+    BtnListItemRemove -up->> deleteFromSearchResults
+    BtnListItemRemove -up->> deleteItem
+    BtnListItemRemove -up->> initializeExplore
+    BtnListItemRemove <<-up- recSource
+    BtnListItemRemove <<-up- searchActive
+    BtnListItemRemove -up->> toggleWindow
+    BtnListItemRemove <<-up- windowOpen
+
+    BtnLogout -up->> attemptLogout
+
+    BtnMenu -up->> toggleWindow
+    BtnMenu <<-up- windowOpen
+
+    ExploreSelectTitle -up->> clearRecommendations
+    ExploreSelectTitle -up->> getRecommendations
+    ExploreSelectTitle <<-up- recSource
+    ExploreSelectTitle <<-up- tracklist
+    ExploreSelectTitle -up->> updateRecSource
+
+    ExploreTitleCard <<-up- recSource
+
+    InputSearch <<-up- searchActive
+
+    ListAddModal <<-up- functions
+    ListAddModal -up->> toggleWindow
+    ListAddModal -up->> toggleWriteSuccess
+
+    ListAddSearchResult -up->> resetList
+    ListAddSearchResult <<-up- searchActive
+    ListAddSearchResult <<-up- userOptions
+    ListAddSearchResult -up->> writeList
+    ListAddSearchResult <<-up- writeSuccess
+
+    ListEditModal -up->> clearEditTitle
+    ListEditModal -up->> deleteItem
+    ListEditModal -up->> editListItem
+    ListEditModal -up->> editTitleContent
+    ListEditModal <<-up- searchActive
+    ListEditModal -up->> toggleWindow
+    ListEditModal -up->> toggleWriteSuccess
+    ListEditModal -up->> updateSearchResult
+    ListEditModal -up->> writeList
+    ListEditModal <<-up- writeSuccess
+
+    ListItem <<-up- userOptions
+
+    ListItemControls -up->> editTitleContent
+    ListItemControls <<-up- userOptions
+
+    ListItemImport <<-up- tracklist
+    ListItemImport <<-up- watchlist
+    ListItemImport <<-up- userOptions
+
+    ListPosterModal -up->> toggleWindow
+
+    ListSearch -up->> resetList
+    ListSearch -up->> searchList
+
+    ListSearchStatus -up->> resetList
+    ListSearchStatus <<-up- tracklist
+    ListSearchStatus <<-up- tracklistCache
+    ListSearchStatus <<-up- watchlist
+    ListSearchStatus <<-up- watchlistCache
+
+    ListSort -up->> sortList
+    ListSort <<-up- sortMode
+    ListSort <<-up- tracklistSorted
+    ListSort <<-up- userOptions
+    ListSort <<-up- watchlistSorted
+
+    ProfileExport -up->> readList
+    ProfileExport <<-up- tracklist
+    ProfileExport <<-up- watchlist
+
+    ProfileUserSettings <<-up- sortMode
+    ProfileUserSettings <<-up- userOptions
+@enduml
+
+PlantUML version 1.2021.01beta3(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

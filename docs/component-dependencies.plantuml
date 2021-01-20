@@ -1,0 +1,105 @@
+@startuml "Component Dependencies"
+
+'node setup
+  node app
+  node about
+  node admin
+  node explore
+  node home
+  node import
+  node invite
+  node list
+  node profile
+  node recover
+  node signup
+  node support
+
+'node connections
+  app -->> about
+  app -->> admin
+  app -->> explore
+  app -->> home
+  app -->> import
+  app -->> invite
+  app -->> list
+  app -->> profile
+  app -->> recover
+  app -->> signup
+  app -->> support
+
+'view <-> component dependencies
+  'app global
+    app -up->> GlobalFooter
+    app -up->> GlobalMenu
+    app -up->> GlobalNav
+    app -up->> ToastMessage
+
+  'explore route
+    explore -->> BtnExploreClear
+    explore -->> BtnToTop
+    explore -->> ExploreSelectTitle
+    explore <<-->> ExploreTitleCard
+    explore -->> ListAddModal
+    explore -->> ModalBackdrop
+
+  'home route
+    home -->> HomeLogin
+
+  'import route
+    import -->> BtnToTop
+    import <<-->> InputFile
+    import <<-->> InputRadio
+    import -->> ListAddModal
+    import <<-->> ListItemImport
+    import -->> ModalBackdrop
+
+  'list route
+    list -->> BtnAddTitle
+    list -->> BtnToTop
+    list -->> ListAddModal
+    list -->> ListEditModal
+    list <<-->> ListItem
+    list -->> ListItemControls
+    list -->> ListLoading
+    list -->> ListPosterModal
+    list -->> ListSearch
+    list -->> ListSearchStatus
+    list -->> ListSort
+    list -->> ModalBackdrop
+
+  'profile route
+    profile -->> ProfileExport
+    profile <<-->> ProfileUserDetails
+    profile <<-->> ProfileUserSettings
+
+'component <-> component dependencies
+  'globals
+    GlobalMenu -->> BtnClose
+    GlobalNav -up->> BtnLogout
+    GlobalNav -up->> BtnMenu
+
+  'component internals
+    ListAddModal -->> BtnClose
+    ListAddModal <<-->> InputRadio
+    ListAddModal <<-->> InputSearch
+    ListAddModal -->> ListAddSearchResult
+
+    ListEditModal -->> BtnClose
+    ListEditModal <<-->> InputRange
+
+    ListItem -->> BtnListItemControls
+    ListItem -->> BtnListItemEdit
+    ListItem -->> BtnListItemExplore
+    ListItem -->> BtnListItemRemove
+
+    ListItemControls -->> BtnClose
+    ListItemControls -->> BtnListItemRemove
+
+    ListSearch <<-->> InputSearch
+
+    ProfileExport <<-->> InputRadio
+
+    ProfileUserSettings <<-->> InputCheckbox
+    ProfileUserSettings <<-->> InputRadio
+
+@enduml

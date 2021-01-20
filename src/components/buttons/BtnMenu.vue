@@ -23,7 +23,7 @@ export default {
   name: 'BtnMenu',
   setup() {
     const store = useStore();
-    const menuOpen = computed(() => store.getters['app/menuOpen'] == 1);
+    const menuOpen = computed(() => store.getters['app/windowOpen'] == 1);
 
     const toggleMenu = () => {
       return menuOpen.value ? store.dispatch('app/toggleWindow', 0) : store.dispatch('app/toggleWindow', 1);

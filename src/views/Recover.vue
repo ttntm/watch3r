@@ -44,7 +44,7 @@ export default {
 
     const handleRecover = (o) => {
       if (validateEmail(cred.value.email)) {
-        store.dispatch('user/requestPasswordRecover', o);
+        store.dispatch('user/requestPasswordRecovery', o);
         router.push({ name: 'home' });
       } else {
         alert('Please enter a valid email address...');

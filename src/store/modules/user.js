@@ -163,8 +163,8 @@ export default {
       });
     },
 
-    requestPasswordRecover({ dispatch, state }, email) {
-      state.GoTrueAuth.requestPasswordRecovery(email)
+    requestPasswordRecovery({ dispatch, state }, email) {
+      state.GoTrueAuth.requestPasswordRecoveryy(email)
         .then(response => {
           dispatch('app/sendToastMessage', { text: `Recovery email sent.`, type: 'success' }, { root: true });
           resolve(response);
