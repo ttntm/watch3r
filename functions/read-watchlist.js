@@ -4,14 +4,15 @@ function getUsr(urlPath) {
   return urlPath.match(/([^\/]*)\/*$/)[0]
 }
 
-const q = faunadb.query;
-const client = new faunadb.Client({
-  secret: process.env.FAUNA_SECRET
-});
-
 exports.handler = (event, context, callback) => {
+  const client = new faunadb.Client({
+    secret: process.env.FAUNA_SECRET
+  });
+  const q = faunadb.query;
   const usr = getUsr(event.path);
+
   console.log("Function `read-watchlist` invoked");
+
   return client.query(q.Paginate(q.Match(q.Index('watchlist_user'), `${usr}`)))
     .then((response) => {
       const watchlistRefs = response.data;
