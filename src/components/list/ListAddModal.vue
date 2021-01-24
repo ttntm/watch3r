@@ -24,7 +24,7 @@ import BtnClose from '@/components/buttons/BtnClose.vue';
 import InputRadio from '@/components/input/InputRadio.vue';
 import InputSearch from '@/components/input/InputSearch.vue';
 import ListAddSearchResult from '@/components/list/ListAddSearchResult.vue';
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 import { getOMDB, searchResult, searchStatus } from '@/helpers/get-omdb.js';
 
@@ -46,6 +46,7 @@ export default {
 
     const fn = store.getters['app/functions'];
     const searchMode = ref('title');
+    const writeSuccess = computed(() => store.getters['list/writeSuccess']);
 
     const closeModal = () => {
       store.dispatch('app/toggleWindow', 0);
@@ -73,6 +74,18 @@ export default {
     if (props.contentImport) {
       getOMDB(fn.omdbGet, props.contentImport);
     }
+
+    // auto-close modal if adding from Explore _or_ Import
+
+    watch(writeSuccess, () => {
+      if (props.contentExplore || props.contentImport) {
+        if (writeSuccess.value) {
+          setTimeout(() => {
+            closeModal();
+          }, 200)
+        }
+      }
+    })
 
     return {
       closeModal,

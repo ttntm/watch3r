@@ -124,8 +124,8 @@ export default {
           // set defaults
           user_explore: userOptions.showExploreLinks,
           user_imdb: userOptions.showIMDbLinks,
-          user_sort: userOptions.userSort,
-          user_start: userOptions.userStart
+          user_sort: userOptions.sortPreset,
+          user_start: userOptions.startPage
         })
           .then(response => {
             resolve(response); // Confirmation email sent
@@ -199,7 +199,9 @@ export default {
       const userMeta = user.user_metadata;
       const userOptions = getters['userOptions'];
 
-      if (Object.keys(userMeta).length === Object.keys(userOptions).length) {
+      const metaLength = Object.keys(userMeta).length;
+
+      if (metaLength > 0) {
         // user preferences are complete and available in the User object GoTrue returned
         commit('SET_EXPLORE_LINKS', userMeta.user_explore);
         commit('SET_IMDB_LINKS', userMeta.user_imdb);
@@ -212,8 +214,8 @@ export default {
           data: {
             user_explore: userOptions.showExploreLinks,
             user_imdb: userOptions.showIMDbLinks,
-            user_sort: userOptions.userSort,
-            user_start: userOptions.userStart
+            user_sort: userOptions.sortPreset,
+            user_start: userOptions.startPage
           }
         };
         dispatch('updateUserAccount', userUpdate);
