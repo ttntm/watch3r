@@ -13,7 +13,7 @@ exports.handler = (event, context, callback) => {
 
   console.log("Function `read-tracklist` invoked");
 
-  return client.query(q.Paginate(q.Match(q.Index('tracklist_user'), `${usr}`)))
+  return client.query(q.Paginate(q.Match(q.Index('tracklist_user'), `${usr}`), { size: 500 }))
     .then((response) => {
       const tracklistRefs = response.data;
       console.log("Tracklist refs", tracklistRefs);

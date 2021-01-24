@@ -13,7 +13,7 @@ exports.handler = (event, context, callback) => {
 
   console.log("Function `read-watchlist` invoked");
 
-  return client.query(q.Paginate(q.Match(q.Index('watchlist_user'), `${usr}`)))
+  return client.query(q.Paginate(q.Match(q.Index('watchlist_user'), `${usr}`), { size: 500 }))
     .then((response) => {
       const watchlistRefs = response.data;
       console.log("Watchlist refs", watchlistRefs);
