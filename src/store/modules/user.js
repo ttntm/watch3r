@@ -199,14 +199,14 @@ export default {
       const userMeta = user.user_metadata;
       const userOptions = getters['userOptions'];
 
-      if (Object.keys(userMeta).length > 0) {
-        // user preferences are available
+      if (Object.keys(userMeta).length !== Object.keys(userOptions).length) {
+        // user preferences are complete and available in the User object GoTrue returned
         commit('SET_EXPLORE_LINKS', userMeta.user_explore);
         commit('SET_IMDB_LINKS', userMeta.user_imdb);
         commit('SET_SORT_PRESET', userMeta.user_sort);
         commit('SET_START_PAGE', userMeta.user_start);
       } else {
-        // user has no preferences
+        // user has no (or insufficient) preferences
         let userUpdate = {
           email: user.email,
           data: {
