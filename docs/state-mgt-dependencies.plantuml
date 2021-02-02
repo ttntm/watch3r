@@ -24,259 +24,259 @@
     node "user actions" as uactions
 
 'module hierarchy
-  store -->> app
-  store -->> explore
-  store -->> list
-  store -->> tools
-  store -->> user
+  store -[dotted]->> app
+  store -[dotted]->> explore
+  store -[dotted]->> list
+  store -[dotted]->> tools
+  store -[dotted]->> user
 
   'state
-    app -->> astate
-    explore -->> estate
-    list -->> lstate
-    tools -->> tstate
-    user -->> ustate
+    app -[#green;dashed]->> astate
+    explore -[#green;dashed]->> estate
+    list -[#green;dashed]->> lstate
+    tools -[#green;dashed]->> tstate
+    user -[#green;dashed]->> ustate
 
   'actions
-    app -->> aactions
-    explore -->> eactions
-    list -->> lactions
-    tools -->> tactions
-    user -->> uactions
+    app -[#blue;dashed]->> aactions
+    explore -[#blue;dashed]->> eactions
+    list -[#blue;dashed]->> lactions
+    tools -[#blue;dashed]->> tactions
+    user -[#blue;dashed]->> uactions
 
 'state mapping
   'app state
-    astate -->> functions
-    astate -->> toastMessage
-    astate -->> windowOpen
+    astate -[#green;dashed]->> functions
+    astate -[#green;dashed]->> toastMessage
+    astate -[#green;dashed]->> windowOpen
 
   'explore state
-    estate -->> recList
-    estate -->> recSource
+    estate -[#green;dashed]->> recList
+    estate -[#green;dashed]->> recSource
 
   'list state
-    lstate -->> editTitleContent
-    lstate -->> tracklist
-    lstate -->> tracklistCache
-    lstate -->> watchlist
-    lstate -->> watchlistCache
-    lstate -->> writeSuccess
+    lstate -[#green;dashed]->> editTitleContent
+    lstate -[#green;dashed]->> tracklist
+    lstate -[#green;dashed]->> tracklistCache
+    lstate -[#green;dashed]->> watchlist
+    lstate -[#green;dashed]->> watchlistCache
+    lstate -[#green;dashed]->> writeSuccess
 
   'tools state
-    tstate -->> listSearchMode
-    tstate -->> searchActive
-    tstate -->> sortMode
-    tstate -->> tracklistSorted
-    tstate -->> watchlistSorted
+    tstate -[#green;dashed]->> listSearchMode
+    tstate -[#green;dashed]->> searchActive
+    tstate -[#green;dashed]->> sortMode
+    tstate -[#green;dashed]->> tracklistSorted
+    tstate -[#green;dashed]->> watchlistSorted
 
   'user state
-    ustate -->> currentUser
-    ustate -->> GoTrueAuth
-    ustate -->> userOptions
+    ustate -[#green;dashed]->> currentUser
+    ustate -[#green;dashed]->> GoTrueAuth
+    ustate -[#green;dashed]->> userOptions
 
 'actions mapping
   'app actions
-    aactions -->> closeAllModals
-    aactions -->> initialize
-    aactions -->> toggleWindow
-    aactions -->> sendToastMessage
+    aactions -[#blue;dashed]->> closeAllModals
+    aactions -[#blue;dashed]->> initialize
+    aactions -[#blue;dashed]->> toggleWindow
+    aactions -[#blue;dashed]->> sendToastMessage
 
   'explore actions
-    eactions -->> clearRecommendations
-    eactions -->> getRecommendations
-    eactions -->> initializeExplore
-    eactions -->> updateRecSource
+    eactions -[#blue;dashed]->> clearRecommendations
+    eactions -[#blue;dashed]->> getRecommendations
+    eactions -[#blue;dashed]->> initializeExplore
+    eactions -[#blue;dashed]->> updateRecSource
 
   'list actions
-    lactions -->> clearEditTitle
-    lactions -->> deleteFromSearchResults
-    lactions -->> deleteItem
-    lactions -->> editListItem
-    lactions -->> initializeList
-    lactions -->> readList
-    lactions -->> selectEditTitle
-    lactions -->> toggleWriteSuccess
-    lactions -->> updateSearchResult
-    lactions -->> writeList
+    lactions -[#blue;dashed]->> clearEditTitle
+    lactions -[#blue;dashed]->> deleteFromSearchResults
+    lactions -[#blue;dashed]->> deleteItem
+    lactions -[#blue;dashed]->> editListItem
+    lactions -[#blue;dashed]->> initializeList
+    lactions -[#blue;dashed]->> readList
+    lactions -[#blue;dashed]->> selectEditTitle
+    lactions -[#blue;dashed]->> toggleWriteSuccess
+    lactions -[#blue;dashed]->> updateSearchResult
+    lactions -[#blue;dashed]->> writeList
 
   'tools actions
-    tactions -->> initializeTools
-    tactions -->> resetList
-    tactions -->> searchList
-    tactions -->> sortList
-    tactions -->> updateSort
+    tactions -[#blue;dashed]->> initializeTools
+    tactions -[#blue;dashed]->> resetList
+    tactions -[#blue;dashed]->> searchList
+    tactions -[#blue;dashed]->> sortList
+    tactions -[#blue;dashed]->> updateSort
 
   'user actions
-    uactions -->> attemptConfirmation
-    uactions -->> attemptLogin
-    uactions -->> attemptLogout
-    uactions -->> attemptPasswordRecovery
-    uactions -->> attemptSignup
-    uactions -->> initAuth
-    uactions -->> initializeUser
-    uactions -->> processInvite
-    uactions -->> requestPasswordRecovery
-    uactions -->> updateUserAccount
-    uactions -->> setUserPrefs
+    uactions -[#blue;dashed]->> attemptConfirmation
+    uactions -[#blue;dashed]->> attemptLogin
+    uactions -[#blue;dashed]->> attemptLogout
+    uactions -[#blue;dashed]->> attemptPasswordRecovery
+    uactions -[#blue;dashed]->> attemptSignup
+    uactions -[#blue;dashed]->> initAuth
+    uactions -[#blue;dashed]->> initializeUser
+    uactions -[#blue;dashed]->> processInvite
+    uactions -[#blue;dashed]->> requestPasswordRecovery
+    uactions -[#blue;dashed]->> updateUserAccount
+    uactions -[#blue;dashed]->> setUserPrefs
 
 'action dependencies
-  initialize -->> initializeExplore
-  initialize -->> initializeList
-  initialize -->> initializeTools
-  initialize -->> initializeUser
-  initialize -->> attemptLogout
+  initialize -[#blue]->> initializeExplore
+  initialize -[#blue]->> initializeList
+  initialize -[#blue]->> initializeTools
+  initialize -[#blue]->> initializeUser
+  initialize -[#blue]->> attemptLogout
 
-  setToastMessage <<-- getRecommendations
-  setToastMessage <<-- deleteItem
-  setToastMessage <<-- editListItem
-  setToastMessage <<-- readList
-  setToastMessage <<-- writeList
-  setToastMessage <<-- attemptLogin
+  setToastMessage <<-[#blue]- getRecommendations
+  setToastMessage <<-[#blue]- deleteItem
+  setToastMessage <<-[#blue]- editListItem
+  setToastMessage <<-[#blue]- readList
+  setToastMessage <<-[#blue]- writeList
+  setToastMessage <<-[#blue]- attemptLogin
 
-  readList -->> resetList
-  readList -->> updateSort
+  readList -[#blue]->> resetList
+  readList -[#blue]->> updateSort
 
 'state <-> component mapping
   'views
-    app <<-up- currentUser
-    app -up->> readList
-    app <<-up- windowOpen
+    V_App <<-up- currentUser
+    V_App -up->> readList
+    V_App <<-up- windowOpen
 
-    admin <<-up- GoTrueAuth
+    V_Admin <<-up- GoTrueAuth
 
-    explore <<-up- recList
-    explore <<-up- recSource
-    explore <<-up- windowOpen
+    V_Explore <<-up- recList
+    V_Explore <<-up- recSource
+    V_Explore <<-up- windowOpen
 
-    home <<-up- currentUser
+    V_Home <<-up- currentUser
 
-    import -up->> sendToastMessage
-    import -up->> toggleWindow
+    V_Import -up->> sendToastMessage
+    V_Import -up->> toggleWindow
 
-    invite -up->> sendToastMessage
+    V_Invite -up->> sendToastMessage
 
-    list -up->> readList
-    list <<-up- searchActive
-    list <<-up- tracklist
-    list -up->> toggleWindow
-    list <<-up- watchlist
-    list <<-up- windowOpen
+    V_List -up->> readList
+    V_List <<-up- searchActive
+    V_List <<-up- tracklist
+    V_List -up->> toggleWindow
+    V_List <<-up- watchlist
+    V_List <<-up- windowOpen
 
-    profile <<-up- currentUser
-    profile -up->> updateUserAccount
+    V_Profile <<-up- currentUser
+    V_Profile -up->> updateUserAccount
 
-    recover -up->> requestPasswordRecovery
+    V_Recover -up->> requestPasswordRecovery
 
-    signup -up->> processInvite
-    signup -up->> sendToastMessage
+    V_Signup -up->> processInvite
+    V_Signup -up->> sendToastMessage
 
   'app global
-    GlobalFooter <<-up- currentUser
+    C_GlobalFooter <<-up- currentUser
 
-    GlobalMenu <<-up- currentUser
-    GlobalMenu -up->> toggleWindow
+    C_GlobalMenu <<-up- currentUser
+    C_GlobalMenu -up->> toggleWindow
 
-    GlobalNav <<-up- currentUser
+    C_GlobalNav <<-up- currentUser
 
-    HomeLogin -up->> attemptLogin
-    HomeLogin -up->> initialize
+    C_HomeLogin -up->> attemptLogin
+    C_HomeLogin -up->> initialize
 
-    ModalBackdrop <<-up- windowOpen
+    C_ModalBackdrop <<-up- windowOpen
 
-    ToastMessage <<-up->> toastMessage
+    C_ToastMessage <<-up->> toastMessage
 
   'buttons
-    BtnAddTitle -up->> toggleWindow
-    BtnAddTitle <<-up- windowOpen
+    C_BtnAddTitle -up->> toggleWindow
+    C_BtnAddTitle <<-up- windowOpen
 
-    BtnExploreClear -up->> initializeExplore
-    BtnExploreClear <<-up- recSource
+    C_BtnExploreClear -up->> initializeExplore
+    C_BtnExploreClear <<-up- recSource
 
-    BtnListItemControls -up->> selectEditTitle
-    BtnListItemControls -up->> toggleWindow
+    C_BtnListItemControls -up->> selectEditTitle
+    C_BtnListItemControls -up->> toggleWindow
 
-    BtnListItemEdit -up->> selectEditTitle
-    BtnListItemEdit -up->> toggleWindow
+    C_BtnListItemEdit -up->> selectEditTitle
+    C_BtnListItemEdit -up->> toggleWindow
 
-    BtnListItemRemove -up->> deleteFromSearchResults
-    BtnListItemRemove -up->> deleteItem
-    BtnListItemRemove -up->> initializeExplore
-    BtnListItemRemove <<-up- recSource
-    BtnListItemRemove <<-up- searchActive
-    BtnListItemRemove -up->> toggleWindow
-    BtnListItemRemove <<-up- windowOpen
+    C_BtnListItemRemove -up->> deleteFromSearchResults
+    C_BtnListItemRemove -up->> deleteItem
+    C_BtnListItemRemove -up->> initializeExplore
+    C_BtnListItemRemove <<-up- recSource
+    C_BtnListItemRemove <<-up- searchActive
+    C_BtnListItemRemove -up->> toggleWindow
+    C_BtnListItemRemove <<-up- windowOpen
 
-    BtnLogout -up->> attemptLogout
+    C_BtnLogout -up->> attemptLogout
 
-    BtnMenu -up->> toggleWindow
-    BtnMenu <<-up- windowOpen
+    C_BtnMenu -up->> toggleWindow
+    C_BtnMenu <<-up- windowOpen
 
   'explore
-    ExploreSelectTitle -up->> clearRecommendations
-    ExploreSelectTitle -up->> getRecommendations
-    ExploreSelectTitle <<-up- recSource
-    ExploreSelectTitle <<-up- tracklist
-    ExploreSelectTitle -up->> updateRecSource
+    C_ExploreSelectTitle -up->> clearRecommendations
+    C_ExploreSelectTitle -up->> getRecommendations
+    C_ExploreSelectTitle <<-up- recSource
+    C_ExploreSelectTitle <<-up- tracklist
+    C_ExploreSelectTitle -up->> updateRecSource
 
-    ExploreTitleCard <<-up- recSource
+    C_ExploreTitleCard <<-up- recSource
 
   'input
-    InputSearch <<-up- searchActive
+    C_InputSearch <<-up- searchActive
 
   'list
-    ListAddModal <<-up- functions
-    ListAddModal -up->> toggleWindow
-    ListAddModal -up->> toggleWriteSuccess
+    C_ListAddModal <<-up- functions
+    C_ListAddModal -up->> toggleWindow
+    C_ListAddModal -up->> toggleWriteSuccess
 
-    ListAddSearchResult -up->> resetList
-    ListAddSearchResult <<-up- searchActive
-    ListAddSearchResult <<-up- userOptions
-    ListAddSearchResult -up->> writeList
-    ListAddSearchResult <<-up- writeSuccess
+    C_ListAddSearchResult -up->> resetList
+    C_ListAddSearchResult <<-up- searchActive
+    C_ListAddSearchResult <<-up- userOptions
+    C_ListAddSearchResult -up->> writeList
+    C_ListAddSearchResult <<-up- writeSuccess
 
-    ListEditModal -up->> clearEditTitle
-    ListEditModal -up->> deleteItem
-    ListEditModal -up->> editListItem
-    ListEditModal -up->> editTitleContent
-    ListEditModal <<-up- searchActive
-    ListEditModal -up->> toggleWindow
-    ListEditModal -up->> toggleWriteSuccess
-    ListEditModal -up->> updateSearchResult
-    ListEditModal -up->> writeList
-    ListEditModal <<-up- writeSuccess
+    C_ListEditModal -up->> clearEditTitle
+    C_ListEditModal -up->> deleteItem
+    C_ListEditModal -up->> editListItem
+    C_ListEditModal -up->> editTitleContent
+    C_ListEditModal <<-up- searchActive
+    C_ListEditModal -up->> toggleWindow
+    C_ListEditModal -up->> toggleWriteSuccess
+    C_ListEditModal -up->> updateSearchResult
+    C_ListEditModal -up->> writeList
+    C_ListEditModal <<-up- writeSuccess
 
-    ListItem <<-up- userOptions
+    C_ListItem <<-up- userOptions
 
-    ListItemControls -up->> editTitleContent
-    ListItemControls <<-up- userOptions
+    C_ListItemControls -up->> editTitleContent
+    C_ListItemControls <<-up- userOptions
 
-    ListItemImport <<-up- tracklist
-    ListItemImport <<-up- watchlist
-    ListItemImport <<-up- userOptions
+    C_ListItemImport <<-up- tracklist
+    C_ListItemImport <<-up- watchlist
+    C_ListItemImport <<-up- userOptions
 
-    ListPosterModal -up->> toggleWindow
+    C_ListPosterModal -up->> toggleWindow
 
-    ListSearch -up->> resetList
-    ListSearch -up->> searchList
+    C_ListSearch -up->> resetList
+    C_ListSearch -up->> searchList
 
-    ListSearchStatus -up->> resetList
-    ListSearchStatus <<-up- tracklist
-    ListSearchStatus <<-up- tracklistCache
-    ListSearchStatus <<-up- watchlist
-    ListSearchStatus <<-up- watchlistCache
+    C_ListSearchStatus -up->> resetList
+    C_ListSearchStatus <<-up- tracklist
+    C_ListSearchStatus <<-up- tracklistCache
+    C_ListSearchStatus <<-up- watchlist
+    C_ListSearchStatus <<-up- watchlistCache
 
-    ListSort -up->> sortList
-    ListSort <<-up- sortMode
-    ListSort <<-up- tracklistSorted
-    ListSort <<-up- userOptions
-    ListSort <<-up- watchlistSorted
+    C_ListSort -up->> sortList
+    C_ListSort <<-up- sortMode
+    C_ListSort <<-up- tracklistSorted
+    C_ListSort <<-up- userOptions
+    C_ListSort <<-up- watchlistSorted
 
   'profile
-    ProfileExport -up->> readList
-    ProfileExport <<-up- tracklist
-    ProfileExport <<-up- watchlist
+    C_ProfileExport -up->> readList
+    C_ProfileExport <<-up- tracklist
+    C_ProfileExport <<-up- watchlist
 
-    ProfileUserSettings <<-up- sortMode
-    ProfileUserSettings <<-up- userOptions
+    C_ProfileUserSettings <<-up- sortMode
+    C_ProfileUserSettings <<-up- userOptions
 
 @enduml
