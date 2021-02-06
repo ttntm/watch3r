@@ -1,5 +1,5 @@
-https://watch3r.netlify.app/* https://watch3r.ttntm.me/:splat 301!
-https://master--watch3r.netlify.app/* https://watch3r.ttntm.me/:splat 301!
+https://watch3r.netlify.app/* https://watch3r.app/:splat 301!
+https://master--watch3r.netlify.app/* https://watch3r.app/:splat 301!
 
 # SPA
 /*  /index.html 200
