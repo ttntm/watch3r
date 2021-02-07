@@ -25,7 +25,7 @@
     </nav>
     <p class="text-xs text-center mt-2 mb-0">
       watch3r.app,
-      &copy; <a href="https://ttntm.me" target="_blank" class="hover:text-yellow-600">ttntm</a> 2020
+      &copy; <a href="https://ttntm.me" target="_blank" class="hover:text-yellow-600">ttntm</a> 2021
     </p>
   </footer>
 </template>
