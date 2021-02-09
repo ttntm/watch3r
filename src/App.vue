@@ -55,6 +55,9 @@ export default {
     })
 
     onMounted(() => {
+      const app = document.getElementById('app');
+      app.style.opacity = '1';
+      app.style.transition = 'opacity 1.5s ease';
       setTimeout(updateList, 250) // timeout is required here; otherwise 'route.meta.mode' is undefined
     })
 
