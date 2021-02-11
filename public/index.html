@@ -4,16 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="manifest" href="/site.webmanifest">
+    <meta name="author" content="{{ .Site.Author.name }}">
+    <meta name="robots" content="index,follow">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="A watchlist and tracking app for your movies and series">
     <meta name="theme-color" content="#1a202c">
+    <meta name="masapplication-config" content="/browserconfig.xml">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="icon" type="image/png" sizes="512x512" href="/img/android-chrome-512x512.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/img/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-180x180-solid.png">
     <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#1a202c">
-    <meta name="masapplication-config" content="/browserconfig.xml">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      html {font-family: sans-serif;}
+    </style>
   </head>
   <body>
     <noscript>
@@ -21,10 +27,5 @@
     </noscript>
     <!-- built files will be auto injected -->
     <main id="app" class="" style="opacity: 0;"></main>
-    <style>
-      html {
-        font-family: sans-serif;
-      }
-    </style>
   </body>
 </html>

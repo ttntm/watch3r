@@ -14,10 +14,9 @@
     "gotrue-js": "^0.9.27",
     "papaparse": "^5.3.0",
     "secure-ls": "^1.2.6",
-    "tailwindcss": "^1.8.10",
     "vue": "^3.0.2",
     "vue-router": "^4.0.1",
-    "vuex": "^4.0.0-rc.2",
+    "vuex": "^4.0.0",
     "vuex-multi-tab-state": "^1.0.15",
     "vuex-persistedstate": "^3.1.0"
   },
@@ -35,6 +34,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^7.0.0-0",
     "faunadb": "^3.0.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "tailwindcss": "^1.8.10"
   }
 }
