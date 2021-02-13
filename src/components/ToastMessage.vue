@@ -1,5 +1,5 @@
 <template>
-  <transition name="slide-fade">
+  <transition name="toast-fade">
     <section v-if="toastMessage" id="toast-message" class="fixed bottom-0 right-0 max-w-md z-20 m-8">
       <div
         :class="{
@@ -49,29 +49,3 @@ export default {
   },
 };
 </script>
-
-<style lang="postcss" scoped>
-  .toast {
-    @apply bg-gray-400 text-gray-800 border-solid border-transparent rounded-lg shadow-lg p-6 pr-10;
-    border-left-width: 5px;
-  }
-
-  .error {
-    @apply border-red-700;
-  }
-
-  .success {
-    @apply border-green-700;
-  }
-
-  .slide-fade-enter-active,
-  .slide-fade-leave-active {
-    transition: all 0.75s;
-  }
-
-  .slide-fade-enter-from,
-  .slide-fade-leave-to {
-    transform: translateX(400px);
-    opacity: 0;
-  }
-</style>

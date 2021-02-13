@@ -45,19 +45,3 @@ export default {
   },
 }
 </script>
-
-<style lang="postcss" scoped>
-  .footer-nav a {
-    @apply text-yellow-600 font-bold px-4 py-2;
-  }
-
-  .footer-nav a:hover {
-    @apply text-gray-900;
-  }
-
-  @media(min-width:640px) {
-    .footer-nav a {
-      @apply py-0;
-    }
-  }
-</style>

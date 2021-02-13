@@ -57,25 +57,3 @@ export default {
   },
 }
 </script>
-
-<style lang="postcss" scoped>
-  .app-menu {
-    @apply fixed top-0 left-0 z-20 max-w-xs bg-gray-200 rounded-lg shadow-lg overflow-y-auto pb-4 ml-8 my-6;
-    width: 80%;
-    max-height: calc(100% - 3rem);
-  }
-
-  @media(max-width: 767px) {
-    .app-menu {
-      @apply right-0 mx-auto;
-    }
-  }
-
-  .menu-item {
-    @apply w-full block tracking-wide font-bold text-lg text-center py-3;
-  }
-
-  .menu-item:hover {
-    @apply bg-gray-400 text-blue-800 shadow-inner;
-  }
-</style>

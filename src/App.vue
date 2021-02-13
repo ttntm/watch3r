@@ -68,37 +68,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss">
-  #app {
-    @apply font-sans;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .app-menu-container {
-    @apply z-10 fixed bg-gray-900 top-0 bottom-0 left-0 right-0 w-full h-full;
-    opacity: 0.9;
-  }
-
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s;
-  }
-
-  .fade-enter-from,
-  .fade-leave-to {
-    opacity: 0;
-  }
-
-  .slide-fade-enter-active,
-  .slide-fade-leave-active {
-    transition: all 0.75s;
-  }
-
-  .slide-fade-enter-from,
-  .slide-fade-leave-to {
-    transform: translateY(-200px);
-    opacity: 0;
-  }
-</style>

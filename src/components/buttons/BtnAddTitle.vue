@@ -35,14 +35,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-  .btn-yellow {
-    @apply bg-yellow-600 text-gray-900 border border-transparent;
-  }
-
-  .btn-yellow:hover,
-  .btn-yellow:focus {
-    @apply bg-gray-900 text-yellow-600;
-  }
-</style>

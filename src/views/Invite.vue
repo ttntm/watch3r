@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { validateEmail } from '@/helpers/shared.js';
@@ -97,9 +97,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-  .invite-box {
-    @apply flex flex-col bg-gray-400 text-gray-800 text-left rounded-md shadow-lg border border-gray-700;
-  }
-</style>
