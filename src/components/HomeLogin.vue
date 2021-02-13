@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import { validateEmail } from '@/helpers/shared.js';
 

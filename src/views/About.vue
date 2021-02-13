@@ -93,13 +93,3 @@ export default {
   name: 'About'
 }
 </script>
-
-<style lang="postcss" scoped>
-  .preview img {
-    @apply block rounded-sm shadow border border-gray-900;
-  }
-
-  .preview:hover img {
-    @apply shadow-inner border-gray-700;
-  }
-</style>

@@ -25,7 +25,7 @@ export default {
     id: String,
     mode: String
   },
-  setup(props) {
+  setup() {
     const store = useStore();
 
     const recSource = computed(() => store.getters['explore/recSource']);
