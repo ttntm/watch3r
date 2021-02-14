@@ -2,9 +2,9 @@
   <section id="user-profile" class="flex flex-grow items-center justify-items-center w-full h-full">
     <section id="user-profile-form" class="user-profile-box flex flex-col md:flex-row self-start py-10 px-12 md:p-0 mx-auto">
       <div class="user-profile-sidebar flex flex-row md:flex-col justify-center md:justify-start flex-wrap md:py-10 md:px-12">
-        <a class="mb-4" :class="{ 'active' : profileTab === 0 }" href="#account" @click.prevent="setProfileTab(0)">Account</a>
-        <a class="px-4 md:px-0 mb-4" :class="{ 'active' : profileTab === 1 }" href="#settings" @click.prevent="setProfileTab(1)">Settings</a>
-        <a class="mb-4" :class="{ 'active' : profileTab === 2 }" href="#export" @click.prevent="setProfileTab(2)">Export</a>
+        <a class="mb-4" :class="{ 'current' : profileTab === 0 }" href="#account" @click.prevent="setProfileTab(0)">Account</a>
+        <a class="px-4 md:px-0 mb-4" :class="{ 'current' : profileTab === 1 }" href="#settings" @click.prevent="setProfileTab(1)">Settings</a>
+        <a class="mb-4" :class="{ 'current' : profileTab === 2 }" href="#export" @click.prevent="setProfileTab(2)">Export</a>
       </div>
       <div class="h-px bg-gray-500 mb-6 md:hidden" />
       <div class="user-profile-content self-stretch md:py-10 md:px-12">
@@ -113,7 +113,7 @@ export default {
     @apply text-blue-800;
   }
 
-  .user-profile-sidebar a.active {
+  .user-profile-sidebar a.current {
     @apply text-gray-800;
   }
 
