@@ -70,10 +70,8 @@ export default {
       const fn = rootGetters['app/functions'];
       let response;
 
-      const getFn = (m) => m === 'tracklist' ? fn.writeItemTracklist : fn.writeItemWatchlist;
-
       try {
-        const data = await fetch(`${getFn(mode)}`, {
+        const data = await fetch(`${fn.writeItem}/${mode}`, {
           body: JSON.stringify(titleData),
           method: 'POST'
         });
@@ -103,10 +101,11 @@ export default {
       const searchMode = rootGetters['tools/listSearchMode'];
       const user = rootGetters['user/currentUser'];
 
-      const getFn = (m) => m === 'tracklist' ? fn.readTracklist : fn.readWatchlist;
-
       try {
-        const data = await fetch(`${getFn(mode)}/${user.id}`, { method: 'POST' });
+        const data = await fetch(`${fn.readList}/${mode}`, {
+          body: JSON.stringify({ user: user.id }),
+          method: 'POST'
+        });
         response = await data.json();
       } catch (err) {
         console.error(err);
@@ -224,15 +223,16 @@ export default {
     },
 
     async deleteItem({ dispatch, rootGetters }, args) {
-      const [id, mode, silent] = args; // [String, Number, Boolean]
+      const [id, mode, silent] = args; // [String, String, Boolean]
       const fn = rootGetters['app/functions'];
       let msg = {};
       let response;
 
-      const getFn = (m) => m === 'tracklist' ? fn.deleteItemTracklist : fn.deleteItemWatchlist;
-
       try {
-        const data = await fetch(`${getFn(mode)}/${id}`, { method: 'POST' });
+        const data = await fetch(`${fn.deleteItem}/${mode}`, {
+          body: JSON.stringify({ item: id }),
+          method: 'POST'
+        });
         response = await data.json();
       } catch (err) {
         console.error(err);
