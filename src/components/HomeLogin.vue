@@ -18,7 +18,9 @@
     <button v-click-blur type="submit" class="btn btn-black" :disabled="!credentials.email || !credentials.password">
       Login
     </button>
-    <p v-if="cValidateMsg !== ''" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" v-html="cValidateMsg" />
+    <transition name="loading">
+      <p v-if="cValidateMsg !== ''" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" v-html="cValidateMsg" />
+    </transition>
   </form>
 </template>
 
@@ -72,3 +74,16 @@ export default {
   }
 }
 </script>
+
+<style lang="postcss" scoped>
+  .loading-enter-active,
+  .loading-leave-active {
+    transition: all 0.25s ease;
+  }
+
+  .loading-enter-from,
+  .loading-leave-to {
+    transform: translateX(-16px);
+    opacity: 0;
+  }
+</style>
