@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import store from './store';
+import store from './store/index.js';
 
 const About = () => import('./views/About.vue');
 // const Admin = () => import('./views/Admin.vue');

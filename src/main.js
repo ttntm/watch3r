@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import router from './router.js'
-import store from './store'
+import store from './store/index.js'
 import App from './App.vue'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import detectTokens from './helpers/authorize-tokens.js';

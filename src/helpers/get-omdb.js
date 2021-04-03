@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import store from '../store';
+import store from '../store/index.js';
 
 export const searchResult = ref({}); // displayed in ListAddModal.vue + Children
 

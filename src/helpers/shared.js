@@ -1,4 +1,4 @@
-import store from '../store';
+import store from '../store/index.js';
 
 export function checkDuplicate(mode, input) {
   const current = store.getters[`list/${mode}`];

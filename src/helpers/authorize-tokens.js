@@ -1,8 +1,8 @@
 /*
 Extract and validate tokens in the URL if they are present.
 */
-import store from '../store';
-import router from '../router';
+import store from '../store/index.js';
+import router from '../router.js';
 
 /**
  * Reads the URL hash attempts and tries to detect if there is confirmation tokens from an email signup or
