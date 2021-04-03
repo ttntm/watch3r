@@ -36,7 +36,7 @@
 <script>
 import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
-import { checkDuplicate } from '@/helpers/shared.js';
+import { checkDuplicate } from '../../helpers/shared.js';
 
 export default {
   name: 'ListItemImport',

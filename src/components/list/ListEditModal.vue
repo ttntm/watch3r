@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import BtnClose from '@/components/buttons/BtnClose.vue';
-import InputRange from '@/components/input/InputRange.vue';
+import BtnClose from '../buttons/BtnClose.vue';
+import InputRange from '../input/InputRange.vue';
 import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 

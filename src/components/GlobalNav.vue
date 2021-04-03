@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import BtnLogout from '@/components/buttons/BtnLogout.vue';
-import BtnMenu from '@/components/buttons/BtnMenu.vue';
+import BtnLogout from './buttons/BtnLogout.vue';
+import BtnMenu from './buttons/BtnMenu.vue';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';

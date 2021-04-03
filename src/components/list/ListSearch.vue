@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import InputSearch from '@/components/input/InputSearch.vue';
+import InputSearch from '../input/InputSearch.vue';
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 

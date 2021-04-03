@@ -29,7 +29,7 @@
 <script>
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
-import { checkDuplicate } from '@/helpers/shared.js';
+import { checkDuplicate } from '../../helpers/shared.js';
 
 export default {
   name: 'ListAddSearchResult',

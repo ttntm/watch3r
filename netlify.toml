@@ -2,3 +2,10 @@
   command = "npm run build"
   functions = "functions"
   publish = "dist"
+
+[dev]
+  command = "npm run start"
+  framework = "#custom"
+  functions = "functions"
+  publish = "dist"
+  targetPort = 3000

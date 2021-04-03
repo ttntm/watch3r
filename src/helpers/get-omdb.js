@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import store from '@/store';
+import store from '../store';
 
 export const searchResult = ref({}); // displayed in ListAddModal.vue + Children
 
@@ -9,10 +9,9 @@ export async function getOMDB(api, requestData) {
   // called from ListAddModal.vue
   // using exact search here, i.e. only getting 0 or 1 result instead of a full list of results.
   const currentUser = store.getters['user/currentUser'];
-  const spinner = require('@/assets/loading.svg');
 
   searchResult.value = {};
-  searchStatus.value = `<img src="${spinner}" class="mb-6 mx-auto">`;
+  searchStatus.value = `<img src="/img/loading.svg" class="mb-6 mx-auto">`;
   store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) for each search
 
   let response;

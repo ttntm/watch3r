@@ -46,14 +46,14 @@
 </template>
 
 <script>
-import BtnAddTitle from '@/components/buttons/BtnAddTitle.vue';
-import BtnToTop from '@/components/buttons/BtnToTop.vue';
-import ListItem from '@/components/list/ListItem.vue';
-import ListItemControls from '@/components/list/ListItemControls.vue';
-import ListLoading from '@/components/list/ListLoading.vue';
-import ListSearch from '@/components/list/ListSearch.vue';
-import ListSearchStatus from '@/components/list/ListSearchStatus.vue';
-import ListSort from '@/components/list/ListSort.vue';
+import BtnAddTitle from '../components/buttons/BtnAddTitle.vue';
+import BtnToTop from '../components/buttons/BtnToTop.vue';
+import ListItem from '../components/list/ListItem.vue';
+import ListItemControls from '../components/list/ListItemControls.vue';
+import ListLoading from '../components/list/ListLoading.vue';
+import ListSearch from '../components/list/ListSearch.vue';
+import ListSearchStatus from '../components/list/ListSearchStatus.vue';
+import ListSort from '../components/list/ListSort.vue';
 import { computed, defineAsyncComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
@@ -63,16 +63,16 @@ export default {
   components: {
     BtnAddTitle,
     BtnToTop,
-    ListAddModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListAddModal.vue')),
-    ListEditModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListEditModal.vue')),
+    ListAddModal: defineAsyncComponent(() => import('../components/list/ListAddModal.vue')),
+    ListEditModal: defineAsyncComponent(() => import('../components/list/ListEditModal.vue')),
     ListItem,
     ListItemControls,
     ListLoading,
-    ListPosterModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListPosterModal.vue')),
+    ListPosterModal: defineAsyncComponent(() => import('../components/list/ListPosterModal.vue')),
     ListSearch,
     ListSearchStatus,
     ListSort,
-    ModalBackdrop: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/ModalBackdrop.vue'))
+    ModalBackdrop: defineAsyncComponent(() => import('../components/ModalBackdrop.vue'))
   },
   setup() {
     const route = useRoute();

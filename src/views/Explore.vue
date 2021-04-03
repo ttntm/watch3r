@@ -16,7 +16,7 @@
       <ExploreTitleCard v-for="(item, index) in recommendations" :key="index" :item="item" :src="item.poster_path" @add-title="exploreAddTitle($event)" />
     </section>
     <div v-if="!recommendations.length && Object.keys(recSource).length > 0">
-      <img :src="spinner" class="my-16 mx-auto">
+      <img src="/img/loading.svg" class="my-16 mx-auto">
     </div>
     <div v-if="recommendations.length > 0" class="text-center text-sm mt-12">
       <p>Recommendations by:</p>
@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import BtnExploreClear from '@/components/buttons/BtnExploreClear.vue';
-import BtnToTop from '@/components/buttons/BtnToTop.vue';
-import ExploreSelectTitle from '@/components/explore/ExploreSelectTitle.vue';
+import BtnExploreClear from '../components/buttons/BtnExploreClear.vue';
+import BtnToTop from '../components/buttons/BtnToTop.vue';
+import ExploreSelectTitle from '../components/explore/ExploreSelectTitle.vue';
 import { computed, defineAsyncComponent, ref } from 'vue';
 import { useStore } from 'vuex';
 
@@ -48,9 +48,9 @@ export default {
     BtnExploreClear,
     BtnToTop,
     ExploreSelectTitle,
-    ExploreTitleCard: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/explore/ExploreTitleCard.vue')),
-    ListAddModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListAddModal.vue')),
-    ModalBackdrop: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/ModalBackdrop.vue'))
+    ExploreTitleCard: defineAsyncComponent(() => import('../components/explore/ExploreTitleCard.vue')),
+    ListAddModal: defineAsyncComponent(() => import('../components/list/ListAddModal.vue')),
+    ModalBackdrop: defineAsyncComponent(() => import('../components/ModalBackdrop.vue'))
   },
   setup() {
     const store = useStore();
@@ -68,7 +68,6 @@ export default {
       modalOpen: computed(() => store.getters['app/windowOpen']),
       recommendations: computed(() => store.getters['explore/recList']),
       recSource: computed(() => store.getters['explore/recSource']),
-      spinner: require('@/assets/loading.svg')
     }
   }
 }

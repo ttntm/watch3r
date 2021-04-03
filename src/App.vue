@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import GlobalNav from '@/components/GlobalNav.vue'
-import GlobalMenu from '@/components/GlobalMenu.vue'
-import GlobalFooter from '@/components/GlobalFooter.vue'
-import ToastMessage from '@/components/ToastMessage.vue'
+import GlobalNav from './components/GlobalNav.vue'
+import GlobalMenu from './components/GlobalMenu.vue'
+import GlobalFooter from './components/GlobalFooter.vue'
+import ToastMessage from './components/ToastMessage.vue'
 import { computed, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';

@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import InputRadio from '@/components/input/InputRadio.vue';
+import InputRadio from '../input/InputRadio.vue';
 import FileSaver from 'file-saver';
 import Papa from 'papaparse';
 import { computed, ref } from 'vue';

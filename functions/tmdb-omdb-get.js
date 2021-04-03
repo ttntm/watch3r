@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
-const oKey = process.env.VUE_APP_OMDB;
-const tKey = process.env.VUE_APP_TMDB;
+const oKey = process.env.VITE_APP_OMDB;
+const tKey = process.env.VITE_APP_TMDB;
 
 /* export our lambda function as named "handler" export */
 exports.handler = async (event, context, callback) => {

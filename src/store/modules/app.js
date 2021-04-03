@@ -5,13 +5,13 @@ export default {
   state() {
     return {
       functions: {
-        deleteItem: process.env.VUE_APP_F_LIST_DEL,
-        omdbGet: process.env.VUE_APP_F_OMDB_GET,
-        readList: process.env.VUE_APP_F_LIST_GET_ALL,
-        tmdbGetRecs: process.env.VUE_APP_F_TMDB_GET_RECS,
-        tmdbToOmdb: process.env.VUE_APP_F_TMDB_OMDB_GET,
-        updateTracklist: process.env.VUE_APP_F_TRACKLIST_EDT, // only tracklist has an 'update' function; watchlist can only add/delete
-        writeItem: process.env.VUE_APP_F_LIST_ADD
+        deleteItem: import.meta.env.VITE_APP_F_LIST_DEL,
+        omdbGet: import.meta.env.VITE_APP_F_OMDB_GET,
+        readList: import.meta.env.VITE_APP_F_LIST_GET_ALL,
+        tmdbGetRecs: import.meta.env.VITE_APP_F_TMDB_GET_RECS,
+        tmdbToOmdb: import.meta.env.VITE_APP_F_TMDB_OMDB_GET,
+        updateTracklist: import.meta.env.VITE_APP_F_TRACKLIST_EDT, // only tracklist has an 'update' function; watchlist can only add/delete
+        writeItem: import.meta.env.VITE_APP_F_LIST_ADD
       },
       isDevEnvironment: false,
       siteURL: 'watch3r.app',

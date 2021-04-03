@@ -27,7 +27,7 @@
 <script>
 import { onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
-import { validateEmail } from '@/helpers/shared.js';
+import { validateEmail } from '../helpers/shared.js';
 
 export default {
   name: 'HomeLogin',
@@ -50,12 +50,10 @@ export default {
     }
 
     const handleLogin = () => {
-      const spinner = require('@/assets/loading.svg');
-
       if(!validate()) {
         cValidateMsg.value = 'Please enter valid information.';
       } else {
-        cValidateMsg.value = `<img src="${spinner}" class="mx-auto">`;
+        cValidateMsg.value = `<img src="/img/loading.svg" class="mx-auto">`;
         store.dispatch('user/attemptLogin', credentials.value);
       }
     }

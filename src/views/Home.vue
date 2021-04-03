@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import HomeLogin from '@/components/HomeLogin.vue';
+import HomeLogin from '../components/HomeLogin.vue';
 import { computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';

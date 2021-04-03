@@ -12,7 +12,6 @@ export default {
     const router = useRouter();
 
     const loadingState = ref('');
-    const spinner = require('@/assets/loading.svg');
 
     const toImport = (e) => {
       if (e.target.tagName === 'A') {
@@ -26,7 +25,7 @@ export default {
 
       clearTimeout(timer);
 
-      loadingState.value = `<img src="${spinner}" class="mx-auto">`;
+      loadingState.value = `<img src="/img/loading.svg" class="mx-auto">`;
 
       timer = setTimeout(() => {
         loadingState.value = `

@@ -39,7 +39,7 @@ That's where the idea for this web application came from - imagine a tool that p
 
 ★ Get recommendations based on titles in your Tracklist
 
-★ PWA functionality for mobile devices to access your lists from the couch
+★ Complete functionality on mobile devices to access your lists from the couch
 
 ★ IMDb list import based on their export CSV files
 

@@ -52,10 +52,10 @@
 </template>
 
 <script>
-import BtnListItemControls from '@/components/buttons/BtnListItemControls.vue';
-import BtnListItemEdit from '@/components/buttons/BtnListItemEdit.vue';
-import BtnListItemExplore from '@/components/buttons/BtnListItemExplore.vue';
-import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue';
+import BtnListItemControls from '../buttons/BtnListItemControls.vue';
+import BtnListItemEdit from '../buttons/BtnListItemEdit.vue';
+import BtnListItemExplore from '../buttons/BtnListItemExplore.vue';
+import BtnListItemRemove from '../buttons/BtnListItemRemove.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 

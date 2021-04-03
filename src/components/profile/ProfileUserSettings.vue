@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import InputCheckbox from '@/components/input/InputCheckbox.vue';
-import InputRadio from '@/components/input/InputRadio.vue';
+import InputCheckbox from '../input/InputCheckbox.vue';
+import InputRadio from '../input/InputRadio.vue';
 import { computed, reactive, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 

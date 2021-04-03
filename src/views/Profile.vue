@@ -20,15 +20,15 @@
 </template>
 
 <script>
-import ProfileUserDetails from '@/components/profile/ProfileUserDetails.vue';
-import ProfileUserSettings from '@/components/profile/ProfileUserSettings.vue';
+import ProfileUserDetails from '../components/profile/ProfileUserDetails.vue';
+import ProfileUserSettings from '../components/profile/ProfileUserSettings.vue';
 import { computed, defineAsyncComponent, reactive, ref } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
   name: 'Profile',
   components: {
-    ProfileExport: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/profile/ProfileExport.vue')),
+    ProfileExport: defineAsyncComponent(() => import('../components/profile/ProfileExport.vue')),
     ProfileUserDetails,
     ProfileUserSettings
   },

@@ -21,7 +21,7 @@
 
 <script>
 import { ref } from 'vue';
-import { validateExtension } from '@/helpers/shared.js';
+import { validateExtension } from '../../helpers/shared.js';
 
 export default {
   name: 'InputFile',

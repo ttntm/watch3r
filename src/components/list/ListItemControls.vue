@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import BtnClose from '@/components/buttons/BtnClose.vue';
-import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue';
+import BtnClose from '../buttons/BtnClose.vue';
+import BtnListItemRemove from '../buttons/BtnListItemRemove.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 

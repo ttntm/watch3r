@@ -41,7 +41,7 @@
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
-      PWA functionality for mobile devices to access your lists from the couch
+      Complete functionality on mobile devices to access your lists from the couch
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;

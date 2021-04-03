@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import BtnToTop from '@/components/buttons/BtnToTop.vue';
-import InputFile from '@/components/input/InputFile.vue';
-import InputRadio from '@/components/input/InputRadio.vue';
-import ListItemImport from '@/components/list/ListItemImport.vue';
+import BtnToTop from '../components/buttons/BtnToTop.vue';
+import InputFile from '../components/input/InputFile.vue';
+import InputRadio from '../components/input/InputRadio.vue';
+import ListItemImport from '../components/list/ListItemImport.vue';
 import Papa from 'papaparse';
 import { computed, defineAsyncComponent, ref } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router'
@@ -49,9 +49,9 @@ export default {
     BtnToTop,
     InputFile,
     InputRadio,
-    ListAddModal: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/list/ListAddModal.vue')),
+    ListAddModal: defineAsyncComponent(() => import('../components/list/ListAddModal.vue')),
     ListItemImport,
-    ModalBackdrop: defineAsyncComponent(() => import(/* webpackPreload: true */ '@/components/ModalBackdrop.vue'))
+    ModalBackdrop: defineAsyncComponent(() => import('../components/ModalBackdrop.vue'))
   },
   setup() {
     const store = useStore();

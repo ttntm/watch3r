@@ -20,13 +20,13 @@
 </template>
 
 <script>
-import BtnClose from '@/components/buttons/BtnClose.vue';
-import InputRadio from '@/components/input/InputRadio.vue';
-import InputSearch from '@/components/input/InputSearch.vue';
-import ListAddSearchResult from '@/components/list/ListAddSearchResult.vue';
+import BtnClose from '../buttons/BtnClose.vue';
+import InputRadio from '../input/InputRadio.vue';
+import InputSearch from '../input/InputSearch.vue';
+import ListAddSearchResult from './ListAddSearchResult.vue';
 import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
-import { getOMDB, searchResult, searchStatus } from '@/helpers/get-omdb.js';
+import { getOMDB, searchResult, searchStatus } from '../../helpers/get-omdb.js';
 
 export default {
   name: 'ListAddModal',

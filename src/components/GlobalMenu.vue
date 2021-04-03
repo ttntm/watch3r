@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import BtnClose from '@/components/buttons/BtnClose.vue';
+import BtnClose from './buttons/BtnClose.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 

@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import store from '@/store';
+import store from './store';
 
-const About = () => import(/* webpackChunkName: "About" */ '@/views/About.vue');
-// const Admin = () => import(/* webpackChunkName: "Admin" */ '@/views/Admin.vue');
-const Explore = () => import(/* webpackChunkName: "Explore" */ '@/views/Explore.vue');
-const Home = () => import(/* webpackChunkName: "Home" */ '@/views/Home.vue');
-const Import = () => import(/* webpackChunkName: "Import" */ '@/views/Import.vue');
-const Invite = () => import(/* webpackChunkName: "Invite" */ '@/views/Invite.vue');
-const List = () => import(/* webpackChunkName: "List" */ '@/views/List.vue');
-const Profile = () => import(/* webpackChunkName: "Profile" */ '@/views/Profile.vue');
-const Recover = () => import(/* webpackChunkName: "Recover" */ '@/views/Recover.vue');
-const Support = () => import(/* webpackChunkName: "Support" */ '@/views/Support.vue');
-const Signup = () => import(/* webpackChunkName: "Signup" */ '@/views/Signup.vue');
+const About = () => import('./views/About.vue');
+// const Admin = () => import('./views/Admin.vue');
+const Explore = () => import('./views/Explore.vue');
+const Home = () => import('./views/Home.vue');
+const Import = () => import('./views/Import.vue');
+const Invite = () => import('./views/Invite.vue');
+const List = () => import('./views/List.vue');
+const Profile = () => import('./views/Profile.vue');
+const Recover = () => import('./views/Recover.vue');
+const Support = () => import('./views/Support.vue');
+const Signup = () => import('./views/Signup.vue');
 
 function forbidden(to, from, next) {
   if(store.getters['user/loggedIn']) {

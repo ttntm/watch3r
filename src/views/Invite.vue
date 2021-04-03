@@ -36,7 +36,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import { validateEmail } from '@/helpers/shared.js';
+import { validateEmail } from '../helpers/shared.js';
 
 export default {
   name: 'Invite',
