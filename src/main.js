@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import router from './router'
+import router from './router.js'
 import store from './store'
 import App from './App.vue'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
