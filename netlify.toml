@@ -9,3 +9,10 @@
   functions = "functions"
   publish = "dist"
   targetPort = 3000
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/assets/*.js"
+
+  [headers.values]
+    Content-Type = "text/javascript"
