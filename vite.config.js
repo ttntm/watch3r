@@ -22,5 +22,13 @@ export default defineConfig({
   },
   plugins: [
     vue()
-  ]
+  ],
+  rollupOptions: {
+    // Disabled Hashing as Netlify Does Hashing for us using Etag.
+    output: {
+      entryFileNames: `assets/[name].js`,
+      chunkFileNames: `assets/[name].js`,
+      assetFileNames: `assets/[name].[ext]`,
+    }
+  }
 });
