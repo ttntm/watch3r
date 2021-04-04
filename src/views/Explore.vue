@@ -39,6 +39,7 @@
 import BtnExploreClear from '../components/buttons/BtnExploreClear.vue';
 import BtnToTop from '../components/buttons/BtnToTop.vue';
 import ExploreSelectTitle from '../components/explore/ExploreSelectTitle.vue';
+import ExploreTitleCard from '../components/explore/ExploreTitleCard.vue';
 import { computed, defineAsyncComponent, ref } from 'vue';
 import { useStore } from 'vuex';
 
@@ -48,7 +49,7 @@ export default {
     BtnExploreClear,
     BtnToTop,
     ExploreSelectTitle,
-    ExploreTitleCard: defineAsyncComponent(() => import('../components/explore/ExploreTitleCard.vue')),
+    ExploreTitleCard,
     ListAddModal: defineAsyncComponent(() => import('../components/list/ListAddModal.vue')),
     ModalBackdrop: defineAsyncComponent(() => import('../components/ModalBackdrop.vue'))
   },

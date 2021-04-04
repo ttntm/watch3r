@@ -48,6 +48,8 @@
 <script>
 import BtnAddTitle from '../components/buttons/BtnAddTitle.vue';
 import BtnToTop from '../components/buttons/BtnToTop.vue';
+import ListAddModal from '../components/list/ListAddModal.vue';
+import ListEditModal from '../components/list/ListEditModal.vue';
 import ListItem from '../components/list/ListItem.vue';
 import ListItemControls from '../components/list/ListItemControls.vue';
 import ListLoading from '../components/list/ListLoading.vue';
@@ -63,8 +65,8 @@ export default {
   components: {
     BtnAddTitle,
     BtnToTop,
-    ListAddModal: defineAsyncComponent(() => import('../components/list/ListAddModal.vue')),
-    ListEditModal: defineAsyncComponent(() => import('../components/list/ListEditModal.vue')),
+    ListAddModal,
+    ListEditModal,
     ListItem,
     ListItemControls,
     ListLoading,
