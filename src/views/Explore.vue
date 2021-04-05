@@ -2,7 +2,7 @@
   <section id="explore">
     <div class="sm:text-center">
       <h1 class="h2 text-yellow-600">
-        Explore Recommendations
+        Recommendations
       </h1>
       <h2 class="text-base font-normal mb-0">
         Select a title from your Tracklist based on which you'd like to get recommendations.
