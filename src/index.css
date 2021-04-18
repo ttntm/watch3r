@@ -321,7 +321,7 @@
 
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity 0.5s;
+    transition: opacity 0.35s;
   }
 
   .fade-enter-from,
@@ -331,7 +331,7 @@
 
   .slide-fade-enter-active,
   .slide-fade-leave-active {
-    transition: all 0.75s;
+    transition: all 0.5s;
   }
 
   .slide-fade-enter-from,
@@ -353,7 +353,7 @@
   }
 
   .menu-item {
-    @apply w-full block tracking-wide font-bold text-lg text-center py-3;
+    @apply w-full block tracking-wide font-bold text-lg text-center capitalize py-3;
   }
 
   .menu-item:hover {
@@ -402,7 +402,7 @@
   }
 
   .footer-nav a {
-    @apply text-yellow-600 font-bold px-4 py-2;
+    @apply text-yellow-600 capitalize font-bold px-4 py-2;
   }
 
   .footer-nav a:hover {

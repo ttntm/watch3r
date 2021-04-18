@@ -70,14 +70,14 @@ export default {
 
   .card-overlay {
     @apply absolute top-0 bottom-0 left-0 right-0 bg-gray-900 rounded-md bg-opacity-0 opacity-0 flex items-center justify-center p-4;
-    transform: translateY(-50px);
-    transition: all .5s ease;
+    transform: scale(0.75);
+    transition: all .35s ease;
   }
 
   .card:hover .card-overlay {
     @apply opacity-100;
     --bg-opacity: 0.95;
-    transform: translateY(0px);
+    transform: scale(1);
     transition: all .5s ease;
   }
 

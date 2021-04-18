@@ -9,6 +9,22 @@ export function checkDuplicate(mode, input) {
   }
 }
 
+export function objSort (field, reverse, primer) {
+  //generic sorting function for object keys
+  const key = primer ?
+    function(x) {
+      return primer(x[field])
+    } :
+    function(x) {
+      return x[field]
+    };
+  reverse = !reverse ? 1 : -1;
+
+  return function(a, b) {
+    return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+  }
+}
+
 export function validateEmail(email) {
   const rx = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
   return rx.test(email);

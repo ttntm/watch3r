@@ -4,7 +4,7 @@
     <section class="container flex flex-col flex-grow flex-shrink-0 px-4 mx-auto">
       <router-view :key="routeFull" />
     </section>
-    <GlobalFooter />
+    <GlobalFooter :menuItems="menuItems" />
   </section>
   <transition name="fade">
     <!-- menu backdrop -->
@@ -12,7 +12,7 @@
   </transition>
   <transition name="slide-fade">
     <!-- menu modal -->
-    <GlobalMenu v-if="menuOpen" />
+    <GlobalMenu v-if="menuOpen" :menuItems="menuItems" />
   </transition>
   <ToastMessage />
 </template>
@@ -25,6 +25,7 @@ import ToastMessage from './components/ToastMessage.vue'
 import { computed, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { objSort } from './helpers/shared.js';
 
 export default {
   name: 'App',
@@ -41,6 +42,24 @@ export default {
 
     const loggedIn = computed(() => store.getters['user/loggedIn']);
     const mode = computed(() => route.meta.mode);
+
+    const menuItems = computed(
+      () => {
+        const routes = router.getRoutes();
+        //return routes;
+        const items = routes.filter((item) => {
+          if (item.meta.menu && item.meta.menu.visible) {
+            item.menuPosition = item.meta.menu.position; // necessary for sorting - objSort does not work for nested keys
+            if (item.meta.authRequired) {
+              return item.meta.authRequired === Boolean(loggedIn.value) ? true : false;
+            } else {
+              return true;
+            }
+          }
+        });
+        return items.sort(objSort('menuPosition', false));
+      }
+    );
 
     const updateList = () => {
       if (mode.value) { // double check 'mode' here, just in case
@@ -62,6 +81,7 @@ export default {
     })
 
     return {
+      menuItems,
       menuOpen: computed(() => store.getters['app/windowOpen'] === 1),
       routeFull: computed(() => route.fullPath)
     }

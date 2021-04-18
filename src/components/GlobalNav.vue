@@ -1,6 +1,6 @@
 <template>
   <nav class="w-full flex flex-row justify-between sm:justify-start items-center px-4 py-2 mb-8">
-    <BtnMenu class="block" />
+    <BtnMenu class="block text-gray-600 hover:text-gray-200 focus:text-gray-200" />
     <div class="hidden sm:flex flex-row items-center justify-center flex-grow">
       <router-link v-if="loggedIn" v-click-blur :to="{name: 'watchlist'}" class="nav-link" :class="{'active' : currentView === 'watchlist'}">
         Watchlist

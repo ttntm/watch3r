@@ -27,12 +27,24 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        menu: {
+          position: 1,
+          visible: true
+        }
+      }
     },
     {
       path: '/about',
       name: 'about',
-      component: About
+      component: About,
+      meta: {
+        menu: {
+          position: 7,
+          visible: true
+        }
+      }
     },
     // {
     //   path: '/admin',
@@ -45,6 +57,10 @@ const router = createRouter({
       component: Explore,
       meta: {
         authRequired: true,
+        menu: {
+          position: 4,
+          visible: true
+        }
       },
       beforeEnter: (to, from, next) => {
         const recSource = store.getters['explore/recSource'];
@@ -76,18 +92,18 @@ const router = createRouter({
       component: Import,
       meta: {
         authRequired: true,
+        menu: {
+          position: 5,
+          visible: true
+        }
       },
       beforeEnter: (to, from, next) => {
+        // get existing lists of there's any -- neccessary for duplicate prevention when importing
         const tl = store.getters['list/tracklist'];
         const wl = store.getters['list/watchlist'];
 
-        if (tl.length === 0) {
-          store.dispatch('list/readList', 'tracklist');
-        }
-
-        if (wl.length === 0) {
-          store.dispatch('list/readList', 'watchlist');
-        }
+        if (tl.length === 0) store.dispatch('list/readList', 'tracklist');
+        if (wl.length === 0) store.dispatch('list/readList', 'watchlist');
 
         return next();
       }
@@ -103,6 +119,10 @@ const router = createRouter({
       component: Profile,
       meta: {
         authRequired: true,
+        menu: {
+          position: 6,
+          visible: true
+        }
       }
     },
     {
@@ -120,7 +140,13 @@ const router = createRouter({
     {
       path: '/support',
       name: 'support',
-      component: Support
+      component: Support,
+      meta: {
+        menu: {
+          position: 8,
+          visible: true
+        }
+      }
     },
     {
       path: '/track',
@@ -128,6 +154,10 @@ const router = createRouter({
       component: List,
       meta: {
         authRequired: true,
+        menu: {
+          position: 3,
+          visible: true
+        },
         mode: 'tracklist',
         subtitle: 'Track watched titles, rate them and write down some notes.'
       }
@@ -138,6 +168,10 @@ const router = createRouter({
       component: List,
       meta: {
         authRequired: true,
+        menu: {
+          position: 2,
+          visible: true
+        },
         mode: 'watchlist',
         subtitle: "Add titles to your watchlist so you don't lose track of things."
       }
@@ -157,14 +191,9 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   store.dispatch('app/closeAllModals'); // close all open windows if there are any
-
-  if (store.getters['tools/searchActive']) {  // reset search when navigation occurs
-    store.dispatch('tools/resetList');
-  }
-
-  if (!to.meta.authRequired) {
-    return next();
-  }
+  // reset search when navigation occurs
+  if (store.getters['tools/searchActive']) store.dispatch('tools/resetList');
+  if (!to.meta.authRequired) return next();
 
   if (to.meta.authRequired && store.getters['user/loggedIn']) {
     return next();

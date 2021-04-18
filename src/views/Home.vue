@@ -12,16 +12,16 @@
       </section>
       <section v-if="loggedIn">
         <nav class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
-          <router-link :to="{name: 'watchlist'}" class="btn btn-black mx-auto sm:m-0">
+          <router-link :to="{name: 'watchlist'}" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
             Watchlist
           </router-link>
-          <router-link :to="{name: 'tracker'}" class="btn btn-black mx-auto sm:m-0">
+          <router-link :to="{name: 'tracker'}" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
             Tracker
           </router-link>
-          <router-link :to="{name: 'explore'}" class="btn btn-black mx-auto sm:m-0">
+          <router-link :to="{name: 'explore'}" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
             Explore
           </router-link>
-          <router-link :to="{name: 'profile'}" class="btn btn-black mx-auto sm:m-0">
+          <router-link :to="{name: 'profile'}" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
             Profile
           </router-link>
         </nav>

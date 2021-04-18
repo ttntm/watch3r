@@ -1,3 +1,5 @@
+import { objSort } from '../../helpers/shared.js';
+
 export default {
   strict: false,
   namespaced: true,
@@ -118,22 +120,6 @@ export default {
     sortList({ commit, getters, rootGetters }, args) {
       const [sortID, mode] = args; // [Number, String]
       const sortMode = getters['sortMode'];
-
-      //generic sorting function for object keys
-      const objSort = (field, reverse, primer) => {
-        const key = primer ?
-          function(x) {
-            return primer(x[field])
-          } :
-          function(x) {
-            return x[field]
-          };
-        reverse = !reverse ? 1 : -1;
-
-        return function(a, b) {
-          return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
-        }
-      }
 
       const doSort = () => {
         const key = sortMode[sortID].key;

@@ -46,6 +46,6 @@ export default {
       closeToastMessage,
       toastMessage: computed(() => store.getters['app/toastMessage'])
     }
-  },
+  }
 };
 </script>
