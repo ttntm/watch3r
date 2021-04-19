@@ -1,7 +1,7 @@
 <template>
   <nav v-click-outside="closeMenu" v-esc="closeMenu" v-scroll-lock class="app-menu">
     <section class="flex flex-row justify-between items-center pr-4 py-2">
-      <img src="/img/icon.svg" class="px-4" style="width: 60px;" alt="WATCH3R">
+      <img src="/img/icon.svg" class="px-4" width="60" alt="WATCH3R">
       <BtnClose btn-title="Close Menu" @click="closeMenu" />
     </section>
     <section class="flex flex-col text-gray-800">

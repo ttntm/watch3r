@@ -46,7 +46,6 @@ export default {
     const menuItems = computed(
       () => {
         const routes = router.getRoutes();
-        //return routes;
         const items = routes.filter((item) => {
           if (item.meta.menu && item.meta.menu.visible) {
             item.menuPosition = item.meta.menu.position; // necessary for sorting - objSort does not work for nested keys
