@@ -34,13 +34,14 @@ exports.handler = async (event, context, callback) => {
 
       // add the query results to the sheet
       const now = new Date();
-      lists.forEach(async (listname) => {
-        await sheet.addRow({
+      for (const listname of lists) {
+        const addedRow = await sheet.addRow({
           Date: date.format(now, 'DD.MM.YYYY'),
           List: listname,
           ListItemCount: await getIndexItemCount(`${listname}_all`)
         });
-      });
+        console.log(addedRow._rowNumber, addedRow._rawData);
+      }
 
       return {
         statusCode: 200,
