@@ -25,17 +25,20 @@ exports.handler = async (event, context, callback) => {
       let responseUL = await requestUL.json();
 
       if (responseUL.users.length > 0) {
-        const userlistPayload = responseUL.users.filter((user) => {
-          return user.confirmed_at
-            ? {
+        let userlistPayload = []
+        for (const user of responseUL.users) {
+          if (user.confirmed_at) {
+            userlistPayload.push(
+              {
                 data: {
                   id: user.id,
                   email: user.email,
                   created: user.confirmed_at
                 }
               }
-            : false
-        });
+            );
+          }
+        }
 
         try {
           const client = new faunadb.Client({
