@@ -44,18 +44,10 @@ exports.handler = async (event, context, callback) => {
         console.log(addedRow._rowNumber, addedRow._rawData); // visible in Netlify's funcion logs
       }
 
-      return {
-        statusCode: 200,
-        body: JSON.stringify({
-          message: `POST Success - added rows`
-        })
-      };
+      return callback(null, { statusCode: 200, body: "POST Success - added rows" })
     } catch (error) {
       console.error(error);
-      return callback(null, {
-        statusCode: 400,
-        body: JSON.stringify(error)
-      });
+      return callback(null, { statusCode: 400, body: JSON.stringify(error) })
     }
   }
 }

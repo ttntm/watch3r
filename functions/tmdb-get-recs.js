@@ -30,24 +30,15 @@ exports.handler = async (event, context, callback) => {
         try {
           const recResponse = await fetch(`https://api.themoviedb.org/3/${recType}/${recBaseID}/recommendations?api_key=${key}`, { method: 'GET' });
           const recData = await recResponse.json();
-          return callback(null, {
-            statusCode: 200,
-            body: JSON.stringify(recData)
-          });
+          return callback(null, { statusCode: 200, body: JSON.stringify(recData) })
         } catch {
           console.log("error", error);
-          return callback(null, {
-            statusCode: 400,
-            body: JSON.stringify(error)
-          });
+          return callback(null, { statusCode: 400, body: JSON.stringify(error) })
         }
       }
     } catch (error) {
       console.log("error", error);
-      return callback(null, {
-        statusCode: 400,
-        body: JSON.stringify(error)
-      });
+      return callback(null, { statusCode: 400, body: JSON.stringify(error) })
     }
   }
 }

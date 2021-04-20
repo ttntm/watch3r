@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "netlify dev",
     "build": "vite build",
-    "start": "vite",
-    "lint": "vue-cli-service lint"
+    "start": "vite"
   },
   "dependencies": {
     "body-scroll-lock": "^3.1.5",
@@ -23,18 +22,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.1",
-    "@vue/cli-plugin-eslint": "^4.5.8",
-    "@vue/cli-service": "^4.5.8",
-    "@vue/compiler-sfc": "^3.0.2",
-    "@vue/eslint-config-standard": "^5.1.2",
-    "babel-eslint": "^10.1.0",
     "date-and-time": "^1.0.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^7.0.0-0",
     "faunadb": "^3.0.1",
     "google-spreadsheet": "^3.1.15",
     "node-fetch": "^2.6.1",

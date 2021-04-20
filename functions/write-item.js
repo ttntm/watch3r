@@ -26,10 +26,7 @@ exports.handler = (event, context, callback) => {
     return client.query(q.Create(q.Ref(`collections/${list}`), newEntry))
       .then((response) => {
         console.log("success", response);
-        return callback(null, {
-          statusCode: 200,
-          body: JSON.stringify(response)
-        })
+        return callback(null, { statusCode: 200, body: JSON.stringify(response) })
       }).catch((error) => {
         console.log("error", error);
         return callback(null, { statusCode: 400, body: JSON.stringify(error) })
