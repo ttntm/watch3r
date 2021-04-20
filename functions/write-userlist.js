@@ -9,7 +9,7 @@ exports.handler = async (event, context, callback) => {
 
   if (event.httpMethod !== 'POST') {
     return callback(null, { statusCode: 405, body: 'Method Not Allowed'})
-  } else if (!data.grant === process.env.GRANT) {
+  } else if (data.grant !== process.env.GRANT) {
     return callback(null, { statusCode: 400, body: 'Bad Request' })
   } else {
     try {
