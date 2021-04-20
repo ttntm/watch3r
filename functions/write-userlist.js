@@ -25,16 +25,16 @@ exports.handler = async (event, context, callback) => {
       let responseUL = await requestUL.json();
 
       if (responseUL.users.length > 0) {
-        const userlistPayload = responseUL.users.map((user) => {
-          if (user.confirmed_at) {
-            return {
-              data: {
-                id: user.id,
-                email: user.email,
-                created: user.confirmed_at
+        const userlistPayload = responseUL.users.filter((user) => {
+          return user.confirmed_at
+            ? {
+                data: {
+                  id: user.id,
+                  email: user.email,
+                  created: user.confirmed_at
+                }
               }
-            };
-          }
+            : false
         });
 
         try {
