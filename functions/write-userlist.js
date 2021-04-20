@@ -51,7 +51,7 @@ exports.handler = async (event, context, callback) => {
                 q.Exists(
                   q.Match(
                     q.Index('userId'),
-                    q.Select(['data', 'userId'], q.Var('d'))
+                    q.Select(['data', 'id'], q.Var('d'))
                   )
                 ),
                 q.Replace(
@@ -60,7 +60,7 @@ exports.handler = async (event, context, callback) => {
                     q.Get(
                       q.Match(
                         q.Index('userId'),
-                        q.Select(['data', 'userId'], q.Var('d'))
+                        q.Select(['data', 'id'], q.Var('d'))
                       )
                     )
                   ),
