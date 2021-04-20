@@ -9,7 +9,7 @@ exports.handler = async (event, context, callback) => {
 
   if (event.httpMethod !== 'POST') {
     return callback(null, { statusCode: 405, body: 'Method Not Allowed'})
-  } else if (!data.grant === process.env.USERLIST) {
+  } else if (!data.grant === process.env.GRANT) {
     return callback(null, { statusCode: 400, body: 'Bad Request' })
   } else {
     try {
@@ -46,33 +46,35 @@ exports.handler = async (event, context, callback) => {
           });
           const q = faunadb.query;
 
-          let upsert = await client.query(q.Map(
-            userlistPayload,
-            q.Lambda(
-              ['d'],
-              q.If(
-                q.Exists(
-                  q.Match(
-                    q.Index('userId'),
-                    q.Select(['data', 'id'], q.Var('d'))
-                  )
-                ),
-                q.Replace(
-                  q.Select(
-                    'ref',
-                    q.Get(
-                      q.Match(
-                        q.Index('userId'),
-                        q.Select(['data', 'id'], q.Var('d'))
-                      )
+          let upsert = await client.query(
+            q.Map(
+              userlistPayload,
+              q.Lambda(
+                ['payloadItem'],
+                q.If(
+                  q.Exists(
+                    q.Match(
+                      q.Index('userId'),
+                      q.Select(['data', 'id'], q.Var('payloadItem'))
                     )
                   ),
-                  q.Var('d')
-                ),
-                q.Create(q.Collection('users'), q.Var('d'))
+                  q.Replace(
+                    q.Select(
+                      'ref',
+                      q.Get(
+                        q.Match(
+                          q.Index('userId'),
+                          q.Select(['data', 'id'], q.Var('payloadItem'))
+                        )
+                      )
+                    ),
+                    q.Var('payloadItem')
+                  ),
+                  q.Create(q.Collection('users'), q.Var('payloadItem'))
+                )
               )
             )
-          ));
+          );
 
           console.log(upsert);
           return callback(null, { statusCode: 200, body: JSON.stringify({ message: "Userlist updated", response: upsert }) })
