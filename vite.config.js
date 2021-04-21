@@ -16,7 +16,6 @@ export default defineConfig({
   optimizeDeps: {
     include: [
       'body-scroll-lock',
-      'core-js',
       'file-saver',
       'gotrue-js',
       'papaparse',
