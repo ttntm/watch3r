@@ -1,3 +1,5 @@
+import { getAuthHeaders } from '../../helpers/shared.js';
+
 export default {
   strict: false,
   namespaced: true,
@@ -38,7 +40,8 @@ export default {
       let response;
 
       try {
-        const data = await fetch(fn.tmdbGetRecs, { body: JSON.stringify(titleData), method: 'POST' });
+        const reqHeaders = await getAuthHeaders();
+        const data = await fetch(fn.tmdbGetRecs, { body: JSON.stringify(titleData), method: 'POST', headers: reqHeaders });
         response = await data.json();
       } catch(err) {
         console.error("TMDB API error [getRecommendations()]", err);

@@ -9,16 +9,13 @@ export function checkDuplicate(mode, input) {
   }
 }
 
-export function getAuthHeaders() {
+export async function getAuthHeaders() {
   let headers = {
     'Content-Type': 'application/json'
   };
+  let token = await store.dispatch('user/refreshUserToken');
 
-  store.dispatch('user/refreshUserToken').then((token) => {
-    if (token) {
-      headers['Authorization'] = `Bearer ${token}`;
-    }
-  });
+  if (token) headers['Authorization'] = `Bearer ${token}`;
 
   return headers
 }

@@ -73,8 +73,10 @@ export default {
       let response;
 
       try {
+        const reqHeaders = await getAuthHeaders();
         const data = await fetch(`${fn.api}/${mode}`, {
           body: JSON.stringify(titleData),
+          headers: reqHeaders,
           method: 'POST'
         });
         response = await data.json();
@@ -104,7 +106,7 @@ export default {
       const user = rootGetters['user/currentUser'];
 
       try {
-        const reqHeaders = getAuthHeaders();
+        const reqHeaders = await getAuthHeaders();
         const data = await fetch(`${fn.api}/${mode}/${user.id}`, { method: 'GET', headers: reqHeaders });
         response = await data.json();
       } catch (err) {
@@ -154,8 +156,10 @@ export default {
       let response;
 
       try {
+        const reqHeaders = await getAuthHeaders();
         const data = await fetch(`${fn.api}/${updatedTitleData.refId}`, {
           body: JSON.stringify(updatedTitleData),
+          headers: reqHeaders,
           method: 'PUT'
         });
         response = await data.json();
@@ -229,8 +233,10 @@ export default {
       let response;
 
       try {
+        const reqHeaders = await getAuthHeaders();
         const data = await fetch(`${fn.api}/${mode}`, {
           body: JSON.stringify({ item: id }),
+          headers: reqHeaders,
           method: 'DELETE'
         });
         response = await data.json();

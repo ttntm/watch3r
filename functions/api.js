@@ -7,7 +7,7 @@ const getPath = (urlPath) => {
 const pathError = { statusCode: 500, body: 'No path specified' };
 
 exports.handler = async (event, context) => {
-  const claims = process.env.DEV ? true : context.clientContext && context.clientContext.user;
+  const claims = context.clientContext && context.clientContext.user;
 
   if (!claims) {
     return { statusCode: 401, body: JSON.stringify({ data: 'NOT ALLOWED' }) }

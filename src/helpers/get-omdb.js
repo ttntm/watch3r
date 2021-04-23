@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 import store from '../store/index.js';
+import { getAuthHeaders } from './shared.js';
 
 export const searchResult = ref({}); // displayed in ListAddModal.vue + Children
 
@@ -17,7 +18,8 @@ export async function getOMDB(api, requestData) {
   let response;
 
   try {
-    const data = await fetch(api, { body: JSON.stringify(requestData), method: 'POST' });
+    const reqHeaders = await getAuthHeaders();
+    const data = await fetch(api, { body: JSON.stringify(requestData), method: 'POST', headers: reqHeaders });
     response = await data.json();
   } catch (err) {
     console.error('OMDB error: ', err);

@@ -4,7 +4,7 @@ const oKey = process.env.VITE_APP_OMDB;
 const tKey = process.env.VITE_APP_TMDB;
 
 exports.handler = async (event, context, callback) => {
-  const claims = process.env.DEV ? true : context.clientContext && context.clientContext.user;
+  const claims = context.clientContext && context.clientContext.user;
   const data = JSON.parse(event.body);
   console.log("Function `tmdb-omdb-get` invoked", data);
 
