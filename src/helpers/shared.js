@@ -18,10 +18,9 @@ export function getAuthHeaders() {
     if (token) {
       headers['Authorization'] = `Bearer ${token}`;
     }
-    return headers
   });
 
-  return Promise.resolve(headers)
+  return headers
 }
 
 export function objSort (field, reverse, primer) {

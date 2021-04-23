@@ -104,7 +104,8 @@ export default {
       const user = rootGetters['user/currentUser'];
 
       try {
-        const data = await fetch(`${fn.api}/${mode}/${user.id}`, { method: 'GET', headers: getAuthHeaders() });
+        const reqHeaders = getAuthHeaders();
+        const data = await fetch(`${fn.api}/${mode}/${user.id}`, { method: 'GET', headers: reqHeaders });
         response = await data.json();
       } catch (err) {
         console.error(err);
