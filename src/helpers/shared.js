@@ -9,6 +9,21 @@ export function checkDuplicate(mode, input) {
   }
 }
 
+export function getAuthHeaders() {
+  let headers = {
+    'Content-Type': 'application/json'
+  };
+
+  store.dispatch('user/refreshUserToken').then((token) => {
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    return headers
+  });
+
+  return Promise.resolve(headers)
+}
+
 export function objSort (field, reverse, primer) {
   //generic sorting function for object keys
   const key = primer ?

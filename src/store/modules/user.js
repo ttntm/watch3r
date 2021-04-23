@@ -163,6 +163,13 @@ export default {
       });
     },
 
+    refreshUserToken({ state }) {
+      const user = state.GoTrueAuth.currentUser();
+      if (user) {
+        return user.jwt()
+      }
+    },
+
     requestPasswordRecovery({ dispatch, state }, email) {
       state.GoTrueAuth.requestPasswordRecoveryy(email)
         .then(response => {

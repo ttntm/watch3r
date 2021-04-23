@@ -1,3 +1,5 @@
+import { getAuthHeaders } from '../../helpers/shared.js';
+
 export default {
   strict: false,
   namespaced: true,
@@ -102,7 +104,7 @@ export default {
       const user = rootGetters['user/currentUser'];
 
       try {
-        const data = await fetch(`${fn.api}/${mode}/${user.id}`, { method: 'GET' });
+        const data = await fetch(`${fn.api}/${mode}/${user.id}`, { method: 'GET', headers: getAuthHeaders() });
         response = await data.json();
       } catch (err) {
         console.error(err);
