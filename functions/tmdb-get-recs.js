@@ -2,15 +2,14 @@ const fetch = require('node-fetch');
 
 const key = process.env.VITE_APP_TMDB;
 
-/* export our lambda function as named "handler" export */
 exports.handler = async (event, context, callback) => {
-  /* parse the string event.body into a useable JS object */
+  const claims = process.env.DEV ? true : context.clientContext && context.clientContext.user;
   const data = JSON.parse(event.body);
   console.log("Function `tmdb-get-recs` invoked", data);
 
   if (event.httpMethod !== 'POST') {
     return callback(null, { statusCode: 405, body: 'Method Not Allowed'})
-  } else if (!data) {
+  } else if (!claims || !data) {
     return callback(null, { statusCode: 400, body: 'Bad Request' })
   } else {
     try {

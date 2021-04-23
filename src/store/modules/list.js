@@ -71,7 +71,7 @@ export default {
       let response;
 
       try {
-        const data = await fetch(`${fn.writeItem}/${mode}`, {
+        const data = await fetch(`${fn.api}/${mode}`, {
           body: JSON.stringify(titleData),
           method: 'POST'
         });
@@ -102,10 +102,7 @@ export default {
       const user = rootGetters['user/currentUser'];
 
       try {
-        const data = await fetch(`${fn.readList}/${mode}`, {
-          body: JSON.stringify({ user: user.id }),
-          method: 'POST'
-        });
+        const data = await fetch(`${fn.api}/${mode}/${user.id}`, { method: 'GET' });
         response = await data.json();
       } catch (err) {
         console.error(err);
@@ -154,9 +151,9 @@ export default {
       let response;
 
       try {
-        const data = await fetch(`${fn.updateTracklist}/${updatedTitleData.refId}`, {
+        const data = await fetch(`${fn.api}/${updatedTitleData.refId}`, {
           body: JSON.stringify(updatedTitleData),
-          method: 'POST'
+          method: 'PUT'
         });
         response = await data.json();
       } catch (err) {
@@ -229,9 +226,9 @@ export default {
       let response;
 
       try {
-        const data = await fetch(`${fn.deleteItem}/${mode}`, {
+        const data = await fetch(`${fn.api}/${mode}`, {
           body: JSON.stringify({ item: id }),
-          method: 'POST'
+          method: 'DELETE'
         });
         response = await data.json();
       } catch (err) {
