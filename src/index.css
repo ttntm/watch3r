@@ -121,7 +121,9 @@
   }
 
   a,
-  button {
+  button,
+  input,
+  textarea {
     @apply outline-none;
   }
 
