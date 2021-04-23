@@ -10,10 +10,17 @@ export function checkDuplicate(mode, input) {
 }
 
 export async function getAuthHeaders() {
+  const now = Date.now();
+  const user = store.getters['user/currentUser'];
+
   let headers = {
     'Content-Type': 'application/json'
   };
-  let token = await store.dispatch('user/refreshUserToken');
+
+  // only get a new token if the old one has expired
+  const token = user.token && user.token.expires_at < now
+    ? await store.dispatch('user/refreshUserToken')
+    : user.token.access_token;
 
   if (token) headers['Authorization'] = `Bearer ${token}`;
 

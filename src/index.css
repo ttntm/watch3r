@@ -120,6 +120,11 @@
     @apply pl-8;
   }
 
+  a,
+  button {
+    @apply outline-none;
+  }
+
   ul {
     list-style-type: square;
   }

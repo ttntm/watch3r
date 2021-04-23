@@ -4,9 +4,10 @@ module.exports = (event, context) => {
   const client = new faunadb.Client({
     secret: process.env.FAUNA_SECRET
   });
+  const q = faunadb.query;
+
   const data = JSON.parse(event.body);
   const id = event.target;
-  const q = faunadb.query;
 
   console.log(`Function 'update' invoked. update id: ${id}`);
 
