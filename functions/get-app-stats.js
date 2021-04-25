@@ -25,10 +25,8 @@ exports.handler = async (event, context, callback) => {
           ['userId'],
           q.Let(
             {
-              tracklistRefs: q.Match(q.Index('tracklist_user'), q.Var('userId')),
-              watchlistRefs: q.Match(q.Index('watchlist_user'), q.Var('userId')),
-              tracklistCount: q.Count(q.Var('tracklistRefs')),
-              watchlistCount: q.Count(q.Var('watchlistRefs')),
+              tracklistCount: q.Count(q.Match(q.Index('tracklist_user'), q.Var('userId'))),
+              watchlistCount: q.Count(q.Match(q.Index('watchlist_user'), q.Var('userId')))
             },
             {
               User: q.Var('userId'),
@@ -44,7 +42,7 @@ exports.handler = async (event, context, callback) => {
   }
 
   if (event.httpMethod !== 'POST') {
-    return callback(null, { statusCode: 405, body: 'Method Not Allowed'})
+    return callback(null, { statusCode: 405, body: 'Method Not Allowed' })
   } else if (!data.action || data.grant !== process.env.GRANT) {
     return callback(null, { statusCode: 400, body: 'Bad Request' })
   } else {
