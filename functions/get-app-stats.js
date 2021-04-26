@@ -68,12 +68,13 @@ exports.handler = async (event, context, callback) => {
       });
       // add the query results to the sheet
       // DO NOT use 'lists.forEach()' here => see: https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop
-      // if you do, unpredicatable things will happen and data will most likely never show up in Google Sheets due to 'await' calls never coming back after being triggered
+      // if you do, unpredicatable things will happen and data will most likely never show up in Google Sheets
+      // due to 'await' calls never coming back after being triggered
       switch (data.action) {
         case 'indexSize':
           const listGrowthSheet = doc.sheetsByIndex[0];
           for (const listname of lists) {
-            const addedRow = await listGrowthSheet.addRow({
+            let addedRow = await listGrowthSheet.addRow({
               Date: dateVal,
               List: listname,
               ListItemCount: await getIndexItemCount(`${listname}_all`)
@@ -85,10 +86,12 @@ exports.handler = async (event, context, callback) => {
         case 'userListSize':
           const listSizeUserSheet = doc.sheetsByIndex[1];
           const userListSizes = await getUserListSizes();
-          let len = userListSizes.length; // calculate length in advance so "...the array dereference is not necessary each iteration of the loop"; from: https://stackoverflow.com/a/17989524
+          // calculate length in advance so "...the array dereference is not necessary each iteration of the loop"
+          // from: https://stackoverflow.com/a/17989524
+          let len = userListSizes.length;
           for (let i = 0; i < len; i++) {
             userListSizes[i].Date = dateVal;
-            const addedRow = await listSizeUserSheet.addRow(userListSizes[i]);
+            let addedRow = await listSizeUserSheet.addRow(userListSizes[i]);
             logger.push({ row: addedRow._rowNumber, data: addedRow._rawData });
           }
           return returnVal()
