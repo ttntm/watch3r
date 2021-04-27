@@ -63,7 +63,7 @@ export default {
             resolve(response); // User confirmed
           })
           .catch(error => {
-            console.error("An error occurred trying to confirm the user", error);
+            console.error('An error occurred trying to confirm the user', error);
             reject(error);
           });
       });
@@ -73,12 +73,12 @@ export default {
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.login(credentials.email, credentials.password, true)
           .then(response => {
-            commit("SET_CURRENT_USER", response);
+            commit('SET_CURRENT_USER', response);
             dispatch('setUserPrefs', response);
             resolve(response);
           })
           .catch(error => {
-            console.error("An error occurred logging in", error);
+            console.error('An error occurred logging in', error);
             dispatch('app/sendToastMessage', { text: `Something's gone wrong logging in, please try again later.`, type: 'error' }, { root: true });
             reject(error);
           });
@@ -91,13 +91,14 @@ export default {
         user
           .logout()
           .then(response => {
-            commit("SET_CURRENT_USER", null);
+            commit('SET_CURRENT_USER', null);
             dispatch('app/initialize', null, { root: true });
             resolve(response);
           })
           .catch(error => {
-            console.error("Could not log user out", error);
-            commit("SET_CURRENT_USER", null);
+            console.error('Could not log user out', error);
+            commit('SET_CURRENT_USER', null); // force logout
+            dispatch('app/initialize', null, { root: true }); // force app cleanup
             reject(error);
           });
       });
@@ -107,11 +108,11 @@ export default {
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.recover(token)
           .then(response => {
-            commit("SET_CURRENT_USER", response);
+            commit('SET_CURRENT_USER', response);
             resolve(response);
           })
           .catch(error => {
-            console.error("Failed to verify recover token: %o", error);
+            console.error('Failed to verify recover token: %o', error);
             reject(error);
           });
       });
@@ -131,14 +132,14 @@ export default {
             resolve(response); // Confirmation email sent
           })
           .catch(error => {
-            console.error("An error occurred trying to sign up", error);
+            console.error('An error occurred trying to sign up', error);
             reject(error);
           });
       });
     },
 
     initAuth({ commit, rootGetters }) {
-      const APIUrl = `https://${rootGetters["app/siteURL"]}/.netlify/identity`;
+      const APIUrl = `https://${rootGetters['app/siteURL']}/.netlify/identity`;
 
       const initNewGoTrue = APIUrl => {
         return new GoTrue({
@@ -147,7 +148,7 @@ export default {
         });
       };
 
-      commit("SET_GOTRUE", initNewGoTrue(APIUrl));
+      commit('SET_GOTRUE', initNewGoTrue(APIUrl));
     },
 
     processInvite({ state }, data) {
@@ -157,7 +158,7 @@ export default {
             resolve(response); // invite successfull, user created
           })
           .catch(error => {
-            console.error("An error occurred trying to process the invite", error);
+            console.error('An error occurred trying to process the invite', error);
             reject(error);
           });
       });
@@ -165,7 +166,15 @@ export default {
 
     refreshUserToken({ state }) {
       const user = state.GoTrueAuth.currentUser();
-      if (user) return user.jwt()
+      if (user) {
+        return user.jwt()
+      } else {
+        // if we can't get a new token, then something must have corrupted the GoTrue instance
+        // forcing a logout and app initialization to get back to a working state
+        commit('SET_CURRENT_USER', null);
+        dispatch('app/initialize', null, { root: true });
+        dispatch('app/sendToastMessage', { text: `Session error. Please log in again`, type: 'error' }, { root: true });
+      }
     },
 
     requestPasswordRecovery({ dispatch, state }, email) {
