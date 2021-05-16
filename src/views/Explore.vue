@@ -13,7 +13,7 @@
       <BtnExploreClear class="hidden sm:flex py-2 ml-4 sm:ml-8" />
     </section>
     <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 xl:gap-10 sm:px-4 xl:px-0">
-      <ExploreTitleCard v-for="(item, index) in recommendations" :key="index" :item="item" :src="item.poster_path" @add-title="exploreAddTitle($event)" />
+      <ExploreTitleCard v-for="(item, index) in recommendations.slice(0, 20)" :key="index" :item="item" :src="item.poster_path" @add-title="exploreAddTitle($event)" />
     </section>
     <div v-if="!recommendations.length && Object.keys(recSource).length > 0">
       <img src="/img/loading.svg" class="my-16 mx-auto">
