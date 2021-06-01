@@ -11,7 +11,16 @@
   targetPort = 3000
 
 [[headers]]
-  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; font-src 'self'; img-src *; script-src 'self';style-src 'self'; frame-ancestors 'none'"
+    Referrer-Policy = "same-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
+[[headers]]
   for = "/assets/*.js"
 
   [headers.values]

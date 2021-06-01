@@ -1,6 +1,6 @@
 {
   "name": "watch3r",
-  "version": "1.4.1",
+  "version": "1.5.1",
   "private": true,
   "scripts": {
     "dev": "netlify dev",
