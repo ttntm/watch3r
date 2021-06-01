@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const fnHeaders = require('./_shared/headers.js');
 
 const key = process.env.VITE_APP_TMDB;
 
@@ -8,9 +9,9 @@ exports.handler = async (event, context, callback) => {
   console.log("Function `tmdb-get-recs` invoked", data);
 
   if (event.httpMethod !== 'POST') {
-    return callback(null, { statusCode: 405, body: 'Method Not Allowed'})
+    return callback(null, { statusCode: 405, headers: { ...fnHeaders }, body: 'Method Not Allowed'})
   } else if (!claims || !data) {
-    return callback(null, { statusCode: 400, body: 'Bad Request' })
+    return callback(null, { statusCode: 400, headers: { ...fnHeaders }, body: 'Bad Request' })
   } else {
     try {
       const titleResponse = await fetch(`https://api.themoviedb.org/3/find/${data.id}?api_key=${key}&external_source=imdb_id`, { method: 'GET' });
@@ -29,15 +30,15 @@ exports.handler = async (event, context, callback) => {
         try {
           const recResponse = await fetch(`https://api.themoviedb.org/3/${recType}/${recBaseID}/recommendations?api_key=${key}`, { method: 'GET' });
           const recData = await recResponse.json();
-          return callback(null, { statusCode: 200, body: JSON.stringify(recData) })
+          return callback(null, { statusCode: 200, headers: { ...fnHeaders }, body: JSON.stringify(recData) })
         } catch {
           console.log("error", error);
-          return callback(null, { statusCode: 400, body: JSON.stringify(error) })
+          return callback(null, { statusCode: 400, headers: { ...fnHeaders }, body: JSON.stringify(error) })
         }
       }
     } catch (error) {
       console.log("error", error);
-      return callback(null, { statusCode: 400, body: JSON.stringify(error) })
+      return callback(null, { statusCode: 400, headers: { ...fnHeaders }, body: JSON.stringify(error) })
     }
   }
 }

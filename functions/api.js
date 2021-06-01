@@ -1,16 +1,17 @@
 const api = require('./api-methods');
+const fnHeaders = require('./_shared/headers.js');
 
 const getPath = (urlPath) => {
   return urlPath.match(/([^\/]*)\/*$/)[0]
 }
 
-const pathError = { statusCode: 500, body: 'No path specified' };
+const pathError = { statusCode: 500, headers: { ...fnHeaders }, body: 'No path specified' };
 
 exports.handler = async (event, context) => {
   const claims = context.clientContext && context.clientContext.user;
 
   if (!claims) {
-    return { statusCode: 401, body: JSON.stringify({ data: 'NOT ALLOWED' }) }
+    return { statusCode: 401, headers: { ...fnHeaders }, body: 'NOT ALLOWED' }
   } else {
     const target = getPath(event.path);
     if (target) event.target = target;
@@ -37,6 +38,7 @@ exports.handler = async (event, context) => {
       default:
         return {
           statusCode: 500,
+          headers: { ...fnHeaders },
           body: 'Unrecognized HTTP Method, must be one of GET/POST/PUT/DELETE'
         }
     }
