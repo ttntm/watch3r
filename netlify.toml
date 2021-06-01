@@ -13,7 +13,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'none'; font-src 'self'; img-src *; script-src 'self' 'unsafe-eval' 'unsafe-inline';style-src 'self' 'unsafe-inline'; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src *; font-src 'self'; img-src *; script-src 'self' 'unsafe-eval' 'unsafe-inline';style-src 'self' 'unsafe-inline'; frame-ancestors 'none'"
     Referrer-Policy = "same-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     X-Content-Type-Options = "nosniff"
