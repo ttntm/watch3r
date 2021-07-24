@@ -19,8 +19,8 @@ exports.handler = async (event, context) => {
     switch (event.httpMethod) {
       case 'GET':
         // need to treat the path differently here as GET requests can't have a request body
-        const getPath = () => event.path.match(/\w+\/([^\/]*)\/*$/)[0].split('/'); // results in [listname,userId]
-        [event.list, event.user] = getPath();
+        const getMethodPath = () => event.path.match(/\w+\/([^\/]*)\/*$/)[0].split('/'); // results in [listname,userId]
+        [event.list, event.user] = getMethodPath();
         return event.list && event.user ? api.read(event, context) : pathError
 
       case 'POST':
