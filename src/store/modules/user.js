@@ -164,7 +164,7 @@ export default {
       });
     },
 
-    refreshUserToken({ state }) {
+    refreshUserToken({ commit, dispatch, state }) {
       const user = state.GoTrueAuth.currentUser();
       if (user) {
         return user.jwt()
