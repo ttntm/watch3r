@@ -27,7 +27,7 @@
         </nav>
         <section class="text-center mt-12">
           <p class="mb-0">
-            If you like it here, please spread the word and consider supporting the development efforts <a href="https://www.buymeacoffee.com/ttntm" class="text-yellow-600 underline hover:no-underline" target="_blank" rel="noopener">with coffee</a> or <a href="https://paypal.me/pools/c/8uLxAzwDUY" class="text-yellow-600 underline hover:no-underline" target="_blank" rel="noopener">via PayPal</a>.
+            If you like it here, please spread the word and consider supporting the development efforts <a href="https://www.buymeacoffee.com/ttntm" class="text-yellow-600 underline hover:no-underline" target="_blank" rel="noopener">with coffee</a>.
           </p>
         </section>
       </section>
