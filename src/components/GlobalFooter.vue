@@ -7,7 +7,7 @@
     </nav>
     <BtnMenu :iconSize="24" class="flex sm:hidden flex-row items-center justify-center text-sm font-bold text-yellow-600 hover:text-gray-900 mx-auto">Show Menu</BtnMenu>
     <p class="text-xs text-center mt-2 mb-0">
-      watch3r.app, &copy; <a href="https://ttntm.me" target="_blank" class="hover:text-yellow-600">ttntm</a> 2021
+      watch3r.app, &copy; <a href="https://ttntm.me" target="_blank" class="hover:text-yellow-600">ttntm</a> {{year}}
     </p>
   </footer>
 </template>
@@ -28,8 +28,12 @@ export default {
   setup() {
     const store = useStore();
 
+    const date = new Date();
+    const year = date.getFullYear();
+
     return {
       loggedIn: computed(() => store.getters['user/loggedIn']),
+      year
     }
   }
 }
