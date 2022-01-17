@@ -28,7 +28,7 @@ export default {
 
   .overlay-enter-active,
   .overlay-leave-active {
-    transition: opacity 0.5s;
+    transition: opacity 0.35s;
   }
 
   .overlay-enter-from,

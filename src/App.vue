@@ -6,14 +6,7 @@
     </section>
     <GlobalFooter :menuItems="menuItems" />
   </section>
-  <transition name="fade">
-    <!-- menu backdrop -->
-    <div v-if="menuOpen" class="app-menu-container sm:bg-transparent" />
-  </transition>
-  <transition name="slide-fade">
-    <!-- menu modal -->
-    <GlobalMenu v-if="menuOpen" :menuItems="menuItems" />
-  </transition>
+  <GlobalMenu :menuItems="menuItems" :show="menuOpen" />
   <ToastMessage />
 </template>
 

@@ -27,18 +27,10 @@
     </section>
   </section>
   <!-- MODALS -->
-  <transition name="modal">
-    <ListAddModal v-if="modalOpen === 2" :mode="mode" />
-  </transition>
-  <transition name="modal">
-    <ListEditModal v-if="modalOpen === 3" :mode="mode" />
-  </transition>
-  <transition name="poster">
-    <ListPosterModal v-if="modalOpen === 4" :poster="posterSrc" :title="posterTitle" />
-  </transition>
-  <transition name="modal">
-    <ListItemControls v-if="modalOpen === 6" :mode="mode" />
-  </transition>
+  <ListAddModal v-if="modalOpen === 2" :mode="mode" />
+  <ListEditModal v-if="modalOpen === 3" :mode="mode" />
+  <ListPosterModal v-if="modalOpen === 4" :poster="posterSrc" :title="posterTitle" />
+  <ListItemControls v-if="modalOpen === 6" :mode="mode" />
   <!-- OVERLAY -->
   <ModalBackdrop />
   <!-- BTT Button -->
@@ -116,26 +108,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
-  .modal-enter-active,
-  .modal-leave-active {
-    transition: all 0.75s;
-  }
-
-  .poster-enter-active,
-  .poster-leave-active {
-    transition: opacity 0.5s;
-  }
-
-  .modal-enter-from,
-  .modal-leave-to {
-    transform: translateY(-100px);
-    opacity: 0;
-  }
-
-  .poster-enter-from,
-  .poster-leave-to {
-    opacity: 0;
-  }
-</style>

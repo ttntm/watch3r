@@ -1,22 +1,24 @@
 <template>
-  <section v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock class="list-modal text-gray-600" role="dialog" aria-labelledby="add-modal-heading">
-    <section class="flex flex-row justify-between items-center px-8" :class="{ 'mb-4' : contentExplore || contentImport }">
-      <h3 id="add-modal-heading" class="text-base mb-0">
-        Add Title to <span class="capitalize">{{ mode }}</span>
-      </h3>
-      <BtnClose btn-title="Close" @click="closeModal" />
+  <transition name="modal">
+    <section v-if="isVisible" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock class="list-modal text-gray-600" role="dialog" aria-labelledby="add-modal-heading">
+      <section class="flex flex-row justify-between items-center px-8" :class="{ 'mb-4' : contentExplore || contentImport }">
+        <h3 id="add-modal-heading" class="text-base mb-0">
+          Add Title to <span class="capitalize">{{ mode }}</span>
+        </h3>
+        <BtnClose btn-title="Close" @click="closeModal" />
+      </section>
+      <section v-if="!contentExplore && !contentImport" class="px-8 py-6">
+        <InputSearch :autofocus="true" pch="Title or IMDb ID" @do-search="doSearch($event)" />
+        <div class="flex flex-row items-center text-sm mt-4">
+          <span class="font-bold mr-2">Mode:</span>
+          <InputRadio class="mr-4" name="search-mode" :label="'title'" :value="searchMode" @update:radio="updateSearchMode($event)" />
+          <InputRadio class="" name="search-mode" :label="'id'" :value="searchMode" @update:radio="updateSearchMode($event)" />
+        </div>
+      </section>
+      <ListAddSearchResult v-if="searchResult.id" :explore="!contentExplore ? false : true" :mode="mode" :search-result="searchResult" class="px-8" />
+      <p v-if="searchStatus" class="text-center px-8 mt-6 mb-0" v-html="searchStatus" />
     </section>
-    <section v-if="!contentExplore && !contentImport" class="px-8 py-6">
-      <InputSearch :autofocus="true" pch="Title or IMDb ID" @do-search="doSearch($event)" />
-      <div class="flex flex-row items-center text-sm mt-4">
-        <span class="font-bold mr-2">Mode:</span>
-        <InputRadio class="mr-4" name="search-mode" :label="'title'" :value="searchMode" @update:radio="updateSearchMode($event)" />
-        <InputRadio class="" name="search-mode" :label="'id'" :value="searchMode" @update:radio="updateSearchMode($event)" />
-      </div>
-    </section>
-    <ListAddSearchResult v-if="searchResult.id" :explore="!contentExplore ? false : true" :mode="mode" :search-result="searchResult" class="px-8" />
-    <p v-if="searchStatus" class="text-center px-8 mt-6 mb-0" v-html="searchStatus" />
-  </section>
+  </transition>
 </template>
 
 <script>
@@ -27,6 +29,7 @@ import ListAddSearchResult from './ListAddSearchResult.vue';
 import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 import { getOMDB, searchResult, searchStatus } from '../../helpers/get-omdb.js';
+import { useDelay } from '../../helpers/shared';
 
 export default {
   name: 'ListAddModal',
@@ -44,12 +47,15 @@ export default {
   setup(props) {
     const store = useStore();
 
+    const { isVisible, toggleDelay } = useDelay();
+
     const fn = store.getters['app/functions'];
     const searchMode = ref('title');
     const writeSuccess = computed(() => store.getters['list/writeSuccess']);
 
     const closeModal = () => {
-      store.dispatch('app/toggleWindow', 0);
+      toggleDelay();
+      setTimeout(() => store.dispatch('app/toggleWindow', 0), 100);
       store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any) when closing this modal
     }
 
@@ -90,6 +96,7 @@ export default {
     return {
       closeModal,
       doSearch,
+      isVisible,
       searchMode,
       searchResult,
       searchStatus,

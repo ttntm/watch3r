@@ -23,9 +23,7 @@
     </section>
   </section>
   <!-- MODALS -->
-  <transition name="modal">
-    <ListAddModal v-if="modalOpen === 7" :content-import="importContent" :mode="importMode" />
-  </transition>
+  <ListAddModal v-if="modalOpen === 7" :content-import="importContent" :mode="importMode" />
   <!-- OVERLAY -->
   <ModalBackdrop />
   <!-- BTT Button -->
