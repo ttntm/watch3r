@@ -1,16 +1,40 @@
+<script setup>
+  import BtnClose from '@/components/buttons/BtnClose.vue'
+  import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue'
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
+  import { useDelay } from '@/helpers/shared'
+
+  const props = defineProps({
+    mode: String
+  })
+
+  const store = useStore()
+
+  const { isVisible, toggleDelay } = useDelay()
+  
+  const item = computed(() => store.getters['list/editTitleContent'])
+  const showExplore = computed(() => store.getters['user/showExploreLinks'])
+  const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
+
+  const onCloseModal = () => {
+    toggleDelay()
+    setTimeout(() => {
+      store.dispatch('list/clearEditTitle')
+      store.dispatch('app/toggleWindow', 0)
+    }, 100);
+  }
+</script>
+
 <template>
   <transition name="modal">
-    <section v-if="isVisible" v-click-outside="closeModal" v-esc="closeModal" v-scroll-lock class="list-item-menu">
+    <section v-if="isVisible" v-click-outside="onCloseModal" v-esc="onCloseModal" v-scroll-lock class="list-item-menu">
       <section class="flex flex-row justify-between items-center px-4 py-2">
-        <p class="font-bold text-sm mb-0">
-          Actions
-        </p>
-        <BtnClose btn-title="Close Menu" @click="closeModal" />
+        <p class="font-bold text-sm mb-0">Actions</p>
+        <BtnClose btn-title="Close Menu" @click="onCloseModal" />
       </section>
       <section class="flex flex-col text-gray-800">
-        <p class="text-gray-600 text-center px-4 mb-2">
-          {{ item.title }}
-        </p>
+        <p class="text-gray-600 text-center px-4 mb-2">{{ item.title }}</p>
         <router-link v-if="showExplore && mode === 'tracklist'" :to="{ name: 'explore', query: { title: item.id } }" class="menu-item">
           Get Recommendations
         </router-link>
@@ -22,46 +46,6 @@
     </section>
   </transition>
 </template>
-
-<script>
-import BtnClose from '../buttons/BtnClose.vue';
-import BtnListItemRemove from '../buttons/BtnListItemRemove.vue';
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-import { useDelay } from '../../helpers/shared';
-
-export default {
-  name: 'ListItemControls',
-  components: {
-    BtnClose,
-    BtnListItemRemove
-  },
-  props: {
-    mode: String
-  },
-  setup() {
-    const store = useStore();
-
-    const { isVisible, toggleDelay } = useDelay();
-
-    const closeModal = () => {
-      toggleDelay();
-      setTimeout(() => {
-        store.dispatch('list/clearEditTitle');
-        store.dispatch('app/toggleWindow', 0)
-      }, 100);
-    }
-
-    return {
-      closeModal,
-      isVisible,
-      item: computed(() => store.getters['list/editTitleContent']),
-      showExplore: computed(() => store.getters['user/showExploreLinks']),
-      showIMDb: computed(() => store.getters['user/showIMDbLinks'])
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   .list-item-menu {

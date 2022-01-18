@@ -1,15 +1,51 @@
+<script setup>
+  import InputCheckbox from '@/components/input/InputCheckbox.vue'
+  import InputRadio from '@/components/input/InputRadio.vue'
+  import { computed, reactive, watch } from 'vue'
+  import { useStore } from 'vuex'
+
+  const emit = defineEmits(['update:settings'])
+
+  const store = useStore()
+  
+  const allSortModes = computed(() => store.getters['tools/sortMode'])
+  const userOptions = computed(() => store.getters['user/userOptions'])
+
+  const pages = ['watchlist', 'tracklist']
+
+  const settings = reactive({
+    user_explore: userOptions.value.showExploreLinks,
+    user_imdb: userOptions.value.showIMDbLinks,
+    user_sort: userOptions.value.sortPreset,
+    user_start: pages[userOptions.value.startPage]
+  })
+
+  watch(settings, () => {
+    emit('update:settings', {...settings})
+  })
+
+  watch(userOptions, () => {
+    settings.user_explore = userOptions.value.showExploreLinks
+    settings.user_imdb = userOptions.value.showIMDbLinks
+    settings.user_sort = userOptions.value.sortPreset
+    settings.user_start = pages[userOptions.value.startPage]
+  })
+
+  const events = {
+    onUpdateExploreLinks(e) { settings.user_explore = e },
+    onUpdateIMDbLinks(i) { settings.user_imdb = i },
+    onUpdateStartPage(s) { settings.user_start = s }
+  }
+</script>
+
 <template>
-  <h1 class="text-2xl text-blue-800">
-    Settings
-  </h1>
+  <h1 class="text-2xl text-blue-800">Settings</h1>
   <div class="input-group mb-8">
     <label>Start Page</label>
-    <p class="text-xs text-gray-600 mb-3">
-      Automatic forwarding after login.
-    </p>
+    <p class="text-xs text-gray-600 mb-3">Automatic forwarding after login.</p>
     <div class="flex flex-row">
-      <InputRadio class="text-sm mr-4" name="start-page" :label="'watchlist'" :value="settings.user_start" @update:radio="updateStartPage($event)" />
-      <InputRadio class="text-sm" name="start-page" :label="'tracklist'" :value="settings.user_start" @update:radio="updateStartPage($event)" />
+      <InputRadio class="text-sm mr-4" name="start-page" :label="'watchlist'" :value="settings.user_start" @update:radio="events.onUpdateStartPage($event)" />
+      <InputRadio class="text-sm" name="start-page" :label="'tracklist'" :value="settings.user_start" @update:radio="events.onUpdateStartPage($event)" />
     </div>
   </div>
   <div class="input-group mb-8">
@@ -19,10 +55,8 @@
     </p>
     <div class="w-full relative text-gray-700 text-sm bg-gray-300">
       <select id="sort-preset" v-model="settings.user_sort" name="sorting">
-        <option disabled value="">
-          Default Sorting
-        </option>
-        <option v-for="(mode, index) in allSortModes" :key="index" :value="index" class="">
+        <option disabled value="">Default Sorting</option>
+        <option v-for="(mode, index) in allSortModes" :key="index" :value="index">
           {{ mode.name }} ({{ mode.order }})
         </option>
       </select>
@@ -38,70 +72,17 @@
     <p class="text-xs text-gray-600 mb-3">
       IMDb link display in search results and for all list items.
     </p>
-    <InputCheckbox v-model="settings.user_imdb" :name="'imdb-links'" @update:cb="updateIMDbLinks($event)">
+    <InputCheckbox v-model="settings.user_imdb" :name="'imdb-links'" @update:cb="events.onUpdateIMDbLinks($event)">
       Show IMDb links
     </InputCheckbox>
     <p class="text-xs text-gray-600 mt-4 mb-3">
       Display links to explore recommendations for items in your Tracklist.
     </p>
-    <InputCheckbox v-model="settings.user_explore" :name="'explore-links'" @update:cb="updateExploreLinks($event)">
+    <InputCheckbox v-model="settings.user_explore" :name="'explore-links'" @update:cb="events.onUpdateExploreLinks($event)">
       Show recommendation links
     </InputCheckbox>
   </div>
 </template>
-
-<script>
-import InputCheckbox from '../input/InputCheckbox.vue';
-import InputRadio from '../input/InputRadio.vue';
-import { computed, reactive, ref, watch } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'ProfileUserSettings',
-  components: {
-    InputCheckbox,
-    InputRadio
-  },
-  emits: ['update:settings'],
-  setup(props, { emit }) {
-    const store = useStore();
-
-    const pages = ['watchlist', 'tracklist'];
-    const userOptions = computed(() => store.getters['user/userOptions']);
-
-    const settings = reactive({
-      user_explore: userOptions.value.showExploreLinks,
-      user_imdb: userOptions.value.showIMDbLinks,
-      user_sort: userOptions.value.sortPreset,
-      user_start: pages[userOptions.value.startPage]
-    });
-
-    const updateExploreLinks = (e) => { settings.user_explore = e; }
-    const updateIMDbLinks = (i) => { settings.user_imdb = i; }
-    const updateStartPage = (s) => { settings.user_start = s; }
-
-    watch(settings, () => {
-      emit('update:settings', {...settings});
-    })
-
-    watch(userOptions, () => {
-      // provides multi-tab synchronization
-      settings.user_explore = userOptions.value.showExploreLinks;
-      settings.user_imdb = userOptions.value.showIMDbLinks;
-      settings.user_sort = userOptions.value.sortPreset;
-      settings.user_start = pages[userOptions.value.startPage];
-    })
-
-    return {
-      allSortModes: store.getters['tools/sortMode'],
-      settings,
-      updateExploreLinks,
-      updateIMDbLinks,
-      updateStartPage
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   select, select option {

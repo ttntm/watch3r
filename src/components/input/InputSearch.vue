@@ -1,3 +1,38 @@
+<script setup>
+  import { computed, onMounted, ref, watch } from 'vue'
+  import { useStore } from 'vuex'
+  
+  const props = defineProps({
+    autofocus: Boolean,
+    pch: String
+  })
+
+  const emit = defineEmits(['do-search','reset-search'])
+
+  const store = useStore()
+
+  const input = ref()
+  const searchInput = ref('')
+
+  const searchActive = computed(() => store.getters['tools/searchActive'])
+
+  watch(searchActive, () => {
+    if (!searchActive.value) {
+      searchInput.value = ''
+    }
+  })
+
+  onMounted(() => {
+    if (props.autofocus) input.value.focus()
+  })
+
+  const onBtnClearClick = () => {
+    emit('reset-search', true)
+    searchInput.value = ''
+    input.value.focus()
+  }
+</script>
+
 <template>
   <div class="search flex flex-row items-center flex-1" :class="{ 'search-input-group': searchInput }">
     <label for="search-input" class="sr-only">Search</label>
@@ -10,7 +45,6 @@
       id="search-input"
       ref="input"
       v-model.trim="searchInput"
-      v-focus="autofocus"
       type="text"
       class="w-full search-input"
       :placeholder="pch"
@@ -22,7 +56,7 @@
         class="btn opacity-75 hover:opacity-100 focus:opacity-100 px-0 py-2 click-outside-ignore"
         title="Clear search"
         aria-label="Clear search"
-        @click.prevent="clearSearch()"
+        @click.prevent="onBtnClearClick()"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -45,54 +79,6 @@
     </button>
   </div>
 </template>
-
-<script>
-import { computed, ref, watch } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'InputSearch',
-  directives: {
-    focus: {
-      mounted(el, binding) {
-        if (binding.value) {
-          el.focus();
-        }
-      }
-    }
-  },
-  props: {
-    autofocus: Boolean,
-    pch: String
-  },
-  emits: ['do-search','reset-search'],
-  setup(props, { emit }) {
-    const store = useStore();
-
-    const input = ref();
-    const searchInput = ref('');
-    const searchActive = computed(() => store.getters['tools/searchActive']);
-
-    const clearSearch = () => {
-      emit('reset-search', true);
-      searchInput.value = '';
-      input.value.focus();
-    }
-
-    watch(searchActive, () => {
-      if (!searchActive.value) {
-        searchInput.value = '';
-      }
-    })
-
-    return {
-      clearSearch,
-      input,
-      searchInput
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   .search {

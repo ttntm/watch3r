@@ -1,57 +1,33 @@
-<template>
-  <form
-    id="login-form"
-    class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10"
-    @submit.prevent="handleLogin()"
-  >
-    <div class="input-group">
-      <label for="login-email">Email</label>
-      <input id="login-email" v-model="credentials.email" type="email" placeholder="jane@doe.com" @input="clearValidate()">
-    </div>
-    <div class="input-group">
-      <label for="login-pwd">Password</label>
-      <input id="login-pwd" v-model="credentials.password" type="password" placeholder="************" @input="clearValidate()">
-      <router-link :to="{name: 'recover'}" class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0">
-        Forgot your password?
-      </router-link>
-    </div>
-    <button v-click-blur type="submit" class="btn btn-black" :disabled="!credentials.email || !credentials.password">
-      Login
-    </button>
-    <transition name="loading">
-      <p v-if="cValidateMsg !== ''" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate() }" v-html="cValidateMsg" />
-    </transition>
-  </form>
-</template>
+<script setup>
+  import { onMounted, reactive, ref } from 'vue'
+  import { useStore } from 'vuex'
+  import { validateEmail } from '@/helpers/shared.js'
 
-<script>
-import { onMounted, ref } from 'vue';
-import { useStore } from 'vuex';
-import { validateEmail } from '../helpers/shared.js';
+  const store = useStore()
 
-export default {
-  name: 'HomeLogin',
-  setup() {
-    const store = useStore();
+  const credentials = reactive({ email: '', password: '' })
+  const cValidateMsg = ref('')
 
-    const credentials = ref({ email: '', password: '' });
-    const cValidateMsg = ref('');
+  onMounted(() => {
+    store.dispatch('app/initialize') // double down on cleanup to circumvent multi-tab/local storage bringing back stale data
+  })
 
-    const clearValidate = () => { cValidateMsg.value = '' }
+  const validate = (c) => {
+    if (!c.password || !c.email) {
+      return false
+    } else if (c.password && c.email && validateEmail(c.email)) {
+      return true
+    } else { return false }
+  }
 
-    const validate = () => {
-      const c = credentials.value;
+  const events = {
+    onInput() {
+      cValidateMsg.value = ''
+    },
 
-      if(!c.password || !c.email) {
-        return false;
-      } else if(c.password && c.email && validateEmail(c.email)) {
-        return true;
-      } else { return false; }
-    }
-
-    const handleLogin = () => {
-      if(!validate()) {
-        cValidateMsg.value = 'Please enter valid information.';
+    onSubmit() {
+      if (!validate(credentials)) {
+        cValidateMsg.value = 'Please enter valid information.'
       } else {
         cValidateMsg.value = `
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="50px" height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
@@ -60,24 +36,35 @@ export default {
             </circle>
           </svg>
         `;
-        store.dispatch('user/attemptLogin', credentials.value);
+        store.dispatch('user/attemptLogin', credentials)
       }
     }
-
-    onMounted(() => {
-      store.dispatch('app/initialize'); // double down on cleanup to circumvent multi-tab/local storage bringing back stale data
-    })
-
-    return {
-      clearValidate,
-      credentials,
-      cValidateMsg,
-      handleLogin,
-      validate
-    }
   }
-}
 </script>
+
+<template>
+  <form
+    id="login-form"
+    class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10"
+    @submit.prevent="events.onSubmit()"
+  >
+    <div class="input-group">
+      <label for="login-email">Email</label>
+      <input id="login-email" v-model="credentials.email" type="email" placeholder="jane@doe.com" @input="events.onInput()">
+    </div>
+    <div class="input-group">
+      <label for="login-pwd">Password</label>
+      <input id="login-pwd" v-model="credentials.password" type="password" placeholder="************" @input="events.onInput()">
+      <router-link :to="{name: 'recover'}" class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0">
+        Forgot your password?
+      </router-link>
+    </div>
+    <button v-click-blur type="submit" class="btn btn-black" :disabled="!credentials.email || !credentials.password">Login</button>
+    <transition name="loading">
+      <p v-if="cValidateMsg !== ''" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate(credentials) }" v-html="cValidateMsg" />
+    </transition>
+  </form>
+</template>
 
 <style lang="postcss" scoped>
   .loading-enter-active,

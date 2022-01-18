@@ -1,9 +1,22 @@
+<script setup>
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
+
+  const store = useStore()
+  
+  const active = computed(() => store.getters['explore/recSource'])
+
+  const onClearBtnClick = () => {
+    store.dispatch('explore/initializeExplore')
+  }
+</script>
+
 <template>
   <button
     v-click-blur
     class="btn btn-muted flex flex-row items-center justify-center"
     :disabled="!active"
-    @click="clearRecs()"
+    @click="onClearBtnClick()"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-minus mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -13,24 +26,3 @@
     Clear
   </button>
 </template>
-
-<script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'BtnExploreClear',
-  setup() {
-    const store = useStore();
-
-    const clearRecs = () => {
-      store.dispatch('explore/initializeExplore');
-    }
-
-    return {
-      active: computed(() => store.getters['explore/recSource']),
-      clearRecs
-    }
-  }
-}
-</script>

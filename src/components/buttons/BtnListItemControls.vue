@@ -1,8 +1,24 @@
+<script setup>
+  import { useStore } from 'vuex'
+
+  const props = defineProps({
+    id: String,
+    mode: String
+  })
+  
+  const store = useStore()
+
+  const onBtnClick = () => {
+    store.dispatch('list/selectEditTitle', [props.id, props.mode])
+    store.dispatch('app/toggleWindow', 6)
+  }
+</script>
+
 <template>
   <button
     v-click-blur
     class="btn btn-muted flex flex-row items-center justify-center click-outside-ignore"
-    @click.prevent="openListItemControls()"
+    @click.prevent="onBtnClick()"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots-circle-horizontal mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -14,27 +30,3 @@
     Actions
   </button>
 </template>
-
-<script>
-import { useStore } from 'vuex';
-
-export default {
-  name: 'BtnListItemControls',
-  props: {
-    id: String,
-    mode: String
-  },
-  setup(props) {
-    const store = useStore();
-
-    const openListItemControls = () => {
-      store.dispatch('list/selectEditTitle', [props.id, props.mode]);
-      store.dispatch('app/toggleWindow', 6);
-    }
-
-    return {
-      openListItemControls
-    }
-  }
-}
-</script>

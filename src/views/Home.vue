@@ -1,3 +1,23 @@
+<script setup>
+  import HomeLogin from '@/components/HomeLogin.vue'
+  import { computed, watch } from 'vue'
+  import { useRouter } from 'vue-router'
+  import { useStore } from 'vuex'
+
+  const router = useRouter()
+  const store = useStore()
+
+  const currentUser = computed(() => store.getters['user/currentUser'])
+  const loggedIn = computed(() => store.getters['user/loggedIn'])
+
+  watch(currentUser, () => {
+    if (currentUser.value !== null) {
+      const target = currentUser.value.user_metadata.user_start === 0 ? 'watchlist' : 'tracker' // store might not be done updating data yet, so better get it right from the user Object
+      router.push({ name: target })
+    }
+  })
+</script>
+
 <template>
   <section class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="text-center self-center max-w-full md:max-w-sm mx-auto">
@@ -42,34 +62,3 @@
     </div>
   </section>
 </template>
-
-<script>
-import HomeLogin from '../components/HomeLogin.vue';
-import { computed, watch } from 'vue';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'Home',
-  components: {
-    HomeLogin
-  },
-  setup() {
-    const router = useRouter();
-    const store = useStore();
-
-    const currentUser = computed(() => store.getters['user/currentUser']);
-
-    watch(currentUser, () => {
-      if (currentUser.value !== null) {
-        const target = currentUser.value.user_metadata.user_start === 0 ? 'watchlist' : 'tracker'; // store might not be done updating data yet, so better get it right from the user Object
-        router.push({ name: target });
-      }
-    })
-
-    return {
-      loggedIn: computed(() => store.getters['user/loggedIn']),
-    }
-  }
-}
-</script>

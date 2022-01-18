@@ -1,10 +1,25 @@
+<script setup>
+  import { useRouter } from 'vue-router'
+  import { useStore } from 'vuex'
+
+  const router = useRouter()
+  const store = useStore()
+
+  const onBtnClick = () => {
+    store.dispatch('user/attemptLogout')
+      .then(() => {
+        router.push({ name: 'home' })
+      })
+  }
+</script>
+
 <template>
   <button
     v-click-blur
     class="text-gray-600 hover:text-gray-200 focus:text-gray-200 cursor-pointer"
     aria-label="Logout"
     title="Logout"
-    @click.prevent="handleLogout()"
+    @click.prevent="onBtnClick()"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -13,28 +28,3 @@
     </svg>
   </button>
 </template>
-
-<script>
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'BtnLogout',
-  setup() {
-    const router = useRouter();
-    const store = useStore();
-
-    const handleLogout = () => {
-      store.dispatch('user/attemptLogout')
-        .then(() => {
-          router.push({ name: 'home' });
-        })
-    }
-
-    return {
-      handleLogout
-    }
-  }
-}
-</script>

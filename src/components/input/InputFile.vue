@@ -1,3 +1,28 @@
+<script setup>
+  import { ref } from 'vue'
+  import { validateExtension } from '@/helpers/shared.js'
+
+  const emit = defineEmits(['update:file'])
+
+  const selected = ref('')
+
+  const onInput = (e) => {
+    const file = e.target.files[0] //get the first file
+
+    if (!file || !validateExtension(file.name)) {
+      return alert('Please select a CSV file.')
+    }
+
+    const reader = new FileReader()
+
+    selected.value = `<strong>Selected</strong>: ${file.name}`
+
+    reader.onload = e => emit('update:file', e.target.result)
+
+    reader.readAsText(file)
+  }
+</script>
+
 <template>
   <div class="flex flex-row items-center justify-center">
     <label class="btn btn-black inline-flex flex-row items-center justify-center cursor-pointer">
@@ -12,49 +37,9 @@
         class="hidden"
         type="file"
         accept=".csv"
-        @input="handleInput"
+        @input="onInput"
       >
     </label>
     <p v-if="selected" class="text-sm ml-4 mb-0" v-html="selected" />
   </div>
 </template>
-
-<script>
-import { ref } from 'vue';
-import { validateExtension } from '../../helpers/shared.js';
-
-export default {
-  name: 'InputFile',
-  emits: ['update:file'],
-  setup(props, { emit }) {
-    const selected = ref('');
-
-    const handleInput = (e) => {
-      const file = e.target.files[0]; //get the first file
-
-      if (file && validateExtension(file.name)) {
-        const reader = new FileReader();
-
-        selected.value = `
-          <strong>Selected</strong>: ${file.name}
-        `;
-
-        reader.onload = e => {
-          emit('update:file', e.target.result);
-        };
-
-        reader.readAsText(file);
-      } else {
-        // abort if wrong file extension
-        alert('Please select a CSV file.');
-        return;
-      }
-    }
-
-    return {
-      handleInput,
-      selected
-    }
-  }
-}
-</script>

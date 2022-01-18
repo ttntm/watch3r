@@ -1,3 +1,29 @@
+<script setup>
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
+
+  const props = defineProps({
+    item: Object,
+    src: String
+  })
+
+  const emit = defineEmits(['add-title'])
+  
+  const store = useStore()
+
+  const imgSrc = computed(() => props.src ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${props.src}` : `/img/poster.jpg`)
+  const recSource = computed(() => store.getters['explore/recSource'])
+  const titleDisplay = computed(() => props.item.original_title ? props.item.original_title : props.item.original_name)
+
+  const onBtnClick = () => {
+    const titleData = {
+      id: props.item.id,
+      type: recSource.value.type
+    }
+    return emit('add-title', titleData)
+  }
+</script>
+
 <template>
   <article class="card">
     <img :src="imgSrc" class="rounded-md" loading="lazy">
@@ -10,7 +36,7 @@
           v-click-blur
           class="card-btn click-outside-ignore"
           title="View Details"
-          @click.prevent="exploreAdd()"
+          @click.prevent="onBtnClick()"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" width="45" height="45" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="8" x2="12.01" y2="8" />09
@@ -21,47 +47,6 @@
     </div>
   </article>
 </template>
-
-<script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'ExploreTitleCard',
-  props: {
-    item: Object,
-    src: String
-  },
-  emits: ['add-title'],
-  setup(props, { emit }) {
-    const store = useStore();
-
-    const imgSrc = computed(() => {
-      // fallback for missing posters...
-      return props.src ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${props.src}` : `/img/poster.jpg`
-    });
-    const recSource = computed(() => store.getters['explore/recSource']);
-
-    const titleDisplay = computed(() => {
-      return props.item.original_title ? props.item.original_title : props.item.original_name
-    });
-
-    const exploreAdd = () => {
-      const titleData = {
-        id: props.item.id,
-        type: recSource.value.type
-      };
-      return emit('add-title', titleData);
-    }
-
-    return {
-      exploreAdd,
-      imgSrc,
-      titleDisplay
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   .card {

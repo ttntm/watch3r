@@ -1,3 +1,11 @@
+<script setup>
+  const props = defineProps({
+    modelValue: String
+  })
+
+  const emit = defineEmits(['update:modelValue'])
+</script>
+
 <template>
   <input
     :value="modelValue"
@@ -9,16 +17,6 @@
     @input="$emit('update:modelValue', $event.target.value)"
   >
 </template>
-
-<script>
-export default {
-  name: 'InputRange',
-  props: {
-    modelValue: String
-  },
-  emits: ['update:modelValue']
-}
-</script>
 
 <style lang="postcss" scoped>
   input[type=range] {

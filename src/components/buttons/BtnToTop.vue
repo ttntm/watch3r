@@ -1,3 +1,32 @@
+<script setup>
+  // based on: https://github.com/caiofsouza/vue-backtotop/blob/master/src/BackToTop.vue
+  import { onMounted, onUnmounted, ref } from 'vue'
+
+  const visible = ref(false)
+
+  onMounted(() => window.addEventListener('scroll', events.onScroll))
+  
+  onUnmounted(() => window.removeEventListener('scroll', events.onScroll))
+
+  const events = {
+    onBackToTop() {
+      window.smoothScroll()
+    },
+    
+    onScroll() {
+      visible.value = window.pageYOffset > 1024
+    }
+  }
+  
+  window.smoothScroll = () => {
+    let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
+    if (currentScroll > 0) {
+      window.requestAnimationFrame(window.smoothScroll)
+      window.scrollTo(0, Math.floor(currentScroll - (currentScroll / 5)))
+    }
+  }
+</script>
+
 <template>
   <transition name="btt-fade">
     <button
@@ -5,7 +34,7 @@
       v-click-blur
       class="back-to-top mx-2 my-4 lg:m-6"
       title="Back to Top"
-      @click="backToTop()"
+      @click="events.onBackToTop"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none icon icon-tabler icon-tabler-chevron-up" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -14,47 +43,6 @@
     </button>
   </transition>
 </template>
-
-<script>
-import { onUnmounted, ref } from 'vue';
-
-export default {
-  name: 'BtnToTop',
-  setup() {
-    // based on: https://github.com/caiofsouza/vue-backtotop/blob/master/src/BackToTop.vue
-    const visible = ref(false);
-    const visibleOffset = 1024;
-
-    const backToTop = () => {
-      window.smoothScroll();
-    }
-
-    const catchScroll = () => {
-      const pastTopOffset = window.pageYOffset > parseInt(visibleOffset);
-      visible.value = pastTopOffset;
-    }
-
-    window.smoothScroll = () => {
-      let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-      if (currentScroll > 0) {
-        window.requestAnimationFrame(window.smoothScroll);
-        window.scrollTo(0, Math.floor(currentScroll - (currentScroll / 5)));
-      }
-    }
-
-    window.addEventListener('scroll', catchScroll);
-
-    onUnmounted(() => {
-      window.removeEventListener('scroll', catchScroll);
-    })
-
-    return {
-      backToTop,
-      visible
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   .btt-fade-enter-active,

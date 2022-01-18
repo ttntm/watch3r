@@ -1,6 +1,35 @@
+<script setup>
+  import { computed, ref, watch } from 'vue'
+  import { useStore } from 'vuex'
+
+  const store = useStore()
+
+  const selected = ref({})
+
+  const recSource = computed(() => store.getters['explore/recSource'])
+  const tracklist = computed(() => store.getters['list/tracklist'])
+
+  watch(recSource, () => updateSelect())
+
+  const onChange = () => {
+    const titleData = {
+      id: selected.value.id,
+      type: selected.value.type
+    }
+
+    store.dispatch('explore/clearRecommendations') // so we get back the 'loading' state
+    store.dispatch('explore/updateRecSource', selected.value)
+    store.dispatch('explore/getRecommendations', titleData)
+  }
+
+  const updateSelect = () => { selected.value = recSource.value }
+
+  updateSelect()
+</script>
+
 <template>
   <div class="w-full relative text-gray-700 bg-gray-300 shadow-lg">
-    <select id="explore-select" v-model.lazy="selected" name="explore-title" @change="requestData(selected)">
+    <select id="explore-select" v-model.lazy="selected" name="explore-title" @change="onChange(selected)">
       <option disabled :value="{}" :selected="selected === {}">
         Select Title...
       </option>
@@ -15,47 +44,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import { computed, ref, watch } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'ExploreSelectTitle',
-  setup() {
-    const store = useStore();
-
-    const recSource = computed(() => store.getters['explore/recSource']);
-    const selected = ref({});
-    const tracklist = computed(() => store.getters['list/tracklist']);
-
-    const requestData = () => {
-      const titleData = {
-        id: selected.value.id,
-        type: selected.value.type
-      };
-
-      store.dispatch('explore/clearRecommendations'); // so we get back the 'loading' state
-      store.dispatch('explore/updateRecSource', selected.value);
-      store.dispatch('explore/getRecommendations', titleData);
-    }
-
-    const updateSelect = () => { selected.value = recSource.value }
-
-    watch(recSource, () => {
-      updateSelect();
-    })
-
-    updateSelect();
-
-    return {
-      requestData,
-      selected,
-      tracklist
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   select, select option {

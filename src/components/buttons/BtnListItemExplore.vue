@@ -1,3 +1,9 @@
+<script setup>
+  const props = defineProps({
+    id: String
+  })
+</script>
+
 <template>
   <router-link
     :to="{ name: 'explore', query: { title: id } }"
@@ -10,12 +16,3 @@
     Get Recommendations
   </router-link>
 </template>
-
-<script>
-export default {
-  name: 'BtnListItemExplore',
-  props: {
-    id: String
-  }
-}
-</script>

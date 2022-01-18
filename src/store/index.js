@@ -1,14 +1,14 @@
-import { createStore } from 'vuex';
-import app from './modules/app';
-import explore from './modules/explore';
-import list from './modules/list';
-import tools from './modules/tools';
-import user from './modules/user';
-import createMultiTabState from 'vuex-multi-tab-state';
-import createPersistedState from 'vuex-persistedstate';
-import SecureLS from 'secure-ls'; // https://github.com/softvar/secure-ls
+import { createStore } from 'vuex'
+import app from './modules/app'
+import explore from './modules/explore'
+import list from './modules/list'
+import tools from './modules/tools'
+import user from './modules/user'
+import createMultiTabState from 'vuex-multi-tab-state'
+import createPersistedState from 'vuex-persistedstate'
+import SecureLS from 'secure-ls' // https://github.com/softvar/secure-ls
 
-var ls = new SecureLS({ isCompression: false });
+var ls = new SecureLS({ isCompression: false })
 
 export default createStore({
   strict: false, //process.env.NODE_ENV !== "production", -> see: https://github.com/chiubaca/vue-netlify-fauna-starter-kit/issues/12
@@ -34,4 +34,4 @@ export default createStore({
       },
     }),
   ],
-});
+})

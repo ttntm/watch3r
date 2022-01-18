@@ -1,3 +1,9 @@
+<script setup>
+  const props = defineProps({
+    btnTitle: String
+  })
+</script>
+
 <template>
   <button
     class="text-gray-800 opacity-75 cursor-pointer hover:opacity-100 focus:outline-none"
@@ -10,12 +16,3 @@
     </svg>
   </button>
 </template>
-
-<script>
-export default {
-  name: 'BtnClose',
-  props: {
-    btnTitle: String
-  }
-}
-</script>
