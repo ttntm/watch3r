@@ -1,3 +1,24 @@
+<script setup>
+  import BtnListItemControls from '@/components/buttons/BtnListItemControls.vue'
+  import BtnListItemEdit from '@/components/buttons/BtnListItemEdit.vue'
+  import BtnListItemExplore from '@/components/buttons/BtnListItemExplore.vue'
+  import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue'
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
+
+  const props = defineProps({
+    item: Object,
+    mode: String
+  })
+
+  const emit = defineEmits(['open-poster'])
+  
+  const store = useStore()
+
+  const showExplore = computed(() => store.getters['user/showExploreLinks'])
+  const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
+</script>
+
 <template>
   <article class="list-item flex-col sm:flex-row">
     <div class="sm:self-center px-4">
@@ -13,7 +34,7 @@
     <div class="w-full sm:w-3/4 px-4 lg:px-6 self-center lg:self-start lg:py-2">
       <h3 class="text-xl mb-2">
         {{ item.title }}
-        <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" target="_blank" rel="noopener" class="hidden lg:inline-block hover:shadow-outline focus:shadow-outline ml-1" title="View on IMDb">
+        <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" v-click-blur target="_blank" rel="noopener" class="hidden lg:inline-block hover:shadow-outline focus:shadow-outline ml-1" title="View on IMDb">
           <img src="/img/imdb.png" alt="IMDb icon" class="w-4">
         </a>
       </h3>
@@ -39,49 +60,12 @@
       </p>
     </div>
     <div class="flex flex-row flex-wrap sm:flex-col self-center justify-center text-sm lg:text-base sm:px-4">
-      <BtnListItemEdit v-if="mode === 'watchlist'" :id="item.refId" :mode="mode" class="sm:mb-4">
-        Watched
-      </BtnListItemEdit>
-      <BtnListItemEdit v-if="mode === 'tracklist'" :id="item.refId" :mode="mode" class="sm:mb-4">
-        Edit
-      </BtnListItemEdit>
+      <BtnListItemEdit :id="item.refId" :mode="mode" class="sm:mb-4" />
       <BtnListItemControls :id="item.refId" :mode="mode" :class="{ 'hidden' : !showExplore && !showIMDb }" class="ml-4 sm:ml-0 lg:hidden" />
       <BtnListItemRemove :id="item.refId" :mode="mode" :class="{ 'hidden' : showExplore || showIMDb }" class="ml-4 sm:ml-0 lg:flex" />
     </div>
   </article>
 </template>
-
-<script>
-import BtnListItemControls from '../buttons/BtnListItemControls.vue';
-import BtnListItemEdit from '../buttons/BtnListItemEdit.vue';
-import BtnListItemExplore from '../buttons/BtnListItemExplore.vue';
-import BtnListItemRemove from '../buttons/BtnListItemRemove.vue';
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'ListItem',
-  components: {
-    BtnListItemControls,
-    BtnListItemEdit,
-    BtnListItemExplore,
-    BtnListItemRemove
-  },
-  props: {
-    item: Object,
-    mode: String,
-  },
-  emits: ['open-poster'],
-  setup() {
-    const store = useStore();
-
-    return {
-      showExplore: computed(() => store.getters['user/showExploreLinks']),
-      showIMDb: computed(() => store.getters['user/showIMDbLinks'])
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   .poster {

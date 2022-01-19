@@ -49,7 +49,7 @@
     <InputRadio class="" name="export-mode" :label="'tracklist'" :value="exportMode" @update:radio="events.onUpdateExportMode($event)" />
   </div>
   <p class="text-sm text-gray-600 md:ml-4">
-    &#9432 Your {{ exportMode }} contains {{ listLength }} items.
+    &#9432; Your {{ exportMode }} contains {{ listLength }} items.
     <span v-if="listLength === 0" class="text-yellow-600 hover:underline cursor-pointer" @click="events.onReloadList(exportMode)">
       Refresh List
     </span>

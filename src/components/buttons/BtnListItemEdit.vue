@@ -1,4 +1,5 @@
 <script setup>
+  import { computed } from 'vue'
   import { useStore } from 'vuex'
 
   const props = defineProps({
@@ -7,6 +8,8 @@
   })
 
   const store = useStore()
+
+  const btnText = computed(() => props.mode === 'tracklist' ? 'Edit' : 'Watched')
 
   const onBtnClick = (refId, mode) => {
     store.dispatch('list/selectEditTitle', [refId, mode])
@@ -31,6 +34,6 @@
       <circle cx="12" cy="12" r="9" />
       <path d="M9 12l2 2l4 -4" />
     </svg>
-    <slot />
+    {{ btnText }}
   </button>
 </template>

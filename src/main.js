@@ -1,17 +1,17 @@
 import { createApp } from 'vue'
-import router from './router.js'
-import store from './store/index.js'
-import App from './App.vue'
+import router from '@/router.js'
+import store from '@/store/index.js'
+import App from '@/App.vue'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import detectTokens from './helpers/authorize-tokens.js'
+import detectTokens from '@/helpers/authorize-tokens.js'
 
-import('./index.css')
+import('@/index.css')
 
 const app = createApp(App)
   app.use(router)
   app.use(store)
 
-store.dispatch("user/initAuth")
+store.dispatch('user/initAuth')
 
 detectTokens()
 

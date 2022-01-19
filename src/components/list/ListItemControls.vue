@@ -22,7 +22,7 @@
     setTimeout(() => {
       store.dispatch('list/clearEditTitle')
       store.dispatch('app/toggleWindow', 0)
-    }, 100);
+    }, 100)
   }
 </script>
 

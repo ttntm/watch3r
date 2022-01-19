@@ -1,11 +1,101 @@
+<script setup>
+  import BtnClose from '@/components/buttons/BtnClose.vue'
+  import InputRange from '@/components/input/InputRange.vue'
+  import { computed, reactive, ref, watch } from 'vue'
+  import { useStore } from 'vuex'
+  import { useDelay } from '@/helpers/shared'
+
+  const props = defineProps({
+    mode: String
+  })
+
+  const store = useStore()
+
+  const { isVisible, toggleDelay } = useDelay()
+
+  const editItem = ref({})
+  const saveBtnState = reactive({ enabled: true, text: 'Save' })
+  
+  const searchActive = computed(() => store.getters['tools/searchActive'])
+  const srcItem = computed(() => store.getters['list/editTitleContent'])
+  const writeSuccess = computed(() => store.getters['list/writeSuccess'])
+
+  watch(writeSuccess, () => {
+    if (writeSuccess.value) {
+      store.dispatch('app/toggleWindow', 0) // close modal with user input only if successful
+    }
+  })
+  
+  const editData = { userDateWatched: '', userNotes: '', userRating: '5' }
+
+  const hasChanges = current => {
+    if (props.mode === 'tracklist') {
+      if (current.userDateWatched !== srcItem.value.userDateWatched || current.userNotes !== srcItem.value.userNotes || current.userRating !== srcItem.value.userRating) return true
+    } else if (props.mode === 'watchlist') {
+      if (current.userDateWatched !== editData.userDateWatched || current.userNotes !== editData.userNotes || current.userRating !== editData.userRating) return true
+    }
+    return false
+  }
+
+  const events = {
+    onClose() {
+      if (hasChanges(editItem.value) && !writeSuccess.value) {
+        if (confirm('Unsaved changes will be discarded.')) {
+          store.dispatch('app/toggleWindow', 0)
+        }
+      } else {
+        toggleDelay()
+        setTimeout(() => store.dispatch('app/toggleWindow', 0), 100)
+        store.dispatch('list/toggleWriteSuccess', false) // reset previous write success (if any); also used to notify the user about unsaved changes when closing the modal
+      }
+      store.dispatch('list/clearEditTitle')
+    },
+
+    onSave(data, mode) {
+      saveBtnState.enabled = false
+      saveBtnState.text = 'Saving...'
+
+      switch (mode) {
+        case 'tracklist':
+          store.dispatch('list/editListItem', data)
+          break
+        case 'watchlist':
+          store.dispatch('list/writeList', [data, 'tracklist'])
+          store.dispatch('list/deleteItem', [data.refId, mode, true])
+          break
+        default:
+          return
+      }
+
+      if (searchActive.value) {
+        // update DB data and also update displayed data (so search results do not reset)
+        store.dispatch('list/updateSearchResult', data)
+      }
+    }
+  }
+
+  if (props.mode === 'tracklist') {
+    editItem.value = { ...srcItem.value }
+    if (!editItem.value.userRating) {
+      editItem.value.userRating = editData.userRating
+    }
+  }
+
+  if (props.mode === 'watchlist') {
+    editItem.value = { ...srcItem.value, ...editData }
+  }
+
+  store.dispatch('list/toggleWriteSuccess', false) // cleanup
+</script>
+
 <template>
   <transition name="modal">
-    <section v-if="isVisible" v-esc="closeModal" v-scroll-lock class="list-modal" role="dialog" aria-labelledby="edit-modal-heading">
+    <section v-if="isVisible" v-esc="events.onClose" v-scroll-lock class="list-modal" role="dialog" aria-labelledby="edit-modal-heading">
       <section class="flex flex-row justify-between items-center px-6 sm:px-8">
         <h3 id="edit-modal-heading" class="text-gray-600 text-base mb-0">
           Edit Title: "{{ editItem.title }}"
         </h3>
-        <BtnClose btn-title="Close" @click="closeModal" />
+        <BtnClose btn-title="Close" @click="events.onClose" />
       </section>
       <form
         id="edit-form"
@@ -28,11 +118,11 @@
             class="btn btn-black mr-4"
             :class="{ 'bg-gray-700' : !saveBtnState.enabled }"
             :disabled="!saveBtnState.enabled"
-            @click.prevent="handleTitleEdit(editItem, mode)"
+            @click.prevent="onSave(editItem, mode)"
           >
             {{ saveBtnState.text }}
           </button>
-          <button class="btn btn-muted" @click.prevent="closeModal()">
+          <button class="btn btn-muted" @click.prevent="events.onClose">
             Cancel
           </button>
         </div>
@@ -40,112 +130,6 @@
     </section>
   </transition>
 </template>
-
-<script>
-import BtnClose from '../buttons/BtnClose.vue';
-import InputRange from '../input/InputRange.vue';
-import { computed, ref, watch } from 'vue';
-import { useStore } from 'vuex';
-import { useDelay } from '../../helpers/shared';
-
-export default {
-  name: 'ListEditModal',
-  components: {
-    BtnClose,
-    InputRange
-  },
-  props: {
-    mode: String
-  },
-  setup(props) {
-    const store = useStore();
-
-    const { isVisible, toggleDelay } = useDelay();
-
-    const editData = { userDateWatched: '', userNotes: '', userRating: '5' };
-    const editItem = ref({});
-    const saveBtnState = ref({ enabled: true, text: 'Save' });
-    const searchActive = computed(() => store.getters['tools/searchActive']);
-    const srcItem = computed(() => store.getters['list/editTitleContent']);
-    const writeSuccess = computed(() => store.getters['list/writeSuccess']);
-
-    const closeModal = () => {
-      if (hasChanges() && !writeSuccess.value) {
-        if (confirm('Unsaved changes will be discarded.')) {
-          store.dispatch('app/toggleWindow', 0);
-        }
-      } else {
-        toggleDelay();
-        setTimeout(() => store.dispatch('app/toggleWindow', 0), 100);
-        store.dispatch('list/toggleWriteSuccess', false); // reset previous write success (if any); also used to notify the user about unsaved changes when closing the modal
-      }
-      store.dispatch('list/clearEditTitle');
-    }
-
-    const handleTitleEdit = (data, mode) => {
-      saveBtnState.value.enabled = false;
-      saveBtnState.value.text = 'Saving...';
-
-      switch (mode) {
-        case 'tracklist':
-          // update a title that's already in the tracklist
-          store.dispatch('list/editListItem', data); // we'll get a toast message confirmation back
-          break;
-        case 'watchlist':
-          // write the title + user input to the tracklist
-          store.dispatch('list/writeList', [data, 'tracklist']); // we'll get a toast message confirmation back
-          store.dispatch('list/deleteItem', [data.refId, mode, true]);
-          break;
-        default:
-          return
-      }
-
-      if (searchActive.value) {
-        // update DB data and also update displayed data (so search results do not reset)
-        store.dispatch('list/updateSearchResult', data);
-      }
-    }
-
-    const hasChanges = () => {
-      const current = editItem.value;
-      // first check for watchlist items
-      if (current.userDateWatched !== editData.userDateWatched || current.userNotes !== editData.userNotes || current.userRating !== editData.userRating) {
-        // second check for tracklist items
-        if (current.userDateWatched !== srcItem.value.userDateWatched || current.userNotes !== srcItem.value.userNotes || current.userRating !== srcItem.value.userRating) {
-          return true
-        }
-      } else {
-        return false
-      }
-    }
-
-    watch(writeSuccess, () => {
-      if (writeSuccess.value) {
-        store.dispatch('app/toggleWindow', 0); // close modal with user input only if successful
-      }
-    })
-
-    if (props.mode === 'watchlist') {
-      editItem.value = { ...srcItem.value, ...editData };
-    } else if (props.mode === 'tracklist') {
-      editItem.value = { ...srcItem.value };
-      if (!editItem.value.userRating) {
-        editItem.value.userRating = editData.userRating;
-      }
-    }
-
-    store.dispatch('list/toggleWriteSuccess', false); // initial state reset whenever this modal opens
-
-    return {
-      closeModal,
-      editItem,
-      isVisible,
-      handleTitleEdit,
-      saveBtnState
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   input[type=date],

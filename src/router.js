@@ -1,17 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import store from './store/index.js'
+import store from '@/store/index.js'
 
-const About = () => import('./views/About.vue')
-// const Admin = () => import('./views/Admin.vue')
-const Explore = () => import('./views/Explore.vue')
-const Home = () => import('./views/Home.vue')
-const Import = () => import('./views/Import.vue')
-const Invite = () => import('./views/Invite.vue')
-const List = () => import('./views/List.vue')
-const Profile = () => import('./views/Profile.vue')
-const Recover = () => import('./views/Recover.vue')
-const Support = () => import('./views/Support.vue')
-const Signup = () => import('./views/Signup.vue')
+const About = () => import('@/views/About.vue')
+const Explore = () => import('@/views/Explore.vue')
+const Home = () => import('@/views/Home.vue')
+const Import = () => import('@/views/Import.vue')
+const Invite = () => import('@/views/Invite.vue')
+const List = () => import('@/views/List.vue')
+const Profile = () => import('@/views/Profile.vue')
+const Recover = () => import('@/views/Recover.vue')
+const Support = () => import('@/views/Support.vue')
+const Signup = () => import('@/views/Signup.vue')
 
 function forbidden(to, from, next) {
   if(store.getters['user/loggedIn']) {
@@ -46,11 +45,6 @@ const router = createRouter({
         }
       }
     },
-    // {
-    //   path: '/admin',
-    //   name: 'admin',
-    //   component: Admin
-    // },
     {
       path: '/explore',
       name: 'explore',
@@ -180,7 +174,7 @@ const router = createRouter({
       path: '/:pathMatch(.*)',
       name: '404',
       beforeEnter: () => {
-        return router.push({ name: 'home' }) //redirect invalid calls home for now
+        return router.push({ name: 'home' })
       }
     }
   ],

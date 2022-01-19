@@ -3,11 +3,9 @@ import store from '@/store/index.js'
 
 export function checkDuplicate(mode, input) {
   const current = store.getters[`list/${mode}`]
-  if (current.length > 0) {
-    return current.filter((item) => item.id === input)
-  } else {
-    return []
-  }
+  return current.length > 0
+    ? current.findIndex(item => item.id === input)
+    : -1
 }
 
 export async function getAuthHeaders() {

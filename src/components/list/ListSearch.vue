@@ -1,41 +1,26 @@
-<template>
-  <section class="w-full shadow-lg mb-8 sm:mb-0 sm:mr-8">
-    <InputSearch class="text-gray-700" pch="Title or Genre" @do-search="searchList($event, mode)" @reset-search="resetSearch()" />
-  </section>
-</template>
+<script setup>
+  import InputSearch from '@/components/input/InputSearch.vue'
+  import { useStore } from 'vuex'
 
-<script>
-import InputSearch from '../input/InputSearch.vue';
-import { computed, ref } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'ListSearch',
-  components: {
-    InputSearch
-  },
-  props: {
+  const props = defineProps({
     mode: String
-  },
-  setup(props) {
-    const store = useStore();
+  })
 
-    const resetSearch = () => {
-      store.dispatch('tools/resetList');
-    }
+  const store = useStore()
 
-    const searchList = (term, mode) => {
-      store.dispatch('tools/searchList', [term, mode]);
-    }
+  const events = {
+    onResetSearch() {
+      store.dispatch('tools/resetList')
+    },
 
-    return {
-      resetSearch,
-      searchList
+    onDoSearch(term, mode) {
+      store.dispatch('tools/searchList', [term, mode])
     }
   }
-}
 </script>
 
-<style>
-
-</style>
+<template>
+  <section class="w-full shadow-lg mb-8 sm:mb-0 sm:mr-8">
+    <InputSearch class="text-gray-700" pch="Title or Genre" @do-search="events.onDoSearch($event, mode)" @reset-search="events.onResetSearch()" />
+  </section>
+</template>

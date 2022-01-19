@@ -1,10 +1,13 @@
 <script setup>
   import BtnClose from '@/components/buttons/BtnClose.vue'
+  import { useStore } from 'vuex'
 
   const props = defineProps({
     menuItems: Array,
     show: Boolean
   })
+
+  const store = useStore()
 
   const onClose = () => {
     store.dispatch('app/toggleWindow', 0)

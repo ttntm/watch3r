@@ -1,3 +1,22 @@
+<script setup>
+  import { useStore } from 'vuex'
+  import { useDelay } from '@/helpers/shared'
+
+  const props = defineProps({
+    poster: String,
+    title: String
+  })
+
+  const store = useStore()
+
+  const { isVisible, toggleDelay } = useDelay()
+
+  const closePoster = () => {
+    toggleDelay()
+    setTimeout(() => store.dispatch('app/toggleWindow', 0), 100)
+  }
+</script>
+
 <template>
   <transition name="poster">
     <section v-if="isVisible" id="poster-modal" v-esc="closePoster" v-scroll-lock>
@@ -5,34 +24,6 @@
     </section>
   </transition>
 </template>
-
-<script>
-import { useStore } from 'vuex';
-import { useDelay } from '../../helpers/shared';
-
-export default {
-  name: 'ListPosterModal',
-  props: {
-    poster: String,
-    title: String
-  },
-  setup() {
-    const store = useStore();
-
-    const { isVisible, toggleDelay } = useDelay();
-
-    const closePoster = () => {
-      toggleDelay();
-      setTimeout(() => store.dispatch('app/toggleWindow', 0), 100);
-    }
-
-    return {
-      closePoster,
-      isVisible
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   #poster-modal {
