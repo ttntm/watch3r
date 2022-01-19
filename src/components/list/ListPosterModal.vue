@@ -1,31 +1,29 @@
-<template>
-  <section id="poster-modal" v-esc="closePoster" v-scroll-lock>
-    <img v-click-outside="closePoster" :src="poster" class="block self-center max-w-full shadow-lg rounded-sm" :alt="title" :title="`Poster for &quot;${title}&quot;`">
-  </section>
-</template>
+<script setup>
+  import { useStore } from 'vuex'
+  import { useDelay } from '@/helpers/shared'
 
-<script>
-import { useStore } from 'vuex';
-
-export default {
-  name: 'ListPosterModal',
-  props: {
+  const props = defineProps({
     poster: String,
     title: String
-  },
-  setup() {
-    const store = useStore();
+  })
 
-    const closePoster = () => {
-      store.dispatch('app/toggleWindow', 0);
-    }
+  const store = useStore()
 
-    return {
-      closePoster
-    }
+  const { isVisible, toggleDelay } = useDelay()
+
+  const closePoster = () => {
+    toggleDelay()
+    setTimeout(() => store.dispatch('app/toggleWindow', 0), 100)
   }
-}
 </script>
+
+<template>
+  <transition name="poster">
+    <section v-if="isVisible" id="poster-modal" v-esc="closePoster" v-scroll-lock>
+      <img v-click-outside="closePoster" :src="poster" class="block self-center max-w-full shadow-lg rounded-sm" :alt="title" :title="`Poster for &quot;${title}&quot;`">
+    </section>
+  </transition>
+</template>
 
 <style lang="postcss" scoped>
   #poster-modal {

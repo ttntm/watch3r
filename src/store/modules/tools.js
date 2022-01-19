@@ -1,4 +1,4 @@
-import { objSort } from '../../helpers/shared.js';
+import { objSort } from '@/helpers/shared.js'
 
 export default {
   strict: false,
@@ -20,7 +20,7 @@ export default {
       ],
       tracklistSorted: -1,
       watchlistSorted: -1,
-    };
+    }
   },
 
   getters: {
@@ -33,16 +33,16 @@ export default {
 
   mutations: {
     SET_LIST_SEARCH_MODE(state, value) {
-      state.listSearchMode = value;
+      state.listSearchMode = value
     },
     SET_SEARCH_ACTIVE(state, value) {
-      state.searchActive = value;
+      state.searchActive = value
     },
     SET_TRACKLIST_SORTED(state, value) {
-      state.tracklistSorted = value;
+      state.tracklistSorted = value
     },
     SET_WATCHLIST_SORTED(state, value) {
-      state.watchlistSorted = value;
+      state.watchlistSorted = value
     },
   },
 
@@ -52,30 +52,30 @@ export default {
      */
 
     initializeTools({ commit }) {
-      commit('SET_LIST_SEARCH_MODE', '');
-      commit('SET_SEARCH_ACTIVE', false);
-      commit('SET_TRACKLIST_SORTED', -1);
-      commit('SET_WATCHLIST_SORTED', -1);
+      commit('SET_LIST_SEARCH_MODE', '')
+      commit('SET_SEARCH_ACTIVE', false)
+      commit('SET_TRACKLIST_SORTED', -1)
+      commit('SET_WATCHLIST_SORTED', -1)
     },
 
     resetList({ commit, dispatch, getters, rootGetters }) {
-      const mode = getters['listSearchMode'];
-      let cache;
+      const mode = getters['listSearchMode']
+      let cache
 
-      commit('SET_SEARCH_ACTIVE', false);
+      commit('SET_SEARCH_ACTIVE', false)
 
-      cache = rootGetters[`list/${mode}Cache`];
+      cache = rootGetters[`list/${mode}Cache`]
 
-      commit(`list/SET_${mode.toUpperCase()}`, cache, { root: true });
-      dispatch('updateSort', mode); // reads from cache, needs sorting
+      commit(`list/SET_${mode.toUpperCase()}`, cache, { root: true })
+      dispatch('updateSort', mode) // reads from cache, needs sorting
     },
 
     updateSort({ dispatch, getters, rootGetters }, mode) {
-      const current = getters[`${mode}Sorted`];
-      const preset = rootGetters['user/sortPreset'];
-      const sortId = current === -1 ? preset : current;
+      const current = getters[`${mode}Sorted`]
+      const preset = rootGetters['user/sortPreset']
+      const sortId = current === -1 ? preset : current
 
-      dispatch('sortList', [sortId, mode]);
+      dispatch('sortList', [sortId, mode])
     },
 
     /**
@@ -83,22 +83,22 @@ export default {
      */
 
     searchList({ commit, dispatch, rootGetters }, args) {
-      const [term, mode] = args; // [String, String]
+      const [term, mode] = args // [String, String]
 
-      commit('SET_SEARCH_ACTIVE', true);
-      commit('SET_LIST_SEARCH_MODE', mode);
+      commit('SET_SEARCH_ACTIVE', true)
+      commit('SET_LIST_SEARCH_MODE', mode)
 
       const getInput = () => {
         // returns the respective list as Object[] from the store
         // always search based on cache, otherwise results will be incomplete = wrong
-        return rootGetters[`list/${mode}Cache`];
+        return rootGetters[`list/${mode}Cache`]
       }
 
       const search = (term) => {
-        let input = getInput();
-        term = term.toLowerCase();
+        let input = getInput()
+        term = term.toLowerCase()
         return input.filter((item) => {
-          let title = item.title.toLowerCase();
+          let title = item.title.toLowerCase()
           let genre = item.genre.toLowerCase()
 
           if (title.indexOf(term) === -1) {
@@ -109,8 +109,8 @@ export default {
         })
       }
 
-      commit(`list/SET_${mode.toUpperCase()}`, search(term), { root: true });
-      dispatch('updateSort', mode); // search results come from the cache, thus in need of sorting
+      commit(`list/SET_${mode.toUpperCase()}`, search(term), { root: true })
+      dispatch('updateSort', mode) // search results come from the cache, thus in need of sorting
     },
 
     /**
@@ -118,59 +118,59 @@ export default {
      */
 
     sortList({ commit, getters, rootGetters }, args) {
-      const [sortID, mode] = args; // [Number, String]
-      const sortMode = getters['sortMode'];
+      const [sortID, mode] = args // [Number, String]
+      const sortMode = getters['sortMode']
 
       const doSort = () => {
-        const key = sortMode[sortID].key;
-        const order = sortMode[sortID].order;
-        let sorted = [];
+        const key = sortMode[sortID].key
+        const order = sortMode[sortID].order
+        let sorted = []
 
-        const cache = rootGetters[`list/${mode}Cache`];
-        const list = rootGetters[`list/${mode}`];
-        const sortSearch = getters['searchActive'];
+        const cache = rootGetters[`list/${mode}Cache`]
+        const list = rootGetters[`list/${mode}`]
+        const sortSearch = getters['searchActive']
 
-        const input = sortSearch ? list : cache; // should it sort search results?
+        const input = sortSearch ? list : cache // should it sort search results?
 
         switch(key) {
           case 'date':
             if(order === 'ascending') {
-              sorted = [...input].sort(objSort('refId', false));
+              sorted = [...input].sort(objSort('refId', false))
             } else if(order === 'descending') {
-              sorted = [...input].sort(objSort('refId', true));
+              sorted = [...input].sort(objSort('refId', true))
             }
-            break;
+            break
 
           case 'title':
             if(order === 'ascending') {
-              sorted = [...input].sort(objSort(key, false, (a) =>  a.toLowerCase()));
+              sorted = [...input].sort(objSort(key, false, (a) =>  a.toLowerCase()))
             } else if(order === 'descending') {
-              sorted = [...input].sort(objSort(key, true, (a) =>  a.toLowerCase()));
+              sorted = [...input].sort(objSort(key, true, (a) =>  a.toLowerCase()))
             }
-            break;
+            break
 
           case 'rating':
-            const modeRating = mode === 'tracklist' ? 'userRating' : 'imdbRating';
+            const modeRating = mode === 'tracklist' ? 'userRating' : 'imdbRating'
             if(order === 'ascending') {
-              sorted = [...input].sort(objSort(`${modeRating}`, false));
+              sorted = [...input].sort(objSort(`${modeRating}`, false))
             } else if(order === 'descending') {
-              sorted = [...input].sort(objSort(`${modeRating}`, true));
+              sorted = [...input].sort(objSort(`${modeRating}`, true))
             }
-            break;
+            break
 
           case 'year':
             if(order === 'ascending') {
-              sorted = [...input].sort(objSort(key, false));
+              sorted = [...input].sort(objSort(key, false))
             } else if(order === 'descending') {
-              sorted = [...input].sort(objSort(key, true));
+              sorted = [...input].sort(objSort(key, true))
             }
-            break;
+            break
         }
-        return sorted;
+        return sorted
       }
 
-      commit(`list/SET_${mode.toUpperCase()}`, doSort(), { root: true });
-      commit(`SET_${mode.toUpperCase()}_SORTED`, sortID);
+      commit(`list/SET_${mode.toUpperCase()}`, doSort(), { root: true })
+      commit(`SET_${mode.toUpperCase()}_SORTED`, sortID)
     }
   }
-};
+}

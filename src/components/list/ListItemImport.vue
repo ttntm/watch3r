@@ -1,3 +1,36 @@
+<script setup>
+  import { computed, ref, watch } from 'vue'
+  import { useStore } from 'vuex'
+  import { checkDuplicate } from '@/helpers/shared.js'
+
+  const props = defineProps({
+    item: Object,
+    mode: String
+  })
+
+  const emit = defineEmits(['import-title'])
+  
+  const store = useStore()
+
+  const duplicate = ref(false)
+
+  const list = computed(() => store.getters[`list/${props.mode}`])
+  const mode = computed(() => props.mode)
+  const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
+
+  watch([list, mode], () => {
+    if (list.value.length > 0) {
+      duplicate.value = isDuplicate()
+    }
+  })
+
+  const isDuplicate = () => { return checkDuplicate(mode.value, props.item.Const) > -1 ? true : false }
+  
+  const onImportAdd = () => emit('import-title', { prefix: 'i', query: props.item.Const })
+
+  duplicate.value = isDuplicate()
+</script>
+
 <template>
   <article class="list-item flex-col sm:flex-row">
     <div class="w-full sm:w-1/2 px-4 lg:px-6 self-center lg:self-start lg:py-2">
@@ -22,7 +55,7 @@
         v-if="!duplicate"
         v-click-blur
         class="btn btn-black click-outside-ignore"
-        @click.prevent="importAdd()"
+        @click.prevent="onImportAdd()"
       >
         &plus; <span class="capitalize pointer-events-none">{{ mode }}</span>
       </button>
@@ -32,56 +65,6 @@
     </div>
   </article>
 </template>
-
-<script>
-import { computed, ref, watch } from 'vue';
-import { useStore } from 'vuex';
-import { checkDuplicate } from '../../helpers/shared.js';
-
-export default {
-  name: 'ListItemImport',
-  props: {
-    item: Object,
-    mode: String,
-  },
-  emits: ['import-title'],
-  setup(props, { emit }) {
-    const store = useStore();
-
-    const duplicate = ref(false);
-    const list = computed(() => store.getters[`list/${props.mode}`]);
-    const mode = computed(() => props.mode);
-
-    const importAdd = () => {
-      const titleData = {
-        prefix: 'i',
-        query: props.item.Const
-      };
-      return emit('import-title', titleData);
-    }
-
-    const isDuplicate = () => { return checkDuplicate(mode.value, props.item.Const).length > 0 ? true : false }
-
-    watch(list, () => {
-      if (list.value.length > 0) {
-        duplicate.value = isDuplicate();
-      }
-    })
-
-    watch(mode, () => {
-      duplicate.value = isDuplicate();
-    })
-
-    duplicate.value = isDuplicate();
-
-    return {
-      duplicate,
-      importAdd,
-      showIMDb: computed(() => store.getters['user/showIMDbLinks'])
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   .btn-imdb {

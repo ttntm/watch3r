@@ -70,7 +70,7 @@
 
   body {
     @apply min-h-screen;
-    background: rgb(26,32,44);
+    background: rgba(50,68,93,1);
     background: linear-gradient(135deg, rgba(26,32,44,1) 0%, rgba(50,68,93,1) 50%);
   }
 
@@ -246,13 +246,7 @@
   /* LIST */
 
   .list {
-    @apply bg-gray-400 text-gray-800 rounded-lg border border-gray-700 shadow-none;
-  }
-
-  @media(min-width:1024px) {
-    .list {
-      @apply shadow-lg;
-    }
+    @apply bg-gray-400 text-gray-800 rounded-lg border border-gray-700 shadow-lg;
   }
 
   .list-item {
@@ -263,31 +257,52 @@
     @apply border-transparent;
   }
 
-    /* LIST MODAL */
+  /* LIST MODAL */
 
+  .list-modal {
+    @apply fixed top-0 left-0 right-0 z-20 bg-gray-200 rounded-lg shadow-lg py-6 my-8 mx-auto overflow-y-auto;
+    width: calc(100% - 2rem);
+    max-height: calc(100% - 4rem);
+  }
+
+  @media(min-width:768px) {
     .list-modal {
-      @apply fixed top-0 left-0 right-0 z-20 bg-gray-200 rounded-lg shadow-lg py-6 my-8 mx-auto overflow-y-auto;
-      width: calc(100% - 2rem);
-      max-height: calc(100% - 4rem);
+      @apply w-2/3;
     }
+  }
 
-    @media(min-width:768px) {
-      .list-modal {
-        @apply w-2/3;
-      }
+  @media(min-width:1024px) {
+    .list-modal {
+      @apply w-1/2;
     }
+  }
 
-    @media(min-width:1024px) {
-      .list-modal {
-        @apply w-1/2;
-      }
+  @media(min-width:1440px) {
+    .list-modal {
+      @apply max-w-xl;
     }
+  }
 
-    @media(min-width:1440px) {
-      .list-modal {
-        @apply max-w-xl;
-      }
-    }
+  .modal-enter-active,
+  .modal-leave-active {
+    transition: all 0.75s;
+  }
+
+  .poster-enter-active,
+  .poster-leave-active {
+    transition: opacity 0.35s;
+  }
+
+  .modal-enter-from,
+  .modal-leave-to {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  .poster-enter-from,
+  .poster-leave-to {
+    opacity: 0;
+  }
 
   /* TEXT CONTENT BOX */
 

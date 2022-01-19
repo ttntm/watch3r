@@ -1,8 +1,21 @@
+<script setup>
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
+
+  const store = useStore()
+
+  const addTitleOpen = computed(() => store.getters['app/windowOpen'] === 2)
+
+  const onAddTitleClick = () => {
+    return addTitleOpen.value ? store.dispatch('app/toggleWindow', 0) : store.dispatch('app/toggleWindow', 2)
+  }
+</script>
+
 <template>
   <button
     v-click-blur
     class="btn btn-yellow flex flex-row items-center justify-center click-outside-ignore"
-    @click.prevent="toggleListAddModal()"
+    @click.prevent="onAddTitleClick()"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -13,25 +26,3 @@
     Add Title
   </button>
 </template>
-
-<script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'BtnAddTitle',
-  setup() {
-    const store = useStore();
-
-    const addTitleOpen = computed(() => store.getters['app/windowOpen'] === 2);
-
-    const toggleListAddModal = () => {
-      return addTitleOpen.value ? store.dispatch('app/toggleWindow', 0) : store.dispatch('app/toggleWindow', 2);
-    }
-
-    return {
-      toggleListAddModal
-    }
-  }
-}
-</script>

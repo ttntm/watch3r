@@ -1,6 +1,44 @@
+<script setup>
+  import { computed, ref, watch } from 'vue'
+  import { useStore } from 'vuex'
+
+  const props = defineProps({
+    mode: String
+  })
+
+  const store = useStore()
+
+  const selected = ref()
+
+  const allSortModes = computed(() => store.getters['tools/sortMode'])
+  const listMode = computed(() => props.mode)
+  const sortCurrent = computed(() => store.getters[`tools/${props.mode}Sorted`])
+  const sortPreset = computed(() => store.getters[`user/sortPreset`])
+
+  watch([listMode, sortCurrent], () => {
+    // when navigating between list modes or when sorting changes in another tab
+    updateSelect()
+  })
+
+  const onSelectChange = (val) => {
+    store.dispatch('tools/sortList', [val, props.mode])
+    document.getElementById('sort-select').blur()
+  }
+
+  const updateSelect = () => {
+    if (sortCurrent.value === -1) {
+      selected.value = sortPreset.value
+    } else {
+      selected.value = sortCurrent.value
+    }
+  }
+
+  updateSelect()
+</script>
+
 <template>
   <section class="w-full relative text-gray-700 bg-gray-300 shadow-lg sm:ml-8">
-    <select id="sort-select" v-model="selected" name="sorting" @change="sortSelect(selected)">
+    <select id="sort-select" v-model="selected" name="sorting" @change="onSelectChange(selected)">
       <option disabled value="">
         Sort {{ mode }}...
       </option>
@@ -15,57 +53,6 @@
     </div>
   </section>
 </template>
-
-<script>
-import { computed, ref, watch } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'ListSort',
-  props: {
-    mode: String
-  },
-  setup(props) {
-    const store = useStore();
-
-    const listMode = computed(() => props.mode);
-    const selected = ref();
-    const sortCurrent = computed(() => store.getters[`tools/${props.mode}Sorted`]);
-    const sortPreset = computed(() => store.getters[`user/sortPreset`]);
-
-    const sortSelect = (val) => {
-      store.dispatch('tools/sortList', [val, props.mode]);
-      document.getElementById('sort-select').blur();
-    }
-
-    const updateSelect = () => {
-      if (sortCurrent.value === -1) {
-        selected.value = sortPreset.value;
-      } else {
-        selected.value = sortCurrent.value;
-      }
-    }
-
-    watch(listMode, () => {
-      // when navigating between list modes; onUpdate and onBeforeUpdate were triggering even when selecting options, causing a deadlock on Android
-      updateSelect();
-    })
-
-    watch(sortCurrent, () => {
-      // when sorting changes in another tab
-      updateSelect();
-    })
-
-    updateSelect(); // get the initial value
-
-    return {
-      allSortModes: store.getters['tools/sortMode'],
-      selected,
-      sortSelect
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   select, select option {

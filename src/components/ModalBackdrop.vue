@@ -1,24 +1,17 @@
+<script setup>
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
+
+  const store = useStore()
+
+  const modalOpen = computed(() => store.getters['app/windowOpen'])
+</script>
+
 <template>
   <transition name="overlay">
     <div v-if="modalOpen && modalOpen !== 1" class="overlay" />
   </transition>
 </template>
-
-<script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'ModalBackdrop',
-  setup() {
-    const store = useStore();
-
-    return {
-      modalOpen: computed(() => store.getters['app/windowOpen'])
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   .overlay {
@@ -28,7 +21,7 @@ export default {
 
   .overlay-enter-active,
   .overlay-leave-active {
-    transition: opacity 0.5s;
+    transition: opacity 0.35s;
   }
 
   .overlay-enter-from,

@@ -1,11 +1,65 @@
+<script setup>
+  import { computed, reactive, ref } from 'vue'
+  import { useRoute, useRouter } from 'vue-router'
+  import { useStore } from 'vuex'
+
+  const route = useRoute()
+  const router = useRouter()
+  const store = useStore()
+
+  const msg = reactive({ text: '', type: ''})
+  const pwd = ref('')
+  const status = ref('')
+
+  const token = computed(() => route.query.t)
+
+  const onSubmit = (p) => {
+    msg.text = ''
+    msg.type = ''
+    status.value = ''
+
+    if (validate()) {
+      status.value = `Processing...`
+      store.dispatch('user/processInvite', { token: token.value, pwd: p })
+        .then(() => {
+          store.dispatch('app/sendToastMessage', { text: 'Account created, redirecting to login...', type: 'success' })
+          setTimeout(() => {
+            router.push({ name: 'home' })
+          }, 2000)
+        })
+        .catch(error => {
+          store.dispatch('app/sendToastMessage', { text: 'Error processing the invite, please try again later.', type: 'error' })
+          pwd.value = ''
+          status.value = ''
+        })
+    } else {
+      store.dispatch('app/sendToastMessage', msg)
+    }
+  }
+
+  const validate = () => {
+    if (!token.value) {
+      msg.text = 'Invalid token...'
+      msg.type = 'error'
+      return false
+    } else if (pwd.value.length < 6) {
+      msg.text = 'Please choose a more secure password'
+      msg.type = 'error'
+      return false
+    } else {
+      return true
+    }
+  }
+</script>
+
 <template>
   <section class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="text-center self-center max-w-sm mx-auto">
-      <img src="/img/icon.svg" class="mx-auto mb-10" alt="WATCH3R" style="width: 125px;">
+      <img src="/img/icon.svg" class="mx-auto mb-10" alt="WATCH3R" style="width: 125px">
       <form
         id="signup-form"
         class="text-left bg-gray-400 text-gray-800 rounded-md shadow-lg border border-gray-700 px-12 py-10"
-        @submit.prevent="handleSignup(pwd)"
+        @submit.prevent="onSubmit(pwd)"
       >
         <h2 class="text-xl text-blue-800">
           Confirm Signup
@@ -30,67 +84,3 @@
     </div>
   </section>
 </template>
-
-<script>
-import { computed, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'Signup',
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-    const store = useStore();
-
-    const msg = ref({ text: '', type: ''});
-    const pwd = ref('');
-    const status = ref('');
-    const token = computed(() => route.query.t);
-
-    const validate = () => {
-      if(!token.value) {
-        msg.value.text = 'Invalid token...';
-        msg.value.type = 'error';
-        return false;
-      } else if(pwd.value.length < 6) {
-        msg.value.text = 'Please choose a more secure password';
-        msg.value.type = 'error';
-        return false;
-      } else {
-        return true;
-      }
-    }
-
-    const handleSignup = (p) => {
-      // clear previous msg/status state first
-      msg.value = { text: '', type: ''};
-      status.value = '';
-
-      if(validate()) {
-        status.value = `Processing...`;
-        store.dispatch('user/processInvite', { token: token.value, pwd: p })
-          .then(() => {
-            store.dispatch('app/sendToastMessage', { text: 'Account created, redirecting to login...', type: 'success' });
-            setTimeout(() => {
-              router.push({ name: 'home' });
-            }, 2000);
-          })
-          .catch(error => {
-            store.dispatch('app/sendToastMessage', { text: 'Error processing the invite, please try again later.', type: 'error' });
-            pwd.value = '';
-            status.value = '';
-          });
-      } else {
-        store.dispatch('app/sendToastMessage', msg);
-      }
-    }
-
-    return {
-      handleSignup,
-      pwd,
-      status
-    }
-  }
-}
-</script>

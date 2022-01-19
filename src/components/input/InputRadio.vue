@@ -1,38 +1,27 @@
+<script setup>
+  import { computed } from 'vue'
+
+  const props = defineProps({
+    name: String,
+    label: String,
+    value: String
+  })
+
+  const emit = defineEmits(['update:radio'])
+
+  // see: https://stackoverflow.com/questions/40474634/vuejs-radio-button-component
+  const radio = computed({
+    get: () => props.value,
+    set: () => emit('update:radio', props.label)
+  })
+</script>
+
 <template>
   <div class="inline-flex items-center relative">
     <input :id="label" v-model="radio" type="radio" :name="name" :value="label">
     <label class="capitalize w-full" :for="label">{{ label }}</label>
   </div>
 </template>
-
-<script>
-import { computed } from 'vue';
-
-export default {
-  name: 'InputRadio',
-  props: {
-    name: String,
-    label: String,
-    value: String
-  },
-  emits: ['update:radio'],
-  setup(props, { emit }) {
-    // see: https://stackoverflow.com/questions/40474634/vuejs-radio-button-component
-    const radio = computed({
-      get: () => {
-        return props.value; // the respective current value from the parent component; to determine whether or not the input is checked
-      },
-      set: () => {
-        emit('update:radio', props.label); // emit the desired value back to the parent where an event catches it and updates the state accordingly
-      }
-    })
-
-    return {
-      radio
-    }
-  }
-}
-</script>
 
 <style lang="postcss" scoped>
   input[type=radio] {
@@ -47,7 +36,7 @@ export default {
   }
 
   input[type=radio] + label {
-    @apply block pl-4 ml-2;
+    @apply block cursor-pointer pl-4 ml-2;
   }
 
   input[type=radio] + label::before {

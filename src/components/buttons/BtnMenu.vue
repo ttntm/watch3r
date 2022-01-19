@@ -1,10 +1,30 @@
+<script setup>
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
+
+  const props = defineProps({
+    iconSize: {
+      type: Number,
+      default: 40
+    }
+  })
+
+  const store = useStore()
+  
+  const menuOpen = computed(() => store.getters['app/windowOpen'] == 1)
+
+  const onBtnClick = () => {
+    return menuOpen.value ? store.dispatch('app/toggleWindow', 0) : store.dispatch('app/toggleWindow', 1)
+  }
+</script>
+
 <template>
   <button
     v-click-blur
     class="click-outside-ignore"
     aria-label="Open menu"
     title="Open Menu"
-    @click.prevent="toggleMenu()"
+    @click.prevent="onBtnClick()"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="click-outside-ignore icon icon-tabler icon-tabler-menu-2" :width="iconSize" :height="iconSize" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -15,30 +35,3 @@
     <slot />
   </button>
 </template>
-
-<script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
-export default {
-  name: 'BtnMenu',
-  props: {
-    iconSize: {
-      type: Number,
-      default: 40
-    }
-  },
-  setup() {
-    const store = useStore();
-    const menuOpen = computed(() => store.getters['app/windowOpen'] == 1);
-
-    const toggleMenu = () => {
-      return menuOpen.value ? store.dispatch('app/toggleWindow', 0) : store.dispatch('app/toggleWindow', 1);
-    }
-
-    return {
-      toggleMenu
-    }
-  }
-}
-</script>
