@@ -118,7 +118,7 @@
             class="btn btn-black mr-4"
             :class="{ 'bg-gray-700' : !saveBtnState.enabled }"
             :disabled="!saveBtnState.enabled"
-            @click.prevent="onSave(editItem, mode)"
+            @click.prevent="events.onSave(editItem, mode)"
           >
             {{ saveBtnState.text }}
           </button>
