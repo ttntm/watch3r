@@ -22,9 +22,9 @@
   const isDuplicate = () => {
     const id = props.searchResult.id
     if (props.explore) {
-      return checkDuplicate('tracklist', id).length > 0 || checkDuplicate('watchlist', id).length > 0
+      return checkDuplicate('tracklist', id) > -1 || checkDuplicate('watchlist', id) > -1
     } else {
-      return checkDuplicate(props.mode, id).length > 0
+      return checkDuplicate(props.mode, id) > -1
     }
   }
 
