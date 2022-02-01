@@ -12,19 +12,22 @@
   watch(recSource, () => updateSelect())
 
   const onChange = () => {
-    const titleData = {
-      id: selected.value.id,
-      type: selected.value.type
-    }
-
-    store.dispatch('explore/clearRecommendations') // so we get back the 'loading' state
     store.dispatch('explore/updateRecSource', selected.value)
-    store.dispatch('explore/getRecommendations', titleData)
   }
 
   const updateSelect = () => { selected.value = recSource.value }
 
-  updateSelect()
+  if (tracklist.value.length === 0) {
+    // fallback for an empty tracklist which can happen when navigating into 'explore' directly after login
+    store.dispatch('list/readList', 'tracklist')
+  }
+
+  if (recSource.value && recSource.value.id) {
+    const found = tracklist.value.find(item => item.id === recSource.value.id)
+    // set the matching object as the selected one
+    // this is necessary due to a different set of keys on the DB objects (tracklist) compared to manually added 'recSource' objects
+    if (found) selected.value = found
+  }
 </script>
 
 <template>

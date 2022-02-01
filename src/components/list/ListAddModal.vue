@@ -81,7 +81,7 @@
           <InputRadio class="" name="search-mode" :label="'id'" :value="searchMode" @update:radio="events.onUpdateSearchMode($event)" />
         </div>
       </section>
-      <ListAddSearchResult v-if="searchResult.id" :explore="!contentExplore ? false : true" :mode="mode" :search-result="searchResult" class="px-8" />
+      <ListAddSearchResult v-if="searchResult.id" :explore="!contentExplore ? false : true" :mode="mode" :search-result="searchResult" @update:explore="events.onClose" class="px-8" />
       <p v-if="searchStatus" class="text-center px-8 mt-6 mb-0" v-html="searchStatus" />
     </section>
   </transition>

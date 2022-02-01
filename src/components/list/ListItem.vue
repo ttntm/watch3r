@@ -1,4 +1,5 @@
 <script setup>
+  import BtnIMDb from '@/components/buttons/BtnIMDb.vue'
   import BtnListItemControls from '@/components/buttons/BtnListItemControls.vue'
   import BtnListItemEdit from '@/components/buttons/BtnListItemEdit.vue'
   import BtnListItemExplore from '@/components/buttons/BtnListItemExplore.vue'
@@ -34,9 +35,7 @@
     <div class="w-full sm:w-3/4 px-4 lg:px-6 self-center lg:self-start lg:py-2">
       <h3 class="text-xl mb-2">
         {{ item.title }}
-        <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" v-click-blur target="_blank" rel="noopener" class="hidden lg:inline-block hover:shadow-outline focus:shadow-outline ml-1" title="View on IMDb">
-          <img src="/img/imdb.png" alt="IMDb icon" class="w-4">
-        </a>
+        <BtnIMDb v-if="showIMDb" :id="item.id" class="hidden lg:inline-block ml-1" />
       </h3>
       <p v-if="mode === 'tracklist' && item.userDateWatched" class="text-sm text-gray-600 mb-2">
         Watched: {{ item.userDateWatched }}

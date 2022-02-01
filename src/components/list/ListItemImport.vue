@@ -3,6 +3,8 @@
   import { useStore } from 'vuex'
   import { checkDuplicate } from '@/helpers/shared.js'
 
+  import BtnIMDb from '@/components/buttons/BtnIMDb.vue'
+
   const props = defineProps({
     item: Object,
     mode: String
@@ -36,9 +38,7 @@
     <div class="w-full sm:w-1/2 px-4 lg:px-6 self-center lg:self-start lg:py-2">
       <h3 class="text-lg mb-2">
         {{ item.Title }}
-        <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.Const}`" target="_blank" rel="noopener" class="hidden lg:inline-block hover:shadow-outline focus:shadow-outline ml-1" title="View on IMDb">
-          <img src="/img/imdb.png" alt="IMDb icon" class="w-4">
-        </a>
+        <BtnIMDb v-if="showIMDb" :id="item.Const" class="hidden lg:inline-block ml-1" />
       </h3>
       <p class="text-sm sm:mb-0">
         {{ item.Genres }}
