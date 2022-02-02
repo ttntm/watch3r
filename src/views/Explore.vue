@@ -56,7 +56,7 @@
         <BtnAddTitle v-else btnText="Select Title" />
         <BtnExploreClear v-if="!rsEmpty" class="hidden sm:flex py-2 ml-4 sm:ml-8" />
       </div>
-      <transition name="fade">
+      <transition name="info">
         <p v-if="!rsEmpty && recommendations.length > 0" class="w-full text-center text-sm mt-8 mb-0">
           &#9432; Currently showing recommendations based on <BtnIMDb v-if="showIMDb" :id="recSource.id" display="text" class="inline-block text-yellow-500 hover:underline">{{ recSource.title }}</BtnIMDb><span v-else class="font-bold">{{ recSource.title }}</span> ({{ recSource.year }}).
         </p>
@@ -80,3 +80,16 @@
   <ModalBackdrop />
   <BtnToTop v-if="!modalOpen" />
 </template>
+
+<style lang="postcss" scoped>
+  .info-enter-active,
+  .info-leave-active {
+    transition: all 0.75s;
+  }
+
+  .info-enter-from,
+  .info-leave-to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+</style>

@@ -37,7 +37,7 @@ That's where the idea for this web application came from - imagine a tool that p
 
 ★ Search and sorting for each list view
 
-★ Get recommendations based on titles in your Tracklist
+★ Get recommendations based on your tracklist and manual search results
 
 ★ Complete functionality on mobile devices to access your lists from the couch
 

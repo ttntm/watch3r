@@ -37,7 +37,7 @@
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
-      Get <i>recommendations</i> based on titles in your Tracklist
+      Get <i>recommendations</i> based on your tracklist and manual search results
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
