@@ -1,4 +1,5 @@
 <script setup>
+  import BtnIMDb from '@/components/buttons/BtnIMDb.vue'
   import { computed, reactive } from 'vue'
   import { useStore } from 'vuex'
   import { checkDuplicate } from '@/helpers/shared.js'
@@ -8,6 +9,8 @@
     mode: String,
     searchResult: Object
   })
+
+  const emit = defineEmits(['update:explore'])
   
   const store = useStore()
 
@@ -19,19 +22,7 @@
   const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
   const writeSuccess = computed(() => store.getters['list/writeSuccess'])
 
-  const isDuplicate = () => {
-    const id = props.searchResult.id
-    if (props.explore) {
-      return checkDuplicate('tracklist', id) > -1 || checkDuplicate('watchlist', id) > -1
-    } else {
-      return checkDuplicate(props.mode, id) > -1
-    }
-  }
-
-  const onAddTitleClick = title => {
-    addBtnState.enabled = false
-    addBtnState.text = 'Adding...'
-
+  const addTitleToList = title => {
     if (isDuplicate()) {
       addBtnState.text = `Duplicate :(`
       return
@@ -42,6 +33,27 @@
     }
     
     store.dispatch('list/writeList', [title, props.mode])
+  }
+
+  const isDuplicate = () => {
+    const id = props.searchResult.id
+    if (props.explore) {
+      return checkDuplicate('tracklist', id) > -1 || checkDuplicate('watchlist', id) > -1
+    } else {
+      return checkDuplicate(props.mode, id) > -1
+    }
+  }
+
+  const onBtnClick = title => {
+    addBtnState.enabled = false
+    addBtnState.text = 'Adding...'
+
+    if (props.mode !== 'explore') {
+      addTitleToList(title)
+    } else {
+      store.dispatch('explore/updateRecSource', title)
+      emit('update:explore')
+    }
   }
 </script>
 
@@ -57,12 +69,12 @@
         v-click-blur
         :class="{ 'btn btn-black text-sm' : addBtnState.enabled }"
         :disabled="!addBtnState.enabled"
-        @click.prevent="onAddTitleClick(searchResult)"
+        @click.prevent="onBtnClick(searchResult)"
       >
         <span v-if="writeSuccess" class="pointer-events-none">Added &#10003;</span>
         <span v-else class="pointer-events-none" v-html="addBtnState.text" />
       </button>
-      <a v-if="showIMDb" :href="`https://www.imdb.com/title/${searchResult.id}`" target="_blank" rel="noopener" class="text-xs text-yellow-600 hover:text-black ml-8" title="View on IMDb">View on IMDb</a>
+      <BtnIMDb v-if="showIMDb" :id="searchResult.id" display="text" class="text-xs text-yellow-600 hover:text-black ml-8" />
     </div>
   </section>
 </template>

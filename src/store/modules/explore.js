@@ -7,18 +7,23 @@ export default {
   state() {
     return {
       recList: [],
+      recMode: '',
       recSource: {}
     }
   },
 
   getters: {
     recList: state => state.recList,
+    recMode: state => state.recMode,
     recSource: state => state.recSource
   },
 
   mutations: {
     SET_REC_LIST(state, value) {
       state.recList = value
+    },
+    SET_REC_MODE(state, value) {
+      state.recMode = value
     },
     SET_REC_SOURCE(state, value) {
       state.recSource = value
@@ -59,8 +64,25 @@ export default {
       }
     },
 
-    updateRecSource({ commit }, title) {
-      commit('SET_REC_SOURCE', title)
+    updateRecMode({ commit }, mode) {
+      commit('SET_REC_MODE', mode)
+    },
+
+    updateRecSource({ commit, dispatch, getters }, title) {
+      const current = getters['recSource']
+      const isCurrent = Boolean(current.id === title.id)
+
+      if (!isCurrent) {
+        dispatch('clearRecommendations')
+        commit('SET_REC_SOURCE', title)
+
+        if (typeof title === 'object' && (title.id && title.type)) {
+          dispatch('getRecommendations', {
+            id: title.id,
+            type: title.type
+          })
+        }
+      }
     }
   }
 }

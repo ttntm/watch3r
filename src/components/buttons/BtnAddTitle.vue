@@ -2,6 +2,13 @@
   import { computed } from 'vue'
   import { useStore } from 'vuex'
 
+  const props = defineProps({
+    btnText: {
+      type: String,
+      default: 'Add Title'
+    }
+  })
+
   const store = useStore()
 
   const addTitleOpen = computed(() => store.getters['app/windowOpen'] === 2)
@@ -23,6 +30,6 @@
       <line x1="9" y1="12" x2="15" y2="12" />
       <line x1="12" y1="9" x2="12" y2="15" />
     </svg>
-    Add Title
+    {{ btnText }}
   </button>
 </template>
