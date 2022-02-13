@@ -43,7 +43,7 @@
   <section id="explore">
     <div class="sm:text-center">
       <h1 class="h2 text-yellow-600">Recommendations</h1>
-      <h2 class="text-base font-normal mb-0">Select a title from your Tracklist to get some recommendations.</h2>
+      <h2 class="text-base font-normal mb-0">Select a title below to get some recommendations.</h2>
     </div>
     <nav class="flex flex-row items-center justify-center flex-grow mt-6">
       <span class="block font-bold mx-4">Source Data:</span>
