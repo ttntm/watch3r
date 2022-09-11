@@ -6,6 +6,11 @@ export default {
 
   state() {
     return {
+      filterMode: [
+        { key: 'all', name: 'All Items' },
+        { key: 'movie', name: 'Movies' },
+        { key: 'series', name: 'Series' }
+      ],
       listSearchMode: '',
       searchActive: false,
       sortMode: [
@@ -16,34 +21,48 @@ export default {
         { key: 'year', name: 'Release', order: 'ascending' },
         { key: 'year', name: 'Release', order: 'descending' },
         { key: 'title', name: 'Title', order: 'ascending' },
-        { key: 'title', name: 'Title', order: 'descending' },
+        { key: 'title', name: 'Title', order: 'descending' }
       ],
+      tracklistFiltered: -1,
       tracklistSorted: -1,
+      watchlistFiltered: -1,
       watchlistSorted: -1,
     }
   },
 
   getters: {
-    searchActive: state => state.searchActive,
+    filterMode: state => state.filterMode,
     listSearchMode: state => state.listSearchMode,
+    searchActive: state => state.searchActive,
     sortMode: state => state.sortMode,
+    tracklistFiltered: state => state.tracklistFiltered,
     tracklistSorted: state => state.tracklistSorted,
-    watchlistSorted: state => state.watchlistSorted,
+    watchlistFiltered: state => state.watchlistFiltered,
+    watchlistSorted: state => state.watchlistSorted
   },
 
   mutations: {
+    SET_FILTER_MODE(state, value) {
+      state.filterMode = value
+    },
     SET_LIST_SEARCH_MODE(state, value) {
       state.listSearchMode = value
     },
     SET_SEARCH_ACTIVE(state, value) {
       state.searchActive = value
     },
+    SET_TRACKLIST_FILTERED(state, value) {
+      state.tracklistFiltered = value
+    },
     SET_TRACKLIST_SORTED(state, value) {
       state.tracklistSorted = value
     },
+    SET_WATCHLIST_FILTERED(state, value) {
+      state.watchlistFiltered = value
+    },
     SET_WATCHLIST_SORTED(state, value) {
       state.watchlistSorted = value
-    },
+    }
   },
 
   actions: {
@@ -54,8 +73,21 @@ export default {
     initializeTools({ commit }) {
       commit('SET_LIST_SEARCH_MODE', '')
       commit('SET_SEARCH_ACTIVE', false)
+      commit('SET_TRACKLIST_FILTERED', -1)
       commit('SET_TRACKLIST_SORTED', -1)
+      commit('SET_WATCHLIST_FILTERED', -1)
       commit('SET_WATCHLIST_SORTED', -1)
+    },
+
+    addWatchingFilters({ commit, getters }) {
+      const wFilters = [
+        { key: 'all', name: 'All Items' },
+        { key: 'movie', name: 'Movies' },
+        { key: 'series', name: 'Series' },
+        { key: 'watching', name: 'Currently Watching' },
+        { key: 'notwatching', name: 'Not Watching' }
+      ]
+      commit('SET_FILTER_MODE', wFilters)
     },
 
     resetList({ commit, dispatch, getters, rootGetters }) {

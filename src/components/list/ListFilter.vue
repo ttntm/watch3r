@@ -10,26 +10,26 @@
 
   const selected = ref()
 
-  const allSortModes = computed(() => store.getters['tools/sortMode'])
+  const allFilterModes = computed(() => store.getters['tools/filterMode'])
+  const filterCurrent = computed(() => store.getters[`tools/${props.mode}Filtered`])
+  const filterPreset = computed(() => store.getters['user/filterPreset'])
   const listMode = computed(() => props.mode)
-  const sortCurrent = computed(() => store.getters[`tools/${props.mode}Sorted`])
-  const sortPreset = computed(() => store.getters['user/sortPreset'])
 
-  watch([listMode, sortCurrent], () => {
-    // when navigating between list modes or when sorting changes in another tab
+  watch([listMode, filterCurrent], () => {
+    // when navigating between list modes or when filters changes in another tab
     updateSelect()
   })
 
   const onSelectChange = (val) => {
-    store.dispatch('tools/sortList', [val, props.mode])
-    document.getElementById('sort-select').blur()
+    // store.dispatch('tools/filterList', [val, props.mode])
+    document.getElementById('filter-select').blur()
   }
 
   const updateSelect = () => {
-    if (sortCurrent.value === -1) {
-      selected.value = sortPreset.value
+    if (filterCurrent.value === -1) {
+      selected.value = filterPreset.value
     } else {
-      selected.value = sortCurrent.value
+      selected.value = filterCurrent.value
     }
   }
 
@@ -37,13 +37,13 @@
 </script>
 
 <template>
-  <section class="w-full relative text-gray-700 bg-gray-300 shadow-lg sm:ml-8">
-    <select id="sort-select" v-model="selected" name="sorting" @change="onSelectChange(selected)">
+  <section class="w-full relative text-gray-700 bg-gray-300 shadow-lg sm:mx-8 mb-8 sm:mb-0">
+    <select id="filter-select" v-model="selected" name="filter" @change="onSelectChange(selected)">
       <option disabled value="">
-        Sort {{ mode }}...
+        Filter {{ mode }}...
       </option>
-      <option v-for="(sortMode, index) in allSortModes" :key="index" :value="index" class="">
-        {{ sortMode.name }} ({{ sortMode.order }})
+      <option v-for="(filterMode, index) in allFilterModes" :key="index" :value="index" class="">
+        {{ filterMode.name }}
       </option>
     </select>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
@@ -59,11 +59,11 @@
     @apply capitalize;
   }
 
-  #sort-select {
+  #filter-select {
     @apply w-full block appearance-none bg-transparent border border-transparent px-3 py-2;
   }
 
-  #sort-select:focus {
+  #filter-select:focus {
     @apply border-yellow-600 shadow-inner;
   }
 </style>

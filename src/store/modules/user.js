@@ -8,19 +8,23 @@ export default {
       currentUser: null,
       GoTrueAuth: null,
       userOptions: {
+        filterPreset: 0, // array index based on store.getters['tools/filterMode']
         showExploreLinks: true,
         showIMDbLinks: true,
+        showWatching: false,
         sortPreset: 1, // array index based on store.getters['tools/sortMode']
         startPage: 0 // 0 -> watchlist | 1 -> tracklist
       }
     }
   },
   getters: {
-    loggedIn: state => !!state.currentUser,
     currentUser: state => state.currentUser,
+    filterPreset: state => state.userOptions.filterPreset,
     GoTrueAuth: state => state.GoTrueAuth,
+    loggedIn: state => !!state.currentUser,
     showExploreLinks: state => state.userOptions.showExploreLinks,
     showIMDbLinks: state => state.userOptions.showIMDbLinks,
+    showWatching: state => state.userOptions.showWatching,
     sortPreset: state => state.userOptions.sortPreset,
     startPage: state => state.userOptions.startPage,
     userOptions: state => state.userOptions,
@@ -35,6 +39,9 @@ export default {
     SET_EXPLORE_LINKS(state, value) {
       state.userOptions.showExploreLinks = value
     },
+    SET_FILTER_PRESET(state, value) {
+      state.userOptions.filterPreset = value
+    },
     SET_IMDB_LINKS(state, value) {
       state.userOptions.showIMDbLinks = value
     },
@@ -43,11 +50,15 @@ export default {
     },
     SET_START_PAGE(state, value) {
       state.userOptions.startPage = value
+    },
+    SET_USE_WATCHING(state, value) {
+      state.userOptions.showWatching = value
     }
   },
   actions: {
     initializeUser({ commit, dispatch }) {
       commit('SET_EXPLORE_LINKS', true)
+      commit('SET_FILTER_PRESET', 0)
       commit('SET_IMDB_LINKS', true)
       commit('SET_SORT_PRESET', 1)
       commit('SET_START_PAGE', 0)
@@ -217,19 +228,28 @@ export default {
 
       if (metaLength > 0) {
         // user preferences are complete and available in the User object GoTrue returned
+        if (userMeta.user_watching) {
+          dispatch('tools/addWatchingFilters', null, { root: true })
+        }
+
         commit('SET_EXPLORE_LINKS', userMeta.user_explore)
         commit('SET_IMDB_LINKS', userMeta.user_imdb)
         commit('SET_SORT_PRESET', userMeta.user_sort)
         commit('SET_START_PAGE', userMeta.user_start)
+        // handle new v1.8 options
+        commit('SET_FILTER_PRESET', typeof userMeta.user_filter == 'undefined' ? 0 : userMeta.user_filter)
+        commit('SET_USE_WATCHING', Boolean(userMeta.user_watching))
       } else {
         // user has no (or insufficient) preferences
         let userUpdate = {
           email: user.email,
           data: {
             user_explore: userOptions.showExploreLinks,
+            user_filter: userOptions.filterPreset,
             user_imdb: userOptions.showIMDbLinks,
             user_sort: userOptions.sortPreset,
-            user_start: userOptions.startPage
+            user_start: userOptions.startPage,
+            user_watching: userOptions.showWatching
           }
         }
         dispatch('updateUserAccount', userUpdate)

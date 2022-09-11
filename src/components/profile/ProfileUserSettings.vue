@@ -17,7 +17,8 @@
     user_explore: userOptions.value.showExploreLinks,
     user_imdb: userOptions.value.showIMDbLinks,
     user_sort: userOptions.value.sortPreset,
-    user_start: pages[userOptions.value.startPage]
+    user_start: pages[userOptions.value.startPage],
+    user_watching: userOptions.value.showWatching
   })
 
   watch(settings, () => {
@@ -29,12 +30,14 @@
     settings.user_imdb = userOptions.value.showIMDbLinks
     settings.user_sort = userOptions.value.sortPreset
     settings.user_start = pages[userOptions.value.startPage]
+    settings.user_watching = userOptions.value.showWatching
   })
 
   const events = {
     onUpdateExploreLinks(e) { settings.user_explore = e },
     onUpdateIMDbLinks(i) { settings.user_imdb = i },
-    onUpdateStartPage(s) { settings.user_start = s }
+    onUpdateStartPage(s) { settings.user_start = s },
+    onUpdateWatching(w) { settings.user_watching = w }
   }
 </script>
 
@@ -70,16 +73,22 @@
   <div class="input-group mb-8">
     <label>Display Options</label>
     <p class="text-xs text-gray-600 mb-3">
-      IMDb link display in search results and for all list items.
+      Enable IMDb link display (search results and list items).
     </p>
     <InputCheckbox v-model="settings.user_imdb" :name="'imdb-links'" @update:cb="events.onUpdateIMDbLinks($event)">
       Show IMDb links
     </InputCheckbox>
     <p class="text-xs text-gray-600 mt-4 mb-3">
-      Display links to explore recommendations for items in your Tracklist.
+      Tracklist: display links to explore recommendations.
     </p>
     <InputCheckbox v-model="settings.user_explore" :name="'explore-links'" @update:cb="events.onUpdateExploreLinks($event)">
       Show recommendation links
+    </InputCheckbox>
+    <p class="text-xs text-gray-600 mt-4 mb-3">
+      Watchlist: enable "currently watching" for TV series.
+    </p>
+    <InputCheckbox v-model="settings.user_watching" :name="'mark-watching'" @update:cb="events.onUpdateWatching($event)">
+      Activate "currently watching"
     </InputCheckbox>
   </div>
 </template>

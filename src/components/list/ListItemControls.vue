@@ -1,5 +1,7 @@
 <script setup>
   import BtnClose from '@/components/buttons/BtnClose.vue'
+  import BtnListItemExplore from '@/components/buttons/BtnListItemExplore.vue'
+  import BtnListItemWatching from '@/components/buttons/BtnListItemWatching.vue'
   import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue'
   import { computed } from 'vue'
   import { useStore } from 'vuex'
@@ -16,6 +18,7 @@
   const item = computed(() => store.getters['list/editTitleContent'])
   const showExplore = computed(() => store.getters['user/showExploreLinks'])
   const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
+  const showWatching = computed(() => store.getters['user/showWatching'])
 
   const onCloseModal = () => {
     toggleDelay()
@@ -35,9 +38,8 @@
       </section>
       <section class="flex flex-col text-gray-800">
         <p class="text-gray-600 text-center px-4 mb-2">{{ item.title }}</p>
-        <router-link v-if="showExplore && mode === 'tracklist'" :to="{ name: 'explore', query: { title: item.id, source: 'list' } }" class="menu-item">
-          Get Recommendations
-        </router-link>
+        <BtnListItemWatching v-if="showWatching && mode === 'watchlist'" class="menu-item" display="menuItem" :item="item" :watching="item.watching" />
+        <BtnListItemExplore v-if="showExplore && mode === 'tracklist'" class="menu-item" display="menuItem" :id="item.id" />
         <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" class="menu-item" target="_blank" rel="noopener" title="View on IMDb">
           View on IMDb
         </a>

@@ -151,13 +151,16 @@ export default {
       commit('SET_EDIT_TITLE_CONTENT', null)
     },
 
-    async editListItem({ dispatch, rootGetters }, updatedTitleData) {
+    async editListItem({ dispatch, rootGetters }, args) {
       const fn = rootGetters['app/functions']
+      const [updatedTitleData, mode] = args
+      const searchActive = rootGetters['tools/searchActive']
+      const searchMode = rootGetters['tools/listSearchMode']
       let response
 
       try {
         const reqHeaders = await getAuthHeaders()
-        const data = await fetch(`${fn.api}/${updatedTitleData.refId}`, {
+        const data = await fetch(`${fn.api}/${mode}/${updatedTitleData.refId}`, {
           body: JSON.stringify(updatedTitleData),
           headers: reqHeaders,
           method: 'PUT'
@@ -168,8 +171,13 @@ export default {
       }
 
       if (response) {
-        dispatch('readList', 'tracklist')
+        dispatch('readList', mode)
         dispatch('toggleWriteSuccess', true)
+
+        if (searchActive && searchMode === 'watchlist') {
+          dispatch('updateSearchResultWatching', updatedTitleData.id)
+        }
+
         dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully updated.`, type: 'success' }, { root: true })
       } else {
         // error
@@ -189,7 +197,7 @@ export default {
       commit('SET_EDIT_TITLE_CONTENT', getItem(id))
     },
 
-    updateSearchResult({ commit, getters, rootGetters }, data){
+    updateSearchResult({ commit, getters, rootGetters }, data) {
       const mode = rootGetters['tools/listSearchMode']
       const searchResults = getters[`${mode}`]
 
@@ -211,6 +219,17 @@ export default {
       }
 
       commit(`SET_${mode.toUpperCase()}`, listUpdate)
+    },
+
+    updateSearchResultWatching({ commit, getters }, itemId) {
+      const searchResults = getters['watchlist']
+      let listUpdate = searchResults.map((item) => {
+        if (item.id === itemId) {
+          item.watching = !item.watching
+        }
+        return item
+      })
+      commit('SET_WATCHLIST', listUpdate)
     },
 
     /**

@@ -27,6 +27,8 @@ Fauna documentation:
 
 `user` -> GUID obtained from Netlify Identity via [gotrue-js](https://github.com/netlify/gotrue-js)
 
+`watching` -> see: #52; added to enable marking watchlist items as "currently watching" - automatically removed from titles when they move to the tracklist
+
 ### Watchlist
 
 Stores the titles that users want to watch after their information has been obtained from the OMDb API.
@@ -60,6 +62,7 @@ Stores the titles that users want to watch after their information has been obta
     "title": "Alien",
     "type": "movie",
     "user": "6237ad60-9999-0000-1111-dfbdd8bdc811",
+    "watching": "false",
     "year": "1979"
   }
 }

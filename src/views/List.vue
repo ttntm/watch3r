@@ -3,6 +3,7 @@
   import BtnToTop from '@/components/buttons/BtnToTop.vue'
   import ListAddModal from '@/components/list/ListAddModal.vue'
   import ListEditModal from '@/components/list/ListEditModal.vue'
+  import ListFilter from '@/components/list/ListFilter.vue'
   import ListItem from '@/components/list/ListItem.vue'
   import ListItemControls from '@/components/list/ListItemControls.vue'
   import ListLoading from '@/components/list/ListLoading.vue'
@@ -62,6 +63,7 @@
     <section v-else class="sm:px-12 my-8">
       <div class="flex flex-col sm:flex-row items-center">
         <ListSearch :mode="mode" class="flex-1" />
+        <ListFilter :mode="mode" class="flex-1" />
         <ListSort :mode="mode" class="flex-1" />
       </div>
       <ListSearchStatus v-if="searchActive" :mode="mode" class="mt-8" />
