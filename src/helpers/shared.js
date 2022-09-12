@@ -52,6 +52,21 @@ export function useDelay() {
   return { isVisible, toggleDelay }
 }
 
+export function useTitleSearch(list, searchTerm) {
+  let term = searchTerm.toLowerCase()
+
+  return list.filter(item => {
+    let genre = item.genre.toLowerCase()
+    let title = item.title.toLowerCase()
+
+    if (title.indexOf(term) === -1) {
+      return genre.indexOf(term) === -1 ? false : true
+    } else {
+      return true
+    }
+  })
+}
+
 export function validateEmail(email) {
   const rx = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)
   return rx.test(email)

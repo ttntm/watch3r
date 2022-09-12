@@ -131,6 +131,11 @@
     @apply capitalize;
   }
 
+  select:disabled {
+    @apply bg-gray-600;
+    cursor: not-allowed;
+  }
+
   ul {
     list-style-type: square;
   }

@@ -4,6 +4,7 @@
   import { useStore } from 'vuex'
 
   const props = defineProps({
+    listLength: Number,
     mode: String
   })
 
@@ -11,8 +12,9 @@
 
   const selected = ref()
 
-  const allFilterModes = computed(() => store.getters['tools/filterMode'])
+  const allFilterModes = computed(() => store.getters['tools/filterMode'].filter(el => el.mode === 'all' || el.mode === props.mode))
   const filterCurrent = computed(() => store.getters[`tools/${props.mode}Filtered`])
+  const filterEnabled = computed(() => store.getters['tools/filterEnabled'])
   const filterPreset = computed(() => store.getters['user/filterPreset'])
   const listMode = computed(() => props.mode)
 
@@ -22,8 +24,7 @@
   })
 
   const onSelectChange = (val) => {
-    // store.dispatch('tools/filterList', [val, props.mode])
-    console.log(val)
+    store.dispatch('tools/filterList', [val, props.mode])
     document.getElementById('filter-select').blur()
   }
 
@@ -42,6 +43,7 @@
   <InputSelectNumber
     :currentVal="selected"
     :data="allFilterModes"
+    :disabled="filterEnabled === false"
     id="filter"
     :placeholder="`Filter ${mode}...`"
     :styles="{

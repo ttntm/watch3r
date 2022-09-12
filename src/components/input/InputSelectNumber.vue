@@ -4,6 +4,10 @@
   const props = defineProps({
     currentVal: Number,
     data: Array,
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     id: String,
     placeholder: String,
     styles: Object
@@ -21,7 +25,7 @@
 
 <template>
   <div :class="styles.wrapper">
-    <select :class="styles.inner" :id="`${id}-select`" v-model.lazy="selected" :name="id">
+    <select v-model.lazy="selected" :class="styles.inner" :disabled="disabled" :id="`${id}-select`" :name="id">
       <option disabled value="">
         {{ placeholder }}
       </option>
