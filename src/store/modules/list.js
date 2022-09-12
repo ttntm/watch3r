@@ -46,10 +46,6 @@ export default {
   },
 
   actions: {
-    /**
-     *  COMMON LIST ACTIONS
-     */
-
     initializeList({ commit, state }) {
       commit('SET_EDIT_TITLE_CONTENT', null)
       commit('SET_TRACKLIST', [])
@@ -99,11 +95,12 @@ export default {
      */
 
     async readList({ commit, dispatch, getters, rootGetters }, mode) {
+      const filterActive = rootGetters[`tools/${mode}Filtered`] > 0
       const fn = rootGetters['app/functions']
-      let response
       const searchActive = rootGetters['tools/searchActive']
       const searchMode = rootGetters['tools/listSearchMode']
       const user = rootGetters['user/currentUser']
+      let response
 
       try {
         const reqHeaders = await getAuthHeaders()
@@ -114,27 +111,35 @@ export default {
       }
 
       if (response) {
-        const list = response.map((item) => {
-          let temp = Object.assign({}, item.data) // create new object from DB data
-          temp.refId = item.ref['@ref'].id // add the database ID for edit/delete operations
-          return temp // return newly created temp object
+        const list = response.map(item => {
+          let temp = Object.assign({}, item.data)
+          temp.refId = item.ref['@ref'].id
+          return temp
         })
 
-        commit(`SET_${mode.toUpperCase()}_CACHE`, list) // always cache the new data, so we can restore it without another DB query in case search is active
+        // always cache the new data, so we can restore it without another DB query in case search is active
+        commit(`SET_${mode.toUpperCase()}_CACHE`, list)
 
-        if (!searchActive || searchMode !== mode) {
+        if (!filterActive && (!searchActive || searchMode !== mode)) {
           // search not active OR active for another list mode -> set the display list data
           // careful: not checking mode here could lead to stale data due to ASYNC race conditions, i.e. tracklist-read completed before watchlist-search was cleared...
           commit(`SET_${mode.toUpperCase()}`, list)
         } else {
           // search is active, check whether there are results left
-          const activeSearchResults = getters[`${mode}`] // with search active, the respective current list === the search results
+          // with search active, the respective current list === the search results
+          const activeSearchResults = getters[`${mode}`]
+          
           if (activeSearchResults.length === 0) {
-            dispatch('tools/resetList', null, { root: true }) // no results left to display -> reset search
+            // no results left to display -> reset search
+            dispatch('tools/resetList', null, { root: true })
           }
         }
 
-        if (list.length > 0) {
+        if (list.length > 0 && filterActive) {
+          dispatch('tools/updateFilter', mode, { root: true })
+        }
+
+        if (list.length > 0 && (!filterActive && (!searchActive || searchMode !== mode))) {
           dispatch('tools/updateSort', mode, { root: true })
         }
       } else {
@@ -174,8 +179,8 @@ export default {
         dispatch('readList', mode)
         dispatch('toggleWriteSuccess', true)
 
-        if (searchActive && searchMode === 'watchlist') {
-          dispatch('updateSearchResultWatching', updatedTitleData.id)
+        if (updatedTitleData.hasOwnProperty('watching') && searchActive && searchMode === 'watchlist') {
+          dispatch('updateWatchingState', updatedTitleData.id)
         }
 
         dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully updated.`, type: 'success' }, { root: true })
@@ -188,9 +193,9 @@ export default {
     selectEditTitle({ commit, getters }, args) {
       const [id, mode] = args // [String, Number]
 
-      const getItem = (id) => {
+      const getItem = id => {
         let content = getters[`${mode}`]
-        content = content.filter((item) => item.refId === id)
+        content = content.filter(item => item.refId === id)
         return content[0]
       }
 
@@ -205,7 +210,7 @@ export default {
 
       switch (mode) {
         case 'tracklist':
-          listUpdate = searchResults.map((item) => {
+          listUpdate = searchResults.map(item => {
             if (item.refId === data.refId) {
               item = Object.assign({}, data)
             }
@@ -221,9 +226,9 @@ export default {
       commit(`SET_${mode.toUpperCase()}`, listUpdate)
     },
 
-    updateSearchResultWatching({ commit, getters }, itemId) {
+    updateWatchingState({ commit, getters }, itemId) {
       const searchResults = getters['watchlist']
-      let listUpdate = searchResults.map((item) => {
+      let listUpdate = searchResults.map(item => {
         if (item.id === itemId) {
           item.watching = !item.watching
         }

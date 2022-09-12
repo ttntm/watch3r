@@ -33,6 +33,7 @@ export default {
   },
 
   getters: {
+    filterActive: state => state.tracklistFiltered > 0 || state.watchlistFiltered > 0,
     filterEnabled: state => state.filterEnabled,
     filterMode: state => state.filterMode,
     listSearchMode: state => state.listSearchMode,
@@ -99,7 +100,7 @@ export default {
     },
 
     filterList({ commit, dispatch, getters, rootGetters }, args) {
-      const [filterID, mode] = args // [Number, String]
+      const [filterId, mode] = args // [Number, String]
       const filterMode = getters['filterMode']
       let filtered = []
 
@@ -107,17 +108,13 @@ export default {
         const cache = rootGetters[`list/${mode}Cache`]
         const filterSearch = getters['searchActive']
         const filterSearchTerm = getters['searchTerm']
-        const key = filterMode[filterID].key
-        const list = useTitleSearch([...cache], filterSearchTerm)
+        const key = filterMode[filterId].key
         
         let filterFn = undefined
-        let input = filterSearch ? list : cache // should it sort search results?
-
-        commit('SET_FILTER_ENABLED', true)
+        let input = filterSearch ? useTitleSearch([...cache], filterSearchTerm) : cache // should it filter search results?
 
         if (input.length <= 1) {
-          commit('SET_FILTER_ENABLED', false)
-          return []
+          return input
         }
 
         switch (key) {
@@ -152,10 +149,14 @@ export default {
       
       if (filtered.length > 0) {
         commit(`list/SET_${mode.toUpperCase()}`, filtered, { root: true })
-        commit(`SET_${mode.toUpperCase()}_FILTERED`, filterID)
+        commit(`SET_${mode.toUpperCase()}_FILTERED`, filterId)
         dispatch('updateSort', mode)
+      } else {
+        // if (filterId !== 0) {
+        //   dispatch('filterList', [0, mode])
+        // }
+        dispatch('app/sendToastMessage', { text: `No results for this filter selection :(`, type: 'error' }, { root: true })
       }
-      
     },
 
     resetList({ commit, dispatch, getters, rootGetters }) {
@@ -166,15 +167,16 @@ export default {
       commit('SET_SEARCH_TERM', '')
 
       commit('SET_FILTER_ENABLED', true)
-      commit(`SET_${mode.toUpperCase()}_FILTERED`, -1)
+      commit(`SET_${mode.toUpperCase()}_FILTERED`, 0)
 
       commit(`list/SET_${mode.toUpperCase()}`, cache, { root: true })
       dispatch('updateSort', mode) // reads from cache, needs sorting
     },
 
-    searchList({ commit, dispatch, rootGetters }, args) {
+    searchList({ commit, dispatch, getters, rootGetters }, args) {
       const [term, mode] = args // [String, String]
-      const input = rootGetters[`list/${mode}Cache`]
+      const filterActive = getters[`${mode}Filtered`] > 0
+      const input = filterActive ? rootGetters[`list/${mode}`] : rootGetters[`list/${mode}Cache`]
 
       commit('SET_LIST_SEARCH_MODE', mode)
       commit('SET_SEARCH_ACTIVE', true)
@@ -184,6 +186,8 @@ export default {
 
       if (results.length <= 1) {
         commit('SET_FILTER_ENABLED', false)
+      } else {
+        commit('SET_FILTER_ENABLED', true)
       }
 
       commit(`list/SET_${mode.toUpperCase()}`, results, { root: true })
@@ -199,7 +203,7 @@ export default {
         const key = sortMode[sortID].key
         const list = rootGetters[`list/${mode}`]
         const order = sortMode[sortID].order
-        const sortFiltered = getters['tracklistFiltered'] > -1 || getters['watchlistFiltered'] > -1
+        const sortFiltered = getters['filterActive']
         const sortSearch = getters['searchActive']
         
         let input = sortFiltered || sortSearch ? list : cache // should it sort search results?
@@ -244,6 +248,13 @@ export default {
 
       commit(`list/SET_${mode.toUpperCase()}`, doSort(), { root: true })
       commit(`SET_${mode.toUpperCase()}_SORTED`, sortID)
+    },
+
+    updateFilter({ dispatch, getters }, mode) {
+      const filterId = getters[`${mode}Filtered`]
+      if (filterId > 0) {
+        dispatch('filterList', [filterId, mode])
+      }
     },
 
     updateSort({ dispatch, getters, rootGetters }, mode) {
