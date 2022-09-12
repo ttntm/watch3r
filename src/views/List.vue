@@ -60,8 +60,8 @@
       </div>
     </section>
     <ListLoading v-if="listLength === 0 && !searchActive" />
-    <section v-else class="sm:px-12 my-8">
-      <div class="flex flex-col sm:flex-row items-center">
+    <section v-else class="md:px-2 lg:px-8 xl:px-12 my-8">
+      <div class="flex flex-col md:flex-row items-center">
         <ListSearch :mode="mode" class="flex-1" />
         <ListFilter :mode="mode" class="flex-1" />
         <ListSort :mode="mode" class="flex-1" />

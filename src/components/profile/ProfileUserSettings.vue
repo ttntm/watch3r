@@ -1,6 +1,7 @@
 <script setup>
   import InputCheckbox from '@/components/input/InputCheckbox.vue'
   import InputRadio from '@/components/input/InputRadio.vue'
+  import InputSelectNumber from '@/components/input/InputSelectNumber.vue'
   import { computed, reactive, watch } from 'vue'
   import { useStore } from 'vuex'
 
@@ -22,7 +23,7 @@
   })
 
   watch(settings, () => {
-    emit('update:settings', {...settings})
+    emit('update:settings', { ...settings })
   })
 
   watch(userOptions, () => {
@@ -37,6 +38,7 @@
     onUpdateExploreLinks(e) { settings.user_explore = e },
     onUpdateIMDbLinks(i) { settings.user_imdb = i },
     onUpdateStartPage(s) { settings.user_start = s },
+    onUpdateUserSort(o) { settings.user_sort = o },
     onUpdateWatching(w) { settings.user_watching = w }
   }
 </script>
@@ -56,19 +58,21 @@
     <p class="text-xs text-gray-600 mb-3">
       This option controls how lists are sorted after logging in. Does <em>not</em> override the current sort mode selection.
     </p>
-    <div class="w-full relative text-gray-700 text-sm bg-gray-300">
-      <select id="sort-preset" v-model="settings.user_sort" name="sorting">
-        <option disabled value="">Default Sorting</option>
-        <option v-for="(mode, index) in allSortModes" :key="index" :value="index">
-          {{ mode.name }} ({{ mode.order }})
-        </option>
-      </select>
-      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-        <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-        </svg>
-      </div>
-    </div>
+    <InputSelectNumber
+      :currentVal="settings.user_sort"
+      :data="allSortModes"
+      id="sort-preset"
+      placeholder="Default Sorting"
+      :styles="{
+        inner: 'w-full block appearance-none bg-gray-300 border border-transparent px-2 py-1 focus:border-yellow-600 focus:shadow-inner',
+        wrapper: 'w-full relative text-gray-700 text-sm bg-gray-300'
+      }"
+      @update:select="events.onUpdateUserSort($event)"
+    >
+      <template #option="{ name, order }">
+        {{ name }} ({{ order }})
+      </template>
+    </InputSelectNumber>
   </div>
   <div class="input-group mb-8">
     <label>Display Options</label>
@@ -92,17 +96,3 @@
     </InputCheckbox>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-  select, select option {
-    @apply capitalize;
-  }
-
-  #sort-preset {
-    @apply w-full block appearance-none bg-gray-300 border border-transparent px-2 py-1;
-  }
-
-  #sort-preset:focus {
-    @apply border-yellow-600 shadow-inner;
-  }
-</style>

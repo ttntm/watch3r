@@ -28,6 +28,9 @@
     // this is necessary due to a different set of keys on the DB objects (tracklist) compared to manually added 'recSource' objects
     if (found) selected.value = found
   }
+
+  // NOTE:  <template> does not use the InputSelectNumber component, as this <select> requires working with the whole object.
+  //        A separate InputSelectObject component should be created if there's ever going to be a second occurence of this special case.
 </script>
 
 <template>
@@ -49,10 +52,6 @@
 </template>
 
 <style lang="postcss" scoped>
-  select, select option {
-    @apply capitalize;
-  }
-
   #explore-select {
     @apply w-full block appearance-none bg-transparent border border-transparent px-3 py-2;
   }

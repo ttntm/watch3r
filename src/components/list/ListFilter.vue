@@ -1,4 +1,5 @@
 <script setup>
+  import InputSelectNumber from '@/components/input/InputSelectNumber.vue'
   import { computed, ref, watch } from 'vue'
   import { useStore } from 'vuex'
 
@@ -22,6 +23,7 @@
 
   const onSelectChange = (val) => {
     // store.dispatch('tools/filterList', [val, props.mode])
+    console.log(val)
     document.getElementById('filter-select').blur()
   }
 
@@ -37,33 +39,19 @@
 </script>
 
 <template>
-  <section class="w-full relative text-gray-700 bg-gray-300 shadow-lg sm:mx-8 mb-8 sm:mb-0">
-    <select id="filter-select" v-model="selected" name="filter" @change="onSelectChange(selected)">
-      <option disabled value="">
-        Filter {{ mode }}...
-      </option>
-      <option v-for="(filterMode, index) in allFilterModes" :key="index" :value="index" class="">
-        {{ filterMode.name }}
-      </option>
-    </select>
-    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-      <svg class="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-      </svg>
-    </div>
-  </section>
+  <InputSelectNumber
+    :currentVal="selected"
+    :data="allFilterModes"
+    id="filter"
+    :placeholder="`Filter ${mode}...`"
+    :styles="{
+      inner: 'w-full block appearance-none bg-transparent border border-transparent px-3 py-2 focus:border-yellow-600 focus:shadow-inner',
+      wrapper: 'w-full relative text-gray-700 bg-gray-300 text-sm lg:text-base shadow-lg md:mx-4 lg:mx-8 mb-8 md:mb-0'
+    }"
+    @update:select="onSelectChange($event)"
+  >
+    <template #option="{ name }">
+      {{ name }}
+    </template>
+  </InputSelectNumber>
 </template>
-
-<style lang="postcss" scoped>
-  select, select option {
-    @apply capitalize;
-  }
-
-  #filter-select {
-    @apply w-full block appearance-none bg-transparent border border-transparent px-3 py-2;
-  }
-
-  #filter-select:focus {
-    @apply border-yellow-600 shadow-inner;
-  }
-</style>

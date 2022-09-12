@@ -13,14 +13,16 @@
       store.dispatch('tools/resetList')
     },
 
-    onDoSearch(term, mode) {
-      store.dispatch('tools/searchList', [term, mode])
+    onDoSearch(term) {
+      if (term) {
+        store.dispatch('tools/searchList', [term, props.mode])
+      }
     }
   }
 </script>
 
 <template>
-  <section class="w-full shadow-lg mb-8 sm:mb-0 sm:mr-8">
-    <InputSearch class="text-gray-700" pch="Title or Genre" @do-search="events.onDoSearch($event, mode)" @reset-search="events.onResetSearch()" />
+  <section class="w-full text-sm lg:text-base shadow-lg mb-8 md:mb-0 md:mr-4 lg:mr-8">
+    <InputSearch class="text-gray-700" pch="Title or Genre" @do-search="events.onDoSearch($event)" @reset-search="events.onResetSearch()" />
   </section>
 </template>

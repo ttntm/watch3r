@@ -127,6 +127,10 @@
     @apply outline-none;
   }
 
+  select, select option {
+    @apply capitalize;
+  }
+
   ul {
     list-style-type: square;
   }
