@@ -42,7 +42,7 @@
   <InputSelectNumber
     :currentVal="selected"
     :data="allSortModes"
-    :disabled="listLength === 0"
+    :disabled="listLength <= 1"
     id="sort"
     :placeholder="`Sort ${mode}...`"
     :styles="{

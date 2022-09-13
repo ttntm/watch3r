@@ -130,7 +130,7 @@ export default {
           
           if (activeSearchResults.length === 0) {
             // no results left to display -> reset search
-            dispatch('tools/resetList', mode, { root: true })
+            dispatch('tools/resetList', [mode, 0], { root: true })
           }
         }
 

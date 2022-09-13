@@ -8,7 +8,7 @@
   const store = useStore()
 
   const onResetClick = () => {
-    store.dispatch('tools/resetList', props.mode)
+    store.dispatch('tools/resetList', [props.mode, 1])
   }
 </script>
 

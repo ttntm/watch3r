@@ -180,7 +180,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   store.dispatch('app/closeAllModals') // close all open windows if there are any
   // reset search when navigation occurs
-  if (store.getters['tools/searchActive']) store.dispatch('tools/resetList')
+  if (store.getters['tools/searchActive']) store.dispatch('tools/resetList', [])
   if (!to.meta.authRequired) return next()
 
   if (to.meta.authRequired && store.getters['user/loggedIn']) {

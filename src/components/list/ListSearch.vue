@@ -11,7 +11,7 @@
 
   const events = {
     onResetSearch() {
-      store.dispatch('tools/resetList', props.mode)
+      store.dispatch('tools/resetList', [props.mode, 0])
     },
 
     onDoSearch(term) {

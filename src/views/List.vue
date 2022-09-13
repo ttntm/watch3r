@@ -73,8 +73,8 @@
         <ListFilter :list-length="listLength" :mode="mode" class="flex-1" />
         <ListSort :list-length="listLength" :mode="mode" class="flex-1" />
       </div>
-      <ListFilterStatus v-if="filterActive && listLength === 0 & !searchActive" :mode="mode" class="mt-8" />
-      <ListSearchStatus v-if="searchActive" :mode="mode" class="mt-8" />
+      <ListFilterStatus v-if="filterActive && listLength === 0" :mode="mode" class="mt-8" />
+      <ListSearchStatus v-if="searchActive && (!filterActive || listLength >= 1)" :mode="mode" class="mt-8" />
     </section>
     <section v-if="listLength > 0" class="list">
       <ListItem v-for="title in listData" :key="title.id" :item="title" :mode="mode" @open-poster="onShowPoster($event)" />

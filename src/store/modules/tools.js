@@ -116,8 +116,8 @@ export default {
         let filterFn = undefined
         let input = filterSearch ? useTitleSearch([...cache], filterSearchTerm) : cache // should it filter search results?
 
-        if (input.length <= 1) {
-          return input
+        if (input.length <= 0) {
+          return []
         }
 
         switch (key) {
@@ -150,31 +150,35 @@ export default {
 
       filtered = doFilter()
       
+      commit(`list/SET_${mode.toUpperCase()}`, filtered, { root: true })
+      commit(`SET_${mode.toUpperCase()}_FILTERED`, filterId)
+      
       if (filtered.length > 0) {
-        commit(`list/SET_${mode.toUpperCase()}`, filtered, { root: true })
-        commit(`SET_${mode.toUpperCase()}_FILTERED`, filterId)
         dispatch('updateSort', mode)
-      } else {
-        commit(`list/SET_${mode.toUpperCase()}`, filtered, { root: true })
-        commit(`SET_${mode.toUpperCase()}_FILTERED`, filterId)
-        // dispatch('app/sendToastMessage', { text: `No results for this filter selection :(`, type: 'error' }, { root: true })
-      }
+      } // else { dispatch('app/sendToastMessage', { text: `No results for this filter selection :(`, type: 'error' }, { root: true }) }
     },
 
-    resetList({ commit, dispatch, getters, rootGetters }, resetMode) {
-      const mode = resetMode ? resetMode : getters['listSearchMode']
+    resetList({ commit, dispatch, getters, rootGetters }, args) {
+      const [listMode, resetMode] = args
+      const mode = listMode ? listMode : getters['listSearchMode']
       const cache = rootGetters[`list/${mode}Cache`]
       const filterActive = getters[`${mode}Filtered`] > 0
+      const searchActive = getters['searchActive']
+      const searchTerm = getters['searchTerm']
 
       commit('SET_FILTER_ENABLED', true)
-      commit('SET_SEARCH_ACTIVE', false)
-      commit('SET_SEARCH_TERM', '')
 
-      if (filterActive) {
+      if (resetMode !== 1) {
+        commit('SET_SEARCH_ACTIVE', false)
+        commit('SET_SEARCH_TERM', '')
+      }
+
+      if (filterActive && resetMode !== 1) {
         dispatch('updateFilter', mode)
       } else {
+        const restored = searchActive ? useTitleSearch([...cache], searchTerm) : cache
         commit(`SET_${mode.toUpperCase()}_FILTERED`, 0)
-        commit(`list/SET_${mode.toUpperCase()}`, cache, { root: true })
+        commit(`list/SET_${mode.toUpperCase()}`, restored, { root: true })
         dispatch('updateSort', mode) // reads from cache, needs sorting
       }
     },

@@ -29,7 +29,7 @@
     } 
     
     if (store.getters['tools/searchActive']) {
-      store.dispatch('tools/resetList', props.mode)
+      store.dispatch('tools/resetList', [props.mode, 0])
     }
     
     store.dispatch('list/writeList', [title, props.mode])
