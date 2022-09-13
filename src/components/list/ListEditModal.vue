@@ -63,8 +63,6 @@
           store.dispatch('list/writeList', [data, 'tracklist'])
           store.dispatch('list/deleteItem', [data.refId, mode, true])
           break
-        default:
-          return
       }
 
       if (searchActive.value) {
