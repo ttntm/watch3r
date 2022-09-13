@@ -14,6 +14,7 @@
 
   const exploreContent = ref({})
 
+  const filterActive = computed(() => store.getters[`tools/tracklistFiltered`] > 0)
   const modalOpen = computed(() => store.getters['app/windowOpen'])
   const recMode = computed(() => store.getters['explore/recMode'])
   const recommendations = computed(() => store.getters['explore/recList'])
@@ -47,8 +48,8 @@
     </div>
     <nav class="flex flex-row items-center justify-center flex-grow mt-6">
       <span class="block font-bold mx-4">Source Data:</span>
-      <a v-click-blur href="#manual" class="hover:text-yellow-500 mx-4" :class="{ 'text-yellow-500 underline' : recMode === 'manual' }" @click.prevent="events.switchMode('manual')">Manual</a>
-      <a v-click-blur href="#list" class="hover:text-yellow-500 mx-4" :class="{ 'text-yellow-500 underline' : recMode === 'list' }" @click.prevent="events.switchMode('list')">Tracklist</a>
+      <a v-click-blur href="#manual" class="hover:text-yellow-600 mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'manual' }" @click.prevent="events.switchMode('manual')">Manual</a>
+      <a v-click-blur href="#list" class="hover:text-yellow-600 mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'list' }" @click.prevent="events.switchMode('list')">Tracklist<span v-if="filterActive" class="">&nbsp;(filtered)</span></a>
     </nav>
     <section class="w-full sm:w-2/3 lg:w-1/2 mx-auto mt-8 mb-12">
       <div class="flex flex-row justify-center" style="height: 42px;">
@@ -58,7 +59,7 @@
       </div>
       <transition name="info">
         <p v-if="!rsEmpty" class="w-full text-center text-sm mt-8 mb-0">
-          &#9432; Currently showing recommendations based on <BtnIMDb v-if="showIMDb" :id="recSource.id" display="text" class="inline-block text-yellow-500 hover:underline">{{ recSource.title }}</BtnIMDb><span v-else class="font-bold">{{ recSource.title }}</span> ({{ recSource.year }}).
+          &#9432; Currently showing recommendations based on <BtnIMDb v-if="showIMDb" :id="recSource.id" display="text" class="inline-block text-yellow-600 hover:underline">{{ recSource.title }}</BtnIMDb><span v-else class="font-bold">{{ recSource.title }}</span> ({{ recSource.year }}).
         </p>
       </transition>
     </section>

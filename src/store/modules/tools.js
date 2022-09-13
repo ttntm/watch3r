@@ -1,5 +1,11 @@
 import { objSort, useTitleSearch } from '@/helpers/shared.js'
 
+const defaultFilters = [
+  { key: 'all', name: 'All Items', mode: 'all' },
+  { key: 'movie', name: 'Movies', mode: 'all' },
+  { key: 'series', name: 'Series', mode: 'all' }
+]
+
 export default {
   strict: false,
   namespaced: true,
@@ -7,11 +13,7 @@ export default {
   state() {
     return {
       filterEnabled: true,
-      filterMode: [
-        { key: 'all', name: 'All Items', mode: 'all' },
-        { key: 'movie', name: 'Movies', mode: 'all' },
-        { key: 'series', name: 'Series', mode: 'all' }
-      ],
+      filterMode: [...defaultFilters],
       listSearchMode: '',
       searchActive: false,
       searchTerm: '',
@@ -28,7 +30,7 @@ export default {
       tracklistFiltered: -1,
       tracklistSorted: -1,
       watchlistFiltered: -1,
-      watchlistSorted: -1,
+      watchlistSorted: -1
     }
   },
 
@@ -79,6 +81,7 @@ export default {
   actions: {
     initializeTools({ commit }) {
       commit('SET_FILTER_ENABLED', true)
+      commit('SET_FILTER_MODE', [...defaultFilters])
       commit('SET_LIST_SEARCH_MODE', '')
       commit('SET_SEARCH_ACTIVE', false)
       commit('SET_SEARCH_TERM', '')
@@ -152,31 +155,34 @@ export default {
         commit(`SET_${mode.toUpperCase()}_FILTERED`, filterId)
         dispatch('updateSort', mode)
       } else {
-        // if (filterId !== 0) {
-        //   dispatch('filterList', [0, mode])
-        // }
-        dispatch('app/sendToastMessage', { text: `No results for this filter selection :(`, type: 'error' }, { root: true })
+        commit(`list/SET_${mode.toUpperCase()}`, filtered, { root: true })
+        commit(`SET_${mode.toUpperCase()}_FILTERED`, filterId)
+        // dispatch('app/sendToastMessage', { text: `No results for this filter selection :(`, type: 'error' }, { root: true })
       }
     },
 
-    resetList({ commit, dispatch, getters, rootGetters }) {
-      const mode = getters['listSearchMode']
+    resetList({ commit, dispatch, getters, rootGetters }, resetMode) {
+      const mode = resetMode ? resetMode : getters['listSearchMode']
       const cache = rootGetters[`list/${mode}Cache`]
+      const filterActive = getters[`${mode}Filtered`] > 0
 
+      commit('SET_FILTER_ENABLED', true)
       commit('SET_SEARCH_ACTIVE', false)
       commit('SET_SEARCH_TERM', '')
 
-      commit('SET_FILTER_ENABLED', true)
-      commit(`SET_${mode.toUpperCase()}_FILTERED`, 0)
-
-      commit(`list/SET_${mode.toUpperCase()}`, cache, { root: true })
-      dispatch('updateSort', mode) // reads from cache, needs sorting
+      if (filterActive) {
+        dispatch('updateFilter', mode)
+      } else {
+        commit(`SET_${mode.toUpperCase()}_FILTERED`, 0)
+        commit(`list/SET_${mode.toUpperCase()}`, cache, { root: true })
+        dispatch('updateSort', mode) // reads from cache, needs sorting
+      }
     },
 
     searchList({ commit, dispatch, getters, rootGetters }, args) {
       const [term, mode] = args // [String, String]
       const filterActive = getters[`${mode}Filtered`] > 0
-      const input = filterActive ? rootGetters[`list/${mode}`] : rootGetters[`list/${mode}Cache`]
+      const input = rootGetters[`list/${mode}Cache`]
 
       commit('SET_LIST_SEARCH_MODE', mode)
       commit('SET_SEARCH_ACTIVE', true)
@@ -190,8 +196,12 @@ export default {
         commit('SET_FILTER_ENABLED', true)
       }
 
-      commit(`list/SET_${mode.toUpperCase()}`, results, { root: true })
-      dispatch('updateSort', mode) // search results come from the cache, thus in need of sorting
+      if (filterActive) {
+        dispatch('updateFilter', mode)
+      } else {
+        commit(`list/SET_${mode.toUpperCase()}`, results, { root: true })
+        dispatch('updateSort', mode) // search results come from the cache, thus in need of sorting
+      }
     },
 
     sortList({ commit, getters, rootGetters }, args) {

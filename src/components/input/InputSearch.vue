@@ -4,6 +4,7 @@
   
   const props = defineProps({
     autofocus: Boolean,
+    disabled: Boolean,
     pch: String
   })
 
@@ -34,7 +35,7 @@
 </script>
 
 <template>
-  <div class="search flex flex-row items-center flex-1" :class="{ 'search-input-group': searchInput }">
+  <div class="search flex flex-row items-center flex-1 bg-gray-300" :class="{ 'search-input-group': searchInput, 'bg-gray-600': disabled && !searchActive }">
     <label for="search-input" class="sr-only">Search</label>
     <svg xmlns="http://www.w3.org/2000/svg" class="flex ml-4" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" />
@@ -47,6 +48,7 @@
       v-model.trim="searchInput"
       type="text"
       class="w-full search-input"
+      :disabled="disabled && !searchActive"
       :placeholder="pch"
       @keyup.enter="$emit('do-search', searchInput)"
     >
@@ -82,7 +84,7 @@
 
 <style lang="postcss" scoped>
   .search {
-    @apply bg-gray-300 border-b border-transparent;
+    @apply border-b border-transparent;
   }
   .search:focus-within {
     @apply shadow-inner border-yellow-600;
@@ -94,6 +96,9 @@
   .search-input:focus {
     outline: 0;
     @apply shadow-none;
+  }
+  .search-input:disabled::placeholder {
+    @apply text-gray-600 opacity-0;
   }
   .search-input-group {
     @apply relative flex;

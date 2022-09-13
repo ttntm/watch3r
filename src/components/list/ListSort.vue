@@ -4,6 +4,7 @@
   import { useStore } from 'vuex'
 
   const props = defineProps({
+    listLength: Number,
     mode: String
   })
 
@@ -41,6 +42,7 @@
   <InputSelectNumber
     :currentVal="selected"
     :data="allSortModes"
+    :disabled="listLength === 0"
     id="sort"
     :placeholder="`Sort ${mode}...`"
     :styles="{

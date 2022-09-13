@@ -31,7 +31,7 @@ export default {
     isDevEnvironment: state => state.isDevEnvironment,
     siteURL: state => state.siteURL,
     toastMessage: state => state.toastMessage,
-    windowOpen: state => state.windowOpen,
+    windowOpen: state => state.windowOpen
   },
 
   mutations: {

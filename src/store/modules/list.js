@@ -11,7 +11,7 @@ export default {
       tracklistCache: [],
       watchlist: [],
       watchlistCache: [],
-      writeSuccess: false,
+      writeSuccess: false
     }
   },
 
@@ -21,7 +21,7 @@ export default {
     tracklistCache: state => state.tracklistCache,
     watchlist: state => state.watchlist,
     watchlistCache: state => state.watchlistCache,
-    writeSuccess: state => state.writeSuccess,
+    writeSuccess: state => state.writeSuccess
   },
 
   mutations: {
@@ -42,7 +42,7 @@ export default {
     },
     SET_WRITE_SUCCESS(state, value) {
       state.writeSuccess = value
-    },
+    }
   },
 
   actions: {
@@ -85,7 +85,6 @@ export default {
         dispatch('toggleWriteSuccess', true)
         dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully added to ${mode}.`, type: 'success' }, { root: true })
       } else {
-        // error
         dispatch('app/sendToastMessage', { text: `An error occurred. Please try again later.`, type: 'error' }, { root: true })
       }
     },
@@ -131,7 +130,7 @@ export default {
           
           if (activeSearchResults.length === 0) {
             // no results left to display -> reset search
-            dispatch('tools/resetList', null, { root: true })
+            dispatch('tools/resetList', mode, { root: true })
           }
         }
 
@@ -143,7 +142,6 @@ export default {
           dispatch('tools/updateSort', mode, { root: true })
         }
       } else {
-        // no 'response' = error
         dispatch('app/sendToastMessage', { text: `An error occurred loading the ${mode}. Please try again later.`, type: 'error' }, { root: true })
       }
     },
@@ -185,7 +183,6 @@ export default {
 
         dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully updated.`, type: 'success' }, { root: true })
       } else {
-        // error
         dispatch('app/sendToastMessage', { text: `An error occurred. Please try again later.`, type: 'error' }, { root: true })
       }
     },
@@ -272,11 +269,12 @@ export default {
         msg = { text: `Item removed from ${mode}.`, type: 'success' }
         dispatch('readList', mode)
       } else {
-        // no 'response' -> error
         msg = { text: `Couldn't delete item from ${mode}. Please try again later.`, type: 'error' }
       }
 
-      return silent ? console.log(msg) : dispatch('app/sendToastMessage', msg, { root: true })
+      if (!silent) {
+        dispatch('app/sendToastMessage', msg, { root: true })
+      } // else { console.log(msg) }
     }
   }
 }

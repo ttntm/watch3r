@@ -22,7 +22,7 @@ export default createStore({
   plugins: [
     createMultiTabState({
       key: 'w3-tabs',
-      statesPaths: ['explore', 'list', 'tools', 'user.userOptions', 'user.currentUser'], // name/s of the states to be synchronized with dot notation. If the param is not provided, the whole state of your app will be in sync. Defaults to []
+      statesPaths: ['explore', 'list', 'tools', 'user.userOptions', 'user.currentUser'] // name/s of the states to be synchronized with dot notation. If the param is not provided, the whole state of your app will be in sync. Defaults to []
     }),
     createPersistedState({
       key: 'w3',
@@ -31,7 +31,7 @@ export default createStore({
         getItem: (key) => ls.get(key),
         setItem: (key, value) => ls.set(key, value),
         removeItem: (key) => ls.remove(key),
-      },
-    }),
-  ],
+      }
+    })
+  ]
 })

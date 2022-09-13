@@ -4,6 +4,7 @@
   import ListAddModal from '@/components/list/ListAddModal.vue'
   import ListEditModal from '@/components/list/ListEditModal.vue'
   import ListFilter from '@/components/list/ListFilter.vue'
+  import ListFilterStatus from '@/components/list/ListFilterStatus.vue'
   import ListItem from '@/components/list/ListItem.vue'
   import ListItemControls from '@/components/list/ListItemControls.vue'
   import ListLoading from '@/components/list/ListLoading.vue'
@@ -22,15 +23,21 @@
   const posterSrc = ref('')
   const posterTitle = ref('')
   
+  const filterActive = computed(() => store.getters[`tools/${mode.value}Filtered`] > 0)
   const listData = computed(() => store.getters[`list/${mode.value}`])
   const listLength = computed(() => listData.value.length)
+  const listInfo = computed(() => {
+    return filterActive.value
+      ? `Your <u class="inline-block no-underline border-b border-yellow-600">filtered</u> ${mode.value} contains ${listLength.value} items.`
+      : `Your ${mode.value} contains ${listLength.value} items.`
+  })
   const mode = computed(() => route.meta.mode)
   const modalOpen = computed(() => store.getters['app/windowOpen'])
   const subtitle = computed(() => route.meta.subtitle)
   const searchActive = computed(() => store.getters['tools/searchActive'])
 
   const getListData = () => {
-    if (listLength.value === 0 && !searchActive.value) {
+    if (listLength.value === 0 && !filterActive.value && !searchActive.value) {
       store.dispatch('list/readList', mode.value)
     }
   }
@@ -52,20 +59,21 @@
         <h2 class="text-yellow-600 capitalize">{{ mode }}</h2>
         <p class="mb-0">
           {{ subtitle }}
-          <span v-if="listLength !== 0 && !searchActive" class="font-bold">Your {{ mode }} contains {{ listLength }} items.</span>
+          <span v-if="listLength !== 0 && !searchActive" v-html="listInfo" class="font-bold" />
         </p>
       </div>
       <div class="flex-shrink-0">
         <BtnAddTitle />
       </div>
     </section>
-    <ListLoading v-if="listLength === 0 && !searchActive" />
+    <ListLoading v-if="listLength === 0 && !filterActive && !searchActive" />
     <section v-else class="md:px-2 lg:px-8 xl:px-12 my-8">
       <div class="flex flex-col md:flex-row items-center">
-        <ListSearch :mode="mode" class="flex-1" />
-        <ListFilter :mode="mode" class="flex-1" />
-        <ListSort :mode="mode" class="flex-1" />
+        <ListSearch :list-length="listLength" :mode="mode" class="flex-1" />
+        <ListFilter :list-length="listLength" :mode="mode" class="flex-1" />
+        <ListSort :list-length="listLength" :mode="mode" class="flex-1" />
       </div>
+      <ListFilterStatus v-if="filterActive && listLength === 0 & !searchActive" :mode="mode" class="mt-8" />
       <ListSearchStatus v-if="searchActive" :mode="mode" class="mt-8" />
     </section>
     <section v-if="listLength > 0" class="list">

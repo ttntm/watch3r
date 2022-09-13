@@ -27,7 +27,7 @@ export default {
     showWatching: state => state.userOptions.showWatching,
     sortPreset: state => state.userOptions.sortPreset,
     startPage: state => state.userOptions.startPage,
-    userOptions: state => state.userOptions,
+    userOptions: state => state.userOptions
   },
   mutations: {
     SET_CURRENT_USER(state, value) {
@@ -254,6 +254,6 @@ export default {
         }
         dispatch('updateUserAccount', userUpdate)
       }
-    },
+    }
   }
 }

@@ -131,9 +131,13 @@
     @apply capitalize;
   }
 
+  input:disabled,
+  select:disabled {
+    cursor: not-allowed;
+  }
+
   select:disabled {
     @apply bg-gray-600;
-    cursor: not-allowed;
   }
 
   ul {

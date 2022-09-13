@@ -17,7 +17,7 @@
   })
 
   const onResetClick = () => {
-    store.dispatch('tools/resetList')
+    store.dispatch('tools/resetList', props.mode)
   }
 </script>
 
