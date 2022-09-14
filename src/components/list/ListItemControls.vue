@@ -38,8 +38,8 @@
       </section>
       <section class="flex flex-col text-gray-800">
         <p class="text-gray-600 text-center px-4 mb-2">{{ item.title }}</p>
-        <BtnListItemWatching v-if="showWatching && mode === 'watchlist'" class="menu-item" display="menuItem" :item="item" :watching="item.watching" />
-        <BtnListItemExplore v-if="showExplore && mode === 'tracklist'" class="menu-item" display="menuItem" :id="item.id" />
+        <BtnListItemWatching v-if="showWatching && item.type === 'series' && mode === 'watchlist'" :item="item" :watching="item.watching" class="menu-item" display="menuItem" />
+        <BtnListItemExplore v-if="showExplore && mode === 'tracklist'" :id="item.id" class="menu-item" display="menuItem" />
         <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" class="menu-item" target="_blank" rel="noopener" title="View on IMDb">
           View on IMDb
         </a>
