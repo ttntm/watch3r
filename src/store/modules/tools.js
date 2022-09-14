@@ -125,6 +125,7 @@ export default {
           
           case 'notwatching':
             filterFn = el => {
+              if (el.type.toLowerCase() !== 'series') return false
               return el.hasOwnProperty('watching') ? el.watching !== true : true
             }
             break
