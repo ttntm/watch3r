@@ -14,7 +14,12 @@
 
   const exploreContent = ref({})
 
-  const filterActive = computed(() => store.getters[`tools/tracklistFiltered`] > 0)
+  const filterActive = computed(() => {
+    const filterId = store.getters['tools/tracklistFiltered']
+    if (filterId <= 0) return ''
+    const filterMode = store.getters['tools/filterMode']
+    return filterMode[filterId] ? filterMode[filterId].name : ''
+  })
   const modalOpen = computed(() => store.getters['app/windowOpen'])
   const recMode = computed(() => store.getters['explore/recMode'])
   const recommendations = computed(() => store.getters['explore/recList'])
@@ -44,12 +49,12 @@
   <section id="explore">
     <div class="sm:text-center">
       <h1 class="h2 text-yellow-600">Recommendations</h1>
-      <h2 class="text-base font-normal mb-0">Select a title below to get some recommendations.</h2>
+      <h2 class="text-base font-normal mb-0">Select a title below to get some recommendations.<br>Active Tracklist filters apply to the selection.</h2>
     </div>
     <nav class="flex flex-row items-center justify-center flex-grow mt-6">
       <span class="block font-bold mx-4">Source Data:</span>
       <a v-click-blur href="#manual" class="hover:text-yellow-600 mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'manual' }" @click.prevent="events.switchMode('manual')">Manual</a>
-      <a v-click-blur href="#list" class="hover:text-yellow-600 mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'list' }" @click.prevent="events.switchMode('list')">Tracklist<span v-if="filterActive" class="">&nbsp;(filtered)</span></a>
+      <a v-click-blur href="#list" class="hover:text-yellow-600 mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'list' }" @click.prevent="events.switchMode('list')">Tracklist<span v-if="filterActive" class="">&nbsp;({{ filterActive }})</span></a>
     </nav>
     <section class="w-full sm:w-2/3 lg:w-1/2 mx-auto mt-8 mb-12">
       <div class="flex flex-row justify-center" style="height: 42px;">

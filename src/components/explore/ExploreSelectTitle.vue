@@ -1,4 +1,5 @@
 <script setup>
+  import ListFilterStatus from '@/components/list/ListFilterStatus.vue'
   import { computed, ref, watch } from 'vue'
   import { useStore } from 'vuex'
 
@@ -6,6 +7,7 @@
 
   const selected = ref({})
 
+  const filterActive = computed(() => store.getters['tools/tracklistFiltered'] > 0)
   const recSource = computed(() => store.getters['explore/recSource'])
   const tracklist = computed(() => store.getters['list/tracklist'])
 
@@ -34,9 +36,12 @@
 </script>
 
 <template>
-  <div class="w-full relative text-gray-700 bg-gray-300 shadow-lg">
+  <div v-if="tracklist.length >= 1 || recSource.id" class="w-full relative text-gray-700 bg-gray-300 shadow-lg">
     <select id="explore-select" v-model.lazy="selected" name="explore-title" @change="onChange(selected)">
-      <option disabled :value="{}" :selected="selected === {}">
+      <option v-if="tracklist.length === 0 && filterActive" :value="selected" disabled selected>
+        {{ recSource.title }} ({{ recSource.year }})
+      </option>
+      <option v-else disabled :value="{}" :selected="selected === {}">
         Select Title...
       </option>
       <option v-for="(item, index) in tracklist" :key="index" :value="item">
@@ -49,6 +54,8 @@
       </svg>
     </div>
   </div>
+  <ListFilterStatus v-else-if="tracklist.length === 0 && filterActive" mode="tracklist" />
+  <p v-else class="font-bold">No items in your Tracklist :(</p>
 </template>
 
 <style lang="postcss" scoped>

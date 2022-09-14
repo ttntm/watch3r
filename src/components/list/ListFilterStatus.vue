@@ -14,7 +14,7 @@
 
 <template>
   <p class="text-sm text-center text-gray-500 font-bold mb-0">
-    No results for this filter selection :(<br>
+    No results for the current filter selection :(<br>
     <a href="#clear" class="text-yellow-600 font-normal hover:underline focus:underline" @click.prevent="onResetClick()">Reset filter selection</a>
   </p>
 </template>
