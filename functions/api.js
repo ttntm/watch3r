@@ -1,7 +1,10 @@
 const api = require('./api-methods');
-const fnHeaders = require('./_shared/headers.js');
+const fnHeaders = require('./_shared/headers.js')
 
-const getPath = (urlPath) => {
+// Returns [listname,userId]
+const getMethodPath = evtPath => evtPath.match(/\w+\/([^\/]*)\/*$/)[0].split('/')
+
+const getPath = urlPath => {
   return urlPath.match(/([^\/]*)\/*$/)[0]
 }
 
@@ -18,9 +21,8 @@ exports.handler = async (event, context) => {
 
     switch (event.httpMethod) {
       case 'GET':
-        // need to treat the path differently here as GET requests can't have a request body
-        const getMethodPath = () => event.path.match(/\w+\/([^\/]*)\/*$/)[0].split('/'); // results in [listname,userId]
-        [event.list, event.user] = getMethodPath();
+        // Read from index based on userid
+        [event.list, event.user] = getMethodPath(event.path)
         return event.list && event.user ? api.read(event, context) : pathError
 
       case 'POST':
@@ -28,11 +30,12 @@ exports.handler = async (event, context) => {
         return event.target ? api.create(event, context) : pathError
 
       case 'PUT':
-        // target = list item RefId
-        return event.target ? api.update(event, context) : pathError
+        // Update item in collection based on itemid + payload
+        [event.list, event.listItemId] = getMethodPath(event.path)
+        return event.list && event.listItemId ? api.update(event, context) : pathError
 
       case 'DELETE':
-        // target = listname
+        // Delete itemid from collection, collection = event.target, itemid = payload
         return event.target ? api.delete(event, context) : pathError
 
       default:

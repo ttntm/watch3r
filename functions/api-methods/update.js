@@ -7,15 +7,15 @@ module.exports = (event, context) => {
   });
   const q = faunadb.query;
 
+  const { list, listItemId } = event;
   const data = JSON.parse(event.body);
-  const id = event.target;
 
-  console.log(`Function 'update' invoked. update id: ${id}`);
+  console.log(`Function 'update' invoked. update id: ${listItemId}`);
 
-  if (!data || !id) {
+  if (!data || !list || !listItemId) {
     return { statusCode: 400, headers: { ...fnHeaders }, body: 'Bad Request' }
   } else {
-    return client.query(q.Update(q.Ref(`collections/tracklist/${id}`), {data}))
+    return client.query(q.Update(q.Ref(`collections/${list}/${listItemId}`), {data}))
       .then((response) => {
         console.log("success", response);
         return { statusCode: 200, headers: { ...fnHeaders }, body: JSON.stringify(response) }

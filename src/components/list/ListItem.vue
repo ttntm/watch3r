@@ -4,6 +4,7 @@
   import BtnListItemEdit from '@/components/buttons/BtnListItemEdit.vue'
   import BtnListItemExplore from '@/components/buttons/BtnListItemExplore.vue'
   import BtnListItemRemove from '@/components/buttons/BtnListItemRemove.vue'
+  import BtnListItemWatching from '@/components/buttons/BtnListItemWatching.vue'
   import { computed } from 'vue'
   import { useStore } from 'vuex'
 
@@ -18,6 +19,7 @@
 
   const showExplore = computed(() => store.getters['user/showExploreLinks'])
   const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
+  const showWatching = computed(() => store.getters['user/showWatching'])
 </script>
 
 <template>
@@ -40,6 +42,20 @@
       <p v-if="mode === 'tracklist' && item.userDateWatched" class="text-sm text-gray-600 mb-2">
         Watched: {{ item.userDateWatched }}
       </p>
+      <p v-if="mode === 'watchlist' && showWatching && item.watching" class="flex flex-row items-center text-sm font-bold text-yellow-600 mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-movie mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <line x1="8" y1="4" x2="8" y2="20" />
+          <line x1="16" y1="4" x2="16" y2="20" />
+          <line x1="4" y1="8" x2="8" y2="8" />
+          <line x1="4" y1="16" x2="8" y2="16" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="16" y1="8" x2="20" y2="8" />
+          <line x1="16" y1="16" x2="20" y2="16" />
+        </svg>
+        Currently watching
+      </p>
       <p v-if="mode === 'tracklist' && item.userNotes" class="text-sm sm:mb-0">
         {{ item.userNotes }}
       </p>
@@ -47,6 +63,7 @@
         {{ item.plot }}
       </p>
       <BtnListItemExplore v-if="showExplore && mode === 'tracklist'" :id="item.id" />
+      <BtnListItemWatching v-if="showWatching && item.type === 'series' && mode === 'watchlist'" :item="item" :watching="item.watching" />
     </div>
     <div class="w-full sm:w-1/4 self-center text-gray-700 text-sm px-4 lg:px-6 mb-2 sm:mb-0">
       <p>{{ item.genre }}</p>

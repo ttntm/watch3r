@@ -127,6 +127,19 @@
     @apply outline-none;
   }
 
+  select, select option {
+    @apply capitalize;
+  }
+
+  input:disabled,
+  select:disabled {
+    cursor: not-allowed;
+  }
+
+  select:disabled {
+    @apply bg-gray-600;
+  }
+
   ul {
     list-style-type: square;
   }
@@ -170,6 +183,10 @@
   button:disabled {
     cursor: not-allowed;
     opacity: 0.9;
+  }
+
+  button:disabled:hover {
+    color: currentColor;
   }
 
   .btn {

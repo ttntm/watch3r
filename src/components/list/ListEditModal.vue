@@ -57,14 +57,12 @@
 
       switch (mode) {
         case 'tracklist':
-          store.dispatch('list/editListItem', data)
+          store.dispatch('list/editListItem', [data, mode])
           break
         case 'watchlist':
           store.dispatch('list/writeList', [data, 'tracklist'])
           store.dispatch('list/deleteItem', [data.refId, mode, true])
           break
-        default:
-          return
       }
 
       if (searchActive.value) {
@@ -83,6 +81,10 @@
 
   if (props.mode === 'watchlist') {
     editItem.value = { ...srcItem.value, ...editData }
+    // Item is coming from watchlist, get rid of "watching" marker - see: #52
+    if (editItem.value.watching) {
+      delete editItem.value['watching']
+    }
   }
 
   store.dispatch('list/toggleWriteSuccess', false) // cleanup
