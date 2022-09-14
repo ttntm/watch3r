@@ -46,7 +46,7 @@ export default {
   },
 
   actions: {
-    initializeList({ commit, state }) {
+    initializeList({ commit }) {
       commit('SET_EDIT_TITLE_CONTENT', null)
       commit('SET_TRACKLIST', [])
       commit('SET_TRACKLIST_CACHE', [])

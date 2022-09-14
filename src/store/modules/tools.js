@@ -91,17 +91,6 @@ export default {
       commit('SET_WATCHLIST_SORTED', -1)
     },
 
-    addWatchingFilters({ commit }) {
-      const wFilters = [
-        { key: 'all', name: 'All Items', mode: 'all' },
-        { key: 'movie', name: 'Movies', mode: 'all' },
-        { key: 'series', name: 'Series', mode: 'all' },
-        { key: 'watching', name: 'Currently Watching', mode: 'watchlist' },
-        { key: 'notwatching', name: 'Not Watching', mode: 'watchlist' }
-      ]
-      commit('SET_FILTER_MODE', wFilters)
-    },
-
     filterList({ commit, dispatch, getters, rootGetters }, args) {
       const [filterId, mode] = args // [Number, String]
       const filterMode = getters['filterMode']
@@ -269,6 +258,17 @@ export default {
       if (filterId > 0) {
         dispatch('filterList', [filterId, mode])
       }
+    },
+
+    updateFilterMode({ commit }, watching) {
+      const wFilters = watching ? [
+        { key: 'all', name: 'All Items', mode: 'all' },
+        { key: 'movie', name: 'Movies', mode: 'all' },
+        { key: 'series', name: 'Series', mode: 'all' },
+        { key: 'watching', name: 'Currently Watching', mode: 'watchlist' },
+        { key: 'notwatching', name: 'Not Watching', mode: 'watchlist' }
+      ] : [...defaultFilters]
+      commit('SET_FILTER_MODE', wFilters)
     },
 
     updateSort({ dispatch, getters, rootGetters }, mode) {

@@ -92,7 +92,7 @@
       Watchlist: enable "currently watching" for TV series.
     </p>
     <InputCheckbox v-model="settings.user_watching" :name="'mark-watching'" @update:cb="events.onUpdateWatching($event)">
-      Activate "currently watching"
+      Enable "currently watching"
     </InputCheckbox>
   </div>
 </template>

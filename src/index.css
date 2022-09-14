@@ -185,6 +185,10 @@
     opacity: 0.9;
   }
 
+  button:disabled:hover {
+    color: currentColor;
+  }
+
   .btn {
     @apply font-bold leading-none rounded-none shadow-md px-6 py-3;
   }

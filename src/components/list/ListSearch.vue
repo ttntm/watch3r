@@ -24,6 +24,6 @@
 
 <template>
   <section class="w-full text-sm lg:text-base shadow-lg mb-8 md:mb-0 md:mr-4 lg:mr-8">
-    <InputSearch :disabled="listLength === 0" class="text-gray-700" pch="Title or Genre" @do-search="events.onDoSearch($event)" @reset-search="events.onResetSearch()" />
+    <InputSearch :list-length="listLength" class="text-gray-700" pch="Title or Genre" @do-search="events.onDoSearch($event)" @reset-search="events.onResetSearch()" />
   </section>
 </template>

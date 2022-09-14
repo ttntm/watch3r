@@ -228,8 +228,8 @@ export default {
 
       if (metaLength > 0) {
         // user preferences are complete and available in the User object GoTrue returned
-        if (userMeta.user_watching) {
-          dispatch('tools/addWatchingFilters', null, { root: true })
+        if (userMeta.hasOwnProperty('user_watching')) {
+          dispatch('tools/updateFilterMode', userMeta.user_watching, { root: true })
         }
 
         commit('SET_EXPLORE_LINKS', userMeta.user_explore)
