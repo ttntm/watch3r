@@ -43,7 +43,7 @@
   <InputSelectNumber
     :currentVal="selected"
     :data="allFilterModes"
-    :disabled="filterEnabled === false || (filterCurrent === 0 && listLength === 1) || listLength === 0"
+    :disabled="filterEnabled === false || (filterCurrent <= 0 && listLength === 1) || listLength === 0"
     id="filter"
     :placeholder="`Filter ${mode}...`"
     :styles="{
