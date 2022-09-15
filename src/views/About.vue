@@ -29,11 +29,15 @@
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
+      "Currently watching" marker for series in your watchlist
+    </p>
+    <p>
+      <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
       Save <i>date watched</i>, <i>rating</i> and <i>notes</i> for each title in your Tracklist
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
-      Search and sorting for each list view
+      Search, filters and sorting for each list view
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;

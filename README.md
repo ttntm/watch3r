@@ -33,6 +33,8 @@ That's where the idea for this web application came from - imagine a tool that p
 
 ★ Search for movies and series when adding titles to your lists
 
+★ "Currently watching" marker for series in your watchlist
+
 ★ Save date watched, rating and notes for each title in your Tracklist
 
 ★ Search and sorting for each list view
