@@ -49,12 +49,18 @@
   <section id="explore">
     <div class="sm:text-center">
       <h1 class="h2 text-yellow-600">Recommendations</h1>
-      <h2 class="text-base font-normal mb-0">Select a title below to get some recommendations.<br>Active Tracklist filters apply to the selection.</h2>
+      <h2 class="text-base font-normal mb-0">
+        Select a title below to get some recommendations.
+        <span v-if="filterActive && recMode === 'list'" class="text-sm">
+          <br>
+          &#9432; Active filters apply to the selection.
+        </span>
+      </h2>
     </div>
-    <nav class="flex flex-row items-center justify-center flex-grow mt-6">
-      <span class="block font-bold mx-4">Source Data:</span>
-      <a v-click-blur href="#manual" class="hover:text-yellow-600 mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'manual' }" @click.prevent="events.switchMode('manual')">Manual</a>
-      <a v-click-blur href="#list" class="hover:text-yellow-600 mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'list' }" @click.prevent="events.switchMode('list')">Tracklist<span v-if="filterActive" class="">&nbsp;({{ filterActive }})</span></a>
+    <nav class="flex flex-row items-center justify-between sm:justify-center flex-grow mt-6">
+      <span class="block font-bold sm:mx-4">Source Data:</span>
+      <a v-click-blur href="#manual" class="hover:text-yellow-600 ml-4 sm:mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'manual' }" @click.prevent="events.switchMode('manual')">Manual</a>
+      <a v-click-blur href="#list" class="hover:text-yellow-600 ml-4 sm:mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'list' }" @click.prevent="events.switchMode('list')">Tracklist<span v-if="filterActive" class="">&nbsp;({{ filterActive }})</span></a>
     </nav>
     <section class="w-full sm:w-2/3 lg:w-1/2 mx-auto mt-8 mb-12">
       <div class="flex flex-row justify-center" style="height: 42px;">

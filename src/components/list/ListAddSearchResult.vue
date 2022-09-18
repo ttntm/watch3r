@@ -61,7 +61,7 @@
   <section class="flex flex-col justify-start hover:bg-gray-300 hover:shadow-inner">
     <div class="flex-grow py-4">
       <h4 class="text-gray-800 mb-0">{{ searchResult.title }}</h4>
-      <p class="text-sm mb-2">{{ searchResult.genre }}; {{ searchResult.year }}</p>
+      <p class="text-sm mb-2">{{ searchResult.genre }}; {{ searchResult.year }}; {{ searchResult.imdbRating }}</p>
       <p class="text-sm text-gray-700 mb-0">{{ searchResult.plot }}</p>
     </div>
     <div class="w-full flex flex-row items-center justify-start mb-4">
