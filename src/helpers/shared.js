@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import store from '@/store/index.js'
 
 export function checkDuplicate(mode, input) {
@@ -52,6 +52,71 @@ export function useDelay() {
   return { isVisible, toggleDelay }
 }
 
+/**
+ * Port of the vueUse composable; see: https://github.com/vueuse/vueuse/blob/main/packages/core/useIntersectionObserver/index.ts#L4
+ * @see https://vueuse.org/useIntersectionObserver 
+ * @param target The element that should be observed
+ * @param callback Callback fn for the IntersectionObserver
+ * @param options IntersectionObserver options
+ */
+export function useIntersectionObserver(target, callback, options) {
+  const {
+    root = null,
+    rootMargin = '0px',
+    threshold = 0.1,
+  } = options
+
+  let cleanup = undefined
+  const isActive = ref(true)
+
+  console.log('obsv - boot')
+  
+  const stopWatch = watch([isActive, target], () => {
+    if (cleanup) {
+      cleanup()
+    }
+
+    console.log('obsv - inner')
+
+    if (!isActive.value) return
+    if (!target?.value) return
+
+    const observer = new IntersectionObserver(
+      callback,
+      {
+        root,
+        rootMargin,
+        threshold,
+      }
+    )
+
+    observer.observe(target.value)
+
+    cleanup = () => {
+      observer.disconnect()
+      cleanup = undefined
+    }
+  }, { 
+    flush: 'post', immediate: true 
+  })
+
+  const stop = () => {
+    if (cleanup) {
+      cleanup()
+    }
+
+    console.log('obsv: stop() - inner')
+
+    stopWatch()
+    isActive.value = false
+  }
+
+  return {
+    isActive,
+    stop
+  }
+}
+
 export function useTitleSearch(list, searchTerm) {
   let term = searchTerm.toLowerCase()
 
@@ -73,7 +138,7 @@ export function validateEmail(email) {
 }
 
 export function validateExtension(filename) {
-  const split = filename.split(/\W/g) // returns an Array where the extensions should always be the last item
+  const split = filename.split(/\W/g) // returns an Array where the extension should always be the last item
   const ext = split[split.length - 1].toLowerCase() // isolate the file's extension
   return ext === 'csv' ? true : false
 }

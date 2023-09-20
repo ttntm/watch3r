@@ -7,6 +7,7 @@
   import ListFilterStatus from '@/components/list/ListFilterStatus.vue'
   import ListItem from '@/components/list/ListItem.vue'
   import ListItemControls from '@/components/list/ListItemControls.vue'
+  import ListItemWrapper from '@/components/list/ListItemWrapper.vue'
   import ListLoading from '@/components/list/ListLoading.vue'
   import ListPosterModal from '@/components/list/ListPosterModal.vue'
   import ListSearch from '@/components/list/ListSearch.vue'
@@ -33,6 +34,9 @@
   })
   const mode = computed(() => route.meta.mode)
   const modalOpen = computed(() => store.getters['app/windowOpen'])
+  const showExplore = computed(() => store.getters['user/showExploreLinks'])
+  const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
+  const showWatching = computed(() => store.getters['user/showWatching'])
   const subtitle = computed(() => route.meta.subtitle)
   const searchActive = computed(() => store.getters['tools/searchActive'])
 
@@ -77,7 +81,17 @@
       <ListSearchStatus v-if="searchActive && (!filterActive || listLength >= 1)" :mode="mode" class="mt-8" />
     </section>
     <section v-if="listLength > 0" class="list">
-      <ListItem v-for="title in listData" :key="title.id" :item="title" :mode="mode" @open-poster="onShowPoster($event)" />
+      <ListItemWrapper v-for="title in listData" style="min-height: 250px;">
+        <ListItem
+          :key="title.id"
+          :item="title"
+          :mode="mode"
+          :showExplore="showExplore"
+          :showIMDb="showIMDb"
+          :showWatching="showWatching"
+          @open-poster="onShowPoster($event)"
+        />
+      </ListItemWrapper>
     </section>
   </section>
   <ListAddModal v-if="modalOpen === 2" :mode="mode" />
