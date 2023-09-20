@@ -26,7 +26,7 @@
         <BtnClose btn-title="Close Menu" @click="onClose" />
       </section>
       <section class="flex flex-col text-gray-800">
-        <router-link v-for="item in menuItems" :key="item.name" v-click-blur :to="{name: item.name}" class="menu-item">
+        <router-link v-for="item in menuItems" :key="item.name" v-click-blur :to="{ name: item.name, force: true }" class="menu-item">
           {{ item.name }}
         </router-link>
       </section>
