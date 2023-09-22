@@ -5,13 +5,10 @@
   const shouldRender = ref(false)
   const targetEl = ref()
 
-  onMounted(() => {
-    console.log(targetEl.value)
-  
+  onMounted(() => {  
     const { stop } = useIntersectionObserver(
       targetEl,
       ([{ isIntersecting }]) => {
-        console.log('obsvr callback inner')
         if (isIntersecting) {
           shouldRender.value = true
           stop()
