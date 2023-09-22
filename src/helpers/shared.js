@@ -83,7 +83,7 @@ export function useIntersectionObserver(target, callback, options) {
       {
         root,
         rootMargin,
-        threshold,
+        threshold
       }
     )
 
