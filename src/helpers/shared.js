@@ -68,15 +68,11 @@ export function useIntersectionObserver(target, callback, options) {
 
   let cleanup = undefined
   const isActive = ref(true)
-
-  console.log('obsv - boot')
   
   const stopWatch = watch([isActive, target], () => {
     if (cleanup) {
       cleanup()
     }
-
-    console.log('obsv - inner')
 
     if (!isActive.value) return
     if (!target?.value) return
@@ -104,8 +100,6 @@ export function useIntersectionObserver(target, callback, options) {
     if (cleanup) {
       cleanup()
     }
-
-    console.log('obsv: stop() - inner')
 
     stopWatch()
     isActive.value = false
