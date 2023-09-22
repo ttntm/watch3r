@@ -1,6 +1,8 @@
 import { ref, watch } from 'vue'
 import store from '@/store/index.js'
 
+const noop = () => {}
+
 export function checkDuplicate(mode, input) {
   const current = store.getters[`list/${mode}`]
   return current.length > 0
@@ -61,18 +63,17 @@ export function useDelay() {
  */
 export function useIntersectionObserver(target, callback, options) {
   const {
+    immediate = true,
     root = null,
     rootMargin = '0px',
     threshold = 0.1,
   } = options
 
-  let cleanup = undefined
-  const isActive = ref(true)
+  let cleanup = noop
+  const isActive = ref(immediate)
   
   const stopWatch = watch([isActive, target], () => {
-    if (cleanup) {
-      cleanup()
-    }
+    cleanup()
 
     if (!isActive.value) return
     if (!target?.value) return
@@ -90,17 +91,14 @@ export function useIntersectionObserver(target, callback, options) {
 
     cleanup = () => {
       observer.disconnect()
-      cleanup = undefined
+      cleanup = noop
     }
   }, { 
-    flush: 'post', immediate: true 
+    flush: 'post', immediate
   })
 
   const stop = () => {
-    if (cleanup) {
-      cleanup()
-    }
-
+    cleanup()
     stopWatch()
     isActive.value = false
   }
