@@ -16,7 +16,10 @@
   const searchInput = ref('')
 
   const searchActive = computed(() => store.getters['tools/searchActive'])
-  const useDisabled = computed(() => props.listLength <= 1)
+  // Oct. 9th 2023: "disarming" `useDisabled`:
+  // it feels like bad UX to force "clear search" instead of keeping the search input available
+  // const useDisabled = computed(() => props.listLength <= 1)
+  const useDisabled = false
 
   watch(searchActive, () => {
     if (!searchActive.value) {
@@ -24,11 +27,12 @@
     }
   })
 
-  watch(useDisabled, () => {
-    if (useDisabled.value) {
-      input.value.blur()
-    }
-  })
+  // see comment above; L19f
+  // watch(useDisabled, () => {
+  //   if (useDisabled.value) {
+  //     input.value.blur()
+  //   }
+  // })
 
   onMounted(() => {
     if (props.autofocus) input.value.focus()
