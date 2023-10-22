@@ -19,14 +19,15 @@
 
 <template>
   <div class="sm:self-center px-4">
-    <img
-      :src="item.image"
+    <UnLazyImage
+      :src-set="item.image"
       :alt="item.title"
-      class="poster click-outside-ignore self-center cursor-pointer mb-6 sm:mb-0"
-      loading="lazy"
+      class="poster click-outside-ignore self-center cursor-pointer h-full mb-6 sm:mb-0"
       title="Click to enlarge"
+      placeholder-src="/img/blurred.png"
+      auto-sizes
       @click.self="$emit('open-poster', [item.image, item.title])"
-    >
+    />
   </div>
   <div class="w-full sm:w-3/4 px-4 lg:px-6 self-center lg:self-start lg:py-2">
     <h3 class="text-xl mb-2">

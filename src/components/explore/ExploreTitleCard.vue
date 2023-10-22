@@ -26,7 +26,13 @@
 
 <template>
   <article class="card">
-    <img :src="imgSrc" class="rounded-md" loading="lazy">
+    <UnLazyImage
+      :src-set="imgSrc"
+      :alt="titleDisplay"
+      class="card-poster"
+      placeholder-src="/img/blurred.png"
+      auto-sizes
+    />
     <div class="card-overlay">
       <div class="flex flex-col">
         <h3 class="text-lg sm:text-2xl text-center text-yellow-600 mb-8">
@@ -51,6 +57,11 @@
 <style lang="postcss" scoped>
   .card {
     @apply relative rounded-md shadow-lg;
+  }
+
+  .card-poster {
+    @apply rounded-md w-full h-full;
+    min-height: 280px;
   }
 
   .card-overlay {
