@@ -60,8 +60,8 @@
   }
 
   .card-poster {
-    @apply rounded-md w-full h-full;
-    min-height: 280px;
+    @apply rounded-md w-auto h-full object-cover;
+    min-height: 240px;
   }
 
   .card-overlay {
