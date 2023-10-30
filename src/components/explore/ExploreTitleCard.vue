@@ -60,11 +60,12 @@
   }
 
   .card-poster {
-    @apply rounded-md w-auto h-full object-cover;
+    @apply rounded-md w-full object-cover;
     min-height: 240px;
   }
 
   @supports (-webkit-touch-callout: none) {
+    .card,
     .card-poster {
       max-height: 240px;
     }
