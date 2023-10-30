@@ -64,6 +64,12 @@
     min-height: 240px;
   }
 
+  @supports (-webkit-touch-callout: none) {
+    .card-poster {
+      max-height: 240px;
+    }
+  }
+
   .card-overlay {
     @apply absolute top-0 bottom-0 left-0 right-0 bg-gray-900 rounded-md bg-opacity-0 opacity-0 flex items-center justify-center p-4;
     transform: scale(0.75);
