@@ -144,4 +144,13 @@
   textarea:focus {
     @apply shadow-inner border-gray-400;
   }
+
+  @supports (-webkit-touch-callout: none) {
+    input[type=date] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      min-width: 100%;
+    }
+  }
 </style>
