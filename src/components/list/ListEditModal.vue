@@ -140,6 +140,11 @@
     resize: none;
   }
 
+  input[type=date] {
+    height: 40px;
+    min-height: 40px;
+  }
+
   input[type=date]:focus,
   textarea:focus {
     @apply shadow-inner border-gray-400;
