@@ -12,9 +12,6 @@
     <p>
       You can send us an email at <a href="mailto:hello@watch3r.app">hello@watch3r.app</a>.
     </p>
-    <p>
-      There's also <a href="https://github.com/ttntm/watch3r/discussions" target="_blank" rel="noopener">GitHub Discussions</a> for general questions and feedback.
-    </p>
     <h2>
       &gt; I Found A Bug...
     </h2>
@@ -22,7 +19,7 @@
       Ooops, we're sorry :(
     </p>
     <p>
-      Please head over to <a href="https://github.com/ttntm/watch3r/issues" target="blank" rel="noopener">GitHub</a> and report it there. You can also report it via email if that's more convenient for you.
+      Please head over to <a href="https://codeberg.org/ttntm/watch3r/issues" target="blank" rel="noopener">Codeberg</a> and report it there. You can also report it via email if that's more convenient for you.
     </p>
     <p>
       If possible, please include some basic information like the browser you used, steps to reproduce the issue and screenshots.
@@ -31,7 +28,7 @@
       &gt; Feature Requests
     </h2>
     <p>
-      Same as for bugs - please head over to <a href="https://github.com/ttntm/watch3r/issues" target="blank" rel="noopener">GitHub</a> and file it there or send us an email.
+      Same as for bugs - please head over to <a href="https://codeberg.org/ttntm/watch3r/issues" target="blank" rel="noopener">Codeberg</a> and file it there or send us an email.
     </p>
     <h2>
       &times; Account Removal

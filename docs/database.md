@@ -21,7 +21,7 @@ Fauna documentation:
 
 `ref['@ref'].id` -> unique ID for Fauna records
 
-`refId` in `data: {}` -> created when reading items from the database ([here](https://github.com/ttntm/watch3r/blob/master/src/store/modules/list.js#L119)), persisted only for tracklist records if they're created based on items in the watchlist (_NB: this should probably be corrected at some point, but it doesn't cause any issues_)
+`refId` in `data: {}` -> created when reading items from the database, persisted only for tracklist records if they're created based on items in the watchlist (_NB: this should probably be corrected at some point, but it doesn't cause any issues_)
 
 `type` -> can be either `movie` or `series`
 

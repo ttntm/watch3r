@@ -64,3 +64,9 @@ watch3r is completely free! You're welcome to give it a try.
 ## Contact
 
 Say hi at hello@watch3r.app
+
+## Contribute
+
+All future development of this project has moved to Codeberg:
+
+[![Contribute on Codeberg](/public/img/contribute_on_codeberg.png)](https://codeberg.org/ttntm/watch3r)
