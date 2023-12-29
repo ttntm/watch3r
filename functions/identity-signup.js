@@ -1,10 +1,10 @@
-const faunadb = require('faunadb');
-const fetch = require('node-fetch');
+const faunadb = require('faunadb')
+const fetch = require('node-fetch')
 
 exports.handler = async (event, context, callback) => {
-  const { identity } = context.clientContext;
-  const adminAuthHeader = `Bearer ${identity.token}`;
-  const usersUrl = `${identity.url}/admin/users`;
+  const { identity } = context.clientContext
+  const adminAuthHeader = `Bearer ${identity.token}`
+  const usersUrl = `${identity.url}/admin/users`
 
   try {
     // get userlist
@@ -14,9 +14,9 @@ exports.handler = async (event, context, callback) => {
         "Content-Type": "application/json",
         "Authorization": adminAuthHeader,
       },
-    });
+    })
 
-    let responseUL = await requestUL.json();
+    let responseUL = await requestUL.json()
 
     if (responseUL.users.length > 0) {
       let userlistPayload = []
@@ -30,15 +30,15 @@ exports.handler = async (event, context, callback) => {
                 created: user.confirmed_at
               }
             }
-          );
+          )
         }
       }
 
       try {
         const client = new faunadb.Client({
           secret: process.env.FAUNA_SECRET
-        });
-        const q = faunadb.query;
+        })
+        const q = faunadb.query
 
         let upsert = await client.query(
           q.Map(
@@ -68,19 +68,19 @@ exports.handler = async (event, context, callback) => {
               )
             )
           )
-        );
+        )
 
-        console.log(upsert);
+        console.log(upsert)
         return callback(null, { statusCode: 200, body: JSON.stringify({ message: "Userlist updated", response: upsert }) })
       } catch (error) {
-        console.error(error);
+        console.error(error)
         return callback(null, { statusCode: 400, body: JSON.stringify(error) })
       }
     } else {
       return callback(null, { statusCode: 400, body: 'Could not obtain userlist' })
     }
   } catch (error) {
-    console.error(error);
+    console.error(error)
     return callback(null, { statusCode: 400, body: JSON.stringify(error) })
   }
 }

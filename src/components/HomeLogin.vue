@@ -35,7 +35,7 @@
               <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
             </circle>
           </svg>
-        `;
+        `
         store.dispatch('user/attemptLogin', credentials)
       }
     }

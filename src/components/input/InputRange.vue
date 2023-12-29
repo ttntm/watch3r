@@ -20,7 +20,7 @@
 
 <style lang="postcss" scoped>
   input[type=range] {
-    @apply bg-transparent;
+    @apply bg-transparent appearance-none;
     -webkit-appearance: none;
   }
 

@@ -263,9 +263,7 @@ export default {
 
     updateFilterMode({ commit }, watching) {
       const wFilters = watching ? [
-        { key: 'all', name: 'All Items', mode: 'all' },
-        { key: 'movie', name: 'Movies', mode: 'all' },
-        { key: 'series', name: 'Series', mode: 'all' },
+        ...defaultFilters,
         { key: 'watching', name: 'Currently Watching', mode: 'watchlist' },
         { key: 'notwatching', name: 'Not Watching', mode: 'watchlist' }
       ] : [...defaultFilters]
