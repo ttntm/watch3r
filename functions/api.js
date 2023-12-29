@@ -1,4 +1,4 @@
-const api = require('./api-methods');
+const api = require('./api-methods')
 const fnHeaders = require('./_shared/headers.js')
 
 // Returns [listname,userId]
@@ -8,16 +8,16 @@ const getPath = urlPath => {
   return urlPath.match(/([^\/]*)\/*$/)[0]
 }
 
-const pathError = { statusCode: 500, headers: { ...fnHeaders }, body: 'No path specified' };
+const pathError = { statusCode: 500, headers: { ...fnHeaders }, body: 'No path specified' }
 
 exports.handler = async (event, context) => {
-  const claims = context.clientContext && context.clientContext.user;
+  const claims = context.clientContext && context.clientContext.user
 
   if (!claims) {
     return { statusCode: 401, headers: { ...fnHeaders }, body: 'NOT ALLOWED' }
   } else {
-    const target = getPath(event.path);
-    if (target) event.target = target;
+    const target = getPath(event.path)
+    if (target) event.target = target
 
     switch (event.httpMethod) {
       case 'GET':

@@ -26,7 +26,7 @@
         <br /><br />
         Go ahead and use that "Add Title" button or <a href="/import" class="text-yellow-600 font-normal hover:underline focus:underline">import an IMDb list</a> 🤓
       `
-    }, 5000)
+    }, 10000)
   }
 
   setLoadingState()
