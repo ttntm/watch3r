@@ -47,7 +47,7 @@
         </nav>
         <section class="text-center mt-12">
           <p class="mb-0">
-            If you like it here, please spread the word and consider supporting the development efforts <a href="https://www.buymeacoffee.com/ttntm" class="text-yellow-600 underline hover:no-underline" target="_blank" rel="noopener">with coffee</a>.
+            Have fun, we hope you like it here.
           </p>
         </section>
       </section>
