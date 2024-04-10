@@ -19,7 +19,7 @@
     <BtnMenu :iconSize="24" class="flex sm:hidden flex-row items-center justify-center text-sm font-bold text-yellow-600 hover:text-gray-900 mx-auto">Show Menu</BtnMenu>
     <p class="text-xs text-center mt-2 mb-0">
       Made with ♥ by <a href="https://ttntm.me" target="_blank" class="hover:text-yellow-600 hover:underline">ttntm</a>, <a href="https://codeberg.org/ttntm/watch3r" target="_blank" rel="noreferrer" class="hover:text-yellow-600 hover:underline">Code@Codeberg (GPL-3.0)</a><br>
-      &copy watch3r.app {{year}}, <a href="https://www.buymeacoffee.com/ttntm" class="text-yellow-600 hover:underline" target="_blank" rel="noreferrer">&plus;Donate</a>, <a href="https://github.com/sponsors/ttntm/" class="text-yellow-600 hover:underline" target="_blank" rel="noreferrer">&plus;Sponsor</a>
+      &copy; watch3r.app {{year}}, <a href="https://www.buymeacoffee.com/ttntm" class="text-yellow-600 hover:underline" target="_blank" rel="noreferrer">&plus;Donate</a>, <a href="https://github.com/sponsors/ttntm/" class="text-yellow-600 hover:underline" target="_blank" rel="noreferrer">&plus;Sponsor</a>
     </p>
   </footer>
 </template>
