@@ -3,12 +3,12 @@ const faunadb = require('faunadb')
 const fs = require('fs')
 const q = faunadb.query
 
-async function getData(indexName, size) {
-  const client = new faunadb.Client({
-    secret: process.env.FAUNA_SECRET,
-    domain: 'db.us.fauna.com'
-  })
+const client = new faunadb.Client({
+  secret: process.env.FAUNA_SECRET,
+  domain: 'db.us.fauna.com'
+})
 
+async function getData(indexName, size) {
   try {
     return client.query(
       q.Paginate(
