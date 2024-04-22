@@ -28,6 +28,14 @@ export async function getAuthHeaders() {
   return headers
 }
 
+/**
+ * Returns a YYY-MM-DD formatted date
+ */
+export function getTimestamp() {
+  const d = new Date()
+  return d.toISOString().split('T')[0]
+}
+
 export function objSort(field, reverse, primer) {
   //generic sorting function for object keys
   const key = primer ?
@@ -46,7 +54,7 @@ export function objSort(field, reverse, primer) {
 
 export function useDelay() {
   const isVisible = ref(false)
-  
+
   const toggleDelay = () => setTimeout(() => isVisible.value = !isVisible.value, 100)
 
   toggleDelay()
@@ -56,7 +64,7 @@ export function useDelay() {
 
 /**
  * Port of the vueUse composable; see: https://github.com/vueuse/vueuse/blob/main/packages/core/useIntersectionObserver/index.ts#L4
- * @see https://vueuse.org/useIntersectionObserver 
+ * @see https://vueuse.org/useIntersectionObserver
  * @param target The element that should be observed
  * @param callback Callback fn for the IntersectionObserver
  * @param options IntersectionObserver options
@@ -71,7 +79,7 @@ export function useIntersectionObserver(target, callback, options) {
 
   let cleanup = noop
   const isActive = ref(immediate)
-  
+
   const stopWatch = watch([isActive, target], () => {
     cleanup()
 
@@ -93,7 +101,7 @@ export function useIntersectionObserver(target, callback, options) {
       observer.disconnect()
       cleanup = noop
     }
-  }, { 
+  }, {
     flush: 'post', immediate
   })
 

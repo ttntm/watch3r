@@ -6,18 +6,6 @@
     </h1>
     <p>Not sure if you have already seen a certain movie? Lost track of the countless things you wanted to watch or watched already? Got different lists in different places you keep forgetting about?</p>
     <p>That's where the idea for this web application came from - imagine a tool that provides basic information about the listed titles, paired with search and sorting. A place to keep track of your lists and collect your thoughts after watching.</p>
-    <div class="flex items-center mt-8">
-      <span class="text-lg text-gray-600 font-bold leading-none">Social:</span>
-      <a class="px-4" href="https://www.producthunt.com/posts/watch3r" target="_blank" rel="noopener">
-        <img alt="On product hunt" src="https://img.shields.io/badge/on-product%20hunt-blue.svg?style=flat-square">
-      </a>
-      <a class="pr-4" href="https://www.indiehackers.com/product/watch3r" target="_blank" rel="noopener">
-        <img alt="On Indie Hackers" src="https://img.shields.io/badge/on-indie%20hackers-blue?style=flat-square">
-      </a>
-      <a class="" href="https://twitter.com/intent/tweet?text=WATCH3R%20%20https%3A%2F%2Fwatch3r.app" target="_blank" rel="noopener">
-        <img alt="tweet" src="https://img.shields.io/twitter/url/https/github.com/ArmynC/ArminC-AutoExec.svg?style=flat-square&logo=twitter">
-      </a>
-    </div>
     <h2>Features</h2>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
@@ -33,7 +21,7 @@
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
-      Save <i>date watched</i>, <i>rating</i> and <i>notes</i> for each title in your Tracklist
+      Save date watched, rating and notes for each title in your Tracklist
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
@@ -41,7 +29,7 @@
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;
-      Get <i>recommendations</i> based on your tracklist and manual search results
+      Get recommendations based on your tracklist and manual search results
     </p>
     <p>
       <span class="text-lg text-yellow-600">&#9733;</span>&nbsp;

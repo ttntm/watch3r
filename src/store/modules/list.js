@@ -1,4 +1,4 @@
-import { getAuthHeaders } from '@/helpers/shared.js'
+import { getAuthHeaders, getTimestamp } from '@/helpers/shared.js'
 
 export default {
   strict: false,
@@ -68,6 +68,14 @@ export default {
       const fn = rootGetters['app/functions']
       let response
 
+      // #62: Default Value for "Date Watched"
+      if (
+        mode === 'tracklist'
+        && !titleData.hasOwnProperty('userDateWatched')
+      ) {
+        titleData.userDateWatched = getTimestamp()
+      }
+
       try {
         const reqHeaders = await getAuthHeaders()
         const data = await fetch(`${fn.api}/${mode}`, {
@@ -127,7 +135,7 @@ export default {
           // search is active, check whether there are results left
           // with search active, the respective current list === the search results
           const activeSearchResults = getters[`${mode}`]
-          
+
           if (activeSearchResults.length === 0) {
             // no results left to display -> reset search
             dispatch('tools/resetList', [mode, 0], { root: true })

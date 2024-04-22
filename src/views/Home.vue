@@ -29,19 +29,24 @@
         <h2 class="text-lg">
           A watchlist and tracking app for your movies and series
         </h2>
+        <p v-if="!loggedIn">
+          <router-link :to="{ name: 'about' }" class="text-yellow-600 hover:underline">
+            Read more...
+          </router-link>
+        </p>
       </section>
       <section v-if="loggedIn">
         <nav class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
-          <router-link :to="{name: 'watchlist'}" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
+          <router-link :to="{ name: 'watchlist' }" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
             Watchlist
           </router-link>
-          <router-link :to="{name: 'tracker'}" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
+          <router-link :to="{ name: 'tracker' }" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
             Tracker
           </router-link>
-          <router-link :to="{name: 'explore'}" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
+          <router-link :to="{ name: 'explore' }" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
             Explore
           </router-link>
-          <router-link :to="{name: 'profile'}" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
+          <router-link :to="{ name: 'profile' }" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
             Profile
           </router-link>
         </nav>
@@ -54,7 +59,7 @@
       <section v-else>
         <HomeLogin />
         <p class="text-sm mt-8">
-          No account? <router-link :to="{name: 'invite'}" class="text-yellow-600 hover:underline">
+          No account? <router-link :to="{ name: 'invite' }" class="text-yellow-600 hover:underline">
             Request an invite
           </router-link>.
         </p>

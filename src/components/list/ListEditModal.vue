@@ -3,7 +3,7 @@
   import InputRange from '@/components/input/InputRange.vue'
   import { computed, reactive, ref, watch } from 'vue'
   import { useStore } from 'vuex'
-  import { useDelay } from '@/helpers/shared'
+  import { getTimestamp, useDelay } from '@/helpers/shared'
 
   const props = defineProps({
     mode: String
@@ -15,7 +15,7 @@
 
   const editItem = ref({})
   const saveBtnState = reactive({ enabled: true, text: 'Save' })
-  
+
   const searchActive = computed(() => store.getters['tools/searchActive'])
   const srcItem = computed(() => store.getters['list/editTitleContent'])
   const writeSuccess = computed(() => store.getters['list/writeSuccess'])
@@ -25,16 +25,34 @@
       store.dispatch('app/toggleWindow', 0) // close modal with user input only if successful
     }
   })
-  
-  const editData = { userDateWatched: '', userNotes: '', userRating: '5' }
+
+  const editData = {
+    userDateWatched: '',
+    userNotes: '',
+    userRating: '5'
+  }
 
   const hasChanges = current => {
-    if (props.mode === 'tracklist') {
-      if (current.userDateWatched !== srcItem.value.userDateWatched || current.userNotes !== srcItem.value.userNotes || current.userRating !== srcItem.value.userRating) return true
-    } else if (props.mode === 'watchlist') {
-      if (current.userDateWatched !== editData.userDateWatched || current.userNotes !== editData.userNotes || current.userRating !== editData.userRating) return true
+    const {
+      userDateWatched,
+      userNotes,
+      userRating
+    } = current
+
+    switch (props.mode) {
+      case 'tracklist':
+        return userDateWatched !== srcItem.value.userDateWatched
+          || userNotes !== srcItem.value.userNotes
+          || userRating !== srcItem.value.userRating
+
+      case 'watchlist':
+        return userDateWatched !== editData.userDateWatched
+          || userNotes !== editData.userNotes
+          || userRating !== editData.userRating
+
+      default:
+        return false
     }
-    return false
   }
 
   const events = {
@@ -48,6 +66,7 @@
         setTimeout(() => store.dispatch('app/toggleWindow', 0), 100)
         store.dispatch('list/toggleWriteSuccess', false) // reset previous write success (if any); also used to notify the user about unsaved changes when closing the modal
       }
+
       store.dispatch('list/clearEditTitle')
     },
 
@@ -59,6 +78,7 @@
         case 'tracklist':
           store.dispatch('list/editListItem', [data, mode])
           break
+
         case 'watchlist':
           store.dispatch('list/writeList', [data, 'tracklist'])
           store.dispatch('list/deleteItem', [data.refId, mode, true])
@@ -74,6 +94,11 @@
 
   if (props.mode === 'tracklist') {
     editItem.value = { ...srcItem.value }
+
+    if (!editItem.value.userDateWatched) {
+      editItem.value.userDateWatched = getTimestamp()
+    }
+
     if (!editItem.value.userRating) {
       editItem.value.userRating = editData.userRating
     }
@@ -81,7 +106,12 @@
 
   if (props.mode === 'watchlist') {
     editItem.value = { ...srcItem.value, ...editData }
-    // Item is coming from watchlist, get rid of "watching" marker - see: #52
+
+    // Item is coming from watchlist:
+    //   1) set today as `userDateWatched` - see: #62
+    editItem.value.userDateWatched = getTimestamp()
+
+    //   2) get rid of "watching" marker - see: #52
     if (editItem.value.watching) {
       delete editItem.value['watching']
     }
