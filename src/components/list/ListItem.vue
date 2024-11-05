@@ -29,7 +29,7 @@
       @click.self="$emit('open-poster', [item.image, item.title])"
     />
   </div>
-  <div class="w-full sm:w-3/4 px-4 lg:px-6 self-center lg:self-start lg:py-2">
+  <div class="w-full sm:w-3/4 px-4 lg:px-6 self-center">
     <h3 class="text-xl mb-2">
       {{ item.title }}
       <BtnIMDb v-if="showIMDb" :id="item.id" class="hidden lg:inline-block ml-1" />
