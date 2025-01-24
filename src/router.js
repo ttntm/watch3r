@@ -13,7 +13,7 @@ const Support = () => import('@/views/Support.vue')
 const Signup = () => import('@/views/Signup.vue')
 
 function forbidden(to, from, next) {
-  if(store.getters['user/loggedIn']) {
+  if (store.getters['user/loggedIn']) {
     router.push({ name: 'home' }) // prevent logged in users from going where they shouldn't
   } else {
     return next()
@@ -63,7 +63,7 @@ const router = createRouter({
 
         if (qs.source === 'list' && qs.title && tl.length > 0) {
           store.dispatch('explore/updateRecMode', 'list')
-          
+
           const current = tl.filter(item => item.id === qs.title)
 
           if (current.length > 0 && current[0] !== recSource) {
@@ -180,7 +180,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   // close all open windows if there are any
   store.dispatch('app/closeAllModals')
-  
+
   // reset search when navigation occurs
   if (store.getters['tools/searchActive']) {
     store.dispatch('tools/resetList', [])

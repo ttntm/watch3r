@@ -25,7 +25,7 @@ let handleOutsideClick = null
 app.directive('click-blur', {
   beforeMount(el, binding, vnode) {
     handleClickBlur = (e) => {
-      if(clickBlurExclude.indexOf(e.target.nodeName) === -1) {
+      if (clickBlurExclude.indexOf(e.target.nodeName) === -1) {
         e.target.blur()
       }
     }
@@ -42,7 +42,7 @@ app.directive('click-outside', {
   beforeMount(el, binding, vnode) {
     handleOutsideClick = (e) => {
       e.stopPropagation()
-      if(!el.contains(e.target) && !e.target.classList.contains('click-outside-ignore')) {
+      if (!el.contains(e.target) && !e.target.classList.contains('click-outside-ignore')) {
         binding.value()
       }
     }
