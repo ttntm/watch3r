@@ -4,9 +4,14 @@ import store from '@/store/index.js'
 const noop = () => {}
 
 export function checkDuplicate(mode, input) {
-  const current = store.getters[`list/${mode}`]
-  return current.length > 0
-    ? current.findIndex(item => item.id === input)
+  const filterOrSearchActive = store.getters[`tools/${mode}Filtered`] > 0
+    || store.getters['tools/searchActive']
+  const list = filterOrSearchActive
+    ? store.getters[`list/${mode}Cache`]
+    : store.getters[`list/${mode}`]
+
+  return list.length > 0
+    ? list.findIndex(item => item.id === input)
     : -1
 }
 
@@ -125,7 +130,7 @@ export function useTitleSearch(list, searchTerm) {
     let title = item.title.toLowerCase()
 
     if (title.indexOf(term) === -1) {
-      return genre.indexOf(term) === -1 ? false : true
+      return genre.indexOf(term) !== -1
     } else {
       return true
     }

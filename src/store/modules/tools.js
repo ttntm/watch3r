@@ -101,7 +101,7 @@ export default {
         const filterSearch = getters['searchActive']
         const filterSearchTerm = getters['searchTerm']
         const key = filterMode[filterId].key
-        
+
         let filterFn = undefined
         let input = filterSearch ? useTitleSearch([...cache], filterSearchTerm) : cache // should it filter search results?
 
@@ -113,16 +113,16 @@ export default {
           case 'all':
             filterFn = el => el.id.length > 0
             break
-          
+
           case 'movie':
           case 'series':
             filterFn = el => el.type && el.type.toLowerCase() === key
             break
-          
+
           case 'watching':
             filterFn = el => el.watching && el.watching === true
             break
-          
+
           case 'notwatching':
             filterFn = el => {
               if (el.type.toLowerCase() !== 'series') return false
@@ -134,18 +134,18 @@ export default {
         if (!filterFn || typeof filterFn !== 'function') {
           return []
         }
-        
+
         return [...input].filter(el => filterFn(el))
       }
 
       filtered = doFilter()
-      
+
       commit(`list/SET_${mode.toUpperCase()}`, filtered, { root: true })
       commit(`SET_${mode.toUpperCase()}_FILTERED`, filterId)
-      
+
       if (filtered.length > 0) {
         dispatch('updateSort', mode)
-      } // else { dispatch('app/sendToastMessage', { text: `No results for this filter selection :(`, type: 'error' }, { root: true }) }
+      }
     },
 
     resetList({ commit, dispatch, getters, rootGetters }, args) {
@@ -209,40 +209,40 @@ export default {
         const order = sortMode[sortID].order
         const sortFiltered = getters['filterActive']
         const sortSearch = getters['searchActive']
-        
+
         let input = sortFiltered || sortSearch ? list : cache // should it sort search results?
         let sorted = []
 
         switch (key) {
           case 'date':
-            if(order === 'ascending') {
+            if (order === 'ascending') {
               sorted = [...input].sort(objSort('refId', false))
-            } else if(order === 'descending') {
+            } else if (order === 'descending') {
               sorted = [...input].sort(objSort('refId', true))
             }
             break
 
           case 'title':
-            if(order === 'ascending') {
+            if (order === 'ascending') {
               sorted = [...input].sort(objSort(key, false, (a) =>  a.toLowerCase()))
-            } else if(order === 'descending') {
+            } else if (order === 'descending') {
               sorted = [...input].sort(objSort(key, true, (a) =>  a.toLowerCase()))
             }
             break
 
           case 'rating':
             const modeRating = mode === 'tracklist' ? 'userRating' : 'imdbRating'
-            if(order === 'ascending') {
+            if (order === 'ascending') {
               sorted = [...input].sort(objSort(`${modeRating}`, false))
-            } else if(order === 'descending') {
+            } else if (order === 'descending') {
               sorted = [...input].sort(objSort(`${modeRating}`, true))
             }
             break
 
           case 'year':
-            if(order === 'ascending') {
+            if (order === 'ascending') {
               sorted = [...input].sort(objSort(key, false))
-            } else if(order === 'descending') {
+            } else if (order === 'descending') {
               sorted = [...input].sort(objSort(key, true))
             }
             break
