@@ -13,12 +13,6 @@
          src="https://img.shields.io/badge/on-indie%20hackers-blue?style=flat-square"
          align="center">
   </a>
-  <a href="https://twitter.com/intent/tweet?text=WATCH3R%20%20https%3A%2F%2Fwatch3r.app">
-    <img alt="tweet"
-         src="https://img.shields.io/twitter/url/https/github.com/ArmynC/ArminC-AutoExec.svg?style=flat-square&logo=twitter"
-         target="_blank"
-         align="center" />
-  </a>
 </p>
 
 # About watch3r
@@ -58,7 +52,7 @@ watch3r is completely free! You're welcome to give it a try.
 - [Add Title](https://watch3r.app/img/about_add-title.jpg)
 - [Edit Title](https://watch3r.app/img/about_edit-title.jpg)
 - [Recommendations](https://watch3r.app/img/about_recommendations.jpg)
-- [Add Recommendation](https://watch3r.app/img/about_add-recommendations)
+- [Add Recommendation](https://watch3r.app/img/about_add-recommendations.jpg)
 
 
 ## Contact
