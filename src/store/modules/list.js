@@ -118,12 +118,7 @@ export default {
       }
 
       if (response) {
-        const list = response.map(item => {
-          let temp = Object.assign({}, item.data)
-          temp.refId = item.ref['@ref'].id
-          return temp
-        })
-
+        const list = response
         // always cache the new data, so we can restore it without another DB query in case search is active
         commit(`SET_${mode.toUpperCase()}_CACHE`, list)
 
@@ -171,7 +166,7 @@ export default {
 
       try {
         const reqHeaders = await getAuthHeaders()
-        const data = await fetch(`${fn.api}/${mode}/${updatedTitleData.refId}`, {
+        const data = await fetch(`${fn.api}/${mode}/${updatedTitleData.id}`, {
           body: JSON.stringify(updatedTitleData),
           headers: reqHeaders,
           method: 'PUT'
@@ -200,7 +195,7 @@ export default {
 
       const getItem = id => {
         let content = getters[`${mode}`]
-        content = content.filter(item => item.refId === id)
+        content = content.filter(item => item.id === id)
         return content[0]
       }
 
@@ -216,7 +211,7 @@ export default {
       switch (mode) {
         case 'tracklist':
           listUpdate = searchResults.map(item => {
-            if (item.refId === data.refId) {
+            if (item.id === data.id) {
               item = Object.assign({}, data)
             }
             return item
@@ -224,7 +219,7 @@ export default {
           break
 
         case 'watchlist':
-          listUpdate = searchResults.filter(item => item.refId !== data.refId)
+          listUpdate = searchResults.filter(item => item.id !== data.id)
           break
       }
 
@@ -250,7 +245,7 @@ export default {
       const [id, mode] = args
       const searchResults = getters[`${mode}`]
 
-      const listUpdate = searchResults.filter(item => item.refId !== id)
+      const listUpdate = searchResults.filter(item => item.id !== id)
 
       commit(`SET_${mode.toUpperCase()}`, listUpdate)
     },

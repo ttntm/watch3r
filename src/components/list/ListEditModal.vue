@@ -81,7 +81,7 @@
 
         case 'watchlist':
           store.dispatch('list/writeList', [data, 'tracklist'])
-          store.dispatch('list/deleteItem', [data.refId, mode, true])
+          store.dispatch('list/deleteItem', [data.id, mode, true])
           break
       }
 

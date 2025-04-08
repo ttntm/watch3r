@@ -17,16 +17,23 @@ export async function getOMDB(api, requestData) {
       <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
     </circle>
   </svg>`
+
   store.dispatch('list/toggleWriteSuccess', false) // reset previous write success (if any) for each search
 
   let response
 
   try {
     const reqHeaders = await getAuthHeaders()
-    const data = await fetch(api, { body: JSON.stringify(requestData), method: 'POST', headers: reqHeaders })
+    const data = await fetch(api, {
+      body: JSON.stringify(requestData),
+      method: 'POST',
+      headers: reqHeaders
+    })
+
     response = await data.json()
   } catch (err) {
     console.error('OMDB error: ', err)
+
     searchStatus.value = `<span class="text-red-600">
       API error - please try again later.
     </span>`
@@ -39,9 +46,9 @@ export async function getOMDB(api, requestData) {
       Results provided by <a href="https://www.omdbapi.com" target="_blank" class="text-yellow-600 hover:text-black">OMDb API</a>
     </span>`
     searchResult.value.genre = response.Genre
-    searchResult.value.id = response.imdbID
+    searchResult.value.imdb_id = response.imdbID
     searchResult.value.image = response.Poster
-    searchResult.value.imdbRating = response.imdbRating
+    searchResult.value.imdb_rating = response.imdbRating
     searchResult.value.plot = response.Plot
     searchResult.value.title = response.Title
     searchResult.value.type = response.Type

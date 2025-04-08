@@ -8,7 +8,7 @@
   })
 
   const emit = defineEmits(['add-title'])
-  
+
   const store = useStore()
 
   const imgSrc = computed(() => props.src ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${props.src}` : `/img/poster.jpg`)
@@ -17,7 +17,7 @@
 
   const onBtnClick = () => {
     const titleData = {
-      id: props.item.id,
+      tmdb_id: props.item.id,
       type: recSource.value.type
     }
     return emit('add-title', titleData)

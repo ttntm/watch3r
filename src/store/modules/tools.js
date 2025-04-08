@@ -256,17 +256,21 @@ export default {
 
     updateFilter({ dispatch, getters }, mode) {
       const filterId = getters[`${mode}Filtered`]
+
       if (filterId > 0) {
         dispatch('filterList', [filterId, mode])
       }
     },
 
     updateFilterMode({ commit }, watching) {
-      const wFilters = watching ? [
-        ...defaultFilters,
-        { key: 'watching', name: 'Currently Watching', mode: 'watchlist' },
-        { key: 'notwatching', name: 'Not Watching', mode: 'watchlist' }
-      ] : [...defaultFilters]
+      const wFilters = watching
+        ? [
+          ...defaultFilters,
+          { key: 'watching', name: 'Currently Watching', mode: 'watchlist' },
+          { key: 'notwatching', name: 'Not Watching', mode: 'watchlist' }
+        ]
+        : [...defaultFilters]
+
       commit('SET_FILTER_MODE', wFilters)
     },
 

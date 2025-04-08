@@ -14,7 +14,7 @@ exports.handler = async (event, context, callback) => {
     return callback(null, { statusCode: 400, headers: { ...fnHeaders }, body: 'Bad Request' })
   } else {
     try {
-      const titleResponse = await fetch(`https://api.themoviedb.org/3/find/${data.id}?api_key=${key}&external_source=imdb_id`, { method: 'GET' })
+      const titleResponse = await fetch(`https://api.themoviedb.org/3/find/${data.imdb_id}?api_key=${key}&external_source=imdb_id`, { method: 'GET' })
       const titleData = await titleResponse.json()
 
       if (titleData) {

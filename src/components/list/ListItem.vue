@@ -71,9 +71,9 @@
     </p>
   </div>
   <div class="flex flex-row flex-wrap sm:flex-col self-center justify-center text-sm lg:text-base sm:px-4">
-    <BtnListItemEdit :id="item.refId" :mode="mode" class="sm:mb-4" />
-    <BtnListItemControls :id="item.refId" :mode="mode" :class="{ 'hidden' : !showExplore && !showIMDb }" class="ml-4 sm:ml-0 lg:hidden" />
-    <BtnListItemRemove :id="item.refId" :mode="mode" :class="{ 'hidden' : showExplore || showIMDb }" class="ml-4 sm:ml-0 lg:flex" />
+    <BtnListItemEdit :id="item.id" :mode="mode" class="sm:mb-4" />
+    <BtnListItemControls :id="item.id" :mode="mode" :class="{ 'hidden' : !showExplore && !showIMDb }" class="ml-4 sm:ml-0 lg:hidden" />
+    <BtnListItemRemove :id="item.id" :mode="mode" :class="{ 'hidden' : showExplore || showIMDb }" class="ml-4 sm:ml-0 lg:flex" />
   </div>
 </template>
 

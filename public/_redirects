@@ -6,3 +6,10 @@ https://master--watch3r.netlify.app/* https://watch3r.app/:splat 301!
 
 # Ads
 /app-ads.txt /ads.txt 301!
+
+/api/backup /.netlify/functions/backup 200
+/api/omdb /.netlify/functions/omdb-get 200
+/api/recommendations /.netlify/functions/tmdb-get-recs 200
+/api/tmdb /.netlify/functions/tmdb-omdb-get 200
+
+/api/* /.netlify/functions/api/:splat 200

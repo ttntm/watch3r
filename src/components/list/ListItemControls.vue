@@ -14,7 +14,7 @@
   const store = useStore()
 
   const { isVisible, toggleDelay } = useDelay()
-  
+
   const item = computed(() => store.getters['list/editTitleContent'])
   const showExplore = computed(() => store.getters['user/showExploreLinks'])
   const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
@@ -43,7 +43,7 @@
         <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" class="menu-item" target="_blank" rel="noopener" title="View on IMDb">
           View on IMDb
         </a>
-        <BtnListItemRemove :id="item.refId" display="text" :mode="mode" class="menu-item" />
+        <BtnListItemRemove :id="item.id" display="text" :mode="mode" class="menu-item" />
       </section>
     </section>
   </transition>
