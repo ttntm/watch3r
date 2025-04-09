@@ -23,7 +23,7 @@
 
   const posterSrc = ref('')
   const posterTitle = ref('')
-  
+
   const filterActive = computed(() => store.getters[`tools/${mode.value}Filtered`] > 0)
   const listData = computed(() => store.getters[`list/${mode.value}`])
   const listLength = computed(() => listData.value.length)
@@ -57,8 +57,8 @@
 </script>
 
 <template>
-  <section id="list" class="">
-    <section class="flex flex-col sm:flex-row sm:items-center justify-between">
+  <div id="list" class="">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between">
       <div class="mb-8 sm:mb-0 sm:mr-8 lg:mr-0">
         <h2 class="text-yellow-600 capitalize">{{ mode }}</h2>
         <p class="mb-0">
@@ -69,9 +69,9 @@
       <div class="flex-shrink-0">
         <BtnAddTitle />
       </div>
-    </section>
+    </div>
     <ListLoading v-if="listLength === 0 && !filterActive && !searchActive" />
-    <section v-else class="md:px-2 lg:px-8 xl:px-12 my-8">
+    <div v-else class="md:px-2 lg:px-8 xl:px-12 my-8">
       <div class="flex flex-col md:flex-row items-center">
         <ListSearch :list-length="listLength" :mode="mode" class="flex-1" />
         <ListFilter :list-length="listLength" :mode="mode" class="flex-1" />
@@ -79,8 +79,8 @@
       </div>
       <ListFilterStatus v-if="filterActive && listLength === 0" :mode="mode" class="mt-8" />
       <ListSearchStatus v-if="searchActive && (!filterActive || listLength >= 1)" :mode="mode" class="mt-8" />
-    </section>
-    <section v-if="listLength > 0" class="list">
+    </div>
+    <div v-if="listLength > 0" class="list">
       <ListItemWrapper v-for="title in listData" style="min-height: 250px;">
         <ListItem
           :key="title.id"
@@ -92,8 +92,8 @@
           @open-poster="onShowPoster($event)"
         />
       </ListItemWrapper>
-    </section>
-  </section>
+    </div>
+  </div>
   <ListAddModal v-if="modalOpen === 2" :mode="mode" />
   <ListEditModal v-if="modalOpen === 3" :mode="mode" />
   <ListPosterModal v-if="modalOpen === 4" :poster="posterSrc" :title="posterTitle" />

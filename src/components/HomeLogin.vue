@@ -50,18 +50,45 @@
   >
     <div class="input-group">
       <label for="login-email">Email</label>
-      <input id="login-email" v-model="credentials.email" type="email" placeholder="jane@doe.com" @input="events.onInput()">
+      <input
+        v-model="credentials.email"
+        id="login-email"
+        type="email"
+        placeholder="jane@doe.com"
+        @input="events.onInput()"
+      >
     </div>
     <div class="input-group">
       <label for="login-pwd">Password</label>
-      <input id="login-pwd" v-model="credentials.password" type="password" placeholder="************" @input="events.onInput()">
-      <router-link :to="{name: 'recover'}" class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0">
+      <input
+        v-model="credentials.password"
+        id="login-pwd"
+        type="password"
+        placeholder="************"
+        @input="events.onInput()"
+      >
+      <router-link
+        :to="{name: 'recover'}"
+        class="text-xs italic text-gray-600 hover:text-gray-800 mt-2 mb-0"
+      >
         Forgot your password?
       </router-link>
     </div>
-    <button v-click-blur type="submit" class="btn btn-black" :disabled="!credentials.email || !credentials.password">Login</button>
+    <button
+      v-click-blur
+      :disabled="!credentials.email || !credentials.password"
+      class="btn btn-black"
+      type="submit"
+    >
+      Login
+    </button>
     <transition name="loading">
-      <p v-if="cValidateMsg !== ''" class="text-sm font-bold mt-6 mb-0" :class="{ 'text-red-500' : !validate(credentials) }" v-html="cValidateMsg" />
+      <p
+        v-if="cValidateMsg !== ''"
+        :class="{ 'text-red-500' : !validate(credentials) }"
+        v-html="cValidateMsg"
+        class="text-sm font-bold mt-6 mb-0"
+      />
     </transition>
   </form>
 </template>

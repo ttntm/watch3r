@@ -12,7 +12,7 @@
     text: 'Update Profile'
   })
   const profileTab = ref(0)
-  
+
   const user = computed(() => store.getters['user/currentUser'])
   const userOptions = computed(() => store.getters['user/userOptions'])
 
@@ -29,10 +29,10 @@
   })
 
   const events = {
-    onTabClick(t) { 
+    onTabClick(t) {
       profileTab.value = t
     },
-    
+
     onUpdateSettings(s) {
       const pages = ['watchlist', 'tracklist']
       userSettings.data = s
@@ -63,8 +63,8 @@
 </script>
 
 <template>
-  <section id="user-profile" class="flex flex-grow items-center justify-items-center w-full h-full">
-    <section id="user-profile-form" class="user-profile-box flex flex-col md:flex-row self-start py-10 px-12 md:p-0 mx-auto">
+  <div id="user-profile" class="flex flex-grow items-center justify-items-center w-full h-full">
+    <div id="user-profile-form" class="user-profile-box flex flex-col md:flex-row self-start py-10 px-12 md:p-0 mx-auto">
       <div class="user-profile-sidebar flex flex-row md:flex-col justify-center md:justify-start flex-wrap md:py-10 md:px-12">
         <a class="mb-4" :class="{ 'current' : profileTab === 0 }" href="#account" @click.prevent="events.onTabClick(0)">Account</a>
         <a class="px-4 md:px-0 mb-4" :class="{ 'current' : profileTab === 1 }" href="#settings" @click.prevent="events.onTabClick(1)">Settings</a>
@@ -79,8 +79,8 @@
           {{ btnState.text }}
         </button>
       </div>
-    </section>
-  </section>
+    </div>
+  </div>
 </template>
 
 <style lang="postcss" scoped>

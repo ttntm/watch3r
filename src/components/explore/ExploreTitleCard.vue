@@ -35,7 +35,7 @@
     />
     <div class="card-overlay">
       <div class="flex flex-col">
-        <h3 class="text-lg sm:text-2xl text-center text-yellow-600 mb-8">
+        <h3 class="text-lg sm:text-2xl text-center text-yellow-600 select-none pointer-events-none mb-8">
           {{ titleDisplay }}
         </h3>
         <button

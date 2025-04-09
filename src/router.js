@@ -64,7 +64,7 @@ const router = createRouter({
         if (qs.source === 'list' && qs.title && tl.length > 0) {
           store.dispatch('explore/updateRecMode', 'list')
 
-          const current = tl.filter(item => item.id === qs.title)
+          const current = tl.filter(item => item.imdb_id === qs.title)
 
           if (current.length > 0 && current[0] !== recSource) {
             store.dispatch('explore/updateRecSource', current[0])

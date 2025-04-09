@@ -16,7 +16,7 @@ module.exports = async (event, context) => {
       .from(`${list}`)
       .select()
       .eq('user_id', user)
-      .order('updated', { ascending: false })
+      .order('created', { ascending: false })
 
     if (error) {
       throw JSON.stringify(error)
@@ -28,7 +28,7 @@ module.exports = async (event, context) => {
       body: JSON.stringify(data)
     }
   } catch (ex) {
-    console.log('error', ex)
+    console.error(ex)
 
     return {
       statusCode: 400,

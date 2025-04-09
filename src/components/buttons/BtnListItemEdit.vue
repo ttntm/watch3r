@@ -11,8 +11,8 @@
 
   const btnText = computed(() => props.mode === 'tracklist' ? 'Edit' : 'Watched')
 
-  const onBtnClick = (refId, mode) => {
-    store.dispatch('list/selectEditTitle', [refId, mode])
+  const onBtnClick = (id, mode) => {
+    store.dispatch('list/selectEditTitle', [id, mode])
     store.dispatch('app/toggleWindow', 3)
   }
 </script>

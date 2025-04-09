@@ -52,7 +52,7 @@
 </script>
 
 <template>
-  <section id="invite" class="flex flex-grow items-center justify-items-center w-full h-full">
+  <div id="invite" class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="flex flex-col just-items-center w-full max-w-md self-center mx-auto">
       <img src="/img/icon.svg" class="mx-auto mb-10" alt="WATCH3R" style="width: 125px">
       <form
@@ -80,5 +80,5 @@
         This form will be processed by Netlify. As such, you explicitly agree with Netlify processing your email and IP address according to their <a href="https://www.netlify.com/gdpr-ccpa" target="_blank" class="underline">data processing guidelines</a>.
       </p>
     </div>
-  </section>
+  </div>
 </template>

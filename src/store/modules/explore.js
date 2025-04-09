@@ -75,15 +75,15 @@ export default {
 
     updateRecSource({ commit, dispatch, getters }, title) {
       const current = getters['recSource']
-      const isCurrent = Boolean(current.id === title.id)
+      const isCurrent = Boolean(current.imdb_id === title.imdb_id)
 
       if (!isCurrent) {
         dispatch('clearRecommendations')
         commit('SET_REC_SOURCE', title)
 
-        if (typeof title === 'object' && (title.id && title.type)) {
+        if (typeof title === 'object' && (title.imdb_id && title.type)) {
           dispatch('getRecommendations', {
-            id: title.id,
+            id: title.imdb_id,
             type: title.type
           })
         }

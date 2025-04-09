@@ -19,7 +19,7 @@
 
 <template>
   <transition name="poster">
-    <section v-if="isVisible" id="poster-modal" v-esc="closePoster" v-scroll-lock>
+    <div v-if="isVisible" id="poster-modal" v-esc="closePoster" v-scroll-lock>
       <img
         v-click-outside="closePoster"
         :src="poster"
@@ -28,7 +28,7 @@
         class="poster"
         width="500"
       />
-    </section>
+    </div>
   </transition>
 </template>
 

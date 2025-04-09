@@ -69,11 +69,10 @@ export default {
       let response
 
       // #62: Default Value for "Date Watched"
-      if (
-        mode === 'tracklist'
-        && !titleData.hasOwnProperty('userDateWatched')
-      ) {
-        titleData.userDateWatched = getTimestamp()
+      if (mode === 'tracklist') {
+        titleData.user_date_watched = titleData.hasOwnProperty('user_date_watched')
+          ? new Date(titleData.user_date_watched)
+          : new Date()
       }
 
       try {
@@ -83,17 +82,28 @@ export default {
           headers: reqHeaders,
           method: 'POST'
         })
+
         response = await data.json()
       } catch (err) {
         console.error(err)
       }
 
-      if (response) {
+      if (response && response.length > 0) {
         dispatch('readList', mode)
         dispatch('toggleWriteSuccess', true)
-        dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully added to ${mode}.`, type: 'success' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `"${response[0].title}" successfully added to ${mode}.`,
+            type: 'success'
+          },
+          { root: true }
+        )
       } else {
-        dispatch('app/sendToastMessage', { text: `An error occurred. Please try again later.`, type: 'error' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `An error occurred. Please try again later.`,
+            type: 'error'
+          },
+          { root: true }
+        )
       }
     },
 
@@ -145,7 +155,12 @@ export default {
           dispatch('tools/updateSort', mode, { root: true })
         }
       } else {
-        dispatch('app/sendToastMessage', { text: `An error occurred loading the ${mode}. Please try again later.`, type: 'error' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `An error occurred loading the ${mode}. Please try again later.`,
+            type: 'error'
+          },
+          { root: true }
+        )
       }
     },
 
@@ -171,12 +186,13 @@ export default {
           headers: reqHeaders,
           method: 'PUT'
         })
+
         response = await data.json()
       } catch (err) {
         console.error(err)
       }
 
-      if (response) {
+      if (response && response.length > 0) {
         dispatch('readList', mode)
         dispatch('toggleWriteSuccess', true)
 
@@ -184,9 +200,19 @@ export default {
           dispatch('updateWatchingState', updatedTitleData.id)
         }
 
-        dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully updated.`, type: 'success' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `"${response[0].title}" successfully updated.`,
+            type: 'success'
+          },
+          { root: true }
+        )
       } else {
-        dispatch('app/sendToastMessage', { text: `An error occurred. Please try again later.`, type: 'error' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `An error occurred. Please try again later.`,
+            type: 'error'
+          },
+          { root: true }
+        )
       }
     },
 
@@ -259,25 +285,33 @@ export default {
       try {
         const reqHeaders = await getAuthHeaders()
         const data = await fetch(`${fn.api}/${mode}`, {
-          body: JSON.stringify({ item: id }),
+          body: JSON.stringify({ listItemId: id }),
           headers: reqHeaders,
           method: 'DELETE'
         })
+
         response = await data.json()
       } catch (err) {
         console.error(err)
       }
 
       if (response) {
-        msg = { text: `Item removed from ${mode}.`, type: 'success' }
+        msg = {
+          text: `Item removed from ${mode}.`,
+          type: 'success'
+        }
+
         dispatch('readList', mode)
       } else {
-        msg = { text: `Couldn't delete item from ${mode}. Please try again later.`, type: 'error' }
+        msg = {
+          text: `Couldn't delete item from ${mode}. Please try again later.`,
+          type: 'error'
+        }
       }
 
       if (!silent) {
         dispatch('app/sendToastMessage', msg, { root: true })
-      } // else { console.log(msg) }
+      }
     }
   }
 }

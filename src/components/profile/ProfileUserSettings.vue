@@ -8,7 +8,7 @@
   const emit = defineEmits(['update:settings'])
 
   const store = useStore()
-  
+
   const allSortModes = computed(() => store.getters['tools/sortMode'])
   const userOptions = computed(() => store.getters['user/userOptions'])
 
@@ -48,9 +48,21 @@
   <div class="input-group mb-8">
     <label>Start Page</label>
     <p class="text-xs text-gray-600 mb-3">Automatic forwarding after login.</p>
-    <div class="flex flex-row">
-      <InputRadio class="text-sm mr-4" name="start-page" :label="'watchlist'" :value="settings.user_start" @update:radio="events.onUpdateStartPage($event)" />
-      <InputRadio class="text-sm" name="start-page" :label="'tracklist'" :value="settings.user_start" @update:radio="events.onUpdateStartPage($event)" />
+    <div class="flex flex-row gap-4">
+      <InputRadio
+        :label="'watchlist'"
+        :value="settings.user_start"
+        class="text-sm"
+        name="start-page"
+        @update:radio="events.onUpdateStartPage($event)"
+      />
+      <InputRadio
+        :label="'tracklist'"
+        :value="settings.user_start"
+        class="text-sm"
+        name="start-page"
+        @update:radio="events.onUpdateStartPage($event)"
+      />
     </div>
   </div>
   <div class="input-group mb-8">
@@ -79,19 +91,31 @@
     <p class="text-xs text-gray-600 mb-3">
       Enable IMDb link display (search results and list items).
     </p>
-    <InputCheckbox v-model="settings.user_imdb" :name="'imdb-links'" @update:cb="events.onUpdateIMDbLinks($event)">
+    <InputCheckbox
+      v-model="settings.user_imdb"
+      :name="'imdb-links'"
+      @update:cb="events.onUpdateIMDbLinks($event)"
+    >
       Show IMDb links
     </InputCheckbox>
     <p class="text-xs text-gray-600 mt-4 mb-3">
       Tracklist: display links to explore recommendations.
     </p>
-    <InputCheckbox v-model="settings.user_explore" :name="'explore-links'" @update:cb="events.onUpdateExploreLinks($event)">
+    <InputCheckbox
+      v-model="settings.user_explore"
+      :name="'explore-links'"
+      @update:cb="events.onUpdateExploreLinks($event)"
+    >
       Show recommendation links
     </InputCheckbox>
     <p class="text-xs text-gray-600 mt-4 mb-3">
       Watchlist: enable "currently watching" for TV series.
     </p>
-    <InputCheckbox v-model="settings.user_watching" :name="'mark-watching'" @update:cb="events.onUpdateWatching($event)">
+    <InputCheckbox
+      v-model="settings.user_watching"
+      :name="'mark-watching'"
+      @update:cb="events.onUpdateWatching($event)"
+    >
       Enable "currently watching"
     </InputCheckbox>
   </div>

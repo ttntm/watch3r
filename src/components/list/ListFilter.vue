@@ -44,12 +44,12 @@
     :currentVal="selected"
     :data="allFilterModes"
     :disabled="filterEnabled === false || (filterCurrent <= 0 && listLength === 1) || listLength === 0"
-    id="filter"
     :placeholder="`Filter ${mode}...`"
     :styles="{
       inner: 'w-full block appearance-none bg-transparent border border-transparent px-3 py-2 focus:border-yellow-600 focus:shadow-inner',
       wrapper: 'w-full relative text-gray-700 bg-gray-300 text-sm lg:text-base shadow-lg md:mx-4 lg:mx-8 mb-8 md:mb-0'
     }"
+    id="filter"
     @update:select="onSelectChange($event)"
   >
     <template #option="{ name }">

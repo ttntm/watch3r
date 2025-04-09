@@ -20,7 +20,7 @@
 </script>
 
 <template>
-  <section id="recover" class="flex flex-grow items-center justify-items-center w-full h-full">
+  <div id="recover" class="flex flex-grow items-center justify-items-center w-full h-full">
     <form
       id="recover-account-form"
       class="recover-box w-full max-w-full self-center px-12 py-10 mx-auto"
@@ -36,7 +36,7 @@
       </div>
       <button v-click-blur type="submit" class="btn btn-black mr-auto" :disabled="!cred.email">Recover Account</button>
     </form>
-  </section>
+  </div>
 </template>
 
 <style lang="postcss" scoped>

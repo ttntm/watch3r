@@ -1,7 +1,7 @@
 <script setup>
   import { computed, onMounted, ref, watch } from 'vue'
   import { useStore } from 'vuex'
-  
+
   const props = defineProps({
     autofocus: Boolean,
     listLength: Number,
@@ -60,13 +60,13 @@
       <line x1="21" y1="21" x2="15" y2="15" />
     </svg>
     <input
-      id="search-input"
-      ref="input"
       v-model.trim="searchInput"
-      type="text"
-      class="w-full search-input"
       :disabled="useDisabled"
       :placeholder="pch"
+      id="search-input"
+      ref="input"
+      type="text"
+      class="w-full search-input"
       @keyup.enter="events.onDoSearch()"
     >
     <div class="search-input-group-append">

@@ -1,5 +1,5 @@
-const faunadb = require('faunadb')
 const fetch = require('node-fetch')
+const spb = require('@supabase/supabase-js')
 
 exports.handler = async (event, context, callback) => {
   const { identity } = context.clientContext
@@ -19,68 +19,71 @@ exports.handler = async (event, context, callback) => {
     let responseUL = await requestUL.json()
 
     if (responseUL.users.length > 0) {
-      let userlistPayload = []
+      const supabase = spb.createClient(process.env.SPB_URL, process.env.SPB_API_KEY, {
+        auth: {
+          autoRefreshToken: false,
+          detectSessionInUrl: false,
+          persistSession: false
+        }
+      })
+      let userlistUpdate = []
+
       for (const user of responseUL.users) {
         if (user.confirmed_at) {
-          userlistPayload.push(
-            {
-              data: {
-                id: user.id,
-                email: user.email,
-                created: user.confirmed_at
-              }
+          userlistUpdate.push({
+            data: {
+              id: user.id,
+              email: user.email,
+              created: user.confirmed_at
             }
-          )
+          })
         }
       }
 
       try {
-        const client = new faunadb.Client({
-          secret: process.env.FAUNA_SECRET
-        })
-        const q = faunadb.query
+        const { data, error } = await supabase
+          .from('users')
+          .upsert(userlistUpdate)
+          .select()
 
-        let upsert = await client.query(
-          q.Map(
-            userlistPayload,
-            q.Lambda(
-              ['payloadItem'],
-              q.If(
-                q.Exists(
-                  q.Match(
-                    q.Index('userId'),
-                    q.Select(['data', 'id'], q.Var('payloadItem'))
-                  )
-                ),
-                q.Replace(
-                  q.Select(
-                    'ref',
-                    q.Get(
-                      q.Match(
-                        q.Index('userId'),
-                        q.Select(['data', 'id'], q.Var('payloadItem'))
-                      )
-                    )
-                  ),
-                  q.Var('payloadItem')
-                ),
-                q.Create(q.Collection('users'), q.Var('payloadItem'))
-              )
-            )
-          )
-        )
+          if (error) {
+            throw JSON.stringify(error)
+          }
 
-        console.log(upsert)
-        return callback(null, { statusCode: 200, body: JSON.stringify({ message: "Userlist updated", response: upsert }) })
-      } catch (error) {
-        console.error(error)
-        return callback(null, { statusCode: 400, body: JSON.stringify(error) })
+          return {
+            statusCode: 200,
+            headers: headers,
+            body: JSON.stringify({ message: 'Userlist updated' })
+          }
+      } catch (ex) {
+        console.error(ex)
+
+        return {
+          statusCode: 400,
+          headers: headers,
+          body: typeof ex === 'string'
+            ? ex
+            : JSON.stringify(ex)
+        }
       }
     } else {
-      return callback(null, { statusCode: 400, body: 'Could not obtain userlist' })
+      console.error(ex)
+
+      return {
+        statusCode: 400,
+        headers: headers,
+        body: 'Could not obtain userlist'
+      }
     }
-  } catch (error) {
-    console.error(error)
-    return callback(null, { statusCode: 400, body: JSON.stringify(error) })
+  } catch (ex) {
+    console.error(ex)
+
+    return {
+      statusCode: 400,
+      headers: headers,
+      body: typeof ex === 'string'
+        ? ex
+        : JSON.stringify(ex)
+    }
   }
 }
