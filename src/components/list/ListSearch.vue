@@ -23,7 +23,7 @@
 </script>
 
 <template>
-  <section class="w-full text-sm lg:text-base shadow-lg mb-8 md:mb-0 md:mr-4 lg:mr-8">
+  <div class="w-full text-sm lg:text-base shadow-lg mb-8 md:mb-0 md:mr-4 lg:mr-8">
     <InputSearch
       :list-length="listLength"
       class="text-gray-700"
@@ -31,5 +31,5 @@
       @do-search="events.onDoSearch($event)"
       @reset-search="events.onResetSearch()"
     />
-  </section>
+  </div>
 </template>

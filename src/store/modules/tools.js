@@ -20,6 +20,8 @@ export default {
       sortMode: [
         { key: 'date', name: 'Date Added', order: 'ascending' },
         { key: 'date', name: 'Date Added', order: 'descending' },
+        { key: 'updated', name: 'Last Updated', order: 'ascending' },
+        { key: 'updated', name: 'Last Updated', order: 'descending' },
         { key: 'rating', name: 'Rating', order: 'ascending' },
         { key: 'rating', name: 'Rating', order: 'descending' },
         { key: 'year', name: 'Release', order: 'ascending' },
@@ -216,10 +218,20 @@ export default {
         switch (key) {
           case 'date':
             if (order === 'ascending') {
-              sorted = [...input].sort(objSort('refId', false))
+              sorted = [...input].sort(objSort('created', false, (d) => new Date(d)))
             } else if (order === 'descending') {
-              sorted = [...input].sort(objSort('refId', true))
+              sorted = [...input].sort(objSort('created', true, (d) => new Date(d)))
             }
+
+            break
+
+          case 'updated':
+            if (order === 'ascending') {
+              sorted = [...input].sort(objSort('updated', false, (d) => new Date(d)))
+            } else if (order === 'descending') {
+              sorted = [...input].sort(objSort('updated', true, (d) => new Date(d)))
+            }
+
             break
 
           case 'title':
@@ -228,15 +240,18 @@ export default {
             } else if (order === 'descending') {
               sorted = [...input].sort(objSort(key, true, (a) =>  a.toLowerCase()))
             }
+
             break
 
           case 'rating':
-            const modeRating = mode === 'tracklist' ? 'userRating' : 'imdbRating'
+            const modeRating = mode === 'tracklist' ? 'user_rating' : 'imdb_rating'
+
             if (order === 'ascending') {
               sorted = [...input].sort(objSort(`${modeRating}`, false))
             } else if (order === 'descending') {
               sorted = [...input].sort(objSort(`${modeRating}`, true))
             }
+
             break
 
           case 'year':
@@ -245,6 +260,7 @@ export default {
             } else if (order === 'descending') {
               sorted = [...input].sort(objSort(key, true))
             }
+
             break
         }
         return sorted
@@ -256,17 +272,21 @@ export default {
 
     updateFilter({ dispatch, getters }, mode) {
       const filterId = getters[`${mode}Filtered`]
+
       if (filterId > 0) {
         dispatch('filterList', [filterId, mode])
       }
     },
 
     updateFilterMode({ commit }, watching) {
-      const wFilters = watching ? [
-        ...defaultFilters,
-        { key: 'watching', name: 'Currently Watching', mode: 'watchlist' },
-        { key: 'notwatching', name: 'Not Watching', mode: 'watchlist' }
-      ] : [...defaultFilters]
+      const wFilters = watching
+        ? [
+          ...defaultFilters,
+          { key: 'watching', name: 'Currently Watching', mode: 'watchlist' },
+          { key: 'notwatching', name: 'Not Watching', mode: 'watchlist' }
+        ]
+        : [...defaultFilters]
+
       commit('SET_FILTER_MODE', wFilters)
     },
 

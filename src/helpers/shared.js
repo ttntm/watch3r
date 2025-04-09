@@ -11,7 +11,7 @@ export function checkDuplicate(mode, input) {
     : store.getters[`list/${mode}`]
 
   return list.length > 0
-    ? list.findIndex(item => item.id === input)
+    ? list.findIndex(item => item.imdb_id === input)
     : -1
 }
 

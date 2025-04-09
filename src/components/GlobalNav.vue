@@ -16,13 +16,28 @@
   <nav class="w-full flex flex-row justify-between sm:justify-start items-center px-4 py-2 mb-8">
     <BtnMenu class="block text-gray-600 hover:text-gray-200 focus:text-gray-200" />
     <div v-if="loggedIn" class="hidden sm:flex flex-row items-center justify-center flex-grow">
-      <router-link v-click-blur :to="{ name: 'watchlist' }" class="nav-link" :class="{ 'active' : currentView === 'watchlist' }">
+      <router-link
+        v-click-blur
+        :to="{ name: 'watchlist' }"
+        :class="{ 'active' : currentView === 'watchlist' }"
+        class="nav-link"
+      >
         Watchlist
       </router-link>
-      <router-link v-click-blur :to="{ name: 'tracker' }" class="nav-link" :class="{ 'active' : currentView === 'tracker' }">
+      <router-link
+        v-click-blur
+        :to="{ name: 'tracker' }"
+        :class="{ 'active' : currentView === 'tracker' }"
+        class="nav-link"
+      >
         Tracker
       </router-link>
-      <router-link v-click-blur :to="{ name: 'explore' }" class="nav-link" :class="{ 'active' : currentView === 'explore' }">
+      <router-link
+        v-click-blur
+        :to="{ name: 'explore' }"
+        :class="{ 'active' : currentView === 'explore' }"
+        class="nav-link"
+      >
         Explore
       </router-link>
     </div>

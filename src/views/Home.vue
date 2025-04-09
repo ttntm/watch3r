@@ -19,9 +19,9 @@
 </script>
 
 <template>
-  <section class="flex flex-grow items-center justify-items-center w-full h-full">
+  <div class="flex flex-grow items-center justify-items-center w-full h-full">
     <div class="text-center self-center max-w-full md:max-w-sm mx-auto">
-      <section class="mb-12">
+      <div class="mb-12">
         <h1 class="text-lg text-gray-600">
           Presenting...
         </h1>
@@ -34,8 +34,8 @@
             Read more...
           </router-link>
         </p>
-      </section>
-      <section v-if="loggedIn">
+      </div>
+      <div v-if="loggedIn">
         <nav class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
           <router-link :to="{ name: 'watchlist' }" class="w-3/4 sm:w-auto btn btn-black mx-auto sm:m-0">
             Watchlist
@@ -50,20 +50,20 @@
             Profile
           </router-link>
         </nav>
-        <section class="text-center mt-12">
+        <div class="text-center mt-12">
           <p class="mb-0">
             Have fun, we hope you like it here.
           </p>
-        </section>
-      </section>
-      <section v-else>
+        </div>
+      </div>
+      <div v-else>
         <HomeLogin />
         <p class="text-sm mt-8">
           No account? <router-link :to="{ name: 'invite' }" class="text-yellow-600 hover:underline">
             Request an invite
           </router-link>.
         </p>
-      </section>
+      </div>
     </div>
-  </section>
+  </div>
 </template>

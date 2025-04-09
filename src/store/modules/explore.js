@@ -46,7 +46,12 @@ export default {
 
       try {
         const reqHeaders = await getAuthHeaders()
-        const data = await fetch(fn.tmdbGetRecs, { body: JSON.stringify(titleData), method: 'POST', headers: reqHeaders })
+        const data = await fetch(fn.tmdbGetRecs, {
+          body: JSON.stringify(titleData),
+          method: 'POST',
+          headers: reqHeaders
+        })
+
         response = await data.json()
       } catch(err) {
         console.error("TMDB API error [getRecommendations()]", err)
@@ -70,15 +75,15 @@ export default {
 
     updateRecSource({ commit, dispatch, getters }, title) {
       const current = getters['recSource']
-      const isCurrent = Boolean(current.id === title.id)
+      const isCurrent = Boolean(current.imdb_id === title.imdb_id)
 
       if (!isCurrent) {
         dispatch('clearRecommendations')
         commit('SET_REC_SOURCE', title)
 
-        if (typeof title === 'object' && (title.id && title.type)) {
+        if (typeof title === 'object' && (title.imdb_id && title.type)) {
           dispatch('getRecommendations', {
-            id: title.id,
+            id: title.imdb_id,
             type: title.type
           })
         }

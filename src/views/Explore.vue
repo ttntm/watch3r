@@ -16,8 +16,12 @@
 
   const filterActive = computed(() => {
     const filterId = store.getters['tools/tracklistFiltered']
-    if (filterId <= 0) return ''
     const filterMode = store.getters['tools/filterMode']
+
+    if (filterId <= 0) {
+      return ''
+    }
+
     return filterMode[filterId] ? filterMode[filterId].name : ''
   })
   const modalOpen = computed(() => store.getters['app/windowOpen'])
@@ -39,14 +43,14 @@
       }
     }
   }
-  
+
   if (!recMode.value) {
     events.switchMode('manual')
   }
 </script>
 
 <template>
-  <section id="explore">
+  <div id="explore">
     <div class="sm:text-center">
       <h1 class="h2 text-yellow-600">Recommendations</h1>
       <h2 class="text-base font-normal mb-0">
@@ -62,7 +66,7 @@
       <a v-click-blur href="#manual" class="hover:text-yellow-600 ml-4 sm:mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'manual' }" @click.prevent="events.switchMode('manual')">Manual</a>
       <a v-click-blur href="#list" class="hover:text-yellow-600 ml-4 sm:mx-4" :class="{ 'text-yellow-600 underline' : recMode === 'list' }" @click.prevent="events.switchMode('list')">Tracklist<span v-if="filterActive" class="">&nbsp;({{ filterActive }})</span></a>
     </nav>
-    <section class="w-full sm:w-2/3 lg:w-1/2 mx-auto mt-8 mb-12">
+    <div class="w-full sm:w-2/3 lg:w-1/2 mx-auto mt-8 mb-12">
       <div class="flex flex-row justify-center" style="height: 42px;">
         <ExploreSelectTitle v-if="recMode === 'list'" />
         <BtnAddTitle v-else btnText="Select Title" />
@@ -73,10 +77,10 @@
           &#9432; Currently showing recommendations based on <BtnIMDb v-if="showIMDb" :id="recSource.id" display="text" class="inline-block text-yellow-600 hover:underline">{{ recSource.title }}</BtnIMDb><span v-else class="font-bold">{{ recSource.title }}</span> ({{ recSource.year }}).
         </p>
       </transition>
-    </section>
-    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 xl:gap-10 sm:px-4 xl:px-0">
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 xl:gap-10 sm:px-4 xl:px-0">
       <ExploreTitleCard v-for="(item, index) in recommendations.slice(0, 20)" :key="index" :item="item" :src="item.poster_path" @add-title="events.onCardClick($event)" />
-    </section>
+    </div>
     <div v-if="!recommendations.length && !rsEmpty">
       <img src="/img/loading.svg" class="my-16 mx-auto">
     </div>
@@ -86,7 +90,7 @@
         <img src="/img/tmdb.svg" class="block h-4 mx-auto" alt="TMDB logo">
       </a>
     </div>
-  </section>
+  </div>
   <ListAddModal v-if="modalOpen === 2" mode="explore" />
   <ListAddModal v-if="modalOpen === 5" :content-explore="exploreContent" mode="watchlist" />
   <ModalBackdrop />

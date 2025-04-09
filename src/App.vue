@@ -52,13 +52,13 @@
 </script>
 
 <template>
-  <section id="app-inner" class="flex flex-col min-h-screen">
+  <div id="app-inner" class="flex flex-col min-h-screen">
     <GlobalNav />
-    <section class="container flex flex-col flex-grow flex-shrink-0 px-4 mx-auto">
+    <div class="container flex flex-col flex-grow flex-shrink-0 px-4 mx-auto">
       <router-view :key="routeFull" />
-    </section>
+    </div>
     <GlobalFooter :menuItems="menuItems" />
-  </section>
+  </div>
   <GlobalMenu :menuItems="menuItems" :show="menuOpen" />
   <ToastMessage />
 </template>

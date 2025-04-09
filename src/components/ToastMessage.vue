@@ -5,7 +5,7 @@
   const store = useStore()
 
   const toastMessage = computed(() => store.getters['app/toastMessage'])
-  
+
   const onClose = () => {
     store.dispatch('app/sendToastMessage', null)
   }
@@ -13,7 +13,7 @@
 
 <template>
   <transition name="toast-fade">
-    <section v-if="toastMessage" id="toast-message" class="fixed bottom-0 right-0 max-w-md z-20 m-8">
+    <div v-if="toastMessage" id="toast-message" class="fixed bottom-0 right-0 max-w-md z-20 m-8">
       <div
         :class="{
           'error': toastMessage.type === 'error',
@@ -38,6 +38,6 @@
           </span>
         </div>
       </div>
-    </section>
+    </div>
   </transition>
 </template>

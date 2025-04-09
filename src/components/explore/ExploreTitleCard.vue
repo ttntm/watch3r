@@ -8,7 +8,7 @@
   })
 
   const emit = defineEmits(['add-title'])
-  
+
   const store = useStore()
 
   const imgSrc = computed(() => props.src ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${props.src}` : `/img/poster.jpg`)
@@ -17,7 +17,7 @@
 
   const onBtnClick = () => {
     const titleData = {
-      id: props.item.id,
+      tmdb_id: props.item.id,
       type: recSource.value.type
     }
     return emit('add-title', titleData)
@@ -35,7 +35,7 @@
     />
     <div class="card-overlay">
       <div class="flex flex-col">
-        <h3 class="text-lg sm:text-2xl text-center text-yellow-600 mb-8">
+        <h3 class="text-lg sm:text-2xl text-center text-yellow-600 select-none pointer-events-none mb-8">
           {{ titleDisplay }}
         </h3>
         <button

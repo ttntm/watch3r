@@ -69,11 +69,10 @@ export default {
       let response
 
       // #62: Default Value for "Date Watched"
-      if (
-        mode === 'tracklist'
-        && !titleData.hasOwnProperty('userDateWatched')
-      ) {
-        titleData.userDateWatched = getTimestamp()
+      if (mode === 'tracklist') {
+        titleData.user_date_watched = titleData.hasOwnProperty('user_date_watched')
+          ? new Date(titleData.user_date_watched)
+          : new Date()
       }
 
       try {
@@ -83,17 +82,28 @@ export default {
           headers: reqHeaders,
           method: 'POST'
         })
+
         response = await data.json()
       } catch (err) {
         console.error(err)
       }
 
-      if (response) {
+      if (response && response.length > 0) {
         dispatch('readList', mode)
         dispatch('toggleWriteSuccess', true)
-        dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully added to ${mode}.`, type: 'success' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `"${response[0].title}" successfully added to ${mode}.`,
+            type: 'success'
+          },
+          { root: true }
+        )
       } else {
-        dispatch('app/sendToastMessage', { text: `An error occurred. Please try again later.`, type: 'error' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `An error occurred. Please try again later.`,
+            type: 'error'
+          },
+          { root: true }
+        )
       }
     },
 
@@ -118,12 +128,7 @@ export default {
       }
 
       if (response) {
-        const list = response.map(item => {
-          let temp = Object.assign({}, item.data)
-          temp.refId = item.ref['@ref'].id
-          return temp
-        })
-
+        const list = response
         // always cache the new data, so we can restore it without another DB query in case search is active
         commit(`SET_${mode.toUpperCase()}_CACHE`, list)
 
@@ -150,7 +155,12 @@ export default {
           dispatch('tools/updateSort', mode, { root: true })
         }
       } else {
-        dispatch('app/sendToastMessage', { text: `An error occurred loading the ${mode}. Please try again later.`, type: 'error' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `An error occurred loading the ${mode}. Please try again later.`,
+            type: 'error'
+          },
+          { root: true }
+        )
       }
     },
 
@@ -171,17 +181,18 @@ export default {
 
       try {
         const reqHeaders = await getAuthHeaders()
-        const data = await fetch(`${fn.api}/${mode}/${updatedTitleData.refId}`, {
+        const data = await fetch(`${fn.api}/${mode}/${updatedTitleData.id}`, {
           body: JSON.stringify(updatedTitleData),
           headers: reqHeaders,
           method: 'PUT'
         })
+
         response = await data.json()
       } catch (err) {
         console.error(err)
       }
 
-      if (response) {
+      if (response && response.length > 0) {
         dispatch('readList', mode)
         dispatch('toggleWriteSuccess', true)
 
@@ -189,9 +200,19 @@ export default {
           dispatch('updateWatchingState', updatedTitleData.id)
         }
 
-        dispatch('app/sendToastMessage', { text: `"${response.data.title}" successfully updated.`, type: 'success' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `"${response[0].title}" successfully updated.`,
+            type: 'success'
+          },
+          { root: true }
+        )
       } else {
-        dispatch('app/sendToastMessage', { text: `An error occurred. Please try again later.`, type: 'error' }, { root: true })
+        dispatch('app/sendToastMessage', {
+            text: `An error occurred. Please try again later.`,
+            type: 'error'
+          },
+          { root: true }
+        )
       }
     },
 
@@ -200,7 +221,7 @@ export default {
 
       const getItem = id => {
         let content = getters[`${mode}`]
-        content = content.filter(item => item.refId === id)
+        content = content.filter(item => item.id === id)
         return content[0]
       }
 
@@ -216,7 +237,7 @@ export default {
       switch (mode) {
         case 'tracklist':
           listUpdate = searchResults.map(item => {
-            if (item.refId === data.refId) {
+            if (item.id === data.id) {
               item = Object.assign({}, data)
             }
             return item
@@ -224,7 +245,7 @@ export default {
           break
 
         case 'watchlist':
-          listUpdate = searchResults.filter(item => item.refId !== data.refId)
+          listUpdate = searchResults.filter(item => item.id !== data.id)
           break
       }
 
@@ -250,7 +271,7 @@ export default {
       const [id, mode] = args
       const searchResults = getters[`${mode}`]
 
-      const listUpdate = searchResults.filter(item => item.refId !== id)
+      const listUpdate = searchResults.filter(item => item.id !== id)
 
       commit(`SET_${mode.toUpperCase()}`, listUpdate)
     },
@@ -264,25 +285,33 @@ export default {
       try {
         const reqHeaders = await getAuthHeaders()
         const data = await fetch(`${fn.api}/${mode}`, {
-          body: JSON.stringify({ item: id }),
+          body: JSON.stringify({ listItemId: id }),
           headers: reqHeaders,
           method: 'DELETE'
         })
+
         response = await data.json()
       } catch (err) {
         console.error(err)
       }
 
       if (response) {
-        msg = { text: `Item removed from ${mode}.`, type: 'success' }
+        msg = {
+          text: `Item removed from ${mode}.`,
+          type: 'success'
+        }
+
         dispatch('readList', mode)
       } else {
-        msg = { text: `Couldn't delete item from ${mode}. Please try again later.`, type: 'error' }
+        msg = {
+          text: `Couldn't delete item from ${mode}. Please try again later.`,
+          type: 'error'
+        }
       }
 
       if (!silent) {
         dispatch('app/sendToastMessage', msg, { root: true })
-      } // else { console.log(msg) }
+      }
     }
   }
 }

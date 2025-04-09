@@ -32,10 +32,14 @@
   <div class="w-full sm:w-3/4 px-4 lg:px-6 self-center">
     <h3 class="text-xl mb-2">
       {{ item.title }}
-      <BtnIMDb v-if="showIMDb" :id="item.id" class="hidden lg:inline-block ml-1" />
+      <BtnIMDb
+        v-if="showIMDb"
+        :id="item.imdb_id"
+        class="hidden lg:inline-block ml-1"
+      />
     </h3>
-    <p v-if="mode === 'tracklist' && item.userDateWatched" class="text-sm text-gray-600 mb-2">
-      Watched: {{ item.userDateWatched }}
+    <p v-if="mode === 'tracklist' && item.user_date_watched" class="text-sm text-gray-600 mb-2">
+      Watched: {{ item.user_date_watched }}
     </p>
     <p v-if="mode === 'watchlist' && showWatching && item.watching" class="flex flex-row items-center text-sm font-bold text-yellow-600 mb-2">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-movie mr-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -51,29 +55,50 @@
       </svg>
       Currently watching
     </p>
-    <p v-if="mode === 'tracklist' && item.userNotes" class="text-sm sm:mb-0">
-      {{ item.userNotes }}
+    <p v-if="mode === 'tracklist' && item.user_notes" class="text-sm sm:mb-0">
+      {{ item.user_notes }}
     </p>
-    <p v-if="mode === 'watchlist' || !item.userNotes" class="text-sm sm:mb-0">
+    <p v-if="mode === 'watchlist' || !item.user_notes" class="text-sm sm:mb-0">
       {{ item.plot }}
     </p>
-    <BtnListItemExplore v-if="showExplore && mode === 'tracklist'" :id="item.id" />
-    <BtnListItemWatching v-if="showWatching && item.type === 'series' && mode === 'watchlist'" :item="item" :watching="item.watching" />
+    <BtnListItemExplore
+      v-if="showExplore && mode === 'tracklist'"
+      :id="item.imdb_id"
+    />
+    <BtnListItemWatching
+      v-if="showWatching && item.type === 'series' && mode === 'watchlist'"
+      :item="item"
+      :watching="item.watching"
+    />
   </div>
   <div class="w-full sm:w-1/4 self-center text-gray-700 text-sm px-4 lg:px-6 mb-2 sm:mb-0">
     <p>{{ item.genre }}</p>
     <p>Release: {{ item.year }}</p>
-    <p v-if="mode === 'tracklist' && item.userRating" class="sm:mb-0">
-      Your Rating: {{ item.userRating }}
+    <p v-if="mode === 'tracklist' && item.user_rating" class="sm:mb-0">
+      Your Rating: {{ item.user_rating }}
     </p>
-    <p v-if="mode === 'watchlist' || !item.userRating" class="sm:mb-0">
-      IMDb Rating: {{ item.imdbRating }}
+    <p v-if="mode === 'watchlist' || !item.user_rating" class="sm:mb-0">
+      IMDb Rating: {{ item.imdb_rating }}
     </p>
   </div>
   <div class="flex flex-row flex-wrap sm:flex-col self-center justify-center text-sm lg:text-base sm:px-4">
-    <BtnListItemEdit :id="item.refId" :mode="mode" class="sm:mb-4" />
-    <BtnListItemControls :id="item.refId" :mode="mode" :class="{ 'hidden' : !showExplore && !showIMDb }" class="ml-4 sm:ml-0 lg:hidden" />
-    <BtnListItemRemove :id="item.refId" :mode="mode" :class="{ 'hidden' : showExplore || showIMDb }" class="ml-4 sm:ml-0 lg:flex" />
+    <BtnListItemEdit
+      :id="item.id"
+      :mode="mode"
+      class="sm:mb-4"
+    />
+    <BtnListItemControls
+      :id="item.id"
+      :mode="mode"
+      :class="{ 'hidden' : !showExplore && !showIMDb }"
+      class="ml-4 sm:ml-0 lg:hidden"
+    />
+    <BtnListItemRemove
+      :id="item.id"
+      :mode="mode"
+      :class="{ 'hidden' : showExplore || showIMDb }"
+      class="ml-4 sm:ml-0 lg:flex"
+    />
   </div>
 </template>
 

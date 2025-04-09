@@ -25,3 +25,33 @@
 
   [headers.values]
     Content-Type = "text/javascript"
+
+[[redirects]]
+  from = "/api/backup"
+  to = "/.netlify/functions/backup"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/omdb"
+  to = "/.netlify/functions/omdb-get"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/recommendations"
+  to = "/.netlify/functions/tmdb-get-recs"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/tmdb"
+  to = "/.netlify/functions/tmdb-omdb-get"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true

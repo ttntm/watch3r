@@ -16,7 +16,7 @@ exports.handler = async (event, context, callback) => {
   } else {
     try {
       const type = data.type === 'series' ? 'tv' : data.type
-      const tmdbResponse = await fetch(`https://api.themoviedb.org/3/${type}/${data.id}/external_ids?api_key=${tKey}`, { method: 'GET' })
+      const tmdbResponse = await fetch(`https://api.themoviedb.org/3/${type}/${data.tmdb_id}/external_ids?api_key=${tKey}`, { method: 'GET' })
       const tmdbData = await tmdbResponse.json()
 
       if (tmdbData) {

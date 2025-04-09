@@ -20,7 +20,7 @@
         store.dispatch('list/deleteFromSearchResults', [id, mode]) // update displayed data (so search results do not reset)
       }
       if (mode === 'tracklist' && recSource.value) {
-        if (id === recSource.value.refId) {
+        if (id === recSource.value.id) {
           store.dispatch('explore/initializeExplore') // in case the current recommendations are based on the deleted item
         }
       }

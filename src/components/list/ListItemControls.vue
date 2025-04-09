@@ -14,7 +14,7 @@
   const store = useStore()
 
   const { isVisible, toggleDelay } = useDelay()
-  
+
   const item = computed(() => store.getters['list/editTitleContent'])
   const showExplore = computed(() => store.getters['user/showExploreLinks'])
   const showIMDb = computed(() => store.getters['user/showIMDbLinks'])
@@ -31,21 +31,21 @@
 
 <template>
   <transition name="modal">
-    <section v-if="isVisible" v-click-outside="onCloseModal" v-esc="onCloseModal" v-scroll-lock class="list-item-menu">
-      <section class="flex flex-row justify-between items-center px-4 py-2">
+    <div v-if="isVisible" v-click-outside="onCloseModal" v-esc="onCloseModal" v-scroll-lock class="list-item-menu">
+      <div class="flex flex-row justify-between items-center px-4 py-2">
         <p class="font-bold text-sm mb-0">Actions</p>
         <BtnClose btn-title="Close Menu" @click="onCloseModal" />
-      </section>
-      <section class="flex flex-col text-gray-800">
+      </div>
+      <div class="flex flex-col text-gray-800">
         <p class="text-gray-600 text-center px-4 mb-2">{{ item.title }}</p>
         <BtnListItemWatching v-if="showWatching && item.type === 'series' && mode === 'watchlist'" :item="item" :watching="item.watching" class="menu-item" display="menuItem" />
-        <BtnListItemExplore v-if="showExplore && mode === 'tracklist'" :id="item.id" class="menu-item" display="menuItem" />
-        <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.id}`" class="menu-item" target="_blank" rel="noopener" title="View on IMDb">
+        <BtnListItemExplore v-if="showExplore && mode === 'tracklist'" :id="item.imdb_id" class="menu-item" display="menuItem" />
+        <a v-if="showIMDb" :href="`https://www.imdb.com/title/${item.imdb_id}`" class="menu-item" target="_blank" rel="noopener" title="View on IMDb">
           View on IMDb
         </a>
-        <BtnListItemRemove :id="item.refId" display="text" :mode="mode" class="menu-item" />
-      </section>
-    </section>
+        <BtnListItemRemove :id="item.id" display="text" :mode="mode" class="menu-item" />
+      </div>
+    </div>
   </transition>
 </template>
 

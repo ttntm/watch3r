@@ -11,7 +11,7 @@
   })
 
   const emit = defineEmits(['import-title'])
-  
+
   const store = useStore()
 
   const duplicate = ref(false)
@@ -26,8 +26,10 @@
     }
   })
 
-  const isDuplicate = () => { return checkDuplicate(mode.value, props.item.Const) > -1 ? true : false }
-  
+  const isDuplicate = () => {
+    return checkDuplicate(mode.value, props.item.Const) > -1
+  }
+
   const onImportAdd = () => emit('import-title', { prefix: 'i', query: props.item.Const })
 
   duplicate.value = isDuplicate()

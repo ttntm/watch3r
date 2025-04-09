@@ -41,7 +41,7 @@
       <option v-if="tracklist.length === 0 && filterActive" :value="selected" disabled selected>
         {{ recSource.title }} ({{ recSource.year }})
       </option>
-      <option v-else disabled :value="{}" :selected="selected === {}">
+      <option v-else disabled :value="{}" :selected="false">
         Select Title...
       </option>
       <option v-for="(item, index) in tracklist" :key="index" :value="item">
