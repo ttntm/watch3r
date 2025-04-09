@@ -1,9 +1,6 @@
 https://watch3r.netlify.app/* https://watch3r.app/:splat 301!
 https://master--watch3r.netlify.app/* https://watch3r.app/:splat 301!
 
-# SPA
-/* /index.html 200
-
 # Ads
 /app-ads.txt /ads.txt 301!
 
@@ -13,3 +10,6 @@ https://master--watch3r.netlify.app/* https://watch3r.app/:splat 301!
 /api/tmdb /.netlify/functions/tmdb-omdb-get 200
 
 /api/* /.netlify/functions/api/:splat 200
+
+# SPA
+/* /index.html 200
