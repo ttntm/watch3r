@@ -1,6 +1,6 @@
 {
   "name": "watch3r",
-  "version": "1.8.8",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "netlify dev",
@@ -25,9 +25,7 @@
     "@unlazy/vue": "^0.10.1",
     "@vitejs/plugin-vue": "^1.2.1",
     "@vue/compiler-sfc": "^3.0.11",
-    "date-and-time": "^1.0.0",
     "dotenv": "^16.4.5",
-    "google-spreadsheet": "^3.1.15",
     "node-fetch": "^2.6.1",
     "tailwindcss": "^1.8.10",
     "vite": "^2.1.5"
