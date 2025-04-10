@@ -28,15 +28,13 @@ exports.handler = async (event, context, callback) => {
           persistSession: false
         }
       })
-      let userlistUpdate = []
-
-      for (const user of responseUL.users) {
-        userlistUpdate.push({
-          id: user.id,
-          email: user.email,
-          created: user.created_at
-        })
-      }
+      const userlistUpdate = responseUL.users.map((usr) => {
+        return {
+          id: usr.id,
+          email: usr.email,
+          created: usr.created_at
+        }
+      })
 
       try {
         const { data, error } = await supabase
