@@ -42,15 +42,15 @@ exports.handler = async (event, context, callback) => {
           .upsert(userlistUpdate)
           .select()
 
-          if (error) {
-            throw JSON.stringify(error)
-          }
+        if (error) {
+          throw JSON.stringify(error)
+        }
 
-          return {
-            statusCode: 200,
-            headers: fnHeaders,
-            body: JSON.stringify({ message: 'Userlist updated' })
-          }
+        return {
+          statusCode: 200,
+          headers: fnHeaders,
+          body: JSON.stringify({ message: 'Userlist updated' })
+        }
       } catch (ex) {
         console.error(ex)
 

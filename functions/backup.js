@@ -13,7 +13,7 @@ function getTimestamp() {
 }
 
 exports.handler = async (event, context) => {
-  console.log("Function 'readAll' invoked")
+  console.log("Function 'backup' invoked")
 
   const headers = { ...fnHeaders }
   const now = getTimestamp()

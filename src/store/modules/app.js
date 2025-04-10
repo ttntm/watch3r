@@ -8,7 +8,8 @@ export default {
         api: import.meta.env.VITE_APP_API,
         omdbGet: import.meta.env.VITE_APP_F_OMDB_GET,
         tmdbGetRecs: import.meta.env.VITE_APP_F_TMDB_GET_RECS,
-        tmdbToOmdb: import.meta.env.VITE_APP_F_TMDB_OMDB_GET
+        tmdbToOmdb: import.meta.env.VITE_APP_F_TMDB_OMDB_GET,
+        user: import.meta.env.VITE_APP_F_USER
       },
       isDevEnvironment: false,
       siteURL: 'watch3r.app',

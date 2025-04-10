@@ -86,6 +86,11 @@ export default {
           .then(response => {
             commit('SET_CURRENT_USER', response)
             dispatch('setUserPrefs', response)
+
+            if (response.id) {
+              dispatch('setLastLogin', response.id)
+            }
+
             resolve(response)
           })
           .catch(error => {
@@ -209,21 +214,16 @@ export default {
         })
     },
 
-    updateUserAccount({ dispatch, state }, userData) {
-      return new Promise((resolve, reject) => {
-        const user = state.GoTrueAuth.currentUser()
-        user
-          .update(userData)
-          .then(response => {
-            dispatch('setUserPrefs', response)
-            dispatch('app/sendToastMessage', { text: `Profile successfully updated.`, type: 'success' }, { root: true })
-            resolve(response)
-          })
-          .catch(error => {
-            console.error(`Error updating the user profile`, error)
-            dispatch('app/sendToastMessage', { text: `Error updating the user profile, please try again later.`, type: 'error' }, { root: true })
-            reject(error)
-          })
+    async setLastLogin({ rootGetters }, userId) {
+      const fn = rootGetters['app/functions']
+
+      // fire and forget
+      await fetch(`${fn.user}`, {
+        body: JSON.stringify({
+          id: userId,
+          last_login: (new Date()).toISOString()
+        }),
+        method: 'POST'
       })
     },
 
@@ -262,6 +262,24 @@ export default {
         }
         dispatch('updateUserAccount', userUpdate)
       }
+    },
+
+    updateUserAccount({ dispatch, state }, userData) {
+      return new Promise((resolve, reject) => {
+        const user = state.GoTrueAuth.currentUser()
+        user
+          .update(userData)
+          .then(response => {
+            dispatch('setUserPrefs', response)
+            dispatch('app/sendToastMessage', { text: `Profile successfully updated.`, type: 'success' }, { root: true })
+            resolve(response)
+          })
+          .catch(error => {
+            console.error(`Error updating the user profile`, error)
+            dispatch('app/sendToastMessage', { text: `Error updating the user profile, please try again later.`, type: 'error' }, { root: true })
+            reject(error)
+          })
+      })
     }
   }
 }
