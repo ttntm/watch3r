@@ -30,16 +30,12 @@ exports.handler = async (event, context, callback) => {
       })
       let userlistUpdate = []
 
-      console.log(responseUL)
-
       for (const user of responseUL.users) {
-        if (user.confirmed_at) {
-          userlistUpdate.push({
-            id: user.id,
-            email: user.email,
-            created: user.confirmed_at
-          })
-        }
+        userlistUpdate.push({
+          id: user.id,
+          email: user.email,
+          created: user.created_at
+        })
       }
 
       try {
