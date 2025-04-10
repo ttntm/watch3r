@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+const fnHeaders = require('./_shared/headers.js')
 const spb = require('@supabase/supabase-js')
 
 exports.handler = async (event, context, callback) => {
@@ -31,11 +32,9 @@ exports.handler = async (event, context, callback) => {
       for (const user of responseUL.users) {
         if (user.confirmed_at) {
           userlistUpdate.push({
-            data: {
-              id: user.id,
-              email: user.email,
-              created: user.confirmed_at
-            }
+            id: user.id,
+            email: user.email,
+            created: user.confirmed_at
           })
         }
       }
@@ -52,7 +51,7 @@ exports.handler = async (event, context, callback) => {
 
           return {
             statusCode: 200,
-            headers: headers,
+            headers: fnHeaders,
             body: JSON.stringify({ message: 'Userlist updated' })
           }
       } catch (ex) {
@@ -60,7 +59,7 @@ exports.handler = async (event, context, callback) => {
 
         return {
           statusCode: 400,
-          headers: headers,
+          headers: fnHeaders,
           body: typeof ex === 'string'
             ? ex
             : JSON.stringify(ex)
@@ -71,7 +70,7 @@ exports.handler = async (event, context, callback) => {
 
       return {
         statusCode: 400,
-        headers: headers,
+        headers: fnHeaders,
         body: 'Could not obtain userlist'
       }
     }
@@ -80,7 +79,7 @@ exports.handler = async (event, context, callback) => {
 
     return {
       statusCode: 400,
-      headers: headers,
+      headers: fnHeaders,
       body: typeof ex === 'string'
         ? ex
         : JSON.stringify(ex)
