@@ -77,7 +77,7 @@
       </button>
       <BtnIMDb
         v-if="showIMDb"
-        :id="searchResult.id"
+        :id="searchResult.imdb_id"
         display="text"
         class="text-xs text-yellow-600 hover:text-black ml-8"
       />
