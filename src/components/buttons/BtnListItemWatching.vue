@@ -1,7 +1,7 @@
 <script setup>
   import { computed } from 'vue'
   import { useStore } from 'vuex'
-  
+
   const props = defineProps({
     display: {
       type: String,
@@ -21,12 +21,14 @@
   })
 
   const onBtnClick = () => {
-    const update = { ...props.item }
-    
-    update.watching = !props.watching
-    
-    store.dispatch('list/editListItem', [update, 'watchlist'])
-    
+    const item = { ...props.item }
+
+    item.watching = !props.watching
+    // set `updated` date
+    item.updated = (new Date()).toISOString()
+
+    store.dispatch('list/editListItem', [item, 'watchlist'])
+
     if (store.getters['app/windowOpen'] === 6) {
       store.dispatch('app/toggleWindow', 0) // close mobile list controls modal
     }
