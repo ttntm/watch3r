@@ -30,7 +30,7 @@
       :src-set="imgSrc"
       :alt="titleDisplay"
       class="card-poster"
-      placeholder-src="/img/blurred.png"
+      placeholder-src="/img/poster.jpg"
       auto-sizes
     />
     <div class="card-overlay">
