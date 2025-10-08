@@ -27,7 +27,6 @@
       placeholder-src="/img/poster.jpg"
       auto-sizes
       @click.self="$emit('open-poster', [item.image, item.title])"
-      @loaded="onLoaded($event)"
     />
   </div>
   <div class="w-full sm:w-3/4 px-4 lg:px-6 self-center">
