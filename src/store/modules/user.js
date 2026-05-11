@@ -9,6 +9,7 @@ export default {
       GoTrueAuth: null,
       userOptions: {
         filterPreset: 0, // array index based on store.getters['tools/filterMode']
+        hideCovers: false,
         showExploreLinks: true,
         showIMDbLinks: true,
         showWatching: false,
@@ -22,6 +23,7 @@ export default {
     filterPreset: state => state.userOptions.filterPreset,
     GoTrueAuth: state => state.GoTrueAuth,
     loggedIn: state => !!state.currentUser,
+    hideCovers: state => state.userOptions.hideCovers,
     showExploreLinks: state => state.userOptions.showExploreLinks,
     showIMDbLinks: state => state.userOptions.showIMDbLinks,
     showWatching: state => state.userOptions.showWatching,
@@ -42,6 +44,9 @@ export default {
     SET_FILTER_PRESET(state, value) {
       state.userOptions.filterPreset = value
     },
+    SET_HIDE_COVERS(state, value) {
+      state.userOptions.hideCovers = value
+    },
     SET_IMDB_LINKS(state, value) {
       state.userOptions.showIMDbLinks = value
     },
@@ -58,6 +63,7 @@ export default {
   actions: {
     initializeUser({ commit, dispatch }) {
       commit('SET_EXPLORE_LINKS', true)
+      commit('SET_HIDE_COVERS', false)
       commit('SET_FILTER_PRESET', 0)
       commit('SET_IMDB_LINKS', true)
       commit('SET_SORT_PRESET', 1)
@@ -147,6 +153,7 @@ export default {
       return new Promise((resolve, reject) => {
         state.GoTrueAuth.signup(credentials.email, credentials.password, {
           // set defaults
+          user_covers: userOptions.hideCovers,
           user_explore: userOptions.showExploreLinks,
           user_imdb: userOptions.showIMDbLinks,
           user_sort: userOptions.sortPreset,
@@ -244,14 +251,16 @@ export default {
         commit('SET_IMDB_LINKS', userMeta.user_imdb)
         commit('SET_SORT_PRESET', userMeta.user_sort)
         commit('SET_START_PAGE', userMeta.user_start)
-        // handle new v1.8 options
+        // handle options added later
         commit('SET_FILTER_PRESET', typeof userMeta.user_filter == 'undefined' ? 0 : userMeta.user_filter)
+        commit('SET_HIDE_COVERS', userMeta.user_covers)
         commit('SET_USE_WATCHING', Boolean(userMeta.user_watching))
       } else {
         // user has no (or insufficient) preferences
         let userUpdate = {
           email: user.email,
           data: {
+            user_covers: userOptions.hideCovers,
             user_explore: userOptions.showExploreLinks,
             user_filter: userOptions.filterPreset,
             user_imdb: userOptions.showIMDbLinks,

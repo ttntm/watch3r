@@ -25,6 +25,7 @@
   const posterTitle = ref('')
 
   const filterActive = computed(() => store.getters[`tools/${mode.value}Filtered`] > 0)
+  const hideCovers = computed(() => store.getters['user/hideCovers'])
   const listData = computed(() => store.getters[`list/${mode.value}`])
   const listLength = computed(() => listData.value.length)
   const listInfo = computed(() => {
@@ -86,6 +87,7 @@
           :key="title.id"
           :item="title"
           :mode="mode"
+          :hideCovers="hideCovers"
           :showExplore="showExplore"
           :showIMDb="showIMDb"
           :showWatching="showWatching"

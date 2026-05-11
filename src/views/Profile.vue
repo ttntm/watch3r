@@ -21,6 +21,7 @@
     password: '',
     data: {
       // initial data in case user never goes to the 'settings' tab
+      user_covers: userOptions.value.hideCovers,
       user_explore: userOptions.value.showExploreLinks,
       user_imdb: userOptions.value.showIMDbLinks,
       user_sort: userOptions.value.sortPreset,

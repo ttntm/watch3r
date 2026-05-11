@@ -9,16 +9,17 @@
   const props = defineProps({
     item: Object,
     mode: String,
+    hideCovers: Boolean,
     showExplore: Boolean,
     showIMDb: Boolean,
-    showWatching: Boolean,
+    showWatching: Boolean
   })
 
   const emit = defineEmits(['open-poster'])
 </script>
 
 <template>
-  <div class="sm:self-center px-4">
+  <div v-if="!hideCovers" class="sm:self-center px-4">
     <UnLazyImage
       :src-set="item.image"
       :alt="item.title"

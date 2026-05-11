@@ -74,7 +74,7 @@
       </div>
       <transition name="info">
         <p v-if="!rsEmpty" class="w-full text-center text-sm mt-8 mb-0">
-          &#9432; Currently showing recommendations based on <BtnIMDb v-if="showIMDb" :id="recSource.id" display="text" class="inline-block text-yellow-600 hover:underline">{{ recSource.title }}</BtnIMDb><span v-else class="font-bold">{{ recSource.title }}</span> ({{ recSource.year }}).
+          &#9432; Recommendations based on <BtnIMDb v-if="showIMDb" :id="recSource.imdb_id" display="text" class="inline-block text-yellow-600 hover:underline">{{ recSource.title }}</BtnIMDb><span v-else class="font-bold">{{ recSource.title }}</span> ({{ recSource.year }}).
         </p>
       </transition>
     </div>
@@ -83,12 +83,6 @@
     </div>
     <div v-if="!recommendations.length && !rsEmpty">
       <img src="/img/loading.svg" class="my-16 mx-auto">
-    </div>
-    <div v-if="recommendations.length > 0" class="text-center text-sm mt-12">
-      <p>Recommendations by:</p>
-      <a href="https://www.themoviedb.org" class="inline-block hover:opacity-50" target="_blank" rel="noopener">
-        <img src="/img/tmdb.svg" class="block h-4 mx-auto" alt="TMDB logo">
-      </a>
     </div>
   </div>
   <ListAddModal v-if="modalOpen === 2" mode="explore" />

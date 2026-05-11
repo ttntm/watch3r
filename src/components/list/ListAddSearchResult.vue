@@ -47,7 +47,7 @@
 
   const onBtnClick = title => {
     addBtnState.enabled = false
-    addBtnState.text = 'Adding...'
+    addBtnState.text = 'Processing...'
 
     if (props.mode !== 'explore') {
       addTitleToList(title)

@@ -15,6 +15,7 @@
   const pages = ['watchlist', 'tracklist']
 
   const settings = reactive({
+    user_covers: userOptions.value.hideCovers,
     user_explore: userOptions.value.showExploreLinks,
     user_imdb: userOptions.value.showIMDbLinks,
     user_sort: userOptions.value.sortPreset,
@@ -27,6 +28,7 @@
   })
 
   watch(userOptions, () => {
+    settings.user_covers = userOptions.value.hideCovers
     settings.user_explore = userOptions.value.showExploreLinks
     settings.user_imdb = userOptions.value.showIMDbLinks
     settings.user_sort = userOptions.value.sortPreset
@@ -35,6 +37,7 @@
   })
 
   const events = {
+    onUpdateCovers(e) { settings.user_covers = e },
     onUpdateExploreLinks(e) { settings.user_explore = e },
     onUpdateIMDbLinks(i) { settings.user_imdb = i },
     onUpdateStartPage(s) { settings.user_start = s },
@@ -93,17 +96,27 @@
     </p>
     <InputCheckbox
       v-model="settings.user_imdb"
-      :name="'imdb-links'"
+      name="imdb-links"
       @update:cb="events.onUpdateIMDbLinks($event)"
     >
       Show IMDb links
+    </InputCheckbox>
+    <p class="text-xs text-gray-600 mt-4 mb-3">
+      Hide covers in list views.
+    </p>
+    <InputCheckbox
+      v-model="settings.user_covers"
+      name="hide-covers"
+      @update:cb="events.onUpdateCovers($event)"
+    >
+      Hide covers
     </InputCheckbox>
     <p class="text-xs text-gray-600 mt-4 mb-3">
       Tracklist: display links to explore recommendations.
     </p>
     <InputCheckbox
       v-model="settings.user_explore"
-      :name="'explore-links'"
+      name="explore-links"
       @update:cb="events.onUpdateExploreLinks($event)"
     >
       Show recommendation links
@@ -113,7 +126,7 @@
     </p>
     <InputCheckbox
       v-model="settings.user_watching"
-      :name="'mark-watching'"
+      name="mark-watching"
       @update:cb="events.onUpdateWatching($event)"
     >
       Enable "currently watching"

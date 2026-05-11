@@ -34,7 +34,7 @@
       toggleDelay()
       setTimeout(() => {
         store.dispatch('app/toggleWindow', 0)
-        store.dispatch('list/toggleWriteSuccess', false) // reset previous write success (if any) when closing this modal
+        store.dispatch('list/toggleWriteSuccess', false) // destroy writeSuccess when closing this modal
       }, 100)
     },
 
@@ -47,11 +47,14 @@
     },
 
     onUpdateSearchMode(m) {
+      // hacky, but works - `InputSearch` should _not_ have been implemented as a stateful component...
+      document.querySelectorAll('#search-input')[1].value = ''
       searchMode.value = m
     }
   }
 
-  // clear previous search result/status on modal creation; do this before evaluating 'explore' content to make sure the spinner gets shown properly
+  // clear previous search result/status on modal creation
+  // do this before evaluating 'explore' content to make sure the spinner gets shown properly
   searchResult.value = {}
   searchStatus.value = ''
 
@@ -105,7 +108,7 @@
         class="px-8"
         @update:explore="events.onClose"
       />
-      <p v-if="searchStatus" class="text-center px-8 mt-6 mb-0" v-html="searchStatus" />
+      <p v-if="searchStatus" class="text-center px-8 mb-0" v-html="searchStatus" />
     </div>
   </transition>
 </template>

@@ -40,11 +40,9 @@ export async function getOMDB(api, requestData) {
   }
 
   if (response.Error) {
-    searchStatus.value = response.Error // response -> title not found
+    searchStatus.value = 'Title not found.'
   } else {
-    searchStatus.value = `<span class="text-sm block">
-      Results provided by <a href="https://www.omdbapi.com" target="_blank" class="text-yellow-600 hover:text-black">OMDb API</a>
-    </span>`
+    searchStatus.value = ''
     searchResult.value.genre = response.Genre
     searchResult.value.imdb_id = response.imdbID
     searchResult.value.image = response.Poster
